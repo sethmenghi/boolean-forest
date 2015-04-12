@@ -1,5 +1,10 @@
 # project4
 
+###Deadlines: 
+- Milestone 1:  Due on April 16th, beginning of class
+- Milestone 2:  Due on April 23nd, meet with me
+- Milestone 3:  Due on April 27th, final class meeting
+- Milestone 4:  Due on April 27th, 11:59 PM
 
 ###Project Description: 
 
@@ -17,7 +22,10 @@ For this assignment, you will need to develop an application that has a clear so
 7. A usability study (3 users) done after the prototype, an explanation of changes made based on the usability study, a final usability study (3 users).
 
 ###Milestones
-1. Software textual description (problem statement), use case(s), class diagram, sequence diagram, activitydiagram, storyboard(10%)
+
+For milestone 1, turn in documents either electronically or in person.  For milestones 2 and 4, turn in a working jar file and compressed Eclipse directory
+
+1. Software textual description (problem statement), use case(s), class diagram, sequence diagram, activity diagram, storyboard(10%)
 2. Prototype of software (5%)
 3. Presentation of software (5%)
 4. Final software + usability study (75% + 5% group evaluation)
