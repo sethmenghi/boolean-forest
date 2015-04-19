@@ -13,7 +13,7 @@ interface Question {
 	// Sets the different answer possibilities 
 	void setAnswerList(List answerListInput); 
 	
-	// Determines if it is an image  or text question
+	// Determines if it is an image or text question
 	void setQuestionLayout(String questionLayoutInput);
 	
 	// Submits the question after knowing if the user got the correct answer 
