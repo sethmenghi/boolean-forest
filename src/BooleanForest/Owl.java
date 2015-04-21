@@ -8,25 +8,26 @@ import javax.swing.JComponent;
 public class Owl extends JComponent {
 	// Private static final members of Owl class are Strings that
 	// will determine the size of the Owl image.
-	private static final String ADULT = "ADULT";
-	private static final String SMALL_CHILD = "SMALL_CHILD";
-	private static final String BIG_CHILD = "BIG_CHILD";
+	private static final String BOB = "BOB";
+	private static final String ALICE = "ALICE";
+	private static final String CHLOE = "CHLOE";
+	private static final String DAVID = "DAVID";
 	
 	// Private members of the Owl class:
 	private int xCoord;						// x-coordinate of Owl
 	private int yCoord;						// y-coordinate of Owl
-	private String size;					// size of Owl
+	private String name;					// name of Owl
 	
 	// Default constructor
 	public Owl() {
-		this(0, 0, ADULT);
+		this(0, 0, BOB);
 	}
 	
 	// Overridden constructor
-	public Owl(int xCoord, int yCoord, String size) {
+	public Owl(int xCoord, int yCoord, String name) {
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
-		this.size = size;
+		this.name = name;
 	}
 	
 	// Setter: set xCoord
@@ -40,8 +41,8 @@ public class Owl extends JComponent {
 	}
 	
 	// Setter: set size
-	public void setOwlSize(String size) {
-		this.size = size;
+	public void setOwl(String name) {
+		this.name = name;
 	}
 	
 	// Getter: return xCoord
@@ -55,8 +56,8 @@ public class Owl extends JComponent {
 	}
 	
 	// Getter: return size
-	public String getOwlSize() {
-		return size;
+	public String getOwl() {
+		return name;
 	}
 	
 	@Override
