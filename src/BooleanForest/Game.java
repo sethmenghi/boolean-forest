@@ -99,7 +99,7 @@ public class Game extends JApplet {
 	public void incrementLevel() {
 		// Only increment the level if private member level is between
 		// 1 and 4.
-		if (level > 0 && level < 5) {
+		if (level >= 0 && level < 5) {
 			level++;
 		}
 		// Otherwise, there is something wrong and output error message.
@@ -161,7 +161,7 @@ public class Game extends JApplet {
 //		cards.add(teacherLayout, "Teacher");
 		
 		
-		level = 1;											// set the level to 1
+		level = 0;											// set the level to 0
 		cards.setVisible(true);								// make cards visible
 		
 		
@@ -191,13 +191,13 @@ public class Game extends JApplet {
 	/**
 	 * METHOD: Changes the layout that is current being shown to the
 	 * parameter passed in.
-	 * @param whichCard
+	 * @param layoutToChangeTo
 	 */
-	public void changeLayoutCard(String whichCard) {
+	public void changeLayoutCard(String layoutToChangeTo) {
 		// Get the card layout.
 		CardLayout layout = (CardLayout) (cards.getLayout());
 
 		// Flip the desired card to the front.
-		layout.show(cards, whichCard);
+		layout.show(cards, layoutToChangeTo);
 	}
 }
