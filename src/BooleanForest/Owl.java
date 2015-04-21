@@ -2,7 +2,11 @@ package BooleanForest;
 
 public class Owl {
 	// Private static final members of Owl class are Strings that
+<<<<<<< HEAD
 	// will determine the size of the Owl image.
+=======
+	// indicate which character the Owl is.
+>>>>>>> 44da134f9c8421a12742018be73f57aae36b87fb
 	private static final String BOB = "BOB";			// 158 x 159
 	private static final String ALICE = "ALICE";		// 158 x 159
 	private static final String CHLOE = "CHLOE";		// 106 x 107
