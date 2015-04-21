@@ -5,7 +5,12 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
+
+/**
+ * ForestPanel
+ * 
+ * Creates the level map on which the game is centered, includes level data
+ */
 
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel {
@@ -13,6 +18,8 @@ public class ForestPanel extends JPanel {
 	// Declare 
 	private Game theGame;
 	private BobsWindow bobsWindow;
+	private Owl chloe;
+	private Owl david;
 	
 	/**
 	 * ForestPanel()
@@ -37,6 +44,11 @@ public class ForestPanel extends JPanel {
 		setDoubleBuffered(true);
 		this.theGame = game;
 		
+		chloe = new Owl(100,150,"SMALL_CHILD");
+		add(chloe);
+		david = new Owl(90,140,"Big_CHILD");
+		add(david);
+		
 		bobsWindow = new BobsWindow();
 		add(bobsWindow);
 		
@@ -56,7 +68,7 @@ public class ForestPanel extends JPanel {
 		super.paintComponent(g);
 		
 		// Create new image icon, draw the image
-		Image image = new ImageIcon("Images/LevelMap.jpg").getImage();
+		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 	}
 	
