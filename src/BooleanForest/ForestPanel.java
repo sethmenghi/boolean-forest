@@ -1,4 +1,5 @@
 package BooleanForest;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -49,7 +50,7 @@ public class ForestPanel extends JPanel {
 		david = new Owl(90,140,"Big_CHILD");
 		add(david);
 		
-		bobsWindow = new BobsWindow();
+		bobsWindow = new BobsWindow(theGame);
 		add(bobsWindow);
 		
 		repaint();
@@ -70,6 +71,14 @@ public class ForestPanel extends JPanel {
 		// Create new image icon, draw the image
 		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
+		
+		paintOwl(g, chloe);
+		
+		bobsWindow.paintComponent(g);
 	}
 	
+	private void paintOwl(Graphics g, Owl owl) {
+		Image owlImage = new ImageIcon("Images/alice.png").getImage();
+		g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
+	}
 }

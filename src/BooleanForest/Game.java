@@ -61,8 +61,24 @@ public class Game extends JApplet {
 		//cards.add(introScreen, "Intro");
 		
 		// Create Forest level map, add to layout
-		ForestPanel levelMap = new ForestPanel(this);
-		cards.add(levelMap, "Forest");
+		//ForestPanel levelMap = new ForestPanel(this);
+		//cards.add(levelMap, "Forest");
+		
+		// Create Forest level map, add to layout
+		LevelOne levelOne = new LevelOne(this);
+		cards.add(levelOne, "Level One");
+				
+		LevelTwo levelTwo = new LevelTwo();
+		//cards.add(levelTwo, "Level Two");
+		
+		LevelThree levelThree = new LevelThree();
+		//cards.add(levelThree, "Level Three");
+		
+		LevelFour levelFour = new LevelFour();
+		//cards.add(levelFour, "Level Four");
+		
+		LevelFive levelFive = new LevelFive();
+		//cards.add(levelFive, "Level Five");
 		
 		// Set level to 1, initially
 		level = 1;
