@@ -6,6 +6,12 @@ import javax.swing.JApplet;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * The Forest of Boolean Logic: An Adventure
+ * 
+ * TODO Pretty sure we need the honor statement here and other things
+ */
+
 @SuppressWarnings("serial")
 public class Game extends JApplet {
 
@@ -51,8 +57,8 @@ public class Game extends JApplet {
 		add(cards);
 		
 		// Create Intro screen, add to layout
-		IntroPanel introScreen = new IntroPanel(this);
-		cards.add(introScreen, "Intro");
+		//IntroPanel introScreen = new IntroPanel(this);
+		//cards.add(introScreen, "Intro");
 		
 		// Create Forest level map, add to layout
 		ForestPanel levelMap = new ForestPanel(this);

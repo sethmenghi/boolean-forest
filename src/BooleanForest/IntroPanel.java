@@ -7,6 +7,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * IntroPanel
+ * 
+ * Creates the introductory screen, with a brief description and a Bob's Window to the level map 
+ */
 @SuppressWarnings("serial")
 public class IntroPanel extends JPanel {
 	
