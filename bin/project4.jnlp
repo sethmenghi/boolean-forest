@@ -8,14 +8,14 @@
         <!-- Application Resources -->
         <j2se version="1.7+"
             href="http://java.sun.com/products/autodl/j2se" />
-        <jar href=“BooleanForestApplet.jar" main="true" />
+        <jar href="BooleanForestApplet.jar" main="true" />
 
     </resources>
     <applet-desc
-         name=“Boolean Forest Applet"
-         main-class=“Game”
-         width=“640”
-         height=“480”>
+         name="Boolean Forest Applet"
+         main-class="BooleanForest.Game"
+         width="640"
+         height="480">
      </applet-desc>
      <update check="background"/>
 </jnlp> 
