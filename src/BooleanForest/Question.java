@@ -12,7 +12,7 @@ interface Question {
 	void setQuestion(String questionStringInput); 
 	
 	// Sets the different answer possibilities 
-	void setAnswerList(List answerListInput); 
+	void setAnswerList(List allAnswers, List correctAnswers); 
 	
 	// Determines if it is an image  or text question
 	void setQuestionLayout(String questionLayoutInput);
