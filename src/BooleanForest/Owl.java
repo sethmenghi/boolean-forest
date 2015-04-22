@@ -33,7 +33,7 @@ public class Owl {
 	}
 	
 	/**
-	 * CONSTRUCTOR: Instantiates an Owl object and initializes the x-
+	 * OVERLOADED CONSTRUCTOR: Instantiates an Owl object and initializes the x-
 	 * and y-coordinates and name members.
 	 * @param xCoord
 	 * @param yCoord
@@ -50,7 +50,7 @@ public class Owl {
 	 * @param xCoord
 	 */
 	public void setXCoord(int xCoord) {
-		this.xCoord = xCoord;
+		this.xCoord = xCoord;						// set xCoord value of Owl
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Owl {
 	 * @param yCoord
 	 */
 	public void setYCoord(int yCoord) {
-		this.yCoord = yCoord;
+		this.yCoord = yCoord;						// set yCoord value of Owl
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class Owl {
 	 * @param name
 	 */
 	public void setOwl(String name) {
-		this.name = name;
+		this.name = name;							// set name value of Owl
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class Owl {
 	 * @return xCoord
 	 */
 	public int getXCoord() {
-		return xCoord;
+		return xCoord;								// return xCoord value of Owl
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public class Owl {
 	 * @return yCoord
 	 */
 	public int getYCoord() {
-		return yCoord;
+		return yCoord;								// return yCoord value of Owl
 	}
 	
 	/**
@@ -90,6 +90,6 @@ public class Owl {
 	 * @return name
 	 */
 	public String getOwl() {
-		return name;
+		return name;								// return name value of Owl
 	}
 }

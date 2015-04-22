@@ -43,7 +43,7 @@ public class Star {
 	}
 	
 	/**
-	 * CONSTRUCTOR: Instantiates an Owl object and initializes the x-
+	 * OVERLOADED CONSTRUCTOR: Instantiates an Owl object and initializes the x-
 	 * and y-coordinates and name members.
 	 * @param xCoord
 	 * @param yCoord
@@ -62,7 +62,7 @@ public class Star {
 	 * @param xCoord
 	 */
 	public void setXCoord(int xCoord) {
-		this.xCoord = xCoord;
+		this.xCoord = xCoord;						// set xCoord value of Star
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class Star {
 	 * @param yCoord
 	 */
 	public void setYCoord(int yCoord) {
-		this.yCoord = yCoord;
+		this.yCoord = yCoord;						// set yCoord value of Star
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class Star {
 	 * @param levelPassed
 	 */
 	public void setLevelPassed(String levelPassed) {
-		this.levelPassed = levelPassed;
+		this.levelPassed = levelPassed;				// set levelPassed value of Star
 	}
 	
 	/**
@@ -89,26 +89,26 @@ public class Star {
 	public void setCoordinates(String levelPassed) {
 		// Switch levelPassed and set the xCoord value.
 		switch(levelPassed) {
-		case ONE:								// level 1 passed
+		case ONE:									// level 1 passed
 			this.setXCoord(ONE_XCOORD);
 			break;
-		case TWO:								// level 2 passed
+		case TWO:									// level 2 passed
 			this.setXCoord(TWO_XCOORD);
 			break;
-		case THREE:								// level 3 passed
+		case THREE:									// level 3 passed
 			this.setXCoord(THREE_XCOORD);
 			break;
-		case FOUR:								// level 4 passed
+		case FOUR:									// level 4 passed
 			this.setXCoord(FOUR_XCOORD);
 			break;
-		case FIVE:								// level 5 passed
+		case FIVE:									// level 5 passed
 			this.setXCoord(FIVE_XCOORD);
 			break;
-		default:								// default case
+		default:									// default case
 			break;
 		}
 		
-		this.setYCoord(STAR_YCOORD);			// set yCoord of all Stars
+		this.setYCoord(STAR_YCOORD);				// set yCoord of all Stars
 	}
 	
 	/**
@@ -116,7 +116,7 @@ public class Star {
 	 * @return xCoord
 	 */
 	public int getXCoord() {
-		return xCoord;
+		return xCoord;								// return xCoord value of Star
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class Star {
 	 * @return yCoord
 	 */
 	public int getYCoord() {
-		return yCoord;
+		return yCoord;								// return yCoord value of Star
 	}
 	
 	/**
@@ -132,6 +132,6 @@ public class Star {
 	 * @return levelPassed
 	 */
 	public String getLevelPassed() {
-		return levelPassed;
+		return levelPassed;							// return levelPassed value of Star
 	}
 }
