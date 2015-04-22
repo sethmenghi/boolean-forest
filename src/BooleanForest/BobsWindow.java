@@ -23,6 +23,16 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class BobsWindow extends JPanel implements ActionListener {
+	// Public static final members of BobsWindow class:
+	public static final String INTRO = "Intro";				// indicates BobsWindow for IntroPanel
+	public static final String FOREST = "Forest";			// indicates BobsWindow for ForestPanel
+	public static final String PLAY_GAME = "Play Game";		// text for Play GameButton (used in IntroPanel)
+	public static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
+	public static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
+	public static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
+	public static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
+	public static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
+	
 	// Private static final members of BobsWindow class:
 	private static final int INTRO_WIDTH = 404;				// width of IntroPanel BobsWindow
 	private static final int INTRO_HEIGHT = 199;			// height of IntroPanel BobsWindow
@@ -30,47 +40,116 @@ public class BobsWindow extends JPanel implements ActionListener {
 	private static final int FOREST_HEIGHT = 177;			// height of ForestPanel BobsWindow
 	private static final int INTRO_XCOORD = 53;				// pre-determined xCoord of IntroPanel BobsWindow
 	private static final int INTRO_YCOORD = 67;				// pre-determined yCoord of IntroPanel BobsWindow
+	private static final int INTRO_BOB_XCOORD = 462;		// pre-determined xCoord of IntroPanel Bob
+	private static final int INTRO_BOB_YCOORD = 218;		// pre-determined yCoord of IntroPanel Bob
 	private static final int FOREST_XCOORD = 70;			// pre-determined xCoord of ForestPanel BobsWindow
 	private static final int FOREST_YCOORD = 107;			// pre-determined yCoord of ForestPanel BobsWindow
-	private static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
-	private static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
-	private static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
-	private static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
-	private static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
-	private static final String PLAY_LEVEL = "Play Level";	// text for Play GameButton (used in IntroPanel)
+	private static final int FOREST_BOB_XCOORD = 418;		// pre-determined xCoord of ForestPanel Bob
+	private static final int FOREST_BOB_YCOORD = 268;		// pre-determined yCoord of ForestPanel Bob
 	
 	// Declare members of BobsWindow class:
-	private String instructions;
-	private String buttonMessage;
-	private GameButton gameButton;
-	private Game theGame;
+	private Game theGame;									// reference of main Game object
+	private String panelType;								// stores which panel type BobsWindow is for
+	private int xCoord;										// x-coordinate of BobsWindow
+	private int yCoord;										// y-coordinate of BobsWindow
+	private String bobsMessage;								// Bob's message
+	private GameButton gameButton;							// button in BobsWindow
+	private String buttonMessage;							// text for button
+	private Owl bob;										// Bob
 	
-	public BobsWindow(Game game, String instructions, String buttonMessage) {
-		this.theGame = game;
-		this.instructions = instructions;
-		this.buttonMessage = buttonMessage;
-		gameButton = new GameButton(buttonMessage, "white");
+	/**
+	 * CONSTRUCTOR: The constructor creates a reference to the main Game
+	 * object, sets the panelType, bobsMessage and buttonMessage and 
+	 * initializes gameButton with the text from buttonMessage. Add an
+	 * actionListener to the button and then calls the initBobsWindow() method.
+	 * @param game
+	 * @param panelType
+	 * @param bobsMessage
+	 * @param buttonMessage
+	 */
+	public BobsWindow(Game game, String panelType, String bobsMessage, String buttonMessage) {
+		this.theGame = game;								// create reference of main Game object
+		this.panelType = panelType;							// sets the panelType value
+		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
+		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
+		gameButton = new GameButton(buttonMessage, "white");// initialize gameButton with buttonMessage as text
+		gameButton.addActionListener(this);					// add actionListener for button
 		
-		initBobsWindow();
+		initBobsWindow(panelType);							// call initBobsWindow for panelType
 	}
 	
-	public void initBobsWindow() {
-		setPreferredSize(new Dimension(BOBS_WINDOW_WIDTH, BOBS_WINDOW_HEIGHT));				// Set size of SidePanel
-		setLayout(new BorderLayout());
+	public void initBobsWindow(String panelType) {
+		setWindowCoords(panelType);							// set window coordinates
+		setBobCoords(panelType);							// set Bob's coordinates
 		
-		gameButton.addActionListener(this);
+		// If this is a BobsWindow for IntroPanel, set size to
+		// INTRO_WIDTH and INTRO_HEIGHT.
+		if (panelType == INTRO) {
+			setPreferredSize(new Dimension(INTRO_WIDTH, INTRO_HEIGHT));
+		}
+		// If this is a BobsWindow for ForestPanel, set size to
+		// FOREST_WIDTH and FOREST_HEIGHT.
+		else {
+			setPreferredSize(new Dimension(FOREST_WIDTH, FOREST_HEIGHT));
+		}
 	}
 	
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
+	public void setWindowCoords(String panelType) {
+		// If this is a BobsWindow for IntroPanel, set x- and y-coordinates
+		// to INTRO_XCOORD and INTRO_YCOORD.
+		if (panelType == INTRO) {
+			this.xCoord = INTRO_XCOORD;						// set xCoord to INTRO_XCOORD
+			this.yCoord = INTRO_YCOORD;						// set yCoord to INTRO_YCOORD
+		}
+		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// to FOREST_XCOORD and FOREST_YCOORD.
+		else {
+			this.xCoord = FOREST_XCOORD;					// set xCoord to FOREST_XCOORD
+			this.yCoord = FOREST_YCOORD;					// set xCoord to FOREST_YCOORD
+		}
+	}
+	
+	public void setBobCoords(String panelType) {
+		// If this is a BobsWindow for IntroPanel, set x- and y-coordinates
+		// for Bob to INTRO_BOB_XCOORD and INTRO_BOB_YCOORD.
+		if (panelType == INTRO) {
+			bob.setXCoord(INTRO_BOB_XCOORD);				// set bobXCoord to INTRO_BOB_XCOORD
+			bob.setYCoord(FOREST_BOB_YCOORD);				// set bobYCoord to INTRO_BOB_YCOORD
+		}
+		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// for Bob to FOREST_BOB_XCOORD and FOREST_BOB_YCOORD.
+		else {
+			bob.setXCoord(FOREST_BOB_XCOORD);				// set bobXCoord to FOREST_BOB_XCOORD
+			bob.setYCoord(FOREST_BOB_YCOORD);				// set bobYCoord to FOREST_BOB_YCOORD
+		}
+	}
+	
+	public void setXCoord(int xCoord) {
+		this.xCoord = xCoord;
+	}
+	
+	public void setYCoord(int yCoord) {
+		this.yCoord = yCoord;
+	}
+	
+	public void setBobsMessage(String bobsMessage) {
+		this.bobsMessage = bobsMessage;
 	}
 	
 	public void setButtonMessage(String buttonMessage) {
 		this.buttonMessage = buttonMessage;
 	}
 	
-	public String getInstructions() {
-		return instructions;
+	public int getXCoord() {
+		return xCoord;
+	}
+	
+	public int getYCoord() {
+		return yCoord;
+	}
+	
+	public String getBobsMessage() {
+		return bobsMessage;
 	}
 	
 	public String getButtonMessage() {
@@ -79,7 +158,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		
+		// must paint window, text & Bob
 	}
 
 	@Override
@@ -101,7 +180,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 			else if (buttonMessage == LEVEL_5) {
 				
 			}
-			else if (buttonMessage == PLAY_LEVEL) {
+			else if (buttonMessage == PLAY_GAME) {
 				
 			}
 			else {
