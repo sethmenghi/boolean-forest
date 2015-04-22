@@ -65,6 +65,8 @@ public class Game extends JApplet {
 
 	// Declare members of Game class:
 	public JPanel cards;									// JPanel member
+	public ImageQuestion imageQuestion;
+	public TextQuestion textQuestion;
 	private Dimension windowSize;							// dimensions of JPanel
 	private int level;										// current level
 	
@@ -165,27 +167,27 @@ public class Game extends JApplet {
 		cards.setVisible(true);								// make cards visible
 		
 		
-		
+		// Create Forest level map, add to layout
+		LevelOne levelOne = new LevelOne(this);
+		cards.add(levelOne, "Level One");
 
-		// ARE THESE NEEDED? SHOULD THERE BE A QUESTION LAYOUT AND DEPENDING ON THE LEVEL
-		// DIFFERENT LEVEL QUESTIONS ARE DISPLAYED? THE LAYOUTS FOR REACH LEVEL SHOULD
-		// BE THE SAME...
+		LevelTwo levelTwo = new LevelTwo();
+		//cards.add(levelTwo, "Level Two");
+
+		LevelThree levelThree = new LevelThree();
+		//cards.add(levelThree, "Level Three");
+
+		LevelFour levelFour = new LevelFour();
+		//cards.add(levelFour, "Level Four");
+
+		LevelFive levelFive = new LevelFive();
+		//cards.add(levelFive, "Level Five");
 		
-//		// Create Forest level map, add to layout
-//		LevelOne levelOne = new LevelOne(this);
-//		cards.add(levelOne, "Level One");
-//
-//		LevelTwo levelTwo = new LevelTwo();
-//		//cards.add(levelTwo, "Level Two");
-//
-//		LevelThree levelThree = new LevelThree();
-//		//cards.add(levelThree, "Level Three");
-//
-//		LevelFour levelFour = new LevelFour();
-//		//cards.add(levelFour, "Level Four");
-//
-//		LevelFive levelFive = new LevelFive();
-//		//cards.add(levelFive, "Level Five");
+		imageQuestion = new ImageQuestion();
+		//cards.add(imageQuestion, "Image Question");
+		
+		TextQuestion textQuestion = new TextQuestion();
+		//cards.add(textQuestion, "Text Question");
 	}
 
 	/**
