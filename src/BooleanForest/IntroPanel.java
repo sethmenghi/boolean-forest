@@ -17,6 +17,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class IntroPanel extends JPanel {
@@ -54,12 +55,18 @@ public class IntroPanel extends JPanel {
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
 		
+<<<<<<< HEAD
 		// Instantiate a BobsWindow with introduction text and instructions.
 		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
 		add(introBobsWindow);
+=======
+//		// Instantiate a BobsWindow with introduction text and instructions.
+//		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
+//		add(introBobsWindow);
+>>>>>>> lesliekimm
 		
-		// Repaint screen
-		repaint();										// repaint the JPanelrepaint();
+//		// Repaint screen
+//		repaint();										// repaint the JPanelrepaint();
 	}
 	
 	/**
@@ -76,6 +83,27 @@ public class IntroPanel extends JPanel {
 		Image image = new ImageIcon("Images/IntroScreen.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
+<<<<<<< HEAD
 		introBobsWindow.repaint();
+=======
+		paintBobsWindow(g);
+>>>>>>> lesliekimm
 	}	
+	
+	private void paintBobsWindow(Graphics g) {
+		Image image = new ImageIcon("Images/IntroTextWindow.jpg").getImage();
+		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		String introText = introBobsWindow.getBobsMessage();
+		
+//		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
+//		JTextArea textArea = new JTextArea();
+//		textArea.setLineWrap(true);
+//		textArea.setWrapStyleWord(true);
+//		textArea.setText(introText);
+//		textArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
+//		textArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
+//		
+	}
 }

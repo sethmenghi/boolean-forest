@@ -83,7 +83,28 @@ public class ForestPanel extends JPanel {
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
 		
+<<<<<<< HEAD
 		forestBobsWindow.paintComponent(g);
+=======
+		paintBobsWindow(g);
+	}
+	
+	private void paintBobsWindow(Graphics g) {
+		Image image = new ImageIcon("Images/ForestTextWindow.jpg").getImage();
+		g.drawImage(image, forestBobsWindow.getXCoord(), forestBobsWindow.getYCoord(), null);
+		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
+		String forestText = forestBobsWindow.getBobsMessage();
+		
+//		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
+//		JTextArea textArea = new JTextArea();
+//		textArea.setLineWrap(true);
+//		textArea.setWrapStyleWord(true);
+//		textArea.setText(forestText);
+//		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
+//		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
+//		
+>>>>>>> lesliekimm
 	}
 	
 	/**
