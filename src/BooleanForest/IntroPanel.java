@@ -55,15 +55,9 @@ public class IntroPanel extends JPanel {
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
 		
-<<<<<<< HEAD
-		// Instantiate a BobsWindow with introduction text and instructions.
-		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
-		add(introBobsWindow);
-=======
 //		// Instantiate a BobsWindow with introduction text and instructions.
 //		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
 //		add(introBobsWindow);
->>>>>>> lesliekimm
 		
 //		// Repaint screen
 //		repaint();										// repaint the JPanelrepaint();
@@ -83,11 +77,7 @@ public class IntroPanel extends JPanel {
 		Image image = new ImageIcon("Images/IntroScreen.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
-<<<<<<< HEAD
-		introBobsWindow.repaint();
-=======
 		paintBobsWindow(g);
->>>>>>> lesliekimm
 	}	
 	
 	private void paintBobsWindow(Graphics g) {

@@ -83,9 +83,6 @@ public class ForestPanel extends JPanel {
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
 		
-<<<<<<< HEAD
-		forestBobsWindow.paintComponent(g);
-=======
 		paintBobsWindow(g);
 	}
 	
@@ -104,7 +101,6 @@ public class ForestPanel extends JPanel {
 //		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
 //		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
 //		
->>>>>>> lesliekimm
 	}
 	
 	/**
