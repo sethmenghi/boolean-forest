@@ -1,5 +1,6 @@
 package BooleanForest;
 
+import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -17,7 +18,6 @@ public class LevelOne extends JPanel {
 	private static final int TEXT = 0;
 	private static final int IMAGE = 1;
 	
-	private static final int[] questionTypes = [TEXT,IMAGE,TEXT,IMAGE,TEXT];
 	
 	private Game theGame;
 	private BobsWindow bobsWindow;
@@ -26,11 +26,34 @@ public class LevelOne extends JPanel {
 		
 		theGame = game;
 		
-		bobsWindow = new BobsWindow(theGame, INSTRUCTIONS);
+		//bobsWindow = new BobsWindow(theGame, INSTRUCTIONS);
+		
+		startLevel();
 	}
 	
-	public void showQuestion(int question) {
-
+	private void startLevel() {
+		doQuestion(Q_ONE);
+		doQuestion(Q_TWO);
+		doQuestion(Q_ONE);
+		doQuestion(Q_ONE);
+		doQuestion(Q_ONE);
+	}
+	
+	public void doQuestion(String question) {
+		switch (question) {
+		case Q_ONE:
+			// Create answer list NEW METHOD
+			
+			//theGame.imageQuestion.setQuestion(Q_ONE);
+			//theGame.imageQuestion.setAnswerList();
+			//theGame.imageQuestion.setCorrectAnswer();
+			
+			theGame.changeLayoutCard("Image Question");
+			break;
+		
+		}
+		
+		//updateScore();
 	}
 	
 	/**
