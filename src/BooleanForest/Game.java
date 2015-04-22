@@ -78,7 +78,7 @@ public class Game extends JApplet {
 
 	/**
 	 * SETTER: Sets the level of the game.
-	 * param level
+	 * @param level
 	 */
 	public void setLevel(int level) {
 		this.level = level;									// set the level of the game

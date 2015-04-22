@@ -1,4 +1,6 @@
 /**
+ * FOREST PANEL CLASS
+ * 
 * DESCRIPTION:
 * The ForestPanel class extends JPanel and is the layout that displays the
 * Boolean Logic Forest with a path and markers for each level. 
@@ -24,7 +26,7 @@ public class ForestPanel extends JPanel {
 	
 	// Declare members of ForestPanel class:
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
-	private BobsWindow bobsWindow;						// Bob's window for instructions/explanations
+	private BobsWindow forestBobsWindow;				// Bob's window for instructions/explanations
 	private Owl chloe;									// child Owl Chloe
 	private Owl david;									// child Owl David
 	
@@ -38,7 +40,8 @@ public class ForestPanel extends JPanel {
 	
 	/**
 	 * METHOD: Initializes JPanel dimensions and members of ForestPanel
-	 * class. Calls overridden paintComponent() method.
+	 * class. Creates a reference to the Game object passed in and calls 
+	 * overridden paintComponent() method.
 	 * @param game
 	 */
 	private void initForest(Game game) {
@@ -52,8 +55,9 @@ public class ForestPanel extends JPanel {
 		david = new Owl(65, 395, "DAVID");				// set the coordinates of david for level 1
 		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of chloe for level 1
 		
-//		bobsWindow = new BobsWindow(theGame);
-//		add(bobsWindow);
+		// Instantiate a BobsWindow with instructions to play Level 1.
+//		forestBobsWindow = new BobsWindow();
+//		add(forestBobsWindow);
 		
 		repaint();										// repaint the JPanel
 	}

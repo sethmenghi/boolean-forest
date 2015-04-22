@@ -70,12 +70,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 		if (event.getSource() == gameButton) {
 			String buttonMessage = gameButton.getText();
 			if (buttonMessage == LEVEL_1) {	
-<<<<<<< HEAD
-//				pause.setText("Play");											// Set the text to "Play"
-//				game.pause();													// Pause the game
-=======
-													// Pause the game
->>>>>>> 44da134f9c8421a12742018be73f57aae36b87fb
+
 			}
 			else if (buttonMessage == LEVEL_2) {
 				
