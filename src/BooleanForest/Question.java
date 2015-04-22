@@ -12,15 +12,12 @@ interface Question {
 	void setQuestion(String questionStringInput); 
 	
 	// Sets the different answer possibilities 
-	void setAnswerList(List allAnswers, List correctAnswers); 
-	
-	// Determines if it is an image  or text question
-	void setQuestionLayout(String questionLayoutInput);
+	void setAnswerList(List allPossibleAnswers, String correctAnswer); 
 	
 	// Submits the question after knowing if the user got the correct answer 
 	void submitQuestion(Boolean questionCorrectOrNot);
 	
 	// Checks two objects against each other to check the answer 
-	void checkAnswer(Object submittedAnswer, Object correctAnswer); 
+	void checkAnswer(String submittedAnswer); 
 	
 }
