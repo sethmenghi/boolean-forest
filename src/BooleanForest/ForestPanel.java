@@ -27,6 +27,7 @@ public class ForestPanel extends JPanel {
 	// Declare members of ForestPanel class:
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
 	private BobsWindow forestBobsWindow;				// Bob's window for instructions/explanations
+	private String bobsMessage;							// Bob's message
 	private Owl chloe;									// child Owl Chloe
 	private Owl david;									// child Owl David
 	
@@ -52,12 +53,12 @@ public class ForestPanel extends JPanel {
 		setDoubleBuffered(true);
 		
 		// Initialize children Owl objects.
-		david = new Owl(65, 395, "DAVID");				// set the coordinates of david for level 1
-		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of chloe for level 1
+		david = new Owl(65, 395, "DAVID");				// set the coordinates of David for level 1
+		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of Chloe for level 1
 		
 		// Instantiate a BobsWindow with instructions to play Level 1.
-//		forestBobsWindow = new BobsWindow();
-//		add(forestBobsWindow);
+		forestBobsWindow = new BobsWindow(game, BobsWindow.FOREST, bobsMessage, BobsWindow.LEVEL_1);
+		add(forestBobsWindow);
 		
 		repaint();										// repaint the JPanel
 	}
@@ -82,7 +83,7 @@ public class ForestPanel extends JPanel {
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
 		
-//		bobsWindow.paintComponent(g);
+		forestBobsWindow.paintComponent(g);
 	}
 	
 	/**

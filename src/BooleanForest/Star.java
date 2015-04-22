@@ -34,9 +34,9 @@ public class Star {
 	private String levelPassed;						// level passed of Star
 	
 	/**
-	 * DEFAULT CONSTRUCTOR: The constructor calls overridden constructor
+	 * DEFAULT CONSTRUCTOR: The constructor calls overloaded constructor
 	 * with x- and y-coordinates of 0 and the level passed ONE.
-	 * @param levelPassed
+	 * @param none
 	 */
 	public Star() {
 		this(0, 0, ONE);							// call overridden Star(int, int, levelPassed)

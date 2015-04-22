@@ -24,9 +24,9 @@ public class Owl {
 	private String name;							// name of Owl
 	
 	/**
-	 * DEFAULT CONSTRUCTOR: The constructor calls overridden constructor
+	 * DEFAULT CONSTRUCTOR: The constructor calls overloaded constructor
 	 * with x- and y-coordinates of 0 and the name BOB.
-	 * @param game
+	 * @param none
 	 */
 	public Owl() {
 		this(0, 0, BOB);							// call overridden Owl(int, int, name)
