@@ -17,6 +17,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel {
@@ -56,11 +57,25 @@ public class ForestPanel extends JPanel {
 		david = new Owl(65, 395, "DAVID");				// set the coordinates of David for level 1
 		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of Chloe for level 1
 		
+		bobsMessage = "Welcome! Help Chloe and David get through the Boolean Logic Forest. Get started by "
+				+ "clicking the button below!";
+		
 		// Instantiate a BobsWindow with instructions to play Level 1.
 		forestBobsWindow = new BobsWindow(game, BobsWindow.FOREST, bobsMessage, BobsWindow.LEVEL_1);
 		add(forestBobsWindow);
 		
 		repaint();										// repaint the JPanel
+		
+		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
+		String forestText = forestBobsWindow.getBobsMessage();
+		JTextArea textArea = new JTextArea();
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setOpaque(false);
+		textArea.setText(forestText);
+		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
+		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
+		add(textArea);
 	}
 	
 	/**
@@ -77,8 +92,8 @@ public class ForestPanel extends JPanel {
 		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
-		paintOwl(g, chloe);								// paint chloe
 		paintOwl(g, david);								// paint david
+		paintOwl(g, chloe);								// paint chloe
 		
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
@@ -87,20 +102,37 @@ public class ForestPanel extends JPanel {
 	}
 	
 	private void paintBobsWindow(Graphics g) {
-		Image image = new ImageIcon("Images/ForestTextWindow.jpg").getImage();
+		Image image = new ImageIcon("Images/ForestTextWindow.png").getImage();
 		g.drawImage(image, forestBobsWindow.getXCoord(), forestBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
-		String forestText = forestBobsWindow.getBobsMessage();
 		
-//		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
-//		JTextArea textArea = new JTextArea();
-//		textArea.setLineWrap(true);
-//		textArea.setWrapStyleWord(true);
-//		textArea.setText(forestText);
-//		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
-//		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
+
+
 //		
+
+//	    JFrame f = new JFrame("Text Area Examples");
+//	    JPanel upperPanel = new JPanel();
+//	    JPanel lowerPanel = new JPanel();
+//	    f.getContentPane().add(upperPanel, "North");
+//	    f.getContentPane().add(lowerPanel, "South");
+//
+//	    upperPanel.add(new JTextArea(content));
+//	    upperPanel.add(new JTextArea(content, 6, 10));
+//	    upperPanel.add(new JTextArea(content, 3, 8));
+//
+//	    lowerPanel.add(new JScrollPane(new JTextArea(content, 6, 8)));
+//	    JTextArea ta = new JTextArea(content, 6, 8);
+//	    ta.setLineWrap(true);
+//	    lowerPanel.add(new JScrollPane(ta));
+//
+//	    ta = new JTextArea(content, 6, 8);
+//	    ta.setLineWrap(true);
+//	    ta.setWrapStyleWord(true);
+//	    lowerPanel.add(new JScrollPane(ta));
+//
+//	    f.pack();
+//	    f.setVisible(true);
 	}
 	
 	/**
@@ -115,11 +147,11 @@ public class ForestPanel extends JPanel {
 		// Check to see if Owl is Chloe or David and draw the
 		// corresponding resource.
 		if (owl.getOwl() == Owl.CHLOE) {
-			owlImage = new ImageIcon("Images/chloe.png").getImage();
+			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 		else if (owl.getOwl() == Owl.DAVID) {
-			owlImage = new ImageIcon("Images/david.png").getImage();
+			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 	}

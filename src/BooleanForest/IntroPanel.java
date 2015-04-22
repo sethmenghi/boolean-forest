@@ -55,12 +55,12 @@ public class IntroPanel extends JPanel {
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
 		
-//		// Instantiate a BobsWindow with introduction text and instructions.
+		// Instantiate a BobsWindow with introduction text and instructions.
 		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
 		add(introBobsWindow);
 		
-//		// Repaint screen
-//		repaint();										// repaint the JPanelrepaint();
+		// Repaint screen
+		repaint();										// repaint the JPanelrepaint();
 	}
 	
 	/**
