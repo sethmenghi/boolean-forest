@@ -56,8 +56,8 @@ public class IntroPanel extends JPanel {
 		setDoubleBuffered(true);
 		
 //		// Instantiate a BobsWindow with introduction text and instructions.
-//		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
-//		add(introBobsWindow);
+		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
+		add(introBobsWindow);
 		
 //		// Repaint screen
 //		repaint();										// repaint the JPanelrepaint();
@@ -81,8 +81,8 @@ public class IntroPanel extends JPanel {
 	
 	private void paintBobsWindow(Graphics g) {
 		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
-//		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
-//		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
 	}
 }
