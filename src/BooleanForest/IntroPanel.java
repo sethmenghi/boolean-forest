@@ -82,10 +82,10 @@ public class IntroPanel extends JPanel {
 	
 	private void paintBobsWindow(Graphics g) {
 		Image image = new ImageIcon("Images/IntroTextWindow.jpg").getImage();
-		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		//g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
-		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
-		String introText = introBobsWindow.getBobsMessage();
+		//g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		//String introText = introBobsWindow.getBobsMessage();
 		
 //		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
 //		JTextArea textArea = new JTextArea();
