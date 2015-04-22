@@ -44,10 +44,10 @@ public class GameButton extends JButton implements MouseListener {
 	// Declare members of the GameButton class:
 	private int xCoord;								// button x-coordinate
 	private int yCoord; 							// button y-coordinate
-	private int width;								// button width
-	private int height;								// button height
 	private String buttonMessage;					// button text
 	private String textColor; 						// button text color
+	private int textWidth;							// button text width
+	private int textHeight;							// button text height
 	private ButtonActionListener myButtonListener;	// action listener for button
 	private boolean buttonPressed = false;			// indicates if button has been pressed	
 	// Used for the color input
@@ -148,132 +148,185 @@ public class GameButton extends JButton implements MouseListener {
 		return yCoord; 								// return the yCoord of the button
 	}
 	
-	// Note: code heavily inspired by StackOverflow answer. See link above. 
-	// We use this to convert string color inputs into actual colors
+	/**
+	 * METHOD: This method converts the textColor member into an
+	 * actual color.
+	 * @param none
+	 * 
+	 * NOTE: Code heavily adapted from StackOverflow source.
+	 */
 	public void populateColorHashMap() {
-		colorsList.put("blue", Color.BLUE);
-		colorsList.put("red", Color.RED);
-		colorsList.put("green", Color.GREEN);
-		colorsList.put("white", Color.WHITE);
-		colorsList.put("black", Color.BLACK);
-		colorsList.put("grey", Color.GRAY);
-		colorsList.put("yellow", Color.YELLOW);
-
+		colorsList.put("blue", Color.BLUE);			// add blue
+		colorsList.put("red", Color.RED);			// add red
+		colorsList.put("green", Color.GREEN);		// add green
+		colorsList.put("white", Color.WHITE);		// add white
+		colorsList.put("black", Color.BLACK);		// add black
+		colorsList.put("grey", Color.GRAY);			// add grey
+		colorsList.put("yellow", Color.YELLOW);		// add yellow
 	}
 	
-	// I measure the length and width of the string 
-	// This is used to change the size of the button as the text changes 
-	public void measureStringLengthAndWidth(Graphics graphics) {
-        Font font = graphics.getFont();
-        FontRenderContext context = ((Graphics2D) graphics).getFontRenderContext();
+	/**
+	 * METHOD: This method measures the length and width of the string
+	 * and is used to change the size of the button as the text changes.
+	 * @param g
+	 */
+	public void measureButtonTextLengthAndWidth(Graphics g) {
+		// Get the font and render the context.
+        Font font = g.getFont();
+        FontRenderContext context = ((Graphics2D) g).getFontRenderContext();
         
-    	width = (int)(font.getStringBounds(buttonMessage, context).getWidth());
-    	height = (int)(font.getStringBounds(buttonMessage, context).getHeight());
+        // Set the width and height of the 
+    	textWidth = (int)(font.getStringBounds(buttonMessage, context).getWidth());
+    	textHeight = (int)(font.getStringBounds(buttonMessage, context).getHeight());
 	}
 	
 	// Note: code heavily inspired by StackOverflow answer. See link above. 
 	// Sets the preferred size of the JComponent 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides getPreferredSize() and
+	 * sets the preferred size of the JComponent.
+	 * @return size
+	 * NOTE: Code heavily adapted from StackOverflow answer.
+	 */
 	@Override 
-    public Dimension getPreferredSize() {    	
+    public Dimension getPreferredSize() {    
+		// Get the font and construct a BufferedImage of one of type TYPE_INT_ARGB.
 		Font font = getFont();
-		BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-		FontMetrics fm = img.getGraphics().getFontMetrics(font);
-		int width = fm.stringWidth(buttonMessage);
-		int height = fm.getHeight();
+		BufferedImage bufferedImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		
+		// Get the width and height of the buttonMessage
+		FontMetrics fontMetrics = bufferedImage.getGraphics().getFontMetrics(font);
+		int fmWidth = fontMetrics.stringWidth(buttonMessage);
+		int fmHeight = fontMetrics.getHeight();
 
-        Dimension size = new Dimension(width+20, height+11);
+		// Instantiate Dimension object with fmWidth and fmHeight and return.
+        Dimension size = new Dimension(fmWidth + 20, fmHeight + 11);
         return size;
     }
 	
+	/**
+	 * OVERRIDDEN METHOD: This method overrides getMinimumSize() and
+	 * calls overridden getPreferredSize().
+	 * @return size 
+	 */
 	@Override 
     public Dimension getMinimumSize() {
         return getPreferredSize();
     }
 	
+	/**
+	 * OVERRIDDEN METHOD: This method overrides getMaximumSize() and
+	 * calls overridden getPreferredSize().
+	 * @return size 
+	 */
 	@Override 
     public Dimension getMaximumSize() {
         return getPreferredSize();
     }
 	
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mouseEntered() and
+	 * does nothing.
+	 * @param arg0
+	 */
 	// Mouse listener. 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// Do nothing 
+		// This method does nothing. 
 	}
 
-	// Mouse listener. Note that we repaint after change. 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mouseExited() and
+	 * sets buttonPressed to false and calls repaint().
+	 * @param arg0
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		buttonPressed=false;
-		repaint();				
+		buttonPressed = false;						// set buttonPressed to false
+		repaint();									// repaint
 	}
 
-	// Mouse listener. Note that we repaint after change. 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mouseReleased() and
+	 * sets buttonPressed to false and calls repaint().
+	 * @param arg0
+	 */ 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		buttonPressed=false;
-		repaint();		
+		buttonPressed = false;						// set buttonPressed to false
+		repaint();									// repaint
 	}
 
-	// Mouse listener. Note that we repaint after change. 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mouseClicked() and
+	 * sets buttonPressed to false and calls repaint().
+	 * @param e
+	 */  
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		buttonPressed=false;
-		repaint();				
+		buttonPressed = false;						// set buttonPressed to false
+		repaint();									// repaint				
 	}
 
-	// Mouse listener. Note that we repaint after change. 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mousePressed() and
+	 * sets buttonPressed to false and calls repaint().
+	 * @param e
+	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
-		System.out.println("Hi there");
-		buttonPressed=true;
-		repaint();	    
+//		System.out.println("Hi there");				// diagnostics message
+		buttonPressed = true;						// set buttonPressed to true
+		repaint();	    							// repaint
 	}
 	
-	// I override the paint components class to make a 
-	// custom button. 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides paintComponent() by
+	 * setting the width and height of the button, adding a gradient
+	 * to the button background and drawing the buttonMessage on the
+	 * button. If the button is pressed, the background color of the 
+	 * button will change to indicate to the user that the button has
+	 * been pressed.
+	 * @param g
+	 */  
 	@Override 
-    public void paintComponent(Graphics graphics) {
-		
-		// I first need to measure the width of my string to 
-		// adjust the size of the button accordingly
-		measureStringLengthAndWidth(graphics);
-    	
-		// I display a different button color if the button is 
-		// pressed versus when it is not pressed 
-    	if(buttonPressed==false)
-    	{
+    public void paintComponent(Graphics g) {
+		measureButtonTextLengthAndWidth(g);			// measure and set the textWidth and textHeight members
+    	 
+		// If buttonPressed == true (indicating that button has been pressed),
+		// change the button background color to indicate to the user that the
+		// button has been pressed.
+    	if (buttonPressed == false) {
     		
-    		// I create another graphics object and create a custom color 
-    		Graphics2D graphics2 = (Graphics2D) graphics;
+    		// Create another graphics object and create a custom color.
+    		Graphics2D graphics2 = (Graphics2D) g;
     		Color darkBlue = Color.decode("#000080");
 
-    		// I create a gradient and add it to the rectangle
-    		GradientPaint blackToGray = new GradientPaint(xCoord+ (height/2), yCoord - 10, darkBlue,
-    				xCoord+ (height/2), yCoord +  height + 10, Color.BLUE);
+    		// Create a gradient for the button background and fill rounded
+    		// rectangle with the gradient.
+    		GradientPaint blackToGray = new GradientPaint(xCoord + (textHeight / 2), yCoord - 10, darkBlue,
+    													  xCoord + (textHeight / 2), yCoord + textHeight + 10,
+    													  Color.BLUE);
     		graphics2.setPaint(blackToGray);
-    		
-    		// I fill rectangle with gradient 
-    		graphics2.fillRoundRect(xCoord, yCoord, width+16, height+11, 15, 15);
+    		graphics2.fillRoundRect(xCoord, yCoord, textWidth + 16, textHeight + 11, 15, 15);
             
-    		// I draw the string and set its color based on the input 
-            graphics.setColor(colorsList.get(textColor.toLowerCase()));
-            graphics.drawString(buttonMessage,xCoord+8,yCoord+18);
+    		// Set the buttonMessage color to textColor and draw the string. 
+            g.setColor(colorsList.get(textColor.toLowerCase()));
+            g.drawString(buttonMessage, xCoord + 8, yCoord + 18);
     	}
     	
-    	// If button is  pressed 
-    	else{
-    		
-    		// I create a gradient and add it to the rectangle
-    		Graphics2D g2 = (Graphics2D) graphics;
+    	// If buttonPressed == false (indicating that button has not been pressed),
+    	// use the default background color set below.
+    	else {
+    		// Create another graphics object, set the background color and
+    		// fill rounded rectangle.
+    		Graphics2D g2 = (Graphics2D) g;
     	    g2.setPaint(Color.BLUE);
-            g2.fillRoundRect(xCoord, yCoord, width+16, height+11, 15, 15);
+            g2.fillRoundRect(xCoord, yCoord, textWidth + 16, textHeight + 11, 15, 15);
             
-    		// I draw the string and set its color based on the input 
-            graphics.setColor(colorsList.get(textColor.toLowerCase()));
-            graphics.drawString(buttonMessage,xCoord+8,yCoord+18);
-            
+            // Set the buttonMessage color to textColor and draw the string. 
+            g.setColor(colorsList.get(textColor.toLowerCase()));
+            g.drawString(buttonMessage, xCoord + 8, yCoord + 18);
     	}
     }
 }
