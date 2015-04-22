@@ -1,5 +1,5 @@
 package BooleanForest;
-import java.awt.List;
+import java.util.List;
 
 // This interface is used by both the ImageQuestion and TextQuestion classes
 // to display the different types of questions to the user. 
@@ -12,7 +12,7 @@ interface Question {
 	void setQuestion(String questionStringInput); 
 	
 	// Sets the different answer possibilities 
-	void setAnswerList(List allPossibleAnswers, String correctAnswer); 
+	void setAnswerList(List<String> allPossibleAnswers, String correctAnswer); 
 	
 	// Submits the question after knowing if the user got the correct answer 
 	void submitQuestion(Boolean questionCorrectOrNot);

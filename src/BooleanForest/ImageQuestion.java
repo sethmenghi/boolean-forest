@@ -8,8 +8,9 @@ import javax.swing.JComponent;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.List;
+import java.util.List;
 
+@SuppressWarnings("serial")
 public class ImageQuestion extends JComponent implements Question {
 	String imageResourceOne;
 	String imageResourceTwo;
@@ -17,7 +18,7 @@ public class ImageQuestion extends JComponent implements Question {
 	String imageResourceFour;
 
 	List answerListOne;
-	List answerListTwo;
+	String correctAnswer;
 
 	
 	@Override 
@@ -40,7 +41,7 @@ public class ImageQuestion extends JComponent implements Question {
 	}
 	
 	// Sets the different answer possibilities 
-	public void setAnswerList(List possibleAnswers, List correctAnwsers){
+	public void setAnswerList(List<String> possibleAnswers, String correctAnswer){
 
 	}
 	
@@ -59,5 +60,11 @@ public class ImageQuestion extends JComponent implements Question {
 		if (submittedAnswer != correctAnswer){
 
 		}
+	}
+
+	@Override
+	public void checkAnswer(String submittedAnswer) {
+		// TODO Auto-generated method stub
+		
 	}
 }

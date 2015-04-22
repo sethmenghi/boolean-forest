@@ -1,52 +1,65 @@
 package BooleanForest;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.List;
+import java.awt.MediaTracker;
+import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.String;
 
-import javax.swing.GroupLayout;
+import javax.print.DocFlavor.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
 
 
 // Drag one baby owl next to answer, if wrong get second change to drag another
 // Grid Layout
+@SuppressWarnings("serial")
 public class TextQuestion extends JPanel implements Question {
 	
 	String imageResource; // Image that the question references
 	String textQuestion; // Question being asked
 	String correctAnswer;
-	String babyOwl1 = "Images/ChloeSmall.png";
-	String babyOwl2 = "Images/DavidSmall.png";
+	String babyOwl1 = "src/Images/ChloeSmall.png";
+	String babyOwl2 = "src/Images/DavidSmall.png";
 	ImageIcon owl1Icon = new ImageIcon(babyOwl1);
 	ImageIcon owl2Icon = new ImageIcon(babyOwl2);
 
-	List possibleAnswers;
+	List<String> possibleAnswers;
 	Boolean questionCompleted = false;
 
-	public TextQuestion(){
-		//super("Text Question"); if JPanel
-	}
+//	public TextQuestion(){
+//		//super("Text Question"); if JPanel
+//	}
 	
-	public void paint(Graphics g){
-		g.drawString(textQuestion, 40,20);
-	}
+//	public void paint(Graphics g){
+//		g.drawString(textQuestion, 40,20);
+//	}
 
 	// Sets up the GUI for the question 
 	public void displayQuestion(){
 		JButton chloe = new JButton();
 		JButton david = new JButton();
+		
+		
 		chloe.setIcon(owl1Icon);
 		david.setIcon(owl2Icon);
-		
-		initOwls(chloe, david);
-		initLayout(chloe, david);
+		while(owl1Icon.getImageLoadStatus() != MediaTracker.COMPLETE){
+			if (owl1Icon.getImageLoadStatus() == MediaTracker.ERRORED || 
+				owl1Icon.getImageLoadStatus() == MediaTracker.ABORTED){
+					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+					String url = classLoader.getResource(".").getPath();
+					System.out.println("ERROR IN LOADING IMAGES!");
+					System.out.println(url);
+					return;
+			}
+		}
+		//initOwls(chloe, david);
+		initQuestions(chloe, david);
+		setVisible(true);
 	}
 	
 	//Sets Listeners for drag and drop and transfer
@@ -81,13 +94,19 @@ public class TextQuestion extends JPanel implements Question {
 		});
 	}
 	
-	public void initLayout(JButton owl1, JButton owl2){
-		GridLayout layout = new GridLayout(4, 3, 1, 1);
-		this.setLayout(layout);
-		this.add();
-		this.add
-		
-		
+	public void initQuestions(JButton owl1, JButton owl2){
+		GridLayout layout = new GridLayout(2, 2, 1, 1);
+		setLayout(layout);
+		JButton answer1 = new JButton(possibleAnswers.get(0));
+		JButton answer2 = new JButton(possibleAnswers.get(1));
+		JButton answer3 = new JButton(possibleAnswers.get(2));
+		JButton answer4 = new JButton(possibleAnswers.get(3));
+		//add(owl1);
+		add(answer1);
+		add(answer2);
+		//add(owl2);
+		add(answer3);
+		add(answer4);
 	}
 	
 	// Sets the question text
@@ -110,7 +129,7 @@ public class TextQuestion extends JPanel implements Question {
 	 * @param allPossibleAnswers
 	 * @param correctAnswerInput
 	 */
-	public void setAnswerList(List allPossibleAnswers, String correctAnswerInput){
+	public void setAnswerList(List<String> allPossibleAnswers, String correctAnswerInput){
 		possibleAnswers = allPossibleAnswers;
 		correctAnswer = correctAnswerInput;
 	}
