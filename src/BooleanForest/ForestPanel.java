@@ -77,8 +77,8 @@ public class ForestPanel extends JPanel {
 		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
-		paintOwl(g, chloe);								// paint chloe
 		paintOwl(g, david);								// paint david
+		paintOwl(g, chloe);								// paint chloe
 		
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
@@ -115,11 +115,11 @@ public class ForestPanel extends JPanel {
 		// Check to see if Owl is Chloe or David and draw the
 		// corresponding resource.
 		if (owl.getOwl() == Owl.CHLOE) {
-			owlImage = new ImageIcon("Images/chloe.png").getImage();
+			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 		else if (owl.getOwl() == Owl.DAVID) {
-			owlImage = new ImageIcon("Images/david.png").getImage();
+			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 	}

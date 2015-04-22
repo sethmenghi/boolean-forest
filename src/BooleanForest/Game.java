@@ -149,13 +149,13 @@ public class Game extends JApplet {
 		level = 0;											// set the level to 0
 		cards.setVisible(true);								// make cards visible
 		
-		// Create Intro layout and add to cards.
-		IntroPanel introLayout = new IntroPanel(this);
-		cards.add(introLayout, "Intro");
+//		// Create Intro layout and add to cards.
+//		IntroPanel introLayout = new IntroPanel(this);
+//		cards.add(introLayout, "Intro");
 
-//		// Create Forest layout and add to cards.
-//		ForestPanel forestLayout = new ForestPanel(this);
-//		cards.add(forestLayout, "Forest");
+		// Create Forest layout and add to cards.
+		ForestPanel forestLayout = new ForestPanel(this);
+		cards.add(forestLayout, "Forest");
 		
 //		// Create Question layout and add to cards.
 //		QuestionPanel questionLayout = new QuestionPanel(this);
