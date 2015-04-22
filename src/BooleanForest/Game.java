@@ -109,7 +109,7 @@ public class Game extends JApplet {
 			System.out.println("ERROR: Invalid level.");
 		}
 	}
-
+	
 	/**
 	 * METHOD: Initializes applet by creating a new thread which will
 	 * call createGUI().
@@ -124,7 +124,7 @@ public class Game extends JApplet {
 			});
 		}
 		
-		catch(Exception error) {
+		catch (Exception error) {
 			// Print error message if createGUI() does not complete successfully.
 			System.err.println("ERROR: createGUI() did not complete successfully.");
 		}
@@ -203,9 +203,5 @@ public class Game extends JApplet {
 
 		// Flip the desired card to the front.
 		layout.show(cards, layoutToChangeTo);
-	}
-	
-	public static void main(String[] args) {
-		Game game;
 	}
 }

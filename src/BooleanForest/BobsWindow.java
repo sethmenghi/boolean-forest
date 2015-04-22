@@ -171,6 +171,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 		else {
 			setPreferredSize(new Dimension(FOREST_WIDTH, FOREST_HEIGHT));
 		}
+		setVisible(false);
 	}
 	
 	/**
@@ -191,6 +192,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 			setXCoord(FOREST_XCOORD);					// set xCoord to FOREST_XCOORD
 			setYCoord(FOREST_YCOORD);					// set xCoord to FOREST_YCOORD
 		}
+		setVisible(true);
 	}
 	
 	/**
@@ -202,14 +204,12 @@ public class BobsWindow extends JPanel implements ActionListener {
 		// If this is a BobsWindow for IntroPanel, set x- and y-coordinates
 		// for Bob to INTRO_BOB_XCOORD and INTRO_BOB_YCOORD.
 		if (panelType == INTRO) {
-			bob.setXCoord(INTRO_BOB_XCOORD);				// set bobXCoord to INTRO_BOB_XCOORD
-			bob.setYCoord(FOREST_BOB_YCOORD);				// set bobYCoord to INTRO_BOB_YCOORD
+			bob = new Owl(INTRO_BOB_XCOORD, INTRO_BOB_YCOORD, Owl.BOB);
 		}
 		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
 		// for Bob to FOREST_BOB_XCOORD and FOREST_BOB_YCOORD.
 		else {
-			bob.setXCoord(FOREST_BOB_XCOORD);				// set bobXCoord to FOREST_BOB_XCOORD
-			bob.setYCoord(FOREST_BOB_YCOORD);				// set bobYCoord to FOREST_BOB_YCOORD
+			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
 		}
 	}
 

@@ -39,7 +39,7 @@ public class IntroPanel extends JPanel {
 	 * @param game
 	 */
 	public IntroPanel(Game game) {
-		initIntro(game);
+		initIntro(game);								// call initIntro()
 	}
 	
 	/**
@@ -56,15 +56,14 @@ public class IntroPanel extends JPanel {
 		setDoubleBuffered(true);
 		
 //		// Instantiate a BobsWindow with introduction text and instructions.
-//		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
-//		add(introBobsWindow);
+		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
+		add(introBobsWindow);
 		
 //		// Repaint screen
 //		repaint();										// repaint the JPanelrepaint();
 	}
 	
 	/**
-	 * paintComponenent()
 	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
 	 * background image and BobsWindow with INSTRUCTION_TEXT.
 	 * @param graphic
@@ -81,19 +80,9 @@ public class IntroPanel extends JPanel {
 	}	
 	
 	private void paintBobsWindow(Graphics g) {
-		Image image = new ImageIcon("Images/IntroTextWindow.jpg").getImage();
-		//g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
+		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
-		//g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
-		//String introText = introBobsWindow.getBobsMessage();
-		
-//		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
-//		JTextArea textArea = new JTextArea();
-//		textArea.setLineWrap(true);
-//		textArea.setWrapStyleWord(true);
-//		textArea.setText(introText);
-//		textArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
-//		textArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
-//		
+		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
 	}
 }
