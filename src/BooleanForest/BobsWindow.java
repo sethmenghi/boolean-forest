@@ -242,7 +242,5 @@ public class BobsWindow extends JPanel implements ActionListener {
 		else {
 			// throw exception
 		}
-		
 	}
-
 }

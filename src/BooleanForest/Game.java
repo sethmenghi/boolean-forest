@@ -135,14 +135,14 @@ public class Game extends JApplet {
 	 * @param none
 	 */
 	public void createGUI() {
-		// Set panel size to 640 x 480.
+//		// Set panel size to 640 x 480.
 		windowSize = new Dimension(APPLET_WIDTH, APPLET_HEIGHT);
 		setPreferredSize(windowSize);
 		setMinimumSize(windowSize);
 		setMaximumSize(windowSize);
 		setSize(windowSize);
-
-		// Create card layout and add to applet.
+//
+//		// Create card layout and add to applet.
 		cards = new JPanel(new CardLayout());
 		add(cards);
 		
@@ -169,27 +169,27 @@ public class Game extends JApplet {
 
 		
 		
-		// Create Forest level map, add to layout
-		LevelOne levelOne = new LevelOne(this);
-		cards.add(levelOne, "Level One");
-
-		LevelTwo levelTwo = new LevelTwo();
-		//cards.add(levelTwo, "Level Two");
-
-		LevelThree levelThree = new LevelThree();
-		//cards.add(levelThree, "Level Three");
-
-		LevelFour levelFour = new LevelFour();
-		//cards.add(levelFour, "Level Four");
-
-		LevelFive levelFive = new LevelFive();
-		//cards.add(levelFive, "Level Five");
-		
-		imageQuestion = new ImageQuestion();
-		//cards.add(imageQuestion, "Image Question");
-		
-		TextQuestion textQuestion = new TextQuestion();
-		//cards.add(textQuestion, "Text Question");
+//		// Create Forest level map, add to layout
+//		LevelOne levelOne = new LevelOne(this);
+//		cards.add(levelOne, "Level One");
+//
+//		LevelTwo levelTwo = new LevelTwo();
+//		//cards.add(levelTwo, "Level Two");
+//
+//		LevelThree levelThree = new LevelThree();
+//		//cards.add(levelThree, "Level Three");
+//
+//		LevelFour levelFour = new LevelFour();
+//		//cards.add(levelFour, "Level Four");
+//
+//		LevelFive levelFive = new LevelFive();
+//		//cards.add(levelFive, "Level Five");
+//		
+//		imageQuestion = new ImageQuestion();
+//		//cards.add(imageQuestion, "Image Question");
+//		
+//		TextQuestion textQuestion = new TextQuestion();
+//		//cards.add(textQuestion, "Text Question");
 	}
 
 	/**
