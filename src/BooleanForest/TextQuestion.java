@@ -1,9 +1,12 @@
 package BooleanForest;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -24,7 +27,7 @@ import javax.swing.TransferHandler;
 // Drag one baby owl next to answer, if wrong get second change to drag another
 // Grid Layout
 @SuppressWarnings("serial")
-public class TextQuestion extends JPanel implements Question {
+public class TextQuestion extends JPanel implements Question, ActionListener {
 	
 	String imageResource; // Image that the question references
 	String textQuestion; // Question being asked
@@ -33,7 +36,11 @@ public class TextQuestion extends JPanel implements Question {
 	String babyOwl2 = "src/Images/DavidSmall.png";
 	ImageIcon owl1Icon = new ImageIcon(babyOwl1);
 	ImageIcon owl2Icon = new ImageIcon(babyOwl2);
-
+	JButton answer1;
+	JButton answer2;
+	JButton answer3;
+	JButton answer4;
+	
 	List<String> possibleAnswers;
 	Boolean questionCompleted = false;
 
@@ -47,8 +54,8 @@ public class TextQuestion extends JPanel implements Question {
 
 	// Sets up the GUI for the question 
 	public void displayQuestion(){
-		this.setOpaque(true);
-	    this.setBackground(Color.WHITE);
+//		this.setOpaque(true);
+//	    this.setBackground(Color.WHITE);
 	    
 	    
 		JLabel questionLabel = new JLabel(textQuestion);
@@ -115,8 +122,8 @@ public class TextQuestion extends JPanel implements Question {
 		ImageIcon img = new ImageIcon(imageResource);
 		JLabel imgLabel = new JLabel(img);
 		imagePanel.setLayout(new GridLayout(1,1));
-		imagePanel.setOpaque(true);
-		imagePanel.setBackground(Color.WHITE);
+//		imagePanel.setOpaque(true);
+//		imagePanel.setBackground(Color.WHITE);
 		imagePanel.add(imgLabel);
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -124,16 +131,23 @@ public class TextQuestion extends JPanel implements Question {
 
 		// Add Question above the answers
 		// and below the question image
+		questionLabel.setOpaque(true);
+		questionLabel.setBackground(Color.WHITE);
 		add(questionLabel);
 		
 		////////////////////
 		// Question Panel //
 		JPanel questionPanel = new JPanel();
 		questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
-		JButton answer1 = new JButton(possibleAnswers.get(0));
-		JButton answer2 = new JButton(possibleAnswers.get(1));
-		JButton answer3 = new JButton(possibleAnswers.get(2));
-		JButton answer4 = new JButton(possibleAnswers.get(3));
+		answer1 = new JButton(possibleAnswers.get(0));
+		answer2 = new JButton(possibleAnswers.get(1));
+		answer3 = new JButton(possibleAnswers.get(2));
+		answer4 = new JButton(possibleAnswers.get(3));
+		answer1.addActionListener(this);
+		answer2.addActionListener(this);
+		answer3.addActionListener(this);
+		answer4.addActionListener(this);
+
 		// Add and finish questionLayout
 		//add(owl1);
 		questionPanel.add(answer1);
@@ -192,5 +206,24 @@ public class TextQuestion extends JPanel implements Question {
 		else {
 			questionCompleted = false;
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		
+		if (src == answer1){
+			checkAnswer(answer1.getText());
+		}
+		else if (src == answer2){
+			checkAnswer(answer2.getText());
+		}
+		else if (src == answer3){
+			checkAnswer(answer3.getText());
+		}
+		else if (src == answer4){
+			checkAnswer(answer4.getText());
+		}
+		System.out.println(questionCompleted);
 	}
 }
