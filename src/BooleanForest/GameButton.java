@@ -148,6 +148,10 @@ public class GameButton extends JButton implements MouseListener {
 		return yCoord; 								// return the yCoord of the button
 	}
 	
+	public String getButtonMessage() {
+		return buttonMessage;
+	}
+	
 	/**
 	 * METHOD: This method converts the textColor member into an
 	 * actual color.

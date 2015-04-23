@@ -137,9 +137,9 @@ public class ForestPanel extends JPanel implements MouseListener {
 	private void addButton() {
 		// Instantiate a GameButton to go on to Level 1.
 		forestGameButton = new GameButton(LEVEL_1, "white");
-		int boundsXCoord = forestBobsWindow.FOREST_XCOORD + forestBobsWindow.FOREST_WIDTH / 2 -
+		int boundsXCoord = BobsWindow.FOREST_XCOORD + BobsWindow.FOREST_WIDTH / 2 -
 				forestGameButton.getPreferredSize().width / 2;
-		int boundsYCoord = forestBobsWindow.FOREST_YCOORD + forestBobsWindow.FOREST_HEIGHT - 
+		int boundsYCoord = BobsWindow.FOREST_YCOORD + BobsWindow.FOREST_HEIGHT - 
 				forestGameButton.getPreferredSize().height - 20;
 		int boundsWidth = forestGameButton.getPreferredSize().width;
 		int boundsHeight = forestGameButton.getPreferredSize().height;

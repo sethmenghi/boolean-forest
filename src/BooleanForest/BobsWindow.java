@@ -20,10 +20,13 @@ public class BobsWindow extends JPanel {
 	// Public static final members of BobsWindow class:
 	public static final String INTRO = "Intro";				// indicates BobsWindow for IntroPanel
 	public static final String FOREST = "Forest";			// indicates BobsWindow for ForestPanel
+	public static final String TEACHER = "Teacher";
 	public static final int INTRO_WIDTH = 404;				// width of IntroPanel BobsWindow
 	public static final int INTRO_HEIGHT = 199;				// height of IntroPanel BobsWindow
 	public static final int FOREST_WIDTH = 350;				// width of ForestPanel BobsWindow
 	public static final int FOREST_HEIGHT = 177;			// height of ForestPanel BobsWindow
+	public static final int TEACHER_WIDTH = 404;			// width of TeacherPanel BobsWindow
+	public static final int TEACHER_HEIGHT = 425;			// height of TeacherPanel BobsWindow
 	public static final int INTRO_XCOORD = 53;				// pre-determined xCoord of IntroPanel BobsWindow
 	public static final int INTRO_YCOORD = 67;				// pre-determined yCoord of IntroPanel BobsWindow
 	public static final int INTRO_BOB_XCOORD = 462;			// pre-determined xCoord of IntroPanel Bob
@@ -32,6 +35,10 @@ public class BobsWindow extends JPanel {
 	public static final int FOREST_YCOORD = 107;			// pre-determined yCoord of ForestPanel BobsWindow
 	public static final int FOREST_BOB_XCOORD = 418;		// pre-determined xCoord of ForestPanel Bob
 	public static final int FOREST_BOB_YCOORD = 268;		// pre-determined yCoord of ForestPanel Bob
+	public static final int TEACHER_XCOORD = 207;				// pre-determined xCoord of IntroPanel BobsWindow
+	public static final int TEACHER_YCOORD = 34;				// pre-determined yCoord of IntroPanel BobsWindow
+	public static final int TEACHER_BOB_XCOORD = 31;			// pre-determined xCoord of IntroPanel Bob
+	public static final int TEACHER_BOB_YCOORD = 25;			// pre-determined yCoord of IntroPanel Bob
 	
 	// Declare members of BobsWindow class:
 //	private Game theGame;									// reference of main Game object
@@ -190,9 +197,13 @@ public class BobsWindow extends JPanel {
 		}
 		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
 		// to FOREST_XCOORD and FOREST_YCOORD.
-		else {
+		else if (panelType == FOREST) {
 			setXCoord(FOREST_XCOORD);					// set xCoord to FOREST_XCOORD
 			setYCoord(FOREST_YCOORD);					// set xCoord to FOREST_YCOORD
+		}
+		else {
+			setXCoord(TEACHER_XCOORD);
+			setYCoord(TEACHER_YCOORD);
 		}
 		setVisible(true);
 	}
@@ -210,8 +221,11 @@ public class BobsWindow extends JPanel {
 		}
 		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
 		// for Bob to FOREST_BOB_XCOORD and FOREST_BOB_YCOORD.
-		else {
+		else if (panelType == FOREST) {
 			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
+		}
+		else {
+			bob = new Owl(TEACHER_BOB_XCOORD, TEACHER_BOB_YCOORD, Owl.BOB);
 		}
 	}
 }
