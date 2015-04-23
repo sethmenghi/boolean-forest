@@ -65,7 +65,7 @@ public class Owl {
 	 * SETTER: Sets the name of the Owl.
 	 * @param name
 	 */
-	public void setOwl(String name) {
+	public void setOwlName(String name) {
 		this.name = name;							// set name value of Owl
 	}
 	
@@ -89,7 +89,7 @@ public class Owl {
 	 * GETTER: Returns the name of the Owl.
 	 * @return name
 	 */
-	public String getOwl() {
+	public String getOwlName() {
 		return name;								// return name value of Owl
 	}
 }

@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class BobsWindow extends JPanel {
 	// Public static final members of BobsWindow class:
-	public static final String INTRO = "Intro";				// indicates BobsWindow for IntroPanel
-	public static final String FOREST = "Forest";			// indicates BobsWindow for ForestPanel
-	public static final String TEACHER = "Teacher";
+	public static final String INTRO = "INTRO";				// indicates BobsWindow for IntroPanel
+	public static final String FOREST = "FOREST";			// indicates BobsWindow for ForestPanel
+	public static final String TEACHER = "TEACHER";
 	public static final int INTRO_WIDTH = 404;				// width of IntroPanel BobsWindow
 	public static final int INTRO_HEIGHT = 199;				// height of IntroPanel BobsWindow
 	public static final int FOREST_WIDTH = 350;				// width of ForestPanel BobsWindow
