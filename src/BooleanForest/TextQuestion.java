@@ -1,12 +1,18 @@
 package BooleanForest;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.MediaTracker;
 import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.lang.String;
 
+import javax.imageio.ImageIO;
 import javax.print.DocFlavor.URL;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -41,11 +47,18 @@ public class TextQuestion extends JPanel implements Question {
 
 	// Sets up the GUI for the question 
 	public void displayQuestion(){
+		this.setOpaque(true);
+	    this.setBackground(Color.WHITE);
+	    
+	    
+		JLabel questionLabel = new JLabel(textQuestion);
+	    // questionLabel.setHorizontalAlignment(JLabel.CENTER);
+	    // questionLabel.setVerticalAlignment(JLabel.CENTER);
+		
+	    // Set buttons for draggable owls
 		JButton chloe = new JButton();
 		JButton david = new JButton();
-		
-		
-		chloe.setIcon(owl1Icon);
+	    chloe.setIcon(owl1Icon);
 		david.setIcon(owl2Icon);
 		while(owl1Icon.getImageLoadStatus() != MediaTracker.COMPLETE){
 			if (owl1Icon.getImageLoadStatus() == MediaTracker.ERRORED || 
@@ -58,7 +71,7 @@ public class TextQuestion extends JPanel implements Question {
 			}
 		}
 		//initOwls(chloe, david);
-		initQuestions(chloe, david);
+		initQuestions(chloe, david, questionLabel);
 		setVisible(true);
 	}
 	
@@ -94,19 +107,43 @@ public class TextQuestion extends JPanel implements Question {
 		});
 	}
 	
-	public void initQuestions(JButton owl1, JButton owl2){
-		GridLayout layout = new GridLayout(2, 2, 1, 1);
-		setLayout(layout);
+	public void initQuestions(JButton owl1, JButton owl2, JLabel questionLabel){
+
+		
+		// Question Image Panel 
+		JPanel imagePanel = new JPanel();
+		ImageIcon img = new ImageIcon(imageResource);
+		JLabel imgLabel = new JLabel(img);
+		imagePanel.setLayout(new GridLayout(1,1));
+		imagePanel.setOpaque(true);
+		imagePanel.setBackground(Color.WHITE);
+		imagePanel.add(imgLabel);
+		
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		add(imagePanel);
+
+		// Add Question above the answers
+		// and below the question image
+		add(questionLabel);
+		
+		////////////////////
+		// Question Panel //
+		JPanel questionPanel = new JPanel();
+		questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
 		JButton answer1 = new JButton(possibleAnswers.get(0));
 		JButton answer2 = new JButton(possibleAnswers.get(1));
 		JButton answer3 = new JButton(possibleAnswers.get(2));
 		JButton answer4 = new JButton(possibleAnswers.get(3));
+		// Add and finish questionLayout
 		//add(owl1);
-		add(answer1);
-		add(answer2);
+		questionPanel.add(answer1);
+		questionPanel.add(answer2);
 		//add(owl2);
-		add(answer3);
-		add(answer4);
+		questionPanel.add(answer3);
+		questionPanel.add(answer4);
+		questionPanel.setOpaque(true);
+		questionPanel.setBackground(Color.WHITE);
+		add(questionPanel);
 	}
 	
 	// Sets the question text
