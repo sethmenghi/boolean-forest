@@ -156,11 +156,11 @@ public class IntroPanel extends JPanel implements MouseListener {
 		GameButton source = (GameButton) e.getSource();
 		System.out.println(source.getButtonMessage());
 		if (source.getButtonMessage() == PLAY_GAME) {
-			theGame.changeLayoutCard(Game.FOREST);
+			theGame.changeLayoutCard("FOREST");
 			
 		}
 		else if (source.getButtonMessage()==TEACHER) {
-			theGame.changeLayoutCard("Teacher");
+			theGame.changeLayoutCard("TEACHER");
 		}
 		
 		
