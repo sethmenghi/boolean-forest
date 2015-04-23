@@ -62,11 +62,20 @@ public class Game extends JApplet {
 	// Private static final members of Game class:
 	private static final int APPLET_WIDTH = 640;			// width of applet
 	private static final int APPLET_HEIGHT = 480;			// height of applet
+	public static final String INTRO = "INTRO";
+	public static final String FOREST = "FOREST";
+	private static final String LEVEL_1 = "LEVEL ONE";
+	private static final String LEVEL_2 = "LEVEL TWO";
+	private static final String LEVEL_3 = "LEVEL THREE";
+	private static final String LEVEL_4 = "LEVEL FOUR";
+	private static final String LEVEL_5 = "LEVEL FIVE";
 
-	// Declare members of Game class:
-	public JPanel cards;									// JPanel member
-//	public ImageQuestion imageQuestion;
-//	public TextQuestion textQuestion;
+	// Declare members of Game class: 
+	public JPanel cards;									// JPanel object with card layout
+	public IntroPanel introPanel;							// intro panel
+	public ForestPanel forestPanel;							// forest panel
+	public ImageQuestion imageQuestion;						// image question panel
+	public TextQuestion textQuestion;						// text question panel
 	private Dimension windowSize;							// dimensions of JPanel
 	private int level;										// current level passed
 	
@@ -100,13 +109,13 @@ public class Game extends JApplet {
 	 */
 	public void incrementLevel() {
 		// Only increment the level if private member level is between
-		// 1 and 4.
+		// 0 and 4.
 		if (level >= 0 && level < 5) {
-			level++;
+			level++;										// increment level
 		}
 		// Otherwise, there is something wrong and output error message.
 		else {
-			System.out.println("ERROR: Invalid level.");
+			System.err.println("ERROR: Invalid level.");	// output error message
 		}
 	}
 	
@@ -119,11 +128,10 @@ public class Game extends JApplet {
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {	// create new thread
 				public void run() {
-					createGUI();
+					createGUI();							// call createGUI()
 				}
 			});
-		}
-		
+		}	
 		catch (Exception error) {
 			// Print error message if createGUI() does not complete successfully.
 			System.err.println("ERROR: createGUI() did not complete successfully.");
@@ -132,6 +140,7 @@ public class Game extends JApplet {
 
 	/**
 	 * METHOD: Initializes applet with specified size and card layout.
+	 * Initialize the level to 0 (no levels have been passed yet).
 	 * @param none
 	 */
 	public void createGUI() {
@@ -143,27 +152,27 @@ public class Game extends JApplet {
 		setSize(windowSize);
 
 		// Create card layout and add to applet.
-		cards = new JPanel(new CardLayout());
-		add(cards);
-		
-		level = 0;											// set the level to 0
+		cards = new JPanel(new CardLayout());				// initialize cards to card layout
+		add(cards);											// add JPanel to applet
 		cards.setVisible(true);								// make cards visible
 		
+		level = 0;											// set the level to 0
+		
 		// Create Intro layout and add to cards.
-		IntroPanel introLayout = new IntroPanel(this);
-		cards.add(introLayout, "Intro");
+		introPanel = new IntroPanel(this);
+		cards.add(introPanel, INTRO);
 
 		// Create Forest layout and add to cards.
-		ForestPanel forestLayout = new ForestPanel(this);
-		cards.add(forestLayout, "Forest");
+		forestPanel = new ForestPanel(this);
+		cards.add(forestPanel, FOREST);
 		
 //		// Create Question layout and add to cards.
 //		QuestionPanel questionLayout = new QuestionPanel(this);
 //		cards.add(questionLayout, "Question");
 		
-//		// Create Teacher layout and add to cards.
-//		TeacherPanel teacherLayout = new TeacherPanel(this);
-//		cards.add(teacherLayout, "Teacher");
+		// Create Teacher layout and add to cards.
+		TeacherPanel teacherLayout = new TeacherPanel(this);
+		cards.add(teacherLayout, "Teacher");
 		
 		
 

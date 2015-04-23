@@ -27,6 +27,7 @@ import javax.swing.JTextArea;
 public class IntroPanel extends JPanel implements MouseListener {
 	// Public static final members of IntroPanel class:
 	public static final String PLAY_GAME = "Let's go learn some boolean logic!";		// text for Play GameButton
+	public static final String TEACHER = "Teachers & Parents";
 	
 	// Private static final members of IntroPanel class:
 	private static final int PANEL_WIDTH = 640;			// width of panel
@@ -42,6 +43,7 @@ public class IntroPanel extends JPanel implements MouseListener {
 	private BobsWindow introBobsWindow;					// Bob's window for introduction instructions
 	private JTextArea textArea;
 	private GameButton introScreenButton;
+	private GameButton teacherButton;
 	
 	/**
 	 * CONSTRUCTOR: The constructor calls initIntro() method.
@@ -86,6 +88,17 @@ public class IntroPanel extends JPanel implements MouseListener {
 		paintBobsWindow(g);
 	}	
 	
+	private void addTeacherButton() {
+		teacherButton = new GameButton(TEACHER, "white");
+		int boundsXCoord = 468;
+		int boundsYCoord = 426;
+		int boundsWidth = teacherButton.getPreferredSize().width;
+		int boundsHeight = teacherButton.getPreferredSize().height;
+		teacherButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		add(teacherButton);
+		teacherButton.addMouseListener(this);
+	}
+	
 	private void paintBobsWindow(Graphics g) {
 		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
 		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
@@ -94,6 +107,7 @@ public class IntroPanel extends JPanel implements MouseListener {
 		
 		addText();
 		addButton();
+		addTeacherButton();
 	}
 	
 	private void addText() {
@@ -117,9 +131,9 @@ public class IntroPanel extends JPanel implements MouseListener {
 	
 	private void addButton() {
 		introScreenButton = new GameButton(PLAY_GAME, "white");
-		int boundsXCoord = introBobsWindow.INTRO_XCOORD + introBobsWindow.INTRO_WIDTH / 2 -
+		int boundsXCoord = BobsWindow.INTRO_XCOORD + BobsWindow.INTRO_WIDTH / 2 -
 				introScreenButton.getPreferredSize().width / 2;
-		int boundsYCoord = introBobsWindow.INTRO_YCOORD + introBobsWindow.INTRO_HEIGHT - 
+		int boundsYCoord = BobsWindow.INTRO_YCOORD + BobsWindow.INTRO_HEIGHT - 
 				introScreenButton.getPreferredSize().height - 20;
 		int boundsWidth = introScreenButton.getPreferredSize().width;
 		int boundsHeight = introScreenButton.getPreferredSize().height;
@@ -138,7 +152,19 @@ public class IntroPanel extends JPanel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		theGame.changeLayoutCard("Forest");
+		System.out.println("Here");
+		GameButton source = (GameButton) e.getSource();
+		System.out.println(source.getButtonMessage());
+		if (source.getButtonMessage() == PLAY_GAME) {
+			theGame.changeLayoutCard(Game.FOREST);
+			
+		}
+		else if (source.getButtonMessage()==TEACHER) {
+			theGame.changeLayoutCard("Teacher");
+		}
+		
+		
+		
 		
 	}
 
