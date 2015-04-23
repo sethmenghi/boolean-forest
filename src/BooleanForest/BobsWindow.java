@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class BobsWindow extends JPanel implements ActionListener {
@@ -212,7 +213,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
 		}
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == gameButton) {
@@ -242,5 +243,7 @@ public class BobsWindow extends JPanel implements ActionListener {
 		else {
 			// throw exception
 		}
+		
 	}
+
 }

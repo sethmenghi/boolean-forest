@@ -11,12 +11,16 @@
 
 package BooleanForest;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel {
@@ -51,16 +55,23 @@ public class ForestPanel extends JPanel {
 		// Set the dimensions of the JPanel.
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
+		setLayout(null);
 		
 		// Initialize children Owl objects.
 		david = new Owl(65, 395, "DAVID");				// set the coordinates of David for level 1
 		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of Chloe for level 1
 		
+		bobsMessage = "Welcome! Help Chloe and David get through the Boolean Logic Forest. Get started by "
+				+ "clicking the button below!";
+		
 		// Instantiate a BobsWindow with instructions to play Level 1.
 		forestBobsWindow = new BobsWindow(game, BobsWindow.FOREST, bobsMessage, BobsWindow.LEVEL_1);
 		add(forestBobsWindow);
 		
-		repaint();										// repaint the JPanel
+//		repaint();										// repaint the JPanel
+		
+
+
 	}
 	
 	/**
@@ -77,30 +88,36 @@ public class ForestPanel extends JPanel {
 		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
-		paintOwl(g, chloe);								// paint chloe
 		paintOwl(g, david);								// paint david
+		paintOwl(g, chloe);								// paint chloe
 		
 //		paintLevelMarkers(g);							// paint yellow level markers for passed levels
 		paintStars(g);									// paint stars earned
 		
 		paintBobsWindow(g);
+		
+
 	}
 	
 	private void paintBobsWindow(Graphics g) {
-		Image image = new ImageIcon("Images/ForestTextWindow.jpg").getImage();
+		Image image = new ImageIcon("Images/ForestTextWindow.png").getImage();
 		g.drawImage(image, forestBobsWindow.getXCoord(), forestBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
-		String forestText = forestBobsWindow.getBobsMessage();
 		
-//		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
-//		JTextArea textArea = new JTextArea();
-//		textArea.setLineWrap(true);
-//		textArea.setWrapStyleWord(true);
-//		textArea.setText(forestText);
-//		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
-//		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
-//		
+		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
+		String forestText = forestBobsWindow.getBobsMessage();
+		JTextArea textArea = new JTextArea();
+		Font font = new Font("Verdana", Font.BOLD, 14);
+		textArea.setFont(font);
+		textArea.setForeground(new Color(12, 68, 159));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setOpaque(false);
+		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
+		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);		
+		textArea.setText(forestText);
+		add(textArea);
 	}
 	
 	/**
@@ -115,11 +132,11 @@ public class ForestPanel extends JPanel {
 		// Check to see if Owl is Chloe or David and draw the
 		// corresponding resource.
 		if (owl.getOwl() == Owl.CHLOE) {
-			owlImage = new ImageIcon("Images/chloe.png").getImage();
+			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 		else if (owl.getOwl() == Owl.DAVID) {
-			owlImage = new ImageIcon("Images/david.png").getImage();
+			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 	}
