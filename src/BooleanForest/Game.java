@@ -62,21 +62,30 @@ public class Game extends JApplet {
 	// Private static final members of Game class:
 	private static final int APPLET_WIDTH = 640;			// width of applet
 	private static final int APPLET_HEIGHT = 480;			// height of applet
-	public static final String INTRO = "INTRO";
-	public static final String FOREST = "FOREST";
-	private static final String LEVEL_1 = "LEVEL ONE";
-	private static final String LEVEL_2 = "LEVEL TWO";
-	private static final String LEVEL_3 = "LEVEL THREE";
-	private static final String LEVEL_4 = "LEVEL FOUR";
-	private static final String LEVEL_5 = "LEVEL FIVE";
+	public static final String INTRO = "INTRO";				// name of intro panel
+	public static final String FOREST = "FOREST";			// name of forest panel
+	public static final String TEACHER = "TEACHER";			// name of teacher panel
+	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
+	public static final String TEXT_QUESTION = "TEXT_QUESTION";
+//	private static final String LEVEL_1 = "LEVEL ONE";		// name of level one panel
+//	private static final String LEVEL_2 = "LEVEL TWO";		// name of level two panel
+//	private static final String LEVEL_3 = "LEVEL THREE";	// name of level three panel
+//	private static final String LEVEL_4 = "LEVEL FOUR";		// name of level four panel
+//	private static final String LEVEL_5 = "LEVEL FIVE";		// name of level five panel
 
 	// Declare members of Game class: 
+	private Dimension windowSize;							// dimensions of JPanel
 	public JPanel cards;									// JPanel object with card layout
 	public IntroPanel introPanel;							// intro panel
 	public ForestPanel forestPanel;							// forest panel
+	public TeacherPanel teacherPanel;						// teacher panel
+//	public LevelOne levelOne;
+//	public LevelTwo levelTwo;
+//	public LevelThree levelThree;
+//	public LevelFour levelFour;
+//	public LevelFive levelFive;
 	public ImageQuestion imageQuestion;						// image question panel
 	public TextQuestion textQuestion;						// text question panel
-	private Dimension windowSize;							// dimensions of JPanel
 	private int level;										// current level passed
 	
 	/**
@@ -158,47 +167,29 @@ public class Game extends JApplet {
 		
 		level = 0;											// set the level to 0
 		
-		// Create Intro layout and add to cards.
-		introPanel = new IntroPanel(this);
-		cards.add(introPanel, INTRO);
-
-		// Create Forest layout and add to cards.
-		forestPanel = new ForestPanel(this);
-		cards.add(forestPanel, FOREST);
+		// Create each layout panel and add to cards.
+		introPanel = new IntroPanel(this);					// initialize introPanel
+		cards.add(introPanel, INTRO);						// add to cards
+		forestPanel = new ForestPanel(this);				// initialize forestPanel
+		cards.add(forestPanel, FOREST);						// add to cards
+		teacherPanel = new TeacherPanel(this);				// initialize teacherPanel
+		cards.add(teacherPanel, TEACHER);					// add to cards
 		
-//		// Create Question layout and add to cards.
-//		QuestionPanel questionLayout = new QuestionPanel(this);
-//		cards.add(questionLayout, "Question");
-		
-		// Create Teacher layout and add to cards.
-		TeacherPanel teacherLayout = new TeacherPanel(this);
-		cards.add(teacherLayout, "Teacher");
-		
-		
-
-		
-		
-//		// Create Forest level map, add to layout
-//		LevelOne levelOne = new LevelOne(this);
-//		cards.add(levelOne, "Level One");
-//
-//		LevelTwo levelTwo = new LevelTwo();
-//		//cards.add(levelTwo, "Level Two");
-//
-//		LevelThree levelThree = new LevelThree();
-//		//cards.add(levelThree, "Level Three");
-//
-//		LevelFour levelFour = new LevelFour();
-//		//cards.add(levelFour, "Level Four");
-//
-//		LevelFive levelFive = new LevelFive();
-//		//cards.add(levelFive, "Level Five");
+//		levelOne = new LevelOne(this);						// initialize levelOne
+//		cards.add(levelOne, LEVEL_1);						// add to cards
+//		levelTwo = new LevelTwo();							// initialize levelTwo
+//		cards.add(levelTwo, LEVEL_2);						// add to cards
+//		levelThree = new LevelThree();						// initialize levelThree
+//		cards.add(levelThree, LEVEL_3);						// add to cards
+//		levelFour = new LevelFour();						// initialize levelFour
+//		cards.add(levelFour, LEVEL_4);						// add to cards
+//		levelFive = new LevelFive();						// initialize levelFive
+//		cards.add(levelFive, LEVEL_5);						// add to cards
 //		
-//		imageQuestion = new ImageQuestion();
-//		//cards.add(imageQuestion, "Image Question");
-//		
-//		TextQuestion textQuestion = new TextQuestion();
-//		//cards.add(textQuestion, "Text Question");
+		imageQuestion = new ImageQuestion();				// initialize imageQuestion
+		cards.add(imageQuestion, IMAGE_QUESTION);			// add to cards
+		textQuestion = new TextQuestion();					// initialize textQuestion
+		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
 	}
 
 	/**
@@ -207,10 +198,8 @@ public class Game extends JApplet {
 	 * @param layoutToChangeTo
 	 */
 	public void changeLayoutCard(String layoutToChangeTo) {
-		// Get the card layout.
+		// Get the card layout and flip the desired card to the front.
 		CardLayout layout = (CardLayout) (cards.getLayout());
-
-		// Flip the desired card to the front.
 		layout.show(cards, layoutToChangeTo);
 	}
 }

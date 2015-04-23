@@ -12,12 +12,12 @@
 package BooleanForest;
 
 public class Star {
-	// Public static final members of Star class:
-	public static final String ONE = "ONE";
-	public static final String TWO = "TWO";
-	public static final String THREE = "THREE";
-	public static final String FOUR = "FOUR";
-	public static final String FIVE = "FIVE";
+	// Private static final members of Star class:
+	private static final String ONE = "ONE";
+	private static final String TWO = "TWO";
+	private static final String THREE = "THREE";
+	private static final String FOUR = "FOUR";
+	private static final String FIVE = "FIVE";
 	
 	// Private static final members of Star class:
 	// Coordinates of stars are pre-determined.
@@ -31,7 +31,6 @@ public class Star {
 	// Private members of the Star class:
 	private int xCoord;								// x-coordinate of Star
 	private int yCoord;								// y-coordinate of Star
-	private String levelPassed;						// level passed of Star
 	
 	/**
 	 * DEFAULT CONSTRUCTOR: The constructor calls overloaded constructor
@@ -39,21 +38,15 @@ public class Star {
 	 * @param none
 	 */
 	public Star() {
-		this(0, 0, ONE);							// call overridden Star(int, int, levelPassed)
+		this(ONE);									// call overridden Star()
 	}
 	
 	/**
 	 * OVERLOADED CONSTRUCTOR: Instantiates an Owl object and initializes the x-
-	 * and y-coordinates and name members.
-	 * @param xCoord
-	 * @param yCoord
+	 * and y-coordinates.
 	 * @param name
 	 */
-	public Star(int xCoord, int yCoord, String levelPassed) {
-		this.xCoord = xCoord;						// initialize xCoord value
-		this.yCoord = yCoord;						// initialize yCoord value
-		this.levelPassed = levelPassed;				// initialize levelPassed value
-		
+	public Star(String levelPassed) {	
 		this.setCoordinates(levelPassed);			// set constant coordinates for Star
 	}
 	
@@ -71,14 +64,6 @@ public class Star {
 	 */
 	public void setYCoord(int yCoord) {
 		this.yCoord = yCoord;						// set yCoord value of Star
-	}
-	
-	/**
-	 * SETTER: Sets the levelPassed of the Star.
-	 * @param levelPassed
-	 */
-	public void setLevelPassed(String levelPassed) {
-		this.levelPassed = levelPassed;				// set levelPassed value of Star
 	}
 	
 	/**
@@ -125,13 +110,5 @@ public class Star {
 	 */
 	public int getYCoord() {
 		return yCoord;								// return yCoord value of Star
-	}
-	
-	/**
-	 * GETTER: Returns the levelPassed of the Star.
-	 * @return levelPassed
-	 */
-	public String getLevelPassed() {
-		return levelPassed;							// return levelPassed value of Star
 	}
 }
