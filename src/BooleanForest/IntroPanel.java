@@ -26,13 +26,13 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class IntroPanel extends JPanel implements MouseListener {
 	// Public static final members of IntroPanel class:
-	public static final String PLAY_GAME = "Let's go learn some boolean logic!";		// text for Play GameButton
-	public static final String TEACHER = "Teachers & Parents";
+	public static final String PLAY = "Let's go learn some boolean logic!";		// text for playButton
+	public static final String TEACHER = "Teachers & Parents";					// text for teacherButton;
 	
 	// Private static final members of IntroPanel class:
-	private static final int PANEL_WIDTH = 640;			// width of panel
-	private static final int PANEL_HEIGHT = 480;		// height of panel
-	private static final String INSTRUCTION_TEXT = "Welcome to the Boolean "
+	private static final int PANEL_WIDTH = 640;									// width of panel
+	private static final int PANEL_HEIGHT = 480;								// height of panel
+	private static final String INSTRUCTION_TEXT = "Welcome to the Boolean "	// introduction text
 			+ "Logic Forest! This is my family: Alice, my wife and our two "
 			+ "children, David and Chloe. Our children need to get through "
 			+ "the Boolean Logic Forest and need your help! Let's go on an "
@@ -40,10 +40,10 @@ public class IntroPanel extends JPanel implements MouseListener {
 	
 	// Declare members of IntroPanel class:
 	private Game theGame;								// reference to Game that instantiates IntroPanel object
-	private BobsWindow introBobsWindow;					// Bob's window for introduction instructions
-	private JTextArea textArea;
-	private GameButton introScreenButton;
-	private GameButton teacherButton;
+	private BobsWindow introBobsWindow;					// Bob's Window for introduction instructions
+	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
+	private GameButton playButton;						// play button
+	private GameButton teacherButton;					// button for teachers and parents page
 	
 	/**
 	 * CONSTRUCTOR: The constructor calls initIntro() method.
@@ -55,26 +55,26 @@ public class IntroPanel extends JPanel implements MouseListener {
 	
 	/**
 	 * METHOD: Initializes JPanel dimensions and members of ForestPanel
-	 * class. Creates a reference to the Game object passed in and calls 
-	 * overridden paintComponent() method.
+	 * class. Creates a reference to the Game object passed in and 
+	 * initializes Bob's Window.
 	 * @param game
 	 */
 	private void initIntro(Game game) {
 		this.theGame = game;							// assign game to theGame to reference Game instance
 		
-		// Set the dimensions of the JPanel.
+		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
 		
-		// Instantiate a BobsWindow with introduction text and instructions.
+		// Initialize a BobsWindow with introduction text and instructions.
 		introBobsWindow = new BobsWindow(BobsWindow.INTRO, INSTRUCTION_TEXT);
 		add(introBobsWindow);
 	}
 	
 	/**
 	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
-	 * background image and BobsWindow with INSTRUCTION_TEXT.
+	 * background image and Bob's Window and buttons.
 	 * @param graphic
 	 */
 	@Override
@@ -85,87 +85,121 @@ public class IntroPanel extends JPanel implements MouseListener {
 		Image image = new ImageIcon("Images/IntroScreen.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
-		paintBobsWindow(g);
+		// Paint various components on the screen.
+		paintBobsWindow(g);								// paint Bob's Window and Bob
+		addTeacherButton();								// paint teacher button
 	}	
 	
+	/**
+	 * METHOD: This  method paints Bob's Window white and Bob, as well
+	 * as calls method to add the text and button.
+	 * @param g
+	 */
+	private void paintBobsWindow(Graphics g) {
+		// Draw the white background for Bob's Window.
+		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
+		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		
+		// Draw Bob.
+		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		
+		// Add text and button.
+		addText();										// add text to Bob's Window
+		addPlayButton();									// add button to Bob's Window
+	}
+	
+	/**
+	 * METHOD: This method creates a JTextArea and makes the text fit
+	 * in the white background for Bob's Window with wrapped text and
+	 * transparent background. A custom font is created and custom
+	 * text color is set.
+	 * @param g
+	 * NOTE: Source is listed at the beginning of the class file.
+	 */
+	private void addText() {
+		// If the JTextArea is not null, remove it from the JPanel.
+		if (bobsTextArea != null) {
+			remove(bobsTextArea);						// remove from ForestPanel
+		}
+		
+		// Create a JTextArea to fit inside Bob's Window with wrapped text,
+		// custom font and transparent background. Add JTextArea to the JPanel.
+		String introText = introBobsWindow.getBobsMessage();		// get the message from forestBobsWindow
+		bobsTextArea = new JTextArea();								// initialize the JTextArea
+		Font font = new Font("Verdana", Font.BOLD, 14);				// create custom font
+		bobsTextArea.setFont(font);									// set the font
+		bobsTextArea.setForeground(new Color(12, 68, 159));			// set font color
+		bobsTextArea.setLineWrap(true);								// set line wrap to true
+		bobsTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
+		bobsTextArea.setOpaque(false);								// set background to transparent
+		// Set the size and location of the text to have margin of 10 pixels
+		// from the edge of the white background. 
+		bobsTextArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
+		bobsTextArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
+		bobsTextArea.setText(introText);							// set the text
+		add(bobsTextArea);											// add to ForestPanel
+	}
+	
+	/**
+	 * METHOD: This method adds the button to Bob's Window and adds
+	 * a MouseListener to the button.
+	 * @param none
+	 */
+	private void addPlayButton() {
+		// Initialize a GameButton to go on to the Forest Panel.
+		playButton = new GameButton(PLAY, "white");
+		
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsXCoord = BobsWindow.INTRO_XCOORD + BobsWindow.INTRO_WIDTH / 2 -
+				playButton.getPreferredSize().width / 2;
+		int boundsYCoord = BobsWindow.INTRO_YCOORD + BobsWindow.INTRO_HEIGHT - 
+				playButton.getPreferredSize().height - 20;
+		int boundsWidth = playButton.getPreferredSize().width;
+		int boundsHeight = playButton.getPreferredSize().height;
+		playButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		
+		add(playButton);											// add to IntroPanel
+		playButton.addMouseListener(this);							// add MouseListener
+	}
+	
+	/**
+	 * METHOD: This method adds the button to Bob's Window and adds
+	 * a MouseListener to the button.
+	 * @param none
+	 */
 	private void addTeacherButton() {
+		// Initialize a GameButton to go on to the Teacher Panel.
 		teacherButton = new GameButton(TEACHER, "white");
+		
+		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = 468;
 		int boundsYCoord = 426;
 		int boundsWidth = teacherButton.getPreferredSize().width;
 		int boundsHeight = teacherButton.getPreferredSize().height;
 		teacherButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(teacherButton);
-		teacherButton.addMouseListener(this);
-	}
-	
-	private void paintBobsWindow(Graphics g) {
-		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
-		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
-		Image bob = new ImageIcon("Images/Bob.png").getImage();
-		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
 		
-		addText();
-		addButton();
-		addTeacherButton();
+		add(teacherButton);											// add to IntroPanel
+		teacherButton.addMouseListener(this);						// add MouseListener
 	}
 	
-	private void addText() {
-		if (textArea != null) {
-			remove(textArea);
-		}
-		
-		String introText = introBobsWindow.getBobsMessage();
-		textArea = new JTextArea();
-		Font font = new Font("Verdana", Font.BOLD, 14);
-		textArea.setFont(font);
-		textArea.setForeground(new Color(12, 68, 159));
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
-		textArea.setOpaque(false);
-		textArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
-		textArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
-		textArea.setText(introText);
-		add(textArea);
-	}
-	
-	private void addButton() {
-		introScreenButton = new GameButton(PLAY_GAME, "white");
-		int boundsXCoord = BobsWindow.INTRO_XCOORD + BobsWindow.INTRO_WIDTH / 2 -
-				introScreenButton.getPreferredSize().width / 2;
-		int boundsYCoord = BobsWindow.INTRO_YCOORD + BobsWindow.INTRO_HEIGHT - 
-				introScreenButton.getPreferredSize().height - 20;
-		int boundsWidth = introScreenButton.getPreferredSize().width;
-		int boundsHeight = introScreenButton.getPreferredSize().height;
-		introScreenButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(introScreenButton);
-		introScreenButton.addMouseListener(this);
-	}
-
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Here");
+		// Get the source of the component that was clicked.
 		GameButton source = (GameButton) e.getSource();
-		System.out.println(source.getButtonMessage());
-		if (source.getButtonMessage() == PLAY_GAME) {
-			theGame.changeLayoutCard("FOREST");
-			
+		
+		// Go to the correct panel.
+		if (source.getButtonMessage() == PLAY) {
+			theGame.changeLayoutCard("FOREST");						// switch to ForestPanel
 		}
-		else if (source.getButtonMessage()==TEACHER) {
-			theGame.changeLayoutCard("TEACHER");
-		}
-		
-		
-		
-		
+		else if (source.getButtonMessage() == TEACHER) {
+			theGame.changeLayoutCard("TEACHER");					// switch to TeacherPanel
+		}	
 	}
 
 	@Override
