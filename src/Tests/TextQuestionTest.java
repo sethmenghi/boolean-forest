@@ -36,6 +36,7 @@ public class TextQuestionTest {
 		TextQuestion tq = new TextQuestion();
 		tq.setQuestion(testQuestion);
 		tq.setAnswerList(possibleAnswers, answer);
+		tq.setQuestionImage("src/Images/Bob.png");
 		tq.displayQuestion();
 		frame.add(tq, BorderLayout.CENTER);
 		frame.pack();
