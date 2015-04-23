@@ -11,16 +11,23 @@
 
 package BooleanForest;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
-public class IntroPanel extends JPanel {
+public class IntroPanel extends JPanel implements MouseListener {
+	// Public static final members of IntroPanel class:
+	public static final String PLAY_GAME = "Let's go learn some boolean logic!";		// text for Play GameButton
+	
 	// Private static final members of IntroPanel class:
 	private static final int PANEL_WIDTH = 640;			// width of panel
 	private static final int PANEL_HEIGHT = 480;		// height of panel
@@ -33,6 +40,8 @@ public class IntroPanel extends JPanel {
 	// Declare members of IntroPanel class:
 	private Game theGame;								// reference to Game that instantiates IntroPanel object
 	private BobsWindow introBobsWindow;					// Bob's window for introduction instructions
+	private JTextArea textArea;
+	private GameButton introScreenButton;
 	
 	/**
 	 * CONSTRUCTOR: The constructor calls initIntro() method.
@@ -54,13 +63,11 @@ public class IntroPanel extends JPanel {
 		// Set the dimensions of the JPanel.
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
+		setLayout(null);
 		
 		// Instantiate a BobsWindow with introduction text and instructions.
-		introBobsWindow = new BobsWindow(game, BobsWindow.INTRO, INSTRUCTION_TEXT, BobsWindow.PLAY_GAME);
+		introBobsWindow = new BobsWindow(BobsWindow.INTRO, INSTRUCTION_TEXT);
 		add(introBobsWindow);
-		
-		// Repaint screen
-		repaint();										// repaint the JPanelrepaint();
 	}
 	
 	/**
@@ -84,5 +91,72 @@ public class IntroPanel extends JPanel {
 		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		
+		addText();
+		addButton();
+	}
+	
+	private void addText() {
+		if (textArea != null) {
+			remove(textArea);
+		}
+		
+		String introText = introBobsWindow.getBobsMessage();
+		textArea = new JTextArea();
+		Font font = new Font("Verdana", Font.BOLD, 14);
+		textArea.setFont(font);
+		textArea.setForeground(new Color(12, 68, 159));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setOpaque(false);
+		textArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
+		textArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
+		textArea.setText(introText);
+		add(textArea);
+	}
+	
+	private void addButton() {
+		introScreenButton = new GameButton(PLAY_GAME, "white");
+		int boundsXCoord = introBobsWindow.INTRO_XCOORD + introBobsWindow.INTRO_WIDTH / 2 -
+				introScreenButton.getPreferredSize().width / 2;
+		int boundsYCoord = introBobsWindow.INTRO_YCOORD + introBobsWindow.INTRO_HEIGHT - 
+				introScreenButton.getPreferredSize().height - 20;
+		int boundsWidth = introScreenButton.getPreferredSize().width;
+		int boundsHeight = introScreenButton.getPreferredSize().height;
+		introScreenButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		add(introScreenButton);
+		introScreenButton.addMouseListener(this);
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		theGame.changeLayoutCard("Forest");
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -65,10 +65,10 @@ public class Game extends JApplet {
 
 	// Declare members of Game class:
 	public JPanel cards;									// JPanel member
-	public ImageQuestion imageQuestion;
-	public TextQuestion textQuestion;
+//	public ImageQuestion imageQuestion;
+//	public TextQuestion textQuestion;
 	private Dimension windowSize;							// dimensions of JPanel
-	private int level;										// current level
+	private int level;										// current level passed
 	
 	/**
 	 * CONSTRUCTOR: The constructor calls the init() function.
@@ -149,9 +149,9 @@ public class Game extends JApplet {
 		level = 0;											// set the level to 0
 		cards.setVisible(true);								// make cards visible
 		
-//		// Create Intro layout and add to cards.
-//		IntroPanel introLayout = new IntroPanel(this);
-//		cards.add(introLayout, "Intro");
+		// Create Intro layout and add to cards.
+		IntroPanel introLayout = new IntroPanel(this);
+		cards.add(introLayout, "Intro");
 
 		// Create Forest layout and add to cards.
 		ForestPanel forestLayout = new ForestPanel(this);
@@ -169,27 +169,27 @@ public class Game extends JApplet {
 
 		
 		
-		// Create Forest level map, add to layout
-		LevelOne levelOne = new LevelOne(this);
-		cards.add(levelOne, "Level One");
-
-		LevelTwo levelTwo = new LevelTwo();
-		//cards.add(levelTwo, "Level Two");
-
-		LevelThree levelThree = new LevelThree();
-		//cards.add(levelThree, "Level Three");
-
-		LevelFour levelFour = new LevelFour();
-		//cards.add(levelFour, "Level Four");
-
-		LevelFive levelFive = new LevelFive();
-		//cards.add(levelFive, "Level Five");
-		
-		imageQuestion = new ImageQuestion();
-		//cards.add(imageQuestion, "Image Question");
-		
-		TextQuestion textQuestion = new TextQuestion();
-		//cards.add(textQuestion, "Text Question");
+//		// Create Forest level map, add to layout
+//		LevelOne levelOne = new LevelOne(this);
+//		cards.add(levelOne, "Level One");
+//
+//		LevelTwo levelTwo = new LevelTwo();
+//		//cards.add(levelTwo, "Level Two");
+//
+//		LevelThree levelThree = new LevelThree();
+//		//cards.add(levelThree, "Level Three");
+//
+//		LevelFour levelFour = new LevelFour();
+//		//cards.add(levelFour, "Level Four");
+//
+//		LevelFive levelFive = new LevelFive();
+//		//cards.add(levelFive, "Level Five");
+//		
+//		imageQuestion = new ImageQuestion();
+//		//cards.add(imageQuestion, "Image Question");
+//		
+//		TextQuestion textQuestion = new TextQuestion();
+//		//cards.add(textQuestion, "Text Question");
 	}
 
 	/**

@@ -11,19 +11,29 @@
 
 package BooleanForest;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
-public class ForestPanel extends JPanel {
+public class ForestPanel extends JPanel implements MouseListener {
+	// Public static final members of ForestPanel class:
+	public static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
+	public static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
+	public static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
+	public static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
+	public static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
+	
 	// Private static final members of ForestPanel class:
 	private static final int PANEL_WIDTH = 640;			// width of panel
 	private static final int PANEL_HEIGHT = 480;		// height of panel
@@ -32,6 +42,8 @@ public class ForestPanel extends JPanel {
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
 	private BobsWindow forestBobsWindow;				// Bob's window for instructions/explanations
 	private String bobsMessage;							// Bob's message
+	private JTextArea textArea;
+	private GameButton forestGameButton;				// button
 	private Owl chloe;									// child Owl Chloe
 	private Owl david;									// child Owl David
 	
@@ -52,7 +64,7 @@ public class ForestPanel extends JPanel {
 	private void initForest(Game game) {
 		this.theGame = game;							// assign game to theGame to reference Game instance
 		
-		// Set the dimensions of the JPanel.
+		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
@@ -65,13 +77,8 @@ public class ForestPanel extends JPanel {
 				+ "clicking the button below!";
 		
 		// Instantiate a BobsWindow with instructions to play Level 1.
-		forestBobsWindow = new BobsWindow(game, BobsWindow.FOREST, bobsMessage, BobsWindow.LEVEL_1);
+		forestBobsWindow = new BobsWindow(BobsWindow.FOREST, bobsMessage);
 		add(forestBobsWindow);
-		
-//		repaint();										// repaint the JPanel
-		
-
-
 	}
 	
 	/**
@@ -95,8 +102,6 @@ public class ForestPanel extends JPanel {
 		paintStars(g);									// paint stars earned
 		
 		paintBobsWindow(g);
-		
-
 	}
 	
 	private void paintBobsWindow(Graphics g) {
@@ -105,9 +110,18 @@ public class ForestPanel extends JPanel {
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
 		
+		addText();
+		addButton();
+	}
+	
+	private void addText() {
+		if (textArea != null) {
+			remove(textArea);
+		}
+		
 		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
 		String forestText = forestBobsWindow.getBobsMessage();
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		Font font = new Font("Verdana", Font.BOLD, 14);
 		textArea.setFont(font);
 		textArea.setForeground(new Color(12, 68, 159));
@@ -118,6 +132,20 @@ public class ForestPanel extends JPanel {
 		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);		
 		textArea.setText(forestText);
 		add(textArea);
+	}
+	
+	private void addButton() {
+		// Instantiate a GameButton to go on to Level 1.
+		forestGameButton = new GameButton(LEVEL_1, "white");
+		int boundsXCoord = forestBobsWindow.FOREST_XCOORD + forestBobsWindow.FOREST_WIDTH / 2 -
+				forestGameButton.getPreferredSize().width / 2;
+		int boundsYCoord = forestBobsWindow.FOREST_YCOORD + forestBobsWindow.FOREST_HEIGHT - 
+				forestGameButton.getPreferredSize().height - 20;
+		int boundsWidth = forestGameButton.getPreferredSize().width;
+		int boundsHeight = forestGameButton.getPreferredSize().height;
+		forestGameButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		add(forestGameButton);
+		forestGameButton.addMouseListener(this);
 	}
 	
 	/**
@@ -197,5 +225,35 @@ public class ForestPanel extends JPanel {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("This should go to Level 1 Layout.");	
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
