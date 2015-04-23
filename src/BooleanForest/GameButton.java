@@ -80,25 +80,25 @@ public class GameButton extends JButton implements MouseListener {
         enableInputMethods(true);					// enable input interpreter
 	}
 	
-	/**
-	 * OVERLOADED CONSTRUCTOR: Sets up necessary button listeners and
-	 * make sure we can interpret an color inputs. Sets the x- and
-	 * y-coordinates, buttonMessage and textColor values.
-	 * @param xCoord
-	 * @param yCoord
-	 * @param buttonMessageInput
-	 * @param colorInput
-	 */
-	public GameButton(int xCoord, int yCoord, String buttonMessage, String textColor) {
-		this.xCoord = xCoord;						// set the xCoord value
-		this.yCoord = yCoord;						// set the yCoord value
-		this.buttonMessage = buttonMessage;			// set buttonMessage value
-		this.textColor = textColor; 				// set textColor value
-		
-		populateColorHashMap();						// create color hash map
-		addMouseListener(this);						// add mouse listener
-        enableInputMethods(true);					// enable input interpreter	
-	}
+//	/**
+//	 * OVERLOADED CONSTRUCTOR: Sets up necessary button listeners and
+//	 * make sure we can interpret an color inputs. Sets the x- and
+//	 * y-coordinates, buttonMessage and textColor values.
+//	 * @param xCoord
+//	 * @param yCoord
+//	 * @param buttonMessageInput
+//	 * @param colorInput
+//	 */
+//	public GameButton(int xCoord, int yCoord, String buttonMessage, String textColor) {
+//		this.xCoord = xCoord;						// set the xCoord value
+//		this.yCoord = yCoord;						// set the yCoord value
+//		this.buttonMessage = buttonMessage;			// set buttonMessage value
+//		this.textColor = textColor; 				// set textColor value
+//		
+//		populateColorHashMap();						// create color hash map
+//		addMouseListener(this);						// add mouse listener
+//        enableInputMethods(true);					// enable input interpreter	
+//	}
 	
 	/**
 	 * SETTER: Sets the xCoord of the button.

@@ -11,30 +11,15 @@
 
 package BooleanForest;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
-public class BobsWindow extends JPanel implements ActionListener {
+public class BobsWindow extends JPanel {
 	// Public static final members of BobsWindow class:
 	public static final String INTRO = "Intro";				// indicates BobsWindow for IntroPanel
 	public static final String FOREST = "Forest";			// indicates BobsWindow for ForestPanel
-	public static final String PLAY_GAME = "Play Game";		// text for Play GameButton (used in IntroPanel)
-	public static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
-	public static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
-	public static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
-	public static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
-	public static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
 	public static final int INTRO_WIDTH = 404;				// width of IntroPanel BobsWindow
 	public static final int INTRO_HEIGHT = 199;				// height of IntroPanel BobsWindow
 	public static final int FOREST_WIDTH = 350;				// width of ForestPanel BobsWindow
@@ -49,13 +34,14 @@ public class BobsWindow extends JPanel implements ActionListener {
 	public static final int FOREST_BOB_YCOORD = 268;		// pre-determined yCoord of ForestPanel Bob
 	
 	// Declare members of BobsWindow class:
-	private Game theGame;									// reference of main Game object
+//	private Game theGame;									// reference of main Game object
+	@SuppressWarnings("unused")
 	private String panelType;								// stores which panel type BobsWindow is for
 	private int xCoord;										// x-coordinate of BobsWindow
 	private int yCoord;										// y-coordinate of BobsWindow
 	private String bobsMessage;								// Bob's message
-	private GameButton gameButton;							// button in BobsWindow
-	private String buttonMessage;							// text for button
+//	private GameButton gameButton;							// button in BobsWindow
+//	private String buttonMessage;							// text for button
 	private Owl bob;										// Bob
 	
 	/**
@@ -63,21 +49,36 @@ public class BobsWindow extends JPanel implements ActionListener {
 	 * object, sets the panelType, bobsMessage and buttonMessage and 
 	 * initializes gameButton with the text from buttonMessage. Add an
 	 * actionListener to the button and then calls the initBobsWindow() method.
-	 * @param game
 	 * @param panelType
 	 * @param bobsMessage
-	 * @param buttonMessage
 	 */
-	public BobsWindow(Game game, String panelType, String bobsMessage, String buttonMessage) {
-		this.theGame = game;								// create reference of main Game object
+	public BobsWindow(String panelType, String bobsMessage) {
 		this.panelType = panelType;							// sets the panelType value
 		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
-		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
-		gameButton = new GameButton(buttonMessage, "white");// initialize gameButton with buttonMessage as text
-		gameButton.addActionListener(this);					// add actionListener for button
 		
 		initBobsWindow(panelType);							// call initBobsWindow for panelType
 	}
+	
+//	/**
+//	 * CONSTRUCTOR: The constructor creates a reference to the main Game
+//	 * object, sets the panelType, bobsMessage and buttonMessage and 
+//	 * initializes gameButton with the text from buttonMessage. Add an
+//	 * actionListener to the button and then calls the initBobsWindow() method.
+//	 * @param game
+//	 * @param panelType
+//	 * @param bobsMessage
+//	 * @param buttonMessage
+//	 */
+//	public BobsWindow(Game game, String panelType, String bobsMessage) {
+//		this.theGame = game;								// create reference of main Game object
+//		this.panelType = panelType;							// sets the panelType value
+//		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
+//		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
+//		gameButton = new GameButton(buttonMessage, "white");// initialize gameButton with buttonMessage as text
+//		gameButton.addActionListener(this);					// add actionListener for button
+//		
+//		initBobsWindow(panelType);							// call initBobsWindow for panelType
+//	}
 	
 	/**
 	 * SETTER: Sets the xCoord of the BobsWindow.
@@ -103,13 +104,13 @@ public class BobsWindow extends JPanel implements ActionListener {
 		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
 	}
 	
-	/**
-	 * SETTER: Sets the buttonMessage of the BobsWindow.
-	 * @param buttonMessage
-	 */
-	public void setButtonMessage(String buttonMessage) {
-		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
-	}
+//	/**
+//	 * SETTER: Sets the buttonMessage of the BobsWindow.
+//	 * @param buttonMessage
+//	 */
+//	public void setButtonMessage(String buttonMessage) {
+//		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
+//	}
 	
 	/**
 	 * GETTER: Returns the xCoord of the BobsWindow.
@@ -135,13 +136,13 @@ public class BobsWindow extends JPanel implements ActionListener {
 		return bobsMessage;									// returns bobsMessage value
 	}
 	
-	/**
-	 * GETTER: Returns the buttonMessage of the BobsWindow.
-	 * @return buttonMessage
-	 */
-	public String getButtonMessage() {
-		return buttonMessage;								// returns buttonMessage value
-	}
+//	/**
+//	 * GETTER: Returns the buttonMessage of the BobsWindow.
+//	 * @return buttonMessage
+//	 */
+//	public String getButtonMessage() {
+//		return buttonMessage;								// returns buttonMessage value
+//	}
 	
 	/**
 	 * GETTER: Returns bob of the BobsWindow.
@@ -213,37 +214,4 @@ public class BobsWindow extends JPanel implements ActionListener {
 			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
 		}
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == gameButton) {
-			String buttonMessage = gameButton.getText();
-			if (buttonMessage == LEVEL_1) {	
-
-			}
-			else if (buttonMessage == LEVEL_2) {
-				
-			}
-			else if (buttonMessage == LEVEL_3) {
-				
-			}
-			else if (buttonMessage == LEVEL_4) {
-				
-			}
-			else if (buttonMessage == LEVEL_5) {
-				
-			}
-			else if (buttonMessage == PLAY_GAME) {
-				
-			}
-			else {
-				// throw error
-			}
-		}
-		else {
-			// throw exception
-		}
-		
-	}
-
 }
