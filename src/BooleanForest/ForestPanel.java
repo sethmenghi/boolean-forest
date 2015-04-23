@@ -11,7 +11,10 @@
 
 package BooleanForest;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -52,6 +55,7 @@ public class ForestPanel extends JPanel {
 		// Set the dimensions of the JPanel.
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setDoubleBuffered(true);
+		setLayout(null);
 		
 		// Initialize children Owl objects.
 		david = new Owl(65, 395, "DAVID");				// set the coordinates of David for level 1
@@ -64,18 +68,10 @@ public class ForestPanel extends JPanel {
 		forestBobsWindow = new BobsWindow(game, BobsWindow.FOREST, bobsMessage, BobsWindow.LEVEL_1);
 		add(forestBobsWindow);
 		
-		repaint();										// repaint the JPanel
+//		repaint();										// repaint the JPanel
 		
-		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
-		String forestText = forestBobsWindow.getBobsMessage();
-		JTextArea textArea = new JTextArea();
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
-		textArea.setOpaque(false);
-		textArea.setText(forestText);
-		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
-		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);
-		add(textArea);
+
+
 	}
 	
 	/**
@@ -99,6 +95,8 @@ public class ForestPanel extends JPanel {
 		paintStars(g);									// paint stars earned
 		
 		paintBobsWindow(g);
+		
+
 	}
 	
 	private void paintBobsWindow(Graphics g) {
@@ -107,32 +105,19 @@ public class ForestPanel extends JPanel {
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
 		
-
-
-//		
-
-//	    JFrame f = new JFrame("Text Area Examples");
-//	    JPanel upperPanel = new JPanel();
-//	    JPanel lowerPanel = new JPanel();
-//	    f.getContentPane().add(upperPanel, "North");
-//	    f.getContentPane().add(lowerPanel, "South");
-//
-//	    upperPanel.add(new JTextArea(content));
-//	    upperPanel.add(new JTextArea(content, 6, 10));
-//	    upperPanel.add(new JTextArea(content, 3, 8));
-//
-//	    lowerPanel.add(new JScrollPane(new JTextArea(content, 6, 8)));
-//	    JTextArea ta = new JTextArea(content, 6, 8);
-//	    ta.setLineWrap(true);
-//	    lowerPanel.add(new JScrollPane(ta));
-//
-//	    ta = new JTextArea(content, 6, 8);
-//	    ta.setLineWrap(true);
-//	    ta.setWrapStyleWord(true);
-//	    lowerPanel.add(new JScrollPane(ta));
-//
-//	    f.pack();
-//	    f.setVisible(true);
+		// http://stackoverflow.com/questions/4083322/how-can-i-create-a-jtextarea-with-a-specified-width-and-the-smallest-possible-hei/4083850#4083850
+		String forestText = forestBobsWindow.getBobsMessage();
+		JTextArea textArea = new JTextArea();
+		Font font = new Font("Verdana", Font.BOLD, 14);
+		textArea.setFont(font);
+		textArea.setForeground(new Color(12, 68, 159));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setOpaque(false);
+		textArea.setSize(BobsWindow.FOREST_WIDTH - 20, BobsWindow.FOREST_HEIGHT - 20);
+		textArea.setLocation(BobsWindow.FOREST_XCOORD + 10, BobsWindow.FOREST_YCOORD + 10);		
+		textArea.setText(forestText);
+		add(textArea);
 	}
 	
 	/**
