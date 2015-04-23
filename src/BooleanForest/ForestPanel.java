@@ -17,13 +17,23 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel implements MouseListener {
 	// Private static final members of ForestPanel class:
-	private static final int PANEL_WIDTH = 640;			// width of panel
-	private static final int PANEL_HEIGHT = 480;		// height of panel
+	private static final int PANEL_WIDTH = 640;				// width of panel
+	private static final int PANEL_HEIGHT = 480;			// height of panel
 	private static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
 	private static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
 	private static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
 	private static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
 	private static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
+	private static final int MARKER_1_XCOORD = 24;			// x-coordinate for marker 1
+	private static final int MARKER_2_XCOORD = 157;			// x-coordinate for marker 2
+	private static final int MARKER_3_XCOORD = 307;			// x-coordinate for marker 3
+	private static final int MARKER_4_XCOORD = 437;			// x-coordinate for marker 4
+	private static final int MARKER_5_XCOORD = 587;			// x-coordinate for marker 5	
+	private static final int MARKER_1_YCOORD = 366;			// y-coordinate for marker 1
+	private static final int MARKER_2_YCOORD = 292;			// y-coordinate for marker 2
+	private static final int MARKER_3_YCOORD = 254;			// y-coordinate for marker 3
+	private static final int MARKER_4_YCOORD = 181;			// y-coordinate for marker 4
+	private static final int MARKER_5_YCOORD = 144;			// y-coordinate for marker 5
 
 	// Declare members of ForestPanel class:
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
@@ -77,8 +87,8 @@ public class ForestPanel extends JPanel implements MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
-	 * background image, children owls, the level markers and stars
-	 * earned.
+	 * background image, children owls, Bob's Window, the level markers
+	 * and stars earned.
 	 * @param graphic
 	 */
 	@Override
@@ -90,15 +100,35 @@ public class ForestPanel extends JPanel implements MouseListener {
 		g.drawImage(background, 0, 0, null);
 
 		// Paint various components on the screen.
-		paintOwl(g, david);								// paint david
-		paintOwl(g, chloe);								// paint chloe
+		paintOwl(g, david);								// paint David
+		paintOwl(g, chloe);								// paint Chloe
 		paintLevelMarkers(g, theLevel);					// paint yellow level markers for passed levels
 		paintBobsWindow(g);								// paint Bob's Window and Bob
 		paintStars(g);									// paint a star for each level passed
 	}
+	
+	/**
+	 * METHOD: Paints the Owl object passed in at it's x- and
+	 * y-coordinates. Only applies to Chloe and David.
+	 * @param g
+	 * @param owl
+	 */
+	private void paintOwl(Graphics g, Owl owl) {
+		Image owlImage;
+
+		// Check to see if Owl is Chloe or David and draw the Owl.
+		if (owl.getOwlName() == "CHLOE") {
+			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
+			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
+		}
+		else if (owl.getOwlName() == "DAVID") {
+			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
+			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
+		}
+	}
 
 	/**
-	 * METHOD: This method paints Bobs Window white and Bob, as well
+	 * METHOD: This method paints Bob's Window white and Bob, as well
 	 * as calls methods to add the text and button.
 	 * @param g
 	 */
@@ -171,26 +201,6 @@ public class ForestPanel extends JPanel implements MouseListener {
 	}
 
 	/**
-	 * METHOD: Paints the Owl object passed in at it's x- and
-	 * y-coordinates. Only applies to Chloe and David.
-	 * @param g
-	 * @param owl
-	 */
-	private void paintOwl(Graphics g, Owl owl) {
-		Image owlImage;
-
-		// Check to see if Owl is Chloe or David and draw the Owl.
-		if (owl.getOwlName() == "CHLOE") {
-			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
-			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
-		}
-		else if (owl.getOwlName() == "DAVID") {
-			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
-			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
-		}
-	}
-
-	/**
 	 * METHOD: Paints yellow markers to indicate a passed level.
 	 * @param g
 	 * @param int
@@ -207,19 +217,19 @@ public class ForestPanel extends JPanel implements MouseListener {
 		switch (theLevel) {
 		case 5:
 			// draw marker 5
-			g.drawImage(yellowButton, 587, 144, null);
+			g.drawImage(yellowButton, MARKER_5_XCOORD, MARKER_5_YCOORD, null);
 		case 4:
 			// draw marker 4
-			g.drawImage(yellowButton, 437, 181, null);
+			g.drawImage(yellowButton, MARKER_4_XCOORD, MARKER_4_YCOORD, null);
 		case 3:
 			// draw marker 3
-			g.drawImage(yellowButton, 307, 254, null);
+			g.drawImage(yellowButton, MARKER_3_XCOORD, MARKER_3_YCOORD, null);
 		case 2:
 			// draw marker 2
-			g.drawImage(yellowButton, 157, 292, null);
+			g.drawImage(yellowButton, MARKER_2_XCOORD, MARKER_2_YCOORD, null);
 		case 1:
 			// draw marker 1
-			g.drawImage(yellowButton, 24, 366, null);
+			g.drawImage(yellowButton, MARKER_1_XCOORD, MARKER_1_YCOORD, null);
 			break;
 		default:
 			break;
@@ -242,6 +252,8 @@ public class ForestPanel extends JPanel implements MouseListener {
 		stars.add(new Star("TWO"));				// for diagnostics
 		stars.add(new Star("THREE"));			// for diagnostics
 
+		// Go through the stars ArrayList and paint each star at their
+		// x- and y- coordinates.
 		for (int index = 0; index < theLevel; index++) {
 			Image starImage = new ImageIcon("Images/Star.png").getImage();
 			g.drawImage(starImage, stars.get(index).getXCoord(), stars.get(index).getYCoord(), null);
@@ -251,30 +263,25 @@ public class ForestPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		System.out.println("This should go to Level 1 Layout.");
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 }
