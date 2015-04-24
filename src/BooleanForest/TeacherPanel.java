@@ -2,7 +2,7 @@
  * TEACHER PANEL CLASS
  * 
  * DESCRIPTION:
- * The Teacher class extends JPanel and is the layout that displays the
+ * The TeacherPanel class extends JPanel and is the layout that displays the
  * information for teachers and parents.
  *    
  * SOURCES:
@@ -12,9 +12,7 @@
 
 package BooleanForest;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -31,14 +29,6 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	private static final String BACKWARD = "<<";
 	private static final String BACK = "Go back";
 	private static final int TEACHER_BUTTON_YCOORD = 200;
-	private static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);
-	private static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);
-	private static final Color DARK_BLUE = new Color(12, 68, 159);
-	private static final Color LIGHT_BLUE = new Color(57, 119, 222);
-
-	// Private static final members of IntroPanel class:
-	private static final int PANEL_WIDTH = 640;			// width of panel
-	private static final int PANEL_HEIGHT = 480;		// height of panel
 	private static final String TEACHER_TEXT = "Welcome to the Boolean "
 			+ "Logic Forest! This is a simple interactive game for students "
 			+ "in grades 1 - 3. Computer science is becoming a more and more "
@@ -68,7 +58,7 @@ public class TeacherPanel extends JPanel implements MouseListener {
 			+ "receive a special helper certificate."; 
 	
 	// Declare members of IntroPanel class:
-	private Game theGame;								// reference to Game that instantiates IntroPanel object
+	private Game theGame;								// reference to Game that instantiates TeacherPanel object
 	private GameButton backButton;						// button to go back to main intro panel
 	private BobsWindow teacherBobsWindow;				// Bob's window for introduction instructions
 	private JTextArea bobsTextAreaTitle;				// JTextArea for title of page
@@ -94,7 +84,7 @@ public class TeacherPanel extends JPanel implements MouseListener {
 		this.theGame = game;							// assign game to theGame to reference Game instance
 		
 		// Set the dimensions of the JPanel.
-		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
 		
@@ -151,29 +141,29 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	private void addText() {
 		// If the JTextArea is not null, remove it from the JPanel.
 		if (bobsTextAreaTitle != null && bobsTextArea != null) {
-			remove(bobsTextAreaTitle);					// remove from TeacherPanel
-			remove(bobsTextArea);						// remove from TeacherPanel
+			remove(bobsTextAreaTitle);								// remove from TeacherPanel
+			remove(bobsTextArea);									// remove from TeacherPanel
 		}
 				
 		// Create a JTextArea for title of page. Add JTextArea to JPanel.
-		String pageTitle = "Teachers & Parents";		// initialize the title
-		bobsTextAreaTitle = new JTextArea();			// initialize the JTextArea
-		bobsTextAreaTitle.setFont(TITLE_FONT);			// set the font
-		bobsTextAreaTitle.setForeground(DARK_BLUE);		// set font color
-		bobsTextAreaTitle.setOpaque(false);				// set background to transparent
+		String pageTitle = "Teachers & Parents";					// initialize the title
+		bobsTextAreaTitle = new JTextArea();						// initialize the JTextArea
+		bobsTextAreaTitle.setFont(Game.TITLE_FONT);					// set the font
+		bobsTextAreaTitle.setForeground(Game.DARK_BLUE);			// set font color
+		bobsTextAreaTitle.setOpaque(false);							// set background to transparent
 		// Set the size and location of the text to have margin of 10 pixels
 		// from the edge of the white background. 
 		bobsTextAreaTitle.setSize(BobsWindow.TEACHER_WIDTH - 20, 40);
 		bobsTextAreaTitle.setLocation(BobsWindow.TEACHER_XCOORD + 10, BobsWindow.TEACHER_YCOORD + 10);
-		bobsTextAreaTitle.setText(pageTitle);			// set the text
-		add(bobsTextAreaTitle);							// add to TeacherPanel
+		bobsTextAreaTitle.setText(pageTitle);						// set the text
+		add(bobsTextAreaTitle);										// add to TeacherPanel
 		
 		// Create a JTextArea to fit inside Bob's Window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		String teacherText = teacherBobsWindow.getBobsMessage();	// get the message from teacherBobsWindow
 		bobsTextArea = new JTextArea();								// initialize the JTextArea
-		bobsTextArea.setFont(PARAGRAPH_FONT);						// set the font
-		bobsTextArea.setForeground(LIGHT_BLUE);						// set font color
+		bobsTextArea.setFont(Game.PARAGRAPH_FONT);					// set the font
+		bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
 		bobsTextArea.setLineWrap(true);								// set line wrap to true
 		bobsTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
 		bobsTextArea.setOpaque(false);								// set background to transparent
@@ -232,14 +222,13 @@ public class TeacherPanel extends JPanel implements MouseListener {
 		int boundsWidth = backButton.getPreferredSize().width;
 		int boundsHeight = backButton.getPreferredSize().height;
 		backButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(backButton);;									// add to TeacherPanel
-		backButton.addMouseListener(this);					// add MouseListener
+		add(backButton);										// add to TeacherPanel
+		backButton.addMouseListener(this);						// add MouseListener
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -249,16 +238,16 @@ public class TeacherPanel extends JPanel implements MouseListener {
 		
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == BACK) {
-			theGame.changeLayoutCard(Game.INTRO);					// switch to IntroPanel
+			theGame.changeLayoutCard(Game.INTRO);				// switch to IntroPanel
 		}
 		// If forward button is clicked in instructions, change text.
 		else if (source.getButtonMessage() == FORWARD) {
-			teacherBobsWindow.setBobsMessage(INTRODUCING_BOB);		// change text to introduce Bob
+			teacherBobsWindow.setBobsMessage(INTRODUCING_BOB);	// change text to introduce Bob
 			repaint();
 		}	
 		// If backward button is clicked in instructions, change text.
 		else if (source.getButtonMessage() == BACKWARD) {
-			teacherBobsWindow.setBobsMessage(TEACHER_TEXT);			// change back to original teacher text
+			teacherBobsWindow.setBobsMessage(TEACHER_TEXT);		// change back to original teacher text
 			repaint();
 		}	
 	}
@@ -266,18 +255,15 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 }

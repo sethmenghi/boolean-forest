@@ -51,7 +51,9 @@
 package BooleanForest;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JApplet;
 import javax.swing.JPanel;
@@ -59,12 +61,18 @@ import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class Game extends JApplet {
-	// Private static final members of Game class:
-	private static final int APPLET_WIDTH = 640;			// width of applet
-	private static final int APPLET_HEIGHT = 480;			// height of applet
+	// Public static final members of Game class:
+	public static final int APPLET_WIDTH = 640;			// width of applet
+	public static final int APPLET_HEIGHT = 480;			// height of applet
+	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);		// font used for titles
+	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);	// font used for paragraph text
+	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
+	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
+	
 	public static final String INTRO = "INTRO";				// name of intro panel
 	public static final String FOREST = "FOREST";			// name of forest panel
 	public static final String TEACHER = "TEACHER";			// name of teacher panel
+	public static final String OWLS = "OWLS";				// name of owl panel
 	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
 	public static final String TEXT_QUESTION = "TEXT_QUESTION";
 //	private static final String LEVEL_1 = "LEVEL ONE";		// name of level one panel
@@ -78,6 +86,7 @@ public class Game extends JApplet {
 	public JPanel cards;									// JPanel object with card layout
 	public IntroPanel introPanel;							// intro panel
 	public ForestPanel forestPanel;							// forest panel
+	public OwlPanel owlPanel;								// owl panel
 	public TeacherPanel teacherPanel;						// teacher panel
 //	public LevelOne levelOne;
 //	public LevelTwo levelTwo;
@@ -172,6 +181,8 @@ public class Game extends JApplet {
 		cards.add(introPanel, INTRO);						// add to cards
 		forestPanel = new ForestPanel(this);				// initialize forestPanel
 		cards.add(forestPanel, FOREST);						// add to cards
+		owlPanel = new OwlPanel(this);						// initialize owlPanel
+		cards.add(owlPanel, OWLS);							// add to cards
 		teacherPanel = new TeacherPanel(this);				// initialize teacherPanel
 		cards.add(teacherPanel, TEACHER);					// add to cards
 		
