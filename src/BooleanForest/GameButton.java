@@ -13,7 +13,6 @@
 * http://www.coderanch.com/t/337333/GUI/java/hex-set-background-color
 * http://stackoverflow.com/questions/13345712/string-length-in-pixels-in-java
 * http://stackoverflow.com/questions/15281940/set-color-of-jlabel-using-a-string
-* 
 */
 
 package BooleanForest;
@@ -25,21 +24,17 @@ import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.FontRenderContext;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("serial")
 public class GameButton extends JButton implements MouseListener {
 	// Declare members of the GameButton class:
 	private int xCoord;								// button x-coordinate
@@ -48,7 +43,6 @@ public class GameButton extends JButton implements MouseListener {
 	private String textColor; 						// button text color
 	private int textWidth;							// button text width
 	private int textHeight;							// button text height
-	private ButtonActionListener myButtonListener;	// action listener for button
 	private boolean buttonPressed = false;			// indicates if button has been pressed	
 	// Used for the color input
 	private Map<String, Color> colorsList = new HashMap<String, Color>();
@@ -79,26 +73,6 @@ public class GameButton extends JButton implements MouseListener {
 		addMouseListener(this);						// add mouse listener
         enableInputMethods(true);					// enable input interpreter
 	}
-	
-//	/**
-//	 * OVERLOADED CONSTRUCTOR: Sets up necessary button listeners and
-//	 * make sure we can interpret an color inputs. Sets the x- and
-//	 * y-coordinates, buttonMessage and textColor values.
-//	 * @param xCoord
-//	 * @param yCoord
-//	 * @param buttonMessageInput
-//	 * @param colorInput
-//	 */
-//	public GameButton(int xCoord, int yCoord, String buttonMessage, String textColor) {
-//		this.xCoord = xCoord;						// set the xCoord value
-//		this.yCoord = yCoord;						// set the yCoord value
-//		this.buttonMessage = buttonMessage;			// set buttonMessage value
-//		this.textColor = textColor; 				// set textColor value
-//		
-//		populateColorHashMap();						// create color hash map
-//		addMouseListener(this);						// add mouse listener
-//        enableInputMethods(true);					// enable input interpreter	
-//	}
 	
 	/**
 	 * SETTER: Sets the xCoord of the button.
@@ -148,16 +122,19 @@ public class GameButton extends JButton implements MouseListener {
 		return yCoord; 								// return the yCoord of the button
 	}
 	
+	/**
+	 * GETTER: Returns the buttonMessage of the button.
+	 * @return buttonMessage
+	 */
 	public String getButtonMessage() {
-		return buttonMessage;
+		return buttonMessage;						// return the buttonMessage of the button
 	}
 	
 	/**
 	 * METHOD: This method converts the textColor member into an
 	 * actual color.
 	 * @param none
-	 * 
-	 * NOTE: Code heavily adapted from StackOverflow source.
+	 * NOTE: Code heavily adapted from StackOverflow source listed above.
 	 */
 	public void populateColorHashMap() {
 		colorsList.put("blue", Color.BLUE);			// add blue
@@ -184,13 +161,11 @@ public class GameButton extends JButton implements MouseListener {
     	textHeight = (int)(font.getStringBounds(buttonMessage, context).getHeight());
 	}
 	
-	// Note: code heavily inspired by StackOverflow answer. See link above. 
-	// Sets the preferred size of the JComponent 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides getPreferredSize() and
 	 * sets the preferred size of the JComponent.
 	 * @return size
-	 * NOTE: Code heavily adapted from StackOverflow answer.
+	 * NOTE: Code heavily adapted from StackOverflow source listed above.
 	 */
 	@Override 
     public Dimension getPreferredSize() {    
@@ -228,60 +203,49 @@ public class GameButton extends JButton implements MouseListener {
         return getPreferredSize();
     }
 	
-	/**
-	 * OVERRIDDEN METHOD: This method overrides mouseEntered() and
-	 * does nothing.
-	 * @param arg0
-	 */
-	// Mouse listener. 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// This method does nothing. 
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseExited() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param arg0
 	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		buttonPressed = false;						// set buttonPressed to false
-		repaint();									// repaint
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseReleased() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param arg0
 	 */ 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		buttonPressed = false;						// set buttonPressed to false
-		repaint();									// repaint
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseClicked() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param e
 	 */  
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		buttonPressed = false;						// set buttonPressed to false
-		repaint();									// repaint				
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mousePressed() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param e
 	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
-//		System.out.println("Hi there");				// diagnostics message
 		buttonPressed = true;						// set buttonPressed to true
-		repaint();	    							// repaint
 	}
 	
 	/**
@@ -301,7 +265,6 @@ public class GameButton extends JButton implements MouseListener {
 		// change the button background color to indicate to the user that the
 		// button has been pressed.
     	if (buttonPressed == false) {
-    		
     		// Create another graphics object and create a custom color.
     		Graphics2D graphics2 = (Graphics2D) g;
     		Color darkBlue = Color.decode("#000080");

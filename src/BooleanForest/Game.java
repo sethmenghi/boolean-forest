@@ -62,7 +62,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class Game extends JApplet {
 	// Public static final members of Game class:
-	public static final int APPLET_WIDTH = 640;			// width of applet
+	public static final int APPLET_WIDTH = 640;				// width of applet
 	public static final int APPLET_HEIGHT = 480;			// height of applet
 	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);		// font used for titles
 	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);	// font used for paragraph text

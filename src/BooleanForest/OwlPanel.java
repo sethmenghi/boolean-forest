@@ -181,6 +181,12 @@ public class OwlPanel extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: This method overrides mousePressed() by
+	 * getting the source of the button pressed and switching to the
+	 * corresponding panel.
+	 * @param e
+	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// Get the source of the component that was clicked.
