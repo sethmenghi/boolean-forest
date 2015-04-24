@@ -210,7 +210,7 @@ public class GameButton extends JButton implements MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseExited() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param arg0
 	 */
 	@Override
@@ -220,7 +220,7 @@ public class GameButton extends JButton implements MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseReleased() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param arg0
 	 */ 
 	@Override
@@ -230,7 +230,7 @@ public class GameButton extends JButton implements MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mouseClicked() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param e
 	 */  
 	@Override
@@ -240,7 +240,7 @@ public class GameButton extends JButton implements MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: This method overrides mousePressed() and
-	 * sets buttonPressed to false and calls repaint().
+	 * sets buttonPressed to false.
 	 * @param e
 	 */  
 	@Override

@@ -278,6 +278,10 @@ public class ForestPanel extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * OVERRIDDEN METHOD:
+	 * @param e
+	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
 		System.out.println("This should go to Level 1 Layout.");
