@@ -1,3 +1,17 @@
+/**
+ * FOREST PANEL CLASS
+ * 
+ * DESCRIPTION:
+ * The ForestPanel class extends JPanel and is the layout that displays the
+ * level map for where the student needs to get through. When levels are
+ * passed, the level markers turn yellow and a star is added at the bottom
+ * right of the screen. Collect five stars to win the game!
+ *    
+ * SOURCES:
+ * http://stackoverflow.com/questions/16190536/how-to-display-strings-in-
+ * jtextarea-jtextfield
+ */
+
 package BooleanForest;
 
 import java.awt.Color;
@@ -13,6 +27,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel implements MouseListener {

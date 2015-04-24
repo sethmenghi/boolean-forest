@@ -20,7 +20,7 @@ public class BobsWindow extends JPanel {
 	// Public static final members of BobsWindow class:
 	public static final String INTRO = "INTRO";				// indicates BobsWindow for IntroPanel
 	public static final String FOREST = "FOREST";			// indicates BobsWindow for ForestPanel
-	public static final String TEACHER = "TEACHER";
+	public static final String TEACHER = "TEACHER";			// indicates BobsWindow for TeacherPanel
 	public static final int INTRO_WIDTH = 404;				// width of IntroPanel BobsWindow
 	public static final int INTRO_HEIGHT = 199;				// height of IntroPanel BobsWindow
 	public static final int FOREST_WIDTH = 350;				// width of ForestPanel BobsWindow
@@ -35,10 +35,10 @@ public class BobsWindow extends JPanel {
 	public static final int FOREST_YCOORD = 107;			// pre-determined yCoord of ForestPanel BobsWindow
 	public static final int FOREST_BOB_XCOORD = 418;		// pre-determined xCoord of ForestPanel Bob
 	public static final int FOREST_BOB_YCOORD = 268;		// pre-determined yCoord of ForestPanel Bob
-	public static final int TEACHER_XCOORD = 207;				// pre-determined xCoord of IntroPanel BobsWindow
-	public static final int TEACHER_YCOORD = 34;				// pre-determined yCoord of IntroPanel BobsWindow
-	public static final int TEACHER_BOB_XCOORD = 31;			// pre-determined xCoord of IntroPanel Bob
-	public static final int TEACHER_BOB_YCOORD = 25;			// pre-determined yCoord of IntroPanel Bob
+	public static final int TEACHER_XCOORD = 207;			// pre-determined xCoord of IntroPanel BobsWindow
+	public static final int TEACHER_YCOORD = 34;			// pre-determined yCoord of IntroPanel BobsWindow
+	public static final int TEACHER_BOB_XCOORD = 31;		// pre-determined xCoord of IntroPanel Bob
+	public static final int TEACHER_BOB_YCOORD = 25;		// pre-determined yCoord of IntroPanel Bob
 	
 	// Declare members of BobsWindow class:
 //	private Game theGame;									// reference of main Game object
@@ -52,10 +52,8 @@ public class BobsWindow extends JPanel {
 	private Owl bob;										// Bob
 	
 	/**
-	 * CONSTRUCTOR: The constructor creates a reference to the main Game
-	 * object, sets the panelType, bobsMessage and buttonMessage and 
-	 * initializes gameButton with the text from buttonMessage. Add an
-	 * actionListener to the button and then calls the initBobsWindow() method.
+	 * CONSTRUCTOR: The constructor sets the panelType and bobsMessage
+	 * and then calls the initBobsWindow() method.
 	 * @param panelType
 	 * @param bobsMessage
 	 */
@@ -65,27 +63,6 @@ public class BobsWindow extends JPanel {
 		
 		initBobsWindow(panelType);							// call initBobsWindow for panelType
 	}
-	
-//	/**
-//	 * CONSTRUCTOR: The constructor creates a reference to the main Game
-//	 * object, sets the panelType, bobsMessage and buttonMessage and 
-//	 * initializes gameButton with the text from buttonMessage. Add an
-//	 * actionListener to the button and then calls the initBobsWindow() method.
-//	 * @param game
-//	 * @param panelType
-//	 * @param bobsMessage
-//	 * @param buttonMessage
-//	 */
-//	public BobsWindow(Game game, String panelType, String bobsMessage) {
-//		this.theGame = game;								// create reference of main Game object
-//		this.panelType = panelType;							// sets the panelType value
-//		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
-//		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
-//		gameButton = new GameButton(buttonMessage, "white");// initialize gameButton with buttonMessage as text
-//		gameButton.addActionListener(this);					// add actionListener for button
-//		
-//		initBobsWindow(panelType);							// call initBobsWindow for panelType
-//	}
 	
 	/**
 	 * SETTER: Sets the xCoord of the BobsWindow.
@@ -111,14 +88,6 @@ public class BobsWindow extends JPanel {
 		this.bobsMessage = bobsMessage;						// sets the bobsMessage value
 	}
 	
-//	/**
-//	 * SETTER: Sets the buttonMessage of the BobsWindow.
-//	 * @param buttonMessage
-//	 */
-//	public void setButtonMessage(String buttonMessage) {
-//		this.buttonMessage = buttonMessage;					// sets the buttonMessage value
-//	}
-	
 	/**
 	 * GETTER: Returns the xCoord of the BobsWindow.
 	 * @return xCoord
@@ -142,14 +111,6 @@ public class BobsWindow extends JPanel {
 	public String getBobsMessage() {
 		return bobsMessage;									// returns bobsMessage value
 	}
-	
-//	/**
-//	 * GETTER: Returns the buttonMessage of the BobsWindow.
-//	 * @return buttonMessage
-//	 */
-//	public String getButtonMessage() {
-//		return buttonMessage;								// returns buttonMessage value
-//	}
 	
 	/**
 	 * GETTER: Returns bob of the BobsWindow.
@@ -177,8 +138,13 @@ public class BobsWindow extends JPanel {
 		}
 		// If this is a BobsWindow for ForestPanel, set size to
 		// FOREST_WIDTH and FOREST_HEIGHT.
-		else {
+		else if (panelType == FOREST) {
 			setPreferredSize(new Dimension(FOREST_WIDTH, FOREST_HEIGHT));
+		}
+		// If this is a BobsWindow for TeacherPanel, set size to
+		// TEACHER_WIDTH and TEACHER_HEIGHT.
+		else {
+			setPreferredSize(new Dimension(TEACHER_WIDTH, TEACHER_HEIGHT));
 		}
 		setVisible(false);
 	}
@@ -198,12 +164,14 @@ public class BobsWindow extends JPanel {
 		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
 		// to FOREST_XCOORD and FOREST_YCOORD.
 		else if (panelType == FOREST) {
-			setXCoord(FOREST_XCOORD);					// set xCoord to FOREST_XCOORD
-			setYCoord(FOREST_YCOORD);					// set xCoord to FOREST_YCOORD
+			setXCoord(FOREST_XCOORD);						// set xCoord to FOREST_XCOORD
+			setYCoord(FOREST_YCOORD);						// set xCoord to FOREST_YCOORD
 		}
+		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// to TEACHER_XCOORD and TEACHER_YCOORD.
 		else {
-			setXCoord(TEACHER_XCOORD);
-			setYCoord(TEACHER_YCOORD);
+			setXCoord(TEACHER_XCOORD);						// set xCoord to TEACHER_XCOORD
+			setYCoord(TEACHER_YCOORD);						// set yCoord to TEACHER_YCOORD
 		}
 		setVisible(true);
 	}
@@ -224,6 +192,8 @@ public class BobsWindow extends JPanel {
 		else if (panelType == FOREST) {
 			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
 		}
+		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// for Bob to TEACHER_BOB_XCOORD and TEACHER_BOB_YCOORD.
 		else {
 			bob = new Owl(TEACHER_BOB_XCOORD, TEACHER_BOB_YCOORD, Owl.BOB);
 		}

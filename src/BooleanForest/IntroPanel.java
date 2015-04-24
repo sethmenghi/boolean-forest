@@ -6,7 +6,8 @@
  * introduction screen with brief introduction text and instructions. 
  *    
  * SOURCES:
- * 
+ * http://stackoverflow.com/questions/16190536/how-to-display-strings-in-
+ * jtextarea-jtextfield
  */
 
 package BooleanForest;
@@ -106,7 +107,7 @@ public class IntroPanel extends JPanel implements MouseListener {
 		
 		// Add text and button.
 		addText();										// add text to Bob's Window
-		addPlayButton();									// add button to Bob's Window
+		addPlayButton();								// add button to Bob's Window
 	}
 	
 	/**
