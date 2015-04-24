@@ -32,8 +32,6 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class ForestPanel extends JPanel implements MouseListener {
 	// Private static final members of ForestPanel class:
-	private static final int PANEL_WIDTH = 640;				// width of panel
-	private static final int PANEL_HEIGHT = 480;			// height of panel
 	private static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
 	private static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
 	private static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
@@ -80,7 +78,7 @@ public class ForestPanel extends JPanel implements MouseListener {
 		this.theLevel = theGame.getLevel();				// get current level passed of theGame
 
 		// Set the dimensions and layout of the JPanel.
-		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
 
