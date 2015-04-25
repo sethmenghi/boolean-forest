@@ -9,7 +9,7 @@
 * 
 */
 
-package Objects;
+package BooleanForest;
 
 public class Owl {
 	// Public static final members of Owl class:

@@ -9,7 +9,7 @@
 * 
 */
 
-package Objects;
+package BooleanForest;
 
 public class Star {
 	// Private static final members of Star class:

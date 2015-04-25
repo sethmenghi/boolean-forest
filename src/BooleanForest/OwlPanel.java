@@ -10,7 +10,7 @@
  * jtextarea-jtextfield
  */
 
-package Panels;
+package BooleanForest;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,45 +22,42 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import BooleanForest.Game;
-import BooleanForest.GameButton;
-
 @SuppressWarnings("serial")
-public class OwlPanel extends JPanel implements Panel, MouseListener {
-	// Declare static final members of OwlPanel class:
-	private static final String BACK = "Go back";										// text for backButton
-	private static final int BUTTON_YCOORD = 433;										// y-coordinate for backButton
-	private static final String ALICE_TEXT = "Hi there! I'm Alice, Bob's wife. Our "	// text for Alice
+public class OwlPanel extends JPanel implements MouseListener {
+	// Private static final members of TeacherPanel class:
+	private static final String BACK = "Go back";
+	private static final int OWL_BUTTON_YCOORD = 433;
+	private static final String ALICE_TEXT = "Hi there! I'm Alice, Bob's wife. Our "
 			+ "children were born about a month ago. It's nice to meet you!"; 
-	private static final String BOB_TEXT = "Hello there! I'm Bob and this is my "		// text for Bob
+	private static final String BOB_TEXT = "Hello there! I'm Bob and this is my "
 			+ "family. The children are very excited to start learning and I hope "
 			+ "that you will help them get through the Boolean Logic Forest!";
-	private static final String CHLOE_TEXT = "My name is Chloe. I am 4 weeks old "		// text for Chloe
+	private static final String CHLOE_TEXT = "My name is Chloe. I am 4 weeks old "
 			+ "and just starting to learn to fly. My favorite food to eat is fish!";
-	private static final String DAVID_TEXT = "My name is David. I am also 4 weeks "		// text for David
+	private static final String DAVID_TEXT = "My name is David. I am also 4 weeks "
 			+ "old and learning to fly with Chloe. My favorite food to eat are "
 			+ "grasshoppers!";
 	
 	// Declare members of IntroPanel class:
 	private Game theGame;								// reference to Game that instantiates OwlPanel object
-	private GameButton backButton;						// button to go back to main IntroPanel
+	private GameButton backButton;						// button to go back to main intro panel
 	
 	/**
-	 * CONSTRUCTOR: The constructor calls initPanel() method.
+	 * CONSTRUCTOR: The constructor calls initIntro() method.
 	 * @param game
 	 */
 	public OwlPanel(Game game) {
-		initPanel(game);											// call initPanel()
+		initOwl(game);									// call initOwl()
 	}
 
 	/**
-	 * OVERRIDDEN METHOD: Initializes JPanel dimensions and members of
-	 * OwlPanel class. Creates a reference to the Game object passed in.
+	 * METHOD: Initializes JPanel dimensions and members of ForestPanel
+	 * class. Creates a reference to the Game object passed in and calls 
+	 * overridden paintComponent() method.
 	 * @param game
 	 */
-	@Override
-	public void initPanel(Game game) {		
-		this.theGame = game;										// create reference to game passed in
+	private void initOwl(Game game) {
+		this.theGame = game;							// assign game to theGame to reference Game instance
 		
 		// Set the dimensions of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
@@ -75,55 +72,27 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);									// call super method
+		super.paintComponent(g);						// call super method
 		
 		// Create new image icon and draw the background image.
 		Image image = new ImageIcon("Images/OwlBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
 		// Paint various components on the screen.
-		addText();													// add text to each owl's window
-		addButtons();												// add button to go back to intro panel
-	}
-	
-	@Override
-	public void paintBobsWindow(Graphics g) {
-		// TODO Auto-generated method stub
+		addText();										// add text to each owl's window
+		addBackButton();								// add button to go back to intro panel
 	}
 
 	/**
-	 * OVERRIDDEN METHOD: This method adds text for each owl.
+	 * METHOD: This method creates JTextAreas and makes the text fit
+	 * in the white background for each owl's window with wrapped text
+	 * and transparent background. A custom font is created and custom
+	 * text color is set.
 	 * @param g
 	 * NOTE: Source is listed at the beginning of the class file.
 	 */
-	@Override
-	public void addText() {
-		addParagraphText();											// call addParagraphText()
-	}
-	
-	@Override
-	public void addTitleText() {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * OVERRIDDEN METHOD: This method adds the text for each owl.
-	 */
-	@Override
-	public void addParagraphText() {
-		addAliceText();												// add text for Alice
-		addBobText();												// add text for Bob
-		addChloeText();												// add text for Chloe
-		addDavidText();												// add text for David
-	}
-	
-	/**
-	 * METHOD: This method creates a JTextArea for the text that fits inside
-	 * the white box for Alice. A custom font and color are used for the 
-	 * text and the background is transparent. The text is wrapped and words
-	 * will always appear in full on a line.
-	 */
-	private void addAliceText() {
+	private void addText() {
+		// Add Alice's introduction text.
 		// Create a JTextArea to fit inside white window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		JTextArea aliceTextArea = new JTextArea();					// initialize the JTextArea
@@ -138,15 +107,8 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		aliceTextArea.setLocation(161, 36);
 		aliceTextArea.setText(ALICE_TEXT);							// set the text
 		add(aliceTextArea);											// add to OwlPanel
-	}
-	
-	/**
-	 * METHOD: This method creates a JTextArea for the text that fits inside
-	 * the white box for Bob. A custom font and color are used for the 
-	 * text and the background is transparent. The text is wrapped and words
-	 * will always appear in full on a line.
-	 */
-	private void addBobText() {
+		
+		// Add Bob's introduction text.
 		// Create a JTextArea to fit inside white window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		JTextArea bobTextArea = new JTextArea();					// initialize the JTextArea
@@ -161,15 +123,8 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		bobTextArea.setLocation(161, 136);
 		bobTextArea.setText(BOB_TEXT);								// set the text
 		add(bobTextArea);											// add to OwlPanel
-	}
-	
-	/**
-	 * METHOD: This method creates a JTextArea for the text that fits inside
-	 * the white box for Chloe. A custom font and color are used for the 
-	 * text and the background is transparent. The text is wrapped and words
-	 * will always appear in full on a line.
-	 */
-	private void addChloeText() {
+		
+		// Add Chloe's introduction text.
 		// Create a JTextArea to fit inside white window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		JTextArea chloeTextArea = new JTextArea();					// initialize the JTextArea
@@ -184,15 +139,8 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		chloeTextArea.setLocation(161, 236);
 		chloeTextArea.setText(CHLOE_TEXT);							// set the text
 		add(chloeTextArea);											// add to OwlPanel
-	}
-	
-	/**
-	 * METHOD: This method creates a JTextArea for the text that fits inside
-	 * the white box for David. A custom font and color are used for the 
-	 * text and the background is transparent. The text is wrapped and words
-	 * will always appear in full on a line.
-	 */
-	private void addDavidText() {
+		
+		// Add David's introduction text.
 		// Create a JTextArea to fit inside white window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		JTextArea davidTextArea = new JTextArea();					// initialize the JTextArea
@@ -208,26 +156,25 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		davidTextArea.setText(DAVID_TEXT);							// set the text
 		add(davidTextArea);											// add to OwlPanel
 	}
-
+	
 	/**
-	 * METHOD: This method adds the backButton and adds MouseListener to 
-	 * button.
+	 * METHOD: This method adds the back button to TeacherPanel so
+	 * that the screen returns to the initial IntroPanel.
 	 * @param none
 	 */
-	@Override
-	public void addButtons() {
+	private void addBackButton() {
 		// Initialize a GameButton to go on to the Intro Panel.
 		backButton = new GameButton(BACK, "white");
 		
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = Game.APPLET_WIDTH / 2 - backButton.getPreferredSize().width / 2;
-		int boundsYCoord = BUTTON_YCOORD;
+		int boundsYCoord = OWL_BUTTON_YCOORD;
 		int boundsWidth = backButton.getPreferredSize().width;
 		int boundsHeight = backButton.getPreferredSize().height;
 		backButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 		add(backButton);											// add to OwlPanel
 		backButton.addMouseListener(this);							// add MouseListener
-	}	
+	}		
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
