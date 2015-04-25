@@ -85,7 +85,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon("Images/IntroScreen.jpg").getImage();
+		Image image = new ImageIcon("Images/Backgrounds/IntroBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 
 		// Paint various components on the screen.
@@ -100,11 +100,11 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's Window.
-		Image image = new ImageIcon("Images/IntroTextWindow.png").getImage();
+		Image image = new ImageIcon("Images/TextWindows/IntroTextWindow.png").getImage();
 		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		Image bob = new ImageIcon("Images/Owls/Bob.png").getImage();
 		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
@@ -183,8 +183,8 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addButtons() {
 		addPlayButton();											// add playButton
-		addOwlButton();												// add owlButton
 		addTeacherButton();											// add teacherButton
+		addOwlButton();												// add owlButton
 	}
 
 	/**

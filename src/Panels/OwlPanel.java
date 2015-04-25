@@ -78,7 +78,7 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 		
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon("Images/OwlBackground.jpg").getImage();
+		Image image = new ImageIcon("Images/Backgrounds/OwlBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 		
 		// Paint various components on the screen.

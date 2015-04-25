@@ -113,7 +113,7 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon("Images/TeacherBackground.jpg").getImage();
+		Image image = new ImageIcon("Images/Backgrounds/TeacherBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 
 		// Paint various components on the screen.
@@ -128,11 +128,11 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's Window.
-		Image image = new ImageIcon("Images/TeacherTextWindow.png").getImage();
+		Image image = new ImageIcon("Images/TextWindows/TeacherTextWindow.png").getImage();
 		g.drawImage(image, teacherBobsWindow.getXCoord(), teacherBobsWindow.getYCoord(), null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		Image bob = new ImageIcon("Images/Owls/Bob.png").getImage();
 		g.drawImage(bob, teacherBobsWindow.getBob().getXCoord(), teacherBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
