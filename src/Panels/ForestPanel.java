@@ -115,7 +115,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image background = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
+		Image background = new ImageIcon("Images/Backgrounds/ForestBackground.jpg").getImage();
 		g.drawImage(background, 0, 0, null);
 
 		// Paint various components on the screen.
@@ -137,11 +137,11 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 
 		// Check to see if Owl is Chloe or David and draw the Owl.
 		if (owl.getOwlName() == "CHLOE") {
-			owlImage = new ImageIcon("Images/ChloeSmall.png").getImage();
+			owlImage = new ImageIcon("Images/Owls/ChloeSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 		else if (owl.getOwlName() == "DAVID") {
-			owlImage = new ImageIcon("Images/DavidSmall.png").getImage();
+			owlImage = new ImageIcon("Images/Owls/DavidSmall.png").getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 	}
@@ -154,11 +154,11 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's window.
-		Image textBackground = new ImageIcon("Images/ForestTextWindow.png").getImage();
+		Image textBackground = new ImageIcon("Images/TextWindows/ForestTextWindow.png").getImage();
 		g.drawImage(textBackground, forestBobsWindow.getXCoord(), forestBobsWindow.getYCoord(), null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon("Images/Bob.png").getImage();
+		Image bob = new ImageIcon("Images/Owls/Bob.png").getImage();
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
