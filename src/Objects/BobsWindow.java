@@ -9,7 +9,7 @@
 * 
 */
 
-package BooleanForest;
+package Objects;
 
 import java.awt.Dimension;
 
@@ -41,14 +41,11 @@ public class BobsWindow extends JPanel {
 	public static final int TEACHER_BOB_YCOORD = 25;		// pre-determined yCoord of IntroPanel Bob
 	
 	// Declare members of BobsWindow class:
-//	private Game theGame;									// reference of main Game object
 	@SuppressWarnings("unused")
 	private String panelType;								// stores which panel type BobsWindow is for
 	private int xCoord;										// x-coordinate of BobsWindow
 	private int yCoord;										// y-coordinate of BobsWindow
 	private String bobsMessage;								// Bob's message
-//	private GameButton gameButton;							// button in BobsWindow
-//	private String buttonMessage;							// text for button
 	private Owl bob;										// Bob
 	
 	/**

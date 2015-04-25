@@ -12,7 +12,7 @@
  * jtextarea-jtextfield
  */
 
-package BooleanForest;
+package Panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,11 +27,16 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.Timer;
+
+import BooleanForest.Game;
+import Objects.BobsWindow;
+import Objects.GameButton;
+import Objects.Owl;
+import Objects.Star;
 
 @SuppressWarnings("serial")
-public class ForestPanel extends JPanel implements MouseListener {
-	// Private static final members of ForestPanel class:
+public class ForestPanel extends JPanel implements Panel, MouseListener {
+	// Declare static final members of ForestPanel class:
 	private static final String LEVEL_1 = "Go to Level 1";	// text for Level 1 GameButton
 	private static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
 	private static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
@@ -60,22 +65,23 @@ public class ForestPanel extends JPanel implements MouseListener {
 	private List<Star> stars;							// list of Stars
 
 	/**
-	 * CONSTRUCTOR: The constructor calls initForest() method.
+	 * CONSTRUCTOR: The constructor calls initPanel() method.
 	 * @param game
 	 */
 	public ForestPanel(Game game) {
-		initForest(game);								// calls initForest()
+		initPanel(game);											// calls initPanel()
 	}
 
 	/**
-	 * METHOD: Initializes JPanel dimensions and members of ForestPanel
-	 * class. Creates a reference to the Game object passed in, initializes
-	 * the children owls, Bob's Window and the ArrayList of Stars.
+	 * OVERRIDDEN METHOD: Initializes JPanel dimensions and members of
+	 * ForestPanel class. Creates a reference to the Game object passed in
+	 * and initializes Bob's Window.
 	 * @param game
 	 */
-	private void initForest(Game game) {
-		this.theGame = game;							// assign game to theGame to reference Game instance
-		this.theLevel = theGame.getLevel();				// get current level passed of theGame
+	@Override
+	public void initPanel(Game game) {
+		this.theGame = game;										// create reference to game passed in
+		this.theLevel = theGame.getLevel();							// get current level passed of theGame
 
 		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
@@ -83,8 +89,8 @@ public class ForestPanel extends JPanel implements MouseListener {
 		setLayout(null);
 
 		// Initialize children Owl objects.
-		david = new Owl(65, 395, "DAVID");				// set the coordinates of David for level 1
-		chloe = new Owl(80, 410, "CHLOE");				// set the coordinates of Chloe for level 1
+		david = new Owl(65, 395, "DAVID");							// set the coordinates of David for level 1
+		chloe = new Owl(80, 410, "CHLOE");							// set the coordinates of Chloe for level 1
 
 		// Initialize Bob's message.
 		bobsMessage = "Welcome! Help Chloe and David get through the Boolean Logic Forest. Get started by "
@@ -95,7 +101,7 @@ public class ForestPanel extends JPanel implements MouseListener {
 		add(forestBobsWindow);
 
 		// Initialize ArrayList of Star objects.
-		stars = new ArrayList<Star>();					// no stars added because no levels passed yet
+		stars = new ArrayList<Star>();								// no stars added because no levels passed yet
 	}
 
 	/**
@@ -106,18 +112,18 @@ public class ForestPanel extends JPanel implements MouseListener {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);						// call super method
+		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
 		Image background = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
 		g.drawImage(background, 0, 0, null);
 
 		// Paint various components on the screen.
-		paintOwl(g, david);								// paint David
-		paintOwl(g, chloe);								// paint Chloe
-		paintLevelMarkers(g, theLevel);					// paint yellow level markers for passed levels
-		paintBobsWindow(g);								// paint Bob's Window and Bob
-		paintStars(g);									// paint a star for each level passed
+		paintOwl(g, david);											// paint David
+		paintOwl(g, chloe);											// paint Chloe
+		paintLevelMarkers(g, theLevel);								// paint yellow level markers for passed levels
+		paintBobsWindow(g);											// paint Bob's Window and Bob
+		paintStars(g);												// paint a star for each level passed
 	}
 	
 	/**
@@ -141,11 +147,12 @@ public class ForestPanel extends JPanel implements MouseListener {
 	}
 
 	/**
-	 * METHOD: This method paints Bob's Window white and Bob, as well
-	 * as calls methods to add the text and button.
+	 * OVERRIDDEN METHOD: This  method paints Bob's Window white and Bob,
+	 * as well as calls method to add the text and button.
 	 * @param g
 	 */
-	private void paintBobsWindow(Graphics g) {
+	@Override
+	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's window.
 		Image textBackground = new ImageIcon("Images/ForestTextWindow.png").getImage();
 		g.drawImage(textBackground, forestBobsWindow.getXCoord(), forestBobsWindow.getYCoord(), null);
@@ -155,24 +162,39 @@ public class ForestPanel extends JPanel implements MouseListener {
 		g.drawImage(bob, forestBobsWindow.getBob().getXCoord(), forestBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
-		addText();										// add text to Bob's Window
-		addButton();									// add button to Bob's Window
+		addText();													// add text to Bob's Window
+		addButtons();												// add button to Bob's Window
 	}
 
 	/**
-	 * METHOD: This method creates a JTextArea and makes the text fit
-	 * in the white background for Bob's Window with wrapped text and
-	 * transparent background. A custom font is created and custom
-	 * text color is set.
+	 * OVERRIDDEN METHOD: This method adds the paragraph text to Bob's
+	 * Window.
 	 * @param g
 	 * NOTE: Source is listed at the beginning of the class file.
 	 */
-	private void addText() {
+	@Override
+	public void addText() {
 		// If the JTextArea is not null, remove it from the JPanel.
 		if (bobsTextArea != null) {
-			remove(bobsTextArea);						// remove from ForestPanel
+			remove(bobsTextArea);									// remove from TeacherPanel
 		}
 
+		addParagraphText();											// add paragraph
+	}
+
+	@Override
+	public void addTitleText() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * OVERRIDDEN METHOD: This method creates a JTextArea for the text
+	 * that fits inside the white box of Bob's Window. A custom font and
+	 * color are used for the text and the background is transparent. The
+	 * text is wrapped and words will always appear in full on a line.
+	 */
+	@Override
+	public void addParagraphText() {
 		// Create a JTextArea to fit inside Bob's Window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		String forestText = forestBobsWindow.getBobsMessage();		// get the message from forestBobsWindow
@@ -192,11 +214,12 @@ public class ForestPanel extends JPanel implements MouseListener {
 	}
 
 	/**
-	 * METHOD: This method adds the button to Bob's Window and adds
-	 * a MouseListener to the button.
+	 * METHOD: This method adds the forestGameButton and adds
+	 * MouseListener to button.
 	 * @param none
 	 */
-	private void addButton() {
+	@Override
+	public void addButtons() {
 		// Initialize a GameButton to go on to Level 1.
 		forestGameButton = new GameButton(LEVEL_1, "WHITE");
 
@@ -260,10 +283,10 @@ public class ForestPanel extends JPanel implements MouseListener {
 		// level, it will continue to draw the star earned for all previous
 		// levels.
 		
-		theLevel = 3;							// for diagnostics
-		stars.add(new Star("ONE"));				// for diagnostics
-		stars.add(new Star("TWO"));				// for diagnostics
-		stars.add(new Star("THREE"));			// for diagnostics
+		theLevel = 3;												// for diagnostics
+		stars.add(new Star("ONE"));									// for diagnostics
+		stars.add(new Star("TWO"));									// for diagnostics
+		stars.add(new Star("THREE"));								// for diagnostics
 
 		// Go through the stars ArrayList and paint each star at their
 		// x- and y- coordinates.

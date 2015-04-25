@@ -10,7 +10,7 @@
  * jtextarea-jtextfield
  */
 
-package BooleanForest;
+package Panels;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,14 +22,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import BooleanForest.Game;
+import Objects.BobsWindow;
+import Objects.GameButton;
+
 @SuppressWarnings("serial")
-public class TeacherPanel extends JPanel implements MouseListener {
-	// Private static final members of TeacherPanel class:
-	private static final String FORWARD = ">>";
-	private static final String BACKWARD = "<<";
-	private static final String BACK = "Go back";
-	private static final int TEACHER_BUTTON_YCOORD = 200;
-	private static final String TEACHER_TEXT = "Welcome to the Boolean "
+public class TeacherPanel extends JPanel implements Panel, MouseListener {
+	// Declare static final members of TeacherPanel class:
+	private static final String FORWARD = ">>";										// text for forward button
+	private static final String BACKWARD = "<<";									// text for backward button
+	private static final String BACK = "Go back";									// text for backButton
+	private static final int FORWARD_XCOORD = BobsWindow.TEACHER_XCOORD + BobsWindow.TEACHER_WIDTH - 50;
+	private static final int FORWARD_YCOORD = BobsWindow.TEACHER_YCOORD + BobsWindow.TEACHER_HEIGHT - 40;
+	private static final int BACKWARD_XCOORD = BobsWindow.TEACHER_XCOORD + BobsWindow.TEACHER_WIDTH - 100;
+	private static final int BACKWARD_YCOORD = BobsWindow.TEACHER_YCOORD + BobsWindow.TEACHER_HEIGHT - 40;
+	private static final int BACK_YCOORD = 200;										// y-coordinate for backButton
+	private static final String PAGE_ONE_TEXT = "Welcome to the Boolean "			// page one of teacher text
 			+ "Logic Forest! This is a simple interactive game for students "
 			+ "in grades 1 - 3. Computer science is becoming a more and more "
 			+ "relevant matter as technology becomes exponentially "
@@ -41,7 +49,7 @@ public class TeacherPanel extends JPanel implements MouseListener {
 			+ "itself should be relatively self-explanatory to your student, but "
 			+ "click the next button for more instructions. Younger students may "
 			+ "need a little help with reading.";
-	private static final String INTRODUCING_BOB = "This is Bob to the left. He "
+	private static final String PAGE_TWO_TEXT = "This is Bob to the left. He "		// page two of teacher text
 			+ "wants your student to help his children owls Chloe and David "
 			+ "through the Boolean Logic Forest. To do so, Bob will explain a "
 			+ "Boolean Logic concept to your student. He will then ask your "
@@ -56,43 +64,45 @@ public class TeacherPanel extends JPanel implements MouseListener {
 			+ "There are five levels, the last one being cumulative. When your "
 			+ "student gets the children owls through the forest, they will "
 			+ "receive a special helper certificate."; 
-	
+
 	// Declare members of IntroPanel class:
 	private Game theGame;								// reference to Game that instantiates TeacherPanel object
-	private GameButton backButton;						// button to go back to main intro panel
 	private BobsWindow teacherBobsWindow;				// Bob's window for introduction instructions
 	private JTextArea bobsTextAreaTitle;				// JTextArea for title of page
 	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
 	private GameButton forwardButton;					// button to go forward in instructions
 	private GameButton backwardButton;					// button to go backward in instructions
-	
+	private GameButton backButton;						// button to go back to main IntroPanel
+
 	/**
-	 * CONSTRUCTOR: The constructor calls initIntro() method.
+	 * CONSTRUCTOR: The constructor calls initPanel() method.
 	 * @param game
 	 */
 	public TeacherPanel(Game game) {
-		initTeacher(game);								// call initTeacher()
+		initPanel(game);											// call initPanel()
 	}
-	
+
 	/**
-	 * METHOD: Initializes JPanel dimensions and members of ForestPanel
-	 * class. Creates a reference to the Game object passed in and calls 
-	 * overridden paintComponent() method.
+	 * OVERRIDDEN METHOD: Initializes JPanel dimensions and members of 
+	 * TeacherPanel class. Creates a reference to the Game object passed  
+	 * in and calls overridden paintComponent() method.
 	 * @param game
 	 */
-	private void initTeacher(Game game) {
-		this.theGame = game;							// assign game to theGame to reference Game instance
-		
+	@Override
+	public void initPanel(Game game) {
+		this.theGame = game;										// create reference to game passed in
+
 		// Set the dimensions of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
-		
+
 		// Instantiate a BobsWindow with introduction text and instructions.
-		teacherBobsWindow = new BobsWindow(BobsWindow.TEACHER, TEACHER_TEXT);
+		teacherBobsWindow = new BobsWindow(BobsWindow.TEACHER, PAGE_ONE_TEXT);
 		add(teacherBobsWindow);
+		repaint();
 	}
-	
+
 	/**
 	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
 	 * background image and BobsWindow with INSTRUCTION_TEXT.
@@ -100,51 +110,61 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);						// call super method
-		
+		super.paintComponent(g);									// call super method
+
 		// Create new image icon and draw the background image.
 		Image image = new ImageIcon("Images/TeacherBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
-		
+
 		// Paint various components on the screen.
-		paintBobsWindow(g);								// paint Bob's Window and Bob
+		paintBobsWindow(g);											// paint Bob's Window and Bob
 	}	
-	
+
 	/**
-	 * METHOD: This  method paints Bob's Window white and Bob, as well
-	 * as calls methods to add the text and buttons.
+	 * OVERRIDDEN METHOD: This  method paints Bob's Window white and Bob,
+	 * as well as calls method to add the text and button.
 	 * @param g
 	 */
-	private void paintBobsWindow(Graphics g) {
+	@Override
+	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's Window.
 		Image image = new ImageIcon("Images/TeacherTextWindow.png").getImage();
 		g.drawImage(image, teacherBobsWindow.getXCoord(), teacherBobsWindow.getYCoord(), null);
-		
+
 		// Draw Bob.
 		Image bob = new ImageIcon("Images/Bob.png").getImage();
 		g.drawImage(bob, teacherBobsWindow.getBob().getXCoord(), teacherBobsWindow.getBob().getYCoord(), null);
-		
+
 		// Add text and button.
-		addBackButton();								// add button to go back to intro panel
-		addText();										// add text to Bob's Window
-		addForwardAndBackwardButtons();					// add buttons to go forward or backwards in instructions
+		addText();													// add text to Bob's Window
+		addButtons();												// add buttons
 	}
 
 	/**
-	 * METHOD: This method creates two JTextAreas and makes the text fit
-	 * in the white background for Bob's Window with wrapped text and
-	 * transparent background. A custom font is created and custom
-	 * text color is set.
+	 * OVERRIDDEN METHOD: This method adds the title text and paragraph
+	 * text to Bob's Window.
 	 * @param g
 	 * NOTE: Source is listed at the beginning of the class file.
 	 */
-	private void addText() {
+	@Override
+	public void addText() {
 		// If the JTextArea is not null, remove it from the JPanel.
 		if (bobsTextAreaTitle != null && bobsTextArea != null) {
 			remove(bobsTextAreaTitle);								// remove from TeacherPanel
 			remove(bobsTextArea);									// remove from TeacherPanel
 		}
-				
+
+		addTitleText();												// add title
+		addParagraphText();											// add paragraph
+	}
+
+	/**
+	 * OVERRIDDEN METHOD: This method creates a JTextArea for the title
+	 * that fits inside the white box of Bob's Window. A custom font and
+	 * color are used for the text and the background is transparent.
+	 */
+	@Override
+	public void addTitleText() {
 		// Create a JTextArea for title of page. Add JTextArea to JPanel.
 		String pageTitle = "Teachers & Parents";					// initialize the title
 		bobsTextAreaTitle = new JTextArea();						// initialize the JTextArea
@@ -157,7 +177,16 @@ public class TeacherPanel extends JPanel implements MouseListener {
 		bobsTextAreaTitle.setLocation(BobsWindow.TEACHER_XCOORD + 10, BobsWindow.TEACHER_YCOORD + 10);
 		bobsTextAreaTitle.setText(pageTitle);						// set the text
 		add(bobsTextAreaTitle);										// add to TeacherPanel
-		
+	}
+
+	/**
+	 * OVERRIDDEN METHOD: This method creates a JTextArea for the text
+	 * that fits inside the white box of Bob's Window. A custom font and
+	 * color are used for the text and the background is transparent. The
+	 * text is wrapped and words will always appear in full on a line.
+	 */
+	@Override
+	public void addParagraphText() {
 		// Create a JTextArea to fit inside Bob's Window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
 		String teacherText = teacherBobsWindow.getBobsMessage();	// get the message from teacherBobsWindow
@@ -174,7 +203,18 @@ public class TeacherPanel extends JPanel implements MouseListener {
 		bobsTextArea.setText(teacherText);							// set the text
 		add(bobsTextArea);											// add to TeacherPanel
 	}
-	
+
+	/**
+	 * METHOD: This method adds the forwardButton, backwardButton and
+	 * teacherButton and adds MouseListeners to each button.
+	 * @param none
+	 */
+	@Override
+	public void addButtons() {
+		addForwardAndBackwardButtons();								// add forward and backward buttons
+		addBackButton();											// add back button
+	}
+
 	/**
 	 * METHOD: This method adds the forward and backward buttons to
 	 * Bob's Window to view teacher instructions and adds a 
@@ -182,31 +222,27 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	 * @param none
 	 */
 	private void addForwardAndBackwardButtons() {
-		// Initialize a GameButton to view more instructions.
+		// Initialize a GameButton to view page two of instructions.
 		forwardButton = new GameButton(FORWARD, "white");
-		
+
 		// Set the x- and y-coordinates and the button width and height.
-		int boundsXCoord = BobsWindow.TEACHER_XCOORD + BobsWindow.TEACHER_WIDTH - 50;
-		int boundsYCoord = BobsWindow.TEACHER_YCOORD + BobsWindow.TEACHER_HEIGHT - 40;
 		int boundsWidth = forwardButton.getPreferredSize().width;
 		int boundsHeight = forwardButton.getPreferredSize().height;
-		forwardButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(forwardButton);										// add to TeacherPanel
-		forwardButton.addMouseListener(this);					// add MouseListener
+		forwardButton.setBounds(FORWARD_XCOORD, FORWARD_YCOORD, boundsWidth, boundsHeight);
+		add(forwardButton);											// add to TeacherPanel
+		forwardButton.addMouseListener(this);						// add MouseListener
 
 		// Initialize a GameButton to go back in instructions.
 		backwardButton = new GameButton(BACKWARD, "white");
-		
+
 		// Set the x- and y-coordinates and the button width and height.		
-		boundsXCoord = BobsWindow.TEACHER_XCOORD + BobsWindow.TEACHER_WIDTH - 100;
-		boundsYCoord = BobsWindow.TEACHER_YCOORD + BobsWindow.TEACHER_HEIGHT - 40;
 		boundsWidth = backwardButton.getPreferredSize().width;
 		boundsHeight = backwardButton.getPreferredSize().height;
-		backwardButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(backwardButton);									// add to TeacherPanel
-		backwardButton.addMouseListener(this);					// add MouseListener
+		backwardButton.setBounds(BACKWARD_XCOORD, BACKWARD_YCOORD, boundsWidth, boundsHeight);
+		add(backwardButton);										// add to TeacherPanel
+		backwardButton.addMouseListener(this);						// add MouseListener
 	}
-	
+
 	/**
 	 * METHOD: This method adds the back button to TeacherPanel so
 	 * that the screen returns to the initial IntroPanel.
@@ -215,15 +251,15 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	private void addBackButton() {
 		// Initialize a GameButton to go on to the Forest Panel.
 		backButton = new GameButton(BACK, "white");
-		
+
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = BobsWindow.TEACHER_XCOORD / 2 - backButton.getPreferredSize().width / 2;
-		int boundsYCoord = TEACHER_BUTTON_YCOORD;
+		int boundsYCoord = BACK_YCOORD;
 		int boundsWidth = backButton.getPreferredSize().width;
 		int boundsHeight = backButton.getPreferredSize().height;
 		backButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-		add(backButton);										// add to TeacherPanel
-		backButton.addMouseListener(this);						// add MouseListener
+		add(backButton);											// add to TeacherPanel
+		backButton.addMouseListener(this);							// add MouseListener
 	}
 
 	@Override
@@ -239,21 +275,20 @@ public class TeacherPanel extends JPanel implements MouseListener {
 	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// Get the source of the component that was clicked.
-		GameButton source = (GameButton) e.getSource();
-		
+		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
+
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == BACK) {
-			theGame.changeLayoutCard(Game.INTRO);				// switch to IntroPanel
+			theGame.changeLayoutCard(Game.INTRO);					// switch to IntroPanel
 		}
 		// If forward button is clicked in instructions, change text.
 		else if (source.getButtonMessage() == FORWARD) {
-			teacherBobsWindow.setBobsMessage(INTRODUCING_BOB);	// change text to introduce Bob
+			teacherBobsWindow.setBobsMessage(PAGE_TWO_TEXT);		// change text to page two
 			repaint();
 		}	
 		// If backward button is clicked in instructions, change text.
 		else if (source.getButtonMessage() == BACKWARD) {
-			teacherBobsWindow.setBobsMessage(TEACHER_TEXT);		// change back to original teacher text
+			teacherBobsWindow.setBobsMessage(PAGE_ONE_TEXT);		// change back to page one
 			repaint();
 		}	
 	}

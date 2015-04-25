@@ -15,7 +15,7 @@
 * http://stackoverflow.com/questions/15281940/set-color-of-jlabel-using-a-string
 */
 
-package BooleanForest;
+package Objects;
 
 import java.awt.Color;
 import java.awt.Dimension;

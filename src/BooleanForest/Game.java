@@ -59,6 +59,9 @@ import javax.swing.JApplet;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Panels.*;
+import Questions.*;
+
 @SuppressWarnings("serial")
 public class Game extends JApplet {
 	// Public static final members of Game class:
