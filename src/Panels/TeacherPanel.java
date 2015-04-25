@@ -98,7 +98,7 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 		setLayout(null);
 
 		// Instantiate a BobsWindow with introduction text and instructions.
-		teacherBobsWindow = new BobsWindow(BobsWindow.TEACHER, PAGE_ONE_TEXT);
+		teacherBobsWindow = new BobsWindow("TEACHER", PAGE_ONE_TEXT);
 		add(teacherBobsWindow);
 		repaint();
 	}

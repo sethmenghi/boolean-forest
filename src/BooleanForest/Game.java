@@ -76,6 +76,7 @@ public class Game extends JApplet {
 	public static final String FOREST = "FOREST";			// name of forest panel
 	public static final String TEACHER = "TEACHER";			// name of teacher panel
 	public static final String OWLS = "OWLS";				// name of owl panel
+	public static final String LEVEL = "LEVEL";				// name of level panel
 	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
 	public static final String TEXT_QUESTION = "TEXT_QUESTION";
 //	private static final String LEVEL_1 = "LEVEL ONE";		// name of level one panel
@@ -215,5 +216,25 @@ public class Game extends JApplet {
 		// Get the card layout and flip the desired card to the front.
 		CardLayout layout = (CardLayout) (cards.getLayout());
 		layout.show(cards, layoutToChangeTo);
+	}
+	
+	/**
+	 * OVERLOADED METHOD: Changes the layout that is current being 
+	 * shown to the parameter passed in. Only used for LevelPanel so
+	 * that a level can be passed in. The passed in level is used to
+	 * call that Level class to load Level specific content.
+	 * @param layoutToChangeTo
+	 * @param levelForLevelPanel
+	 */
+	public void changeLayoutCard(String layoutToChangeTo, int levelForLevelPanel) {
+		if (layoutToChangeTo != LEVEL) {
+			changeLayoutCard(layoutToChangeTo);
+		}
+		
+		// Figure out how to switch to LevelPanel with correct level
+		
+//		// Get the card layout and flip the desired card to the front.
+//		CardLayout layout = (CardLayout) (cards.getLayout());
+//		layout.show(cards, layoutToChangeTo);
 	}
 }

@@ -71,7 +71,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		setLayout(null);
 
 		// Initialize a BobsWindow with introduction text and instructions.
-		introBobsWindow = new BobsWindow(BobsWindow.INTRO, INSTRUCTION_TEXT);
+		introBobsWindow = new BobsWindow("INTRO", INSTRUCTION_TEXT);
 		add(introBobsWindow);
 	}
 
