@@ -148,8 +148,13 @@ public class BobsWindow extends JPanel {
 		}
 		// If this is a BobsWindow for TeacherPanel, set size to
 		// TEACHER_WIDTH and TEACHER_HEIGHT.
-		else {
+		else if (panelType == Game.TEACHER) {
 			setPreferredSize(new Dimension(TEACHER_WIDTH, TEACHER_HEIGHT));
+		}
+		// If this is a BobsWindow for LevelPanel, set size to
+		// LEVEL_WIDTH and LEVEL_HEIGHT.
+		else {
+			setPreferredSize(new Dimension(LEVEL_WIDTH, LEVEL_HEIGHT));
 		}
 		setVisible(false);
 	}
@@ -172,11 +177,17 @@ public class BobsWindow extends JPanel {
 			setXCoord(FOREST_XCOORD);						// set xCoord to FOREST_XCOORD
 			setYCoord(FOREST_YCOORD);						// set xCoord to FOREST_YCOORD
 		}
-		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// If this is a BobsWindow for TeacherPanel, set x- and y-coordinates
 		// to TEACHER_XCOORD and TEACHER_YCOORD.
-		else {
+		else if (panelType == Game.TEACHER) {
 			setXCoord(TEACHER_XCOORD);						// set xCoord to TEACHER_XCOORD
 			setYCoord(TEACHER_YCOORD);						// set yCoord to TEACHER_YCOORD
+		}
+		// If this is a BobsWindow for LevelPanel, set x- and y-coordinates
+		// to LEVEL_XCOORD and LEVEL_YCOORD.
+		else {
+			setXCoord(LEVEL_XCOORD);						// set xCoord to LEVEL_XCOORD
+			setYCoord(LEVEL_YCOORD);						// set yCoord to LEVEL_YCOORD
 		}
 		setVisible(true);
 	}
@@ -197,10 +208,15 @@ public class BobsWindow extends JPanel {
 		else if (panelType == Game.FOREST) {
 			bob = new Owl(FOREST_BOB_XCOORD, FOREST_BOB_YCOORD, Owl.BOB);
 		}
-		// If this is a BobsWindow for ForestPanel, set x- and y-coordinates
+		// If this is a BobsWindow for TeacherPanel, set x- and y-coordinates
 		// for Bob to TEACHER_BOB_XCOORD and TEACHER_BOB_YCOORD.
-		else {
+		else if (panelType == Game.TEACHER) {
 			bob = new Owl(TEACHER_BOB_XCOORD, TEACHER_BOB_YCOORD, Owl.BOB);
+		}
+		// If this is a BobsWindow for LevelPanel, set x- and y-coordinates
+		// for Bob to LEVEL_BOB_XCOORD and LEVEL_BOB_XCOORD.
+		else {
+			bob = new Owl(LEVEL_BOB_XCOORD, LEVEL_BOB_YCOORD, Owl.BOB);
 		}
 	}
 }
