@@ -3,11 +3,17 @@
  * 
  * DESCRIPTION:
  * The IntroPanel class extends JPanel and is the layout that displays the
- * introduction screen with brief introduction text and instructions. 
+ * introduction screen with brief introduction text and instructions. There
+ * are buttons that go to the teacherPanel, owlPanel and forestPanel.
  *    
- * SOURCES:
+ * CODE SOURCES:
  * http://stackoverflow.com/questions/16190536/how-to-display-strings-in-
  * jtextarea-jtextfield
+ * 
+ * IMAGE SOURCES:
+ * http://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
+ * 
+ * NOTE: Owl images were drawn by Leslie Kim. No source required.
  */
 
 package Panels;
@@ -29,14 +35,17 @@ import Objects.GameButton;
 @SuppressWarnings("serial")
 public class IntroPanel extends JPanel implements Panel, MouseListener {
 	// Declare static final members of IntroPanel class:
-	private static final String PLAY = "Let's go learn some boolean logic!";	// text for playButton
-	private static final String OWLS = "Meet the owls";							// text for owlButton
-	private static final String TEACHER = "Teachers & Parents";					// text for teacherButton
-	private static final String INSTRUCTION_TEXT = "Welcome to the Boolean "	// introduction text
+	private static final String PLAY = "Let's go learn some boolean logic!";				// text for playButton
+	private static final String OWLS = "Meet the owls";										// text for owlButton
+	private static final String TEACHER = "Teachers & Parents";								// text for teacherButton
+	private static final String INSTRUCTION_TEXT = "Welcome to the Boolean "				// introduction text
 			+ "Logic Forest! This is my family: Alice, my wife, and our two "
 			+ "children, David and Chloe. Our children need to get through "
 			+ "the Boolean Logic Forest and need your help! Let's go on an "
 			+ "adventure!";
+	private static final String BACKGROUND_SRC = "Images/Backgrounds/IntroBackground.jpg";	// background url
+	private static final String TEXT_WINDOW_SRC = "Images/TextWindows/IntroTextWindow.png";	// text window url
+	private static final String BOB_SRC = "Images/Owls/Bob.png";							// bob url
 
 	// Declare members of IntroPanel class:
 	private Game theGame;								// reference to Game that instantiates IntroPanel object
@@ -85,7 +94,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon("Images/Backgrounds/IntroBackground.jpg").getImage();
+		Image image = new ImageIcon(BACKGROUND_SRC).getImage();
 		g.drawImage(image, 0, 0, null);
 
 		// Paint various components on the screen.
@@ -100,11 +109,11 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's Window.
-		Image image = new ImageIcon("Images/TextWindows/IntroTextWindow.png").getImage();
+		Image image = new ImageIcon(TEXT_WINDOW_SRC).getImage();
 		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon("Images/Owls/Bob.png").getImage();
+		Image bob = new ImageIcon(BOB_SRC).getImage();
 		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
@@ -120,7 +129,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addText() {
-		// If the JTextArea is not null, remove it from the JPanel.
+		// If bobsTextArea is not null, remove it from the JPanel.
 		if (bobsTextArea != null) {
 			remove(bobsTextArea);									// remove from IntroPanel
 		}
@@ -194,7 +203,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	private void addPlayButton() {
 		// Initialize the playButton to go to the ForestPanel.
-		playButton = new GameButton(PLAY, "white");
+		playButton = new GameButton(PLAY, "WHITE");
 
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = BobsWindow.INTRO_XCOORD + BobsWindow.INTRO_WIDTH / 2 -
@@ -216,7 +225,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	private void addOwlButton() {
 		// Initialize a GameButton to go to the Owl Panel.
-		owlButton = new GameButton(OWLS, "white");
+		owlButton = new GameButton(OWLS, "WHITE");
 
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = (teacherButton.getPreferredSize().width - owlButton.getPreferredSize().width) / 2 + 468;
@@ -236,7 +245,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	private void addTeacherButton() {
 		// Initialize a GameButton to go on to the TeacherPanel.
-		teacherButton = new GameButton(TEACHER, "white");
+		teacherButton = new GameButton(TEACHER, "WHITE");
 
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = 468;
@@ -264,7 +273,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
-		// if playButton is clicked, go to ForestPanel.
+		// If playButton is clicked, go to ForestPanel.
 		if (source.getButtonMessage() == PLAY) {
 			theGame.changeLayoutCard("FOREST");						// switch to ForestPanel
 		}
