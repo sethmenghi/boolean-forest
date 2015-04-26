@@ -16,10 +16,10 @@ public class LevelOne {
 	public static final String FALSE_STATEMENT = "This is a FALSE statement.";
 	
 	// Declare static final Images for explanations:
-	public static final Image PENGUIN = new ImageIcon("Images/Levels/LevelOne/Penguin.png").getImage();
-	public static final Image BLUE = new ImageIcon("Images/Levels/LevelOne/Blue.png").getImage();
-	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Table.png").getImage();
-	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Pink.png").getImage();
+	public static final Image PENGUIN = new ImageIcon("Images/Levels/LevelOne/Explanation/Penguin.png").getImage();
+	public static final Image BLUE = new ImageIcon("Images/Levels/LevelOne/Explanation/Blue.png").getImage();
+	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Explanation/Table.png").getImage();
+	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Explanation/Pink.png").getImage();
 	
 	// Declare static final Strings for TextQuestions:
 	
