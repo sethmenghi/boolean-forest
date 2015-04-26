@@ -331,7 +331,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				break;
 			case 6:
 				System.out.println("This should go to questions.");
-//				repaint();
 				break;
 			default:
 				break;
@@ -342,6 +341,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			switch (currentPage) {
 			case 1:
 				System.out.println("This should go back to level map.");
+				theGame.changeLayoutCard(Game.FOREST);
 				break;
 			case 2:
 				currentPage--;

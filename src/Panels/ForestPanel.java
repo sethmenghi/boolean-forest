@@ -24,7 +24,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -56,13 +58,23 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	// Declare members of ForestPanel class:
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
 	private int theLevel;								// the current level passed in theGame
+	private JButton markerOneButton;					// button for level one
+	private JButton markerTwoButton;					// button for level two
+	private JButton markerThreeButton;					// button for level three
+	private JButton markerFourButton;					// button for level four
+	private JButton markerFiveButton;					// button for level five
 	private BobsWindow forestBobsWindow;				// Bob's window for instructions/explanations
 	private String bobsMessage;							// Bob's message
-	private JTextArea bobsTextArea;						// text area for Bobs' messagae
+	private JTextArea bobsTextArea;						// text area for Bob's message
 	private GameButton forestGameButton;				// button to continue to levels
 	private Owl chloe;									// child Owl Chloe
 	private Owl david;									// child Owl David
 	private List<Star> stars;							// list of Stars
+	public Boolean levelOnePassed = false;				// initialize level one passed to false
+	public Boolean levelTwoPassed = false;				// initialize level two passed to false
+	public Boolean levelThreePassed = false;			// initialize level three passed to false
+	public Boolean levelFourPassed = false;				// initialize level four passed to false
+	public Boolean levelFivePassed = false;				// initialize level five passed to false
 
 	/**
 	 * CONSTRUCTOR: The constructor calls initPanel() method.
@@ -307,7 +319,11 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("This should go to Level 1 Layout.");
+		GameButton source = (GameButton) e.getSource();
+		if (source.getButtonMessage() == LEVEL_1) {
+			System.out.println("this should go to level 1");
+			theGame.changeLayoutCard(Game.LEVEL_ONE);
+		}
 	}
 
 	@Override
