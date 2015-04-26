@@ -23,16 +23,17 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private static final int FORWARD_YCOORD = BobsWindow.LEVEL_YCOORD + BobsWindow.LEVEL_HEIGHT - 40;
 	private static final int BACKWARD_XCOORD = BobsWindow.LEVEL_XCOORD + BobsWindow.LEVEL_WIDTH - 100;
 	private static final int BACKWARD_YCOORD = BobsWindow.LEVEL_YCOORD + BobsWindow.LEVEL_HEIGHT - 40;
-	
+
 	private Game theGame;
 	private int level;
 	private BobsWindow levelBobsWindow;
 	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
+	private JTextArea bobsTextArea2;						// JTextArea for Bob's Window
 	private String currentShownText;
 	private int currentPage;
 	private GameButton forwardButton;
 	private GameButton backwardButton;
-	
+
 	public LevelPanel(Game game, int levelToPlay) {
 		initPanel(game, levelToPlay);
 	}
@@ -41,11 +42,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public void initPanel(Game game) {
 		// TODO Auto-generated method stub
 	}
-	
+
 	public void initPanel(Game game, int levelToPlay) {
 		this.theGame = game;
 		this.level = levelToPlay;
-		
+
 		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);
@@ -53,7 +54,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 		currentPage = 1;
 		currentShownText = LevelOne.PAGE_TRUE;
-		
+
 		// Initialize a BobsWindow with introduction text and instructions.
 		levelBobsWindow = new BobsWindow("LEVEL", currentShownText);
 		add(levelBobsWindow);
@@ -70,7 +71,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		// Paint various components on the screen.
 		paintBobsWindow(g);											// paint Bob's Window and Bob
 	}
-	
+
 	@Override
 	public void paintBobsWindow(Graphics g) {
 		// Draw the white background for Bob's Window.
@@ -82,7 +83,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		g.drawImage(bob, levelBobsWindow.getBob().getXCoord(), levelBobsWindow.getBob().getYCoord(), null);
 
 		// Add text and button.
-		addText();													// add text to Bob's Window
+		addText(g);													// add text to Bob's Window
 		addButtons();												// add button to Bob's Window
 	}
 
@@ -97,6 +98,162 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		addParagraphText();											// add paragraph
 	}
 
+	private void addText(Graphics g) {
+		String levelText;
+		String levelText2;
+
+		if (bobsTextArea != null ) {
+			remove(bobsTextArea);
+		}
+
+		if (bobsTextArea2 != null) {
+			remove(bobsTextArea2);
+		}
+
+
+
+		// Create a JTextArea to fit inside Bob's Window with wrapped text,
+		// custom font and transparent background. Add JTextArea to the JPanel.
+		if (currentPage == 1) {
+			levelText = LevelOne.PAGE_TRUE;								// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.TOPICS_FONT);						// set the font
+			bobsTextArea.setForeground(Game.DARK_BLUE);					// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 150);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 120);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel		
+		}
+		else if (currentPage == 2) {
+			levelBobsWindow.setBobsMessage(LevelOne.PAGE_TRUE_A);
+			levelText = levelBobsWindow.getBobsMessage();				// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel
+
+			g.drawImage(LevelOne.PENGUIN, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+
+			levelText2 = LevelOne.TRUE_STATEMENT;						// get the message from levelBobsWindow
+			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea2.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+			bobsTextArea2.setText(levelText2);							// set the text
+			add(bobsTextArea2);											// add to LevelPanel
+		}
+		else if (currentPage == 3) {
+			levelBobsWindow.setBobsMessage(LevelOne.PAGE_TRUE_B);
+			levelText = levelBobsWindow.getBobsMessage();				// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel
+
+			g.drawImage(LevelOne.BLUE, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+
+			levelText2 = LevelOne.TRUE_STATEMENT;						// get the message from levelBobsWindow
+			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea2.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+			bobsTextArea2.setText(levelText2);							// set the text
+			add(bobsTextArea2);											// add to LevelPanel
+		}
+		else if (currentPage == 4) {
+			levelText = LevelOne.PAGE_FALSE;							// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.TOPICS_FONT);						// set the font
+			bobsTextArea.setForeground(Game.DARK_BLUE);					// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 150);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 120);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel
+		}
+		else if (currentPage == 5) {
+			levelBobsWindow.setBobsMessage(LevelOne.PAGE_FALSE_A);
+			levelText = levelBobsWindow.getBobsMessage();				// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel
+
+			g.drawImage(LevelOne.TABLE, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+
+			levelText2 = LevelOne.FALSE_STATEMENT;						// get the message from levelBobsWindow
+			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea2.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+			bobsTextArea2.setText(levelText2);							// set the text
+			add(bobsTextArea2);											// add to LevelPanel
+		}
+		else if (currentPage == 6) {
+			levelBobsWindow.setBobsMessage(LevelOne.PAGE_FALSE_B);
+			levelText = levelBobsWindow.getBobsMessage();				// get the message from levelBobsWindow
+			bobsTextArea = new JTextArea();								// initialize the JTextArea
+			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+			bobsTextArea.setText(levelText);							// set the text
+			add(bobsTextArea);											// add to LevelPanel
+
+			g.drawImage(LevelOne.PINK, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+
+			levelText2 = LevelOne.FALSE_STATEMENT;						// get the message from levelBobsWindow
+			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea2.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+			bobsTextArea2.setText(levelText2);							// set the text
+			add(bobsTextArea2);											// add to LevelPanel
+		}
+	}
+
 	@Override
 	public void addTitleText() {
 		// TODO Auto-generated method stub	
@@ -104,48 +261,14 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	@Override
 	public void addParagraphText() {
-		if (bobsTextArea != null) {
-			remove(bobsTextArea);
-		}
-		
-		// Create a JTextArea to fit inside Bob's Window with wrapped text,
-		// custom font and transparent background. Add JTextArea to the JPanel.
-		if (currentPage == 1) {
-		String levelText = levelBobsWindow.getBobsMessage();		// get the message from levelBobsWindow
-		bobsTextArea = new JTextArea();								// initialize the JTextArea
-		bobsTextArea.setFont(Game.TOPICS_FONT);						// set the font
-		bobsTextArea.setForeground(Game.DARK_BLUE);					// set font color
-		bobsTextArea.setOpaque(false);								// set background to transparent
-		// Set the size and location of the text to have margin of 10 pixels
-		// from the edge of the white background. 
-		bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 150);
-		bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 120);
-		bobsTextArea.setText(levelText);							// set the text
-		add(bobsTextArea);											// add to LevelPanel		
-		}
-		else if (currentPage == 2) {
-			levelBobsWindow.setBobsMessage(LevelOne.PAGE_TRUE_A);
-			String levelText = levelBobsWindow.getBobsMessage();		// get the message from levelBobsWindow
-			bobsTextArea = new JTextArea();								// initialize the JTextArea
-			bobsTextArea.setFont(Game.LESSON_STATEMENT);						// set the font
-			bobsTextArea.setForeground(Game.LIGHT_BLUE);					// set font color
-			bobsTextArea.setOpaque(false);								// set background to transparent
-			// Set the size and location of the text to have margin of 10 pixels
-			// from the edge of the white background. 
-			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 50);
-			bobsTextArea.setText(levelText);							// set the text
-			add(bobsTextArea);											// add to LevelPanel
-			
-//			g.drawImage(LevelOne.PENGUIN, )
-		}
+
 	}
 
 	@Override
 	public void addButtons() {
 		addForwardAndBackwardButtons();								// add forward and backward buttons	
 	}
-	
+
 	/**
 	 * METHOD: This method adds the forward and backward buttons to
 	 * Bob's Window to view teacher instructions and adds a 
@@ -187,22 +310,28 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		if (source.getButtonMessage() == FORWARD) {
 			switch (currentPage) {
 			case 1:
-				showPage2();
+				currentPage++;
+				repaint();
 				break;
 			case 2:
-				showPage3();
+				currentPage++;
+				repaint();
 				break;
 			case 3:
-				showPage4();
+				currentPage++;
+				repaint();
 				break;
 			case 4:
-				showPage5();
+				currentPage++;
+				repaint();
 				break;
 			case 5:
-				showPage6();
+				currentPage++;
+				repaint();
 				break;
 			case 6:
-				goToQuestion();
+				System.out.println("This should go to questions.");
+//				repaint();
 				break;
 			default:
 				break;
@@ -212,70 +341,32 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		else if (source.getButtonMessage() == BACKWARD) {
 			switch (currentPage) {
 			case 1:
+				System.out.println("This should go back to level map.");
 				break;
 			case 2:
-				showPage1();
+				currentPage--;
+				repaint();
 				break;
 			case 3:
-				showPage2();
+				currentPage--;
+				repaint();
 				break;
 			case 4:
-				showPage3();
+				currentPage--;
+				repaint();
 				break;
 			case 5:
-				showPage4();
+				currentPage--;
+				repaint();
 				break;
 			case 6:
-				showPage5();
+				currentPage--;
+				repaint();
 				break;
 			default:
 				break;
 			}
 		}	
-	}
-	
-	private void showPage1() {
-		
-	}
-	
-	private void showPage2() {
-		currentPage = 2;
-		
-//		String levelText = LevelOne.PAGE_TRUE_A;		// get the message from levelBobsWindow
-//		JTextArea newbobsTextArea = new JTextArea();								// initialize the JTextArea
-//		newbobsTextArea.setFont(Game.LESSON_STATEMENT);						// set the font
-//		newbobsTextArea.setForeground(Game.LIGHT_BLUE);					// set font color
-//		newbobsTextArea.setOpaque(false);								// set background to transparent
-//		// Set the size and location of the text to have margin of 10 pixels
-//		// from the edge of the white background. 
-//		newbobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-//		newbobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 10, BobsWindow.LEVEL_YCOORD + 10);
-//		newbobsTextArea.setText(levelText);							// set the text
-//		add(newbobsTextArea);											// add to LevelPanel
-//		
-//		
-//		
-		repaint();
-	}
-	
-	private void showPage3() {
-		
-	}
-	
-	private void showPage4() {
-		
-	}
-	
-	private void showPage5() {
-		
-	}
-	
-	private void showPage6() {
-		
-	}
-	
-	private void goToQuestion() {
-		
 	}
 
 	@Override

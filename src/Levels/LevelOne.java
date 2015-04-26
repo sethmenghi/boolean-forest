@@ -10,7 +10,7 @@ public class LevelOne {
 	public static final String PAGE_TRUE_A = "This is a penguin.";		// page 2
 	public static final String PAGE_TRUE_B = "The color is blue.";		// page 3
 	
-	public static final String PAGE_FALSE = "FASLE";					// page 4
+	public static final String PAGE_FALSE = "FALSE";					// page 4
 	
 	public static final String PAGE_FALSE_A = "This is a cup.";			// page 5
 	public static final String PAGE_FALSE_B = "The color is yellow.";	// page 6
