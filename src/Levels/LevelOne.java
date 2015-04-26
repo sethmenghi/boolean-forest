@@ -5,23 +5,30 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class LevelOne {
-	public static final String PAGE_TRUE = "TRUE";						// page 1
-	
+	// Declare static final Strings for explanations:
+	public static final String PAGE_TRUE = "TRUE";						// page 1	
 	public static final String PAGE_TRUE_A = "This is a penguin.";		// page 2
-	public static final String PAGE_TRUE_B = "The color is blue.";		// page 3
-	
-	public static final String PAGE_FALSE = "FALSE";					// page 4
-	
+	public static final String PAGE_TRUE_B = "The color is blue.";		// page 3	
+	public static final String PAGE_FALSE = "FALSE";					// page 4	
 	public static final String PAGE_FALSE_A = "This is a cup.";			// page 5
-	public static final String PAGE_FALSE_B = "The color is yellow.";	// page 6
-	
+	public static final String PAGE_FALSE_B = "The color is yellow.";	// page 6	
 	public static final String TRUE_STATEMENT = "This is a TRUE statement.";
 	public static final String FALSE_STATEMENT = "This is a FALSE statement.";
 	
+	// Declare static final Images for explanations:
 	public static final Image PENGUIN = new ImageIcon("Images/Levels/LevelOne/Penguin.png").getImage();
 	public static final Image BLUE = new ImageIcon("Images/Levels/LevelOne/Blue.png").getImage();
 	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Table.png").getImage();
 	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Pink.png").getImage();
+	
+	// Declare static final Strings for TextQuestions:
+	
+	// Declare static final Images for TextQuestions:
+	
+	// Declare static final Strings for ImageQuestions:
+	
+	// Declare static final Images for ImageQuestions:
+	
 	
 //	
 //	private static final String INSTRUCTIONS = "Level One Instructions";
