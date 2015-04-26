@@ -1,6 +1,8 @@
 package Levels;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -21,24 +23,39 @@ public class LevelOne {
 	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Explanation/Table.png").getImage();
 	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Explanation/Pink.png").getImage();
 	
-	// Declare static final Strings for TextQuestions:
+	private static final String Q_ONE = "This is a monkey.";
+	private static final String IMAGE_ONE = "Images/Levels/LevelFour/Questions/lion.png";
+	private static final String Q_ONE_OPTION_1 = "True.";
+	private static final String Q_ONE_OPTION_2 = "False.";
+	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
+	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
+	public static final Image MONKEY = new ImageIcon(IMAGE_ONE).getImage();
 	
-	// Declare static final Images for TextQuestions:
+	private static final String Q_TWO = "This animal has stripes.";
+	private static final String IMAGE_TWO = "Images/Levels/LevelFour/Questions/zebra.png";
+	private static final String Q_TWO_OPTION_1 = "True.";
+	private static final String Q_TWO_OPTION_2 = "False.";
+	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
+	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
+	public static final Image ZEBRA = new ImageIcon(IMAGE_TWO).getImage();
 	
-	// Declare static final Strings for ImageQuestions:
+	private static final String Q_THREE = "This animal has stripes..";
+	private static final String IMAGE_THREE = "Images/Levels/LevelFour/Questions/toucan.png";
+	private static final String Q_THREE_OPTION_1 = "True.";
+	private static final String Q_THREE_OPTION_2 = "False.";
+	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
+	private static List<String> CORRECT_THREE= new ArrayList<String>(); 
+	public static final Image TOUCAN = new ImageIcon(IMAGE_THREE).getImage();
 	
-	// Declare static final Images for ImageQuestions:
 	
+	//These are the four string options for the answer to question 2, level 
 	
 //	
 //	private static final String INSTRUCTIONS = "Level One Instructions";
 //	// Question One -- text question
 //	private static final String Q_ONE = "This is a _____ and it is playing the _____";
 //	private static final String IMAGE_ONE = "Images/purpleDolphinSaxophone.png";
-//	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
-//	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
-//	private static final String Q_ONE_OPTION_3 = "shark, piano";
-//	private static final String Q_ONE_OPTION_4 = "shark, saxophone";
+//
 //	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
 //	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
 //	
