@@ -320,8 +320,8 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 
 		if (source.getButtonMessage() == LEVEL_1) {
 			System.out.println("this should go to level 1");
-			//theGame.changeLayoutCard(Game.LEVEL_FIVE);
-			theGame.levelFive.initLevel();
+			theGame.changeLayoutCard(Game.LEVEL_ONE);
+			//theGame.levelFive.initLevel();
 		}
 	}
 
