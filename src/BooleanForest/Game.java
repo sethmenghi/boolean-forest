@@ -69,6 +69,8 @@ public class Game extends JApplet {
 	public static final int APPLET_HEIGHT = 480;			// height of applet
 	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);		// font used for titles
 	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);	// font used for paragraph text
+	public static final Font TOPICS_FONT = new Font("Verdana", Font.BOLD, 100);		// used for lesson topics
+	public static final Font LESSON_STATEMENT = new Font("Verdana", Font.PLAIN, 20);// used for lesson statements
 	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
 	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
 	
@@ -181,6 +183,11 @@ public class Game extends JApplet {
 		level = 0;											// set the level to 0
 		
 		// Create each layout panel and add to cards.
+		
+		LevelPanel levelPanel = new LevelPanel(this, 1);
+		cards.add(levelPanel, LEVEL);
+		
+		
 		introPanel = new IntroPanel(this);					// initialize introPanel
 		cards.add(introPanel, INTRO);						// add to cards
 		forestPanel = new ForestPanel(this);				// initialize forestPanel
