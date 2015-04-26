@@ -91,7 +91,6 @@ public class LevelOne {
 	private Game theGame;
 	
 	public LevelOne(Game game) {
-		
 		theGame = game;
 		startLevel();
 	}
@@ -146,14 +145,15 @@ public class LevelOne {
 				theGame.repaint();
 			}
 			break;
-//		case 3:	
+		case 3:	
 //			addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2);
 //			theGame.textQuestion.setQuestion(Q_THREE);
 //			theGame.textQuestion.setQuestionImage(IMAGE_THREE);
 //			theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_2);
 //			theGame.textQuestion.initGui();
 //			theGame.textQuestion.repaint();
-//			break;
+			theGame.levelFive.initLevel();
+			break;
 //		case 4:	
 //			addPossibleAnswers(ANSWERS_FOUR,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2);
 //			theGame.textQuestion.setQuestion(Q_TWO);

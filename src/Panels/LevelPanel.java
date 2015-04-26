@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import BooleanForest.Game;
 import Levels.LevelFour;
 import Levels.LevelOne;
-import Levels.LevelThree;
+//import Levels.LevelThree;
 import Levels.LevelTwo;
 import Objects.BobsWindow;
 import Objects.GameButton;
@@ -41,7 +41,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	LevelOne levelOne;
 	LevelTwo levelTwo;
-	LevelThree levelThree;
+	//LevelThree levelThree;
 	LevelFour levelFour;
 	
 	public LevelPanel(Game game, int levelToPlay) {
@@ -196,6 +196,9 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 					System.out.println("Instantiated Level One in addText(Graphics)");
 				}
 			}
+			else if (currentPage == 8){
+				
+			}
 			bobsTextArea = new JTextArea();								// initialize the JTextArea
 			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
 			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
@@ -331,6 +334,9 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			case 6:
 				currentPage++;
 				System.out.println("This should go to questions.");
+				break;
+			case 7:
+				currentPage++;
 				break;
 			default:
 				break;

@@ -212,9 +212,6 @@ public class Game extends JApplet {
 		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
 		
 		levelFive = new LevelFive(this);
-		
-		imageQuestion = new ImageQuestion();				// initialize imageQuestion
-		cards.add(imageQuestion, IMAGE_QUESTION);			// add to cards
 
 		textQuestion = new TextQuestion();					// initialize textQuestion
 		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
