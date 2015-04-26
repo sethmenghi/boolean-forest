@@ -17,29 +17,54 @@ public class LevelTwo extends JPanel {
 	private static final String INSTRUCTIONS = "Level One Instructions";
 	// Question One -- text question
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String IMAGE_ONE = "Images/purpleDolphinSaxophone.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Question/purpleDolphinSaxophone.png";
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
 	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
 	private static final String Q_ONE_OPTION_3 = "shark, piano";
 	private static final String Q_ONE_OPTION_4 = "shark, saxophone";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
-	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
+	private static List<String> CORRECT_ONE = new ArrayList<String>();
+	public static final Image DOLPHIN = new ImageIcon(IMAGE_ONE).getImage();
+	
 	
 	//Question Two -- text question
 	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String IMAGE_TWO = "Images/pinkOctopus.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Question/pinkOctopus.png";
 	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
 	private static final String Q_TWO_OPTION_2 = "octopus, blue";
 	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
 	private static final String Q_TWO_OPTION_4 = "octopus, pink";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
 	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
+	public static final Image OCTOPUS = new ImageIcon(IMAGE_TWO).getImage();
+	
+	//Question Three -- text question 
+	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
+
+	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Question/seal.png";
+	private static final String Q_THREE_OPTION_1 = "dolphin, ball";
+	private static final String Q_THREE_OPTION_2 = "seal,yo-yo ";
+	private static final String Q_THREE_OPTION_3 = "seal, ball";
+	private static final String Q_THREE_OPTION_4 = "fish, ball";
+	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
+	private static List<String> CORRECT_THREE = new ArrayList<String>();
+	public static final Image SEAL = new ImageIcon(IMAGE_THREE).getImage();
+	
+	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelOne/Question/orca.png";
+	private static final String Q_FOUR_OPTION_1 = "whale, blue";
+	private static final String Q_FOUR_OPTION_2 = "dolphin,bue ";
+	private static final String Q_FOUR_OPTION_3 = "whale, brown";
+	private static final String Q_FOUR_OPTION_4 = "shark, blue";
+	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
+	private static List<String> CORRECT_FOUR = new ArrayList<String>();
+	public static final Image SHARK = new ImageIcon(IMAGE_FOUR).getImage();
 	
 	
 	
-	private static final String Q_THREE = "?";
-	private static final String Q_FOUR = "?";
 	private static final String Q_FIVE = "?";
+	
+	
 	
 	
 	private static final int TEXT = 0;

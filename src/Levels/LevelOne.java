@@ -34,33 +34,53 @@ public class LevelOne {
 	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Explanation/Table.png").getImage();
 	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Explanation/Pink.png").getImage();
 	
-	// Declare static final Strings for TextQuestions:
-	
-	// Declare static final Images for TextQuestions:
-	
-	// Declare static final Strings for ImageQuestions:
-	
-	// Declare static final Images for ImageQuestions:
-	private static final String INSTRUCTIONS = "Level One Instructions";
-	// Question One -- text question
-	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Questions/smallPurpleDolphinSaxophone.png";
-	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
-	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
-	private static final String Q_ONE_OPTION_3 = "shark, piano";
-	private static final String Q_ONE_OPTION_4 = "shark, saxophone";
+	private static final String Q_ONE = "This is a monkey.";
+	private static final String IMAGE_ONE = "Images/Levels/LevelFour/Questions/lion.png";
+	private static final String Q_ONE_OPTION_1 = "True.";
+	private static final String Q_ONE_OPTION_2 = "False.";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
 	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
-
-	//Question Two -- text question
-	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String IMAGE_TWO = "Images/pinkOctopus.png";
-	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
-	private static final String Q_TWO_OPTION_2 = "octopus, blue";
-	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
-	private static final String Q_TWO_OPTION_4 = "octopus, pink";
+	public static final Image MONKEY = new ImageIcon(IMAGE_ONE).getImage();
+	
+	private static final String Q_TWO = "This animal has stripes.";
+	private static final String IMAGE_TWO = "Images/Levels/LevelFour/Questions/zebra.png";
+	private static final String Q_TWO_OPTION_1 = "True.";
+	private static final String Q_TWO_OPTION_2 = "False.";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
 	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
+	public static final Image ZEBRA = new ImageIcon(IMAGE_TWO).getImage();
+	
+	private static final String Q_THREE = "This animal has stripes..";
+	private static final String IMAGE_THREE = "Images/Levels/LevelFour/Questions/toucan.png";
+	private static final String Q_THREE_OPTION_1 = "True.";
+	private static final String Q_THREE_OPTION_2 = "False.";
+	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
+	private static List<String> CORRECT_THREE= new ArrayList<String>(); 
+	public static final Image TOUCAN = new ImageIcon(IMAGE_THREE).getImage();
+	
+	
+	//These are the four string options for the answer to question 2, level 
+	
+//	
+//	private static final String INSTRUCTIONS = "Level One Instructions";
+//	// Question One -- text question
+//	private static final String Q_ONE = "This is a _____ and it is playing the _____";
+//	private static final String IMAGE_ONE = "Images/purpleDolphinSaxophone.png";
+//
+//	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
+//	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
+//	
+//	//Question Two -- text question
+//	private static final String Q_TWO = "This is an _____ and she is _____ ";
+//	private static final String IMAGE_TWO = "Images/pinkOctopus.png";
+//	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
+//	private static final String Q_TWO_OPTION_2 = "octopus, blue";
+//	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
+//	private static final String Q_TWO_OPTION_4 = "octopus, pink";
+//	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
+//	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
+//	
+//	
 //	
 //	private static final String Q_THREE = "?";
 //	private static final String Q_FOUR = "?";

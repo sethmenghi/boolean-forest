@@ -24,9 +24,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -50,19 +48,14 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final int MARKER_4_XCOORD = 437;			// x-coordinate for marker 4
 	private static final int MARKER_5_XCOORD = 587;			// x-coordinate for marker 5	
 	private static final int MARKER_1_YCOORD = 366;			// y-coordinate for marker 1
-	private static final int MARKER_2_YCOORD = 292;			// y-coordinate for marker 2
+	private static final int MARKER_2_YCOORD = 290;			// y-coordinate for marker 2
 	private static final int MARKER_3_YCOORD = 254;			// y-coordinate for marker 3
-	private static final int MARKER_4_YCOORD = 181;			// y-coordinate for marker 4
+	private static final int MARKER_4_YCOORD = 176;			// y-coordinate for marker 4
 	private static final int MARKER_5_YCOORD = 144;			// y-coordinate for marker 5
 
 	// Declare members of ForestPanel class:
 	private Game theGame;								// reference to Game that instantiates ForestPanel object
 	private int theLevel;								// the current level passed in theGame
-	private JButton markerOneButton;					// button for level one
-	private JButton markerTwoButton;					// button for level two
-	private JButton markerThreeButton;					// button for level three
-	private JButton markerFourButton;					// button for level four
-	private JButton markerFiveButton;					// button for level five
 	private BobsWindow forestBobsWindow;				// Bob's window for instructions/explanations
 	private String bobsMessage;							// Bob's message
 	private JTextArea bobsTextArea;						// text area for Bob's message
@@ -137,7 +130,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		paintBobsWindow(g);											// paint Bob's Window and Bob
 		paintStars(g);												// paint a star for each level passed
 	}
-	
+
 	/**
 	 * METHOD: Paints the Owl object passed in at it's x- and
 	 * y-coordinates. Only applies to Chloe and David.
@@ -232,6 +225,10 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addButtons() {
+		addForestButton();
+	}
+
+	private void addForestButton() {
 		// Initialize a GameButton to go on to Level 1.
 		forestGameButton = new GameButton(LEVEL_1, "WHITE");
 
@@ -294,7 +291,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		// number of stars. Only case 1 will break. This way, for each
 		// level, it will continue to draw the star earned for all previous
 		// levels.
-		
+
 		theLevel = 3;												// for diagnostics
 		stars.add(new Star("ONE"));									// for diagnostics
 		stars.add(new Star("TWO"));									// for diagnostics
@@ -320,6 +317,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();
+
 		if (source.getButtonMessage() == LEVEL_1) {
 			System.out.println("this should go to level 1");
 			theGame.changeLayoutCard(Game.LEVEL_ONE);
