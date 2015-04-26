@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import BooleanForest.Game;
+import Levels.LevelFour;
 import Levels.LevelOne;
+import Levels.LevelThree;
+import Levels.LevelTwo;
 import Objects.BobsWindow;
 import Objects.GameButton;
 
@@ -36,6 +39,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private GameButton forwardButton;					// forward button
 	private GameButton backwardButton;					// backward button
 
+	LevelOne levelOne;
+	LevelTwo levelTwo;
+	LevelThree levelThree;
+	LevelFour levelFour;
+	
 	public LevelPanel(Game game, int levelToPlay) {
 		initPanel(game, levelToPlay);
 	}
@@ -82,6 +90,16 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		add(levelBobsWindow);
 	}
 
+	public void nextQuestion(){
+		switch(theLevel){
+		case 1:
+			levelOne.nextQuestion();
+			break;
+		case 2:
+			break;
+		}
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);									// call super method
@@ -166,36 +184,42 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				g.drawImage(LevelOne.TABLE, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
-			else {
+			else if (currentPage == 6){
 				levelTextOne = LevelOne.PAGE_FALSE_B;					// get the sixth page from LevelOne class
 				g.drawImage(LevelOne.PINK, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
-			
-			bobsTextArea = new JTextArea();								// initialize the JTextArea
-			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
-			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
-			bobsTextArea.setOpaque(false);								// set background to transparent
-			// Set the size and location of the text to have margin of 10 pixels
-			// from the edge of the white background. 
-			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
-			bobsTextArea.setText(levelTextOne);							// set the text
-			add(bobsTextArea);											// add to LevelPanel
+			else if (currentPage == 7){
+				if (levelOne == null){
+					levelOne = new LevelOne(theGame);
+					theGame.textQuestion.switchLevelPanel(this);
+					System.out.println("Instantiated Level One in addText(Graphics)");
+				}
+			}
+//			bobsTextArea = new JTextArea();								// initialize the JTextArea
+//			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
+//			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+//			bobsTextArea.setOpaque(false);								// set background to transparent
+//			// Set the size and location of the text to have margin of 10 pixels
+//			// from the edge of the white background. 
+//			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+//			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+//			bobsTextArea.setText(levelTextOne);							// set the text
+//			add(bobsTextArea);											// add to LevelPanel
 
-			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
-			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
-			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
-			bobsTextArea2.setOpaque(false);								// set background to transparent
-			// Set the size and location of the text to have margin of 10 pixels
-			// from the edge of the white background. 
-			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
-			bobsTextArea2.setText(levelTextTwo);						// set the text
-			add(bobsTextArea2);											// add to LevelPanel
+//			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+//			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
+//			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+//			bobsTextArea2.setOpaque(false);								// set background to transparent
+//			// Set the size and location of the text to have margin of 10 pixels
+//			// from the edge of the white background. 
+//			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
+//			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+//			bobsTextArea2.setText(levelTextTwo);						// set the text
+//			add(bobsTextArea2);											// add to LevelPanel
 		}
 	}
-
+	
 	@Override
 	public void addTitleText() {
 		// TODO Auto-generated method stub	
@@ -305,6 +329,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 6:
+				currentPage++;
 				System.out.println("This should go to questions.");
 				break;
 			default:
