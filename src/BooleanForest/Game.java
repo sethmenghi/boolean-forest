@@ -72,6 +72,7 @@ import javax.swing.SwingUtilities;
 
 import Panels.*;
 import Questions.*;
+import Levels.*;
 
 @SuppressWarnings("serial")
 public class Game extends JApplet {
@@ -96,6 +97,7 @@ public class Game extends JApplet {
 	public static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of levelPanelFive
 	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
 	public static final String TEXT_QUESTION = "TEXT_QUESTION";
+	public static final String DRAG_AND_DROP_QUESTION = "DRAG_AND_DROP_QUESTION";
 
 	// Declare members of Game class: 
 	private Dimension windowSize;							// dimensions of JPanel
@@ -109,8 +111,10 @@ public class Game extends JApplet {
 	private LevelPanel levelPanelThree;						// level 3 panel
 	private LevelPanel levelPanelFour;						// level 4 panel
 	private LevelPanel levelPanelFive;						// level 5 panel
+	public LevelFive levelFive;								// level 5 declaration
 	private ImageQuestion imageQuestion;					// image question panel
 	private TextQuestion textQuestion;						// text question panel
+	public DragAndDropQuestion dragAndDropQuestion;			// drag and drop question panel
 	private int level;										// current level passed
 	
 	/**
@@ -204,10 +208,14 @@ public class Game extends JApplet {
 		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
 		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards	
 		
+		levelFive = new LevelFive(this);
+		
 		imageQuestion = new ImageQuestion();				// initialize imageQuestion
 		cards.add(imageQuestion, IMAGE_QUESTION);			// add to cards
 		textQuestion = new TextQuestion();					// initialize textQuestion
 		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
+		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
+		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
 	}
 	
 	/**
