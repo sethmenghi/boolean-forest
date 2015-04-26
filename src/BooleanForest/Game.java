@@ -38,11 +38,22 @@
  * Once the student helps the children owls pass Level 5, a certificate of
  * completion will be displayed.
  * 
- * The three over-arching objectives of this apple are:
+ * The three over-arching objectives of this applet are:
  * 1) The applet is fun/interactive
  * 2) Increases awareness for computer science
  * 3) Kids should be able to go through this game with minimal or no help
  *    from a teacher/parent
+ *    
+ * The organization of this project is that the Game class of the
+ * BooleanForest package is the "controller" of the game. The overall level
+ * of the game is handled here, which will keep the ForestPanel updated.
+ * The Levels packages includes Level classes, which essentially declares
+ * the content for each level of the game. The Objects package contain
+ * classes that are objects used throughout the game. The Panels package
+ * contains different Panels that make up the CardLayout in the Game class.
+ * Panel is an interface which is implemented by each type of panel. The
+ * Questions package contains a Question interface which is implemented
+ * by each of the two Question types.
  *    
  * SOURCES:
  * 
@@ -65,8 +76,8 @@ import Questions.*;
 @SuppressWarnings("serial")
 public class Game extends JApplet {
 	// Public static final members of Game class:
-	public static final int APPLET_WIDTH = 640;				// width of applet
-	public static final int APPLET_HEIGHT = 480;			// height of applet
+	public static final int APPLET_WIDTH = 640;										// width of applet
+	public static final int APPLET_HEIGHT = 480;									// height of applet
 	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);		// font used for titles
 	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);	// font used for paragraph text
 	public static final Font TOPICS_FONT = new Font("Verdana", Font.BOLD, 100);		// used for lesson topics
@@ -74,32 +85,32 @@ public class Game extends JApplet {
 	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
 	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
 	
-	public static final String INTRO = "INTRO";										// name of intro panel
-	public static final String FOREST = "FOREST";									// name of forest panel
-	public static final String TEACHER = "TEACHER";									// name of teacher panel
-	public static final String OWLS = "OWLS";										// name of owl panel
-	public static final String LEVEL_ONE = "LEVEL_ONE";								// name of level 1 panel
-	public static final String LEVEL_TWO = "LEVEL_TWO";								// name of level 2 panel
-	public static final String LEVEL_THREE = "LEVEL_THREE";							// name of level 3 panel
-	public static final String LEVEL_FOUR = "LEVEL_FOUR";							// name of level 4 panel
-	public static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of level 5 panel
+	public static final String INTRO = "INTRO";										// name of introPanel
+	public static final String FOREST = "FOREST";									// name of forestPanel
+	public static final String TEACHER = "TEACHER";									// name of teacherPanel
+	public static final String OWLS = "OWLS";										// name of owlPanel
+	public static final String LEVEL_ONE = "LEVEL_ONE";								// name of levelPanelOne
+	public static final String LEVEL_TWO = "LEVEL_TWO";								// name of levelPanelTwo
+	public static final String LEVEL_THREE = "LEVEL_THREE";							// name of levelPanelThree
+	public static final String LEVEL_FOUR = "LEVEL_FOUR";							// name of levelPanelFour
+	public static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of levelPanelFive
 	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
 	public static final String TEXT_QUESTION = "TEXT_QUESTION";
 
 	// Declare members of Game class: 
 	private Dimension windowSize;							// dimensions of JPanel
-	public JPanel cards;									// JPanel object with card layout
-	public IntroPanel introPanel;							// intro panel
-	public ForestPanel forestPanel;							// forest panel
-	public OwlPanel owlPanel;								// owl panel
-	public TeacherPanel teacherPanel;						// teacher panel
-	public LevelPanel levelPanelOne;						// level 1 panel
-	public LevelPanel levelPanelTwo;						// level 2 panel
-	public LevelPanel levelPanelThree;						// level 3 panel
-	public LevelPanel levelPanelFour;						// level 4 panel
-	public LevelPanel levelPanelFive;						// level 5 panel
-	public ImageQuestion imageQuestion;						// image question panel
-	public TextQuestion textQuestion;						// text question panel
+	private JPanel cards;									// JPanel object to use card layout
+	private IntroPanel introPanel;							// intro panel
+	private ForestPanel forestPanel;						// forest panel
+	private OwlPanel owlPanel;								// owl panel
+	private TeacherPanel teacherPanel;						// teacher panel
+	private LevelPanel levelPanelOne;						// level 1 panel
+	private LevelPanel levelPanelTwo;						// level 2 panel
+	private LevelPanel levelPanelThree;						// level 3 panel
+	private LevelPanel levelPanelFour;						// level 4 panel
+	private LevelPanel levelPanelFive;						// level 5 panel
+	private ImageQuestion imageQuestion;					// image question panel
+	private TextQuestion textQuestion;						// text question panel
 	private int level;										// current level passed
 	
 	/**
@@ -115,7 +126,14 @@ public class Game extends JApplet {
 	 * @param level
 	 */
 	public void setLevel(int level) {
-		this.level = level;									// set the level of the game
+		// Output error message if attempting to set to illegal level.
+		if (level < 0 || level > 5) {
+			System.err.println("ERROR: Invalid level.");
+		}
+		// Otherwise, set the level of the game.
+		else {
+			this.level = level;								// set the level of the game
+		}
 	}
 	
 	/**
@@ -124,22 +142,6 @@ public class Game extends JApplet {
 	 */
 	public int getLevel() {
 		return level;										// return the level of the game
-	}
-	
-	/**
-	 * METHOD: Increments the level of the game.
-	 * @param none
-	 */
-	public void incrementLevel() {
-		// Only increment the level if private member level is between
-		// 0 and 4.
-		if (level >= 0 && level < 5) {
-			level++;										// increment level
-		}
-		// Otherwise, there is something wrong and output error message.
-		else {
-			System.err.println("ERROR: Invalid level.");	// output error message
-		}
 	}
 	
 	/**
@@ -179,13 +181,7 @@ public class Game extends JApplet {
 		add(cards);											// add JPanel to applet
 		cards.setVisible(true);								// make cards visible
 		
-		level = 0;											// set the level to 0
-		
-		
-		
-
-
-		
+		level = 0;											// set the level to 0 (no levels passed yet)
 		
 		// Create each layout panel and add to cards.
 		introPanel = new IntroPanel(this);					// initialize introPanel
@@ -197,11 +193,8 @@ public class Game extends JApplet {
 		teacherPanel = new TeacherPanel(this);				// initialize teacherPanel
 		cards.add(teacherPanel, TEACHER);					// add to cards
 		
-		
 		levelPanelOne = new LevelPanel(this, 1);			// initialize level 1 panel
 		cards.add(levelPanelOne, LEVEL_ONE);				// add to cards
-		
-		
 		levelPanelTwo = new LevelPanel(this, 2);			// initialize level 2 panel
 		cards.add(levelPanelTwo, LEVEL_TWO);				// add to cards
 		levelPanelThree = new LevelPanel(this, 3);			// initialize level 3 panel
@@ -209,12 +202,28 @@ public class Game extends JApplet {
 		levelPanelFour = new LevelPanel(this, 4);			// initialize level 4 panel
 		cards.add(levelPanelFour, LEVEL_FOUR);				// add to cards
 		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
-		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
-			
+		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards	
+		
 		imageQuestion = new ImageQuestion();				// initialize imageQuestion
 		cards.add(imageQuestion, IMAGE_QUESTION);			// add to cards
 		textQuestion = new TextQuestion();					// initialize textQuestion
 		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
+	}
+	
+	/**
+	 * METHOD: Increments the level of the game.
+	 * @param none
+	 */
+	public void incrementLevel() {
+		// Only increment the level if private member level is between
+		// 0 and 4.
+		if (level >= 0 && level < 5) {
+			level++;										// increment level
+		}
+		// Otherwise, there is something wrong and output error message.
+		else {
+			System.err.println("ERROR: Invalid level.");	// output error message
+		}
 	}
 
 	/**
