@@ -62,13 +62,13 @@ public class LevelOne {
 	//These are the four string options for the answer to question 2, level 
 	
 //	
-//	private static final String INSTRUCTIONS = "Level One Instructions";
-//	// Question One -- text question
-//	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-//	private static final String IMAGE_ONE = "Images/purpleDolphinSaxophone.png";
-//
-//	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
-//	private static List<String> CORRECT_ONE = new ArrayList<String>(); 
+	private static final String INSTRUCTIONS = "Level One Instructions";
+	// Question One -- text question
+	private static final String Q_FOUR = "This is a _____ and it is playing the _____";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelOne/Questions/purpleDolphinSaxophone.png";
+
+	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
+	private static List<String> CORRECT_FOUR = new ArrayList<String>(); 
 //	
 //	//Question Two -- text question
 //	private static final String Q_TWO = "This is an _____ and she is _____ ";
@@ -80,10 +80,6 @@ public class LevelOne {
 //	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
 //	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
 //	
-//	
-//	
-//	private static final String Q_THREE = "?";
-//	private static final String Q_FOUR = "?";
 //	private static final String Q_FIVE = "?";
 //	private static final int TEXT = 0;
 //	private static final int IMAGE = 1;
@@ -101,6 +97,11 @@ public class LevelOne {
 		holdsPossibleAnswers.add(option2);
 		holdsPossibleAnswers.add(option3);
 		holdsPossibleAnswers.add(option4);
+	}
+	
+	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2){
+		holdsPossibleAnswers.add(option1);
+		holdsPossibleAnswers.add(option2);
 	}
 	
 	public static void addCorrectAnswers(List<String> correctAnswer, String correctOption){
@@ -126,7 +127,7 @@ public class LevelOne {
 		switch (currentLevel) {
 		case 1:
 			if (ANSWERS_ONE.size() == 0){
-				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2,  Q_ONE_OPTION_3,  Q_ONE_OPTION_4);
+				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2);
 				addCorrectAnswers(CORRECT_ONE, Q_ONE_OPTION_2);
 				theGame.textQuestion.setQuestion(Q_ONE);
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
@@ -136,8 +137,35 @@ public class LevelOne {
 			}
 			break;
 		case 2:	
-			addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2,  Q_TWO_OPTION_3,  Q_TWO_OPTION_4);
-			addCorrectAnswers(CORRECT_TWO, Q_TWO_OPTION_4);
+			addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2);
+			addCorrectAnswers(CORRECT_TWO, Q_TWO_OPTION_1);
+			theGame.textQuestion.setQuestion(Q_TWO);
+			theGame.textQuestion.setQuestionImage(IMAGE_TWO);
+			theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_ONE_OPTION_2);
+			theGame.textQuestion.initGui();
+			theGame.textQuestion.repaint();
+			break;
+		case 3:	
+			addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2);
+			addCorrectAnswers(CORRECT_THREE, Q_THREE_OPTION_1);
+			theGame.textQuestion.setQuestion(Q_THREE);
+			theGame.textQuestion.setQuestionImage(IMAGE_THREE);
+			theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_2);
+			theGame.textQuestion.initGui();
+			theGame.textQuestion.repaint();
+			break;
+		case 4:	
+			addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2);
+			addCorrectAnswers(CORRECT_TWO, Q_TWO_OPTION_1);
+			theGame.textQuestion.setQuestion(Q_TWO);
+			theGame.textQuestion.setQuestionImage(IMAGE_TWO);
+			theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_ONE_OPTION_2);
+			theGame.textQuestion.initGui();
+			theGame.textQuestion.repaint();
+			break;
+		case 5:	
+			addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2);
+			addCorrectAnswers(CORRECT_TWO, Q_TWO_OPTION_1);
 			theGame.textQuestion.setQuestion(Q_TWO);
 			theGame.textQuestion.setQuestionImage(IMAGE_TWO);
 			theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_ONE_OPTION_2);

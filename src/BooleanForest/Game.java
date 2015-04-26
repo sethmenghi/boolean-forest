@@ -109,8 +109,7 @@ public class Game extends JApplet {
 	private LevelPanel levelPanelThree;						// level 3 panel
 	private LevelPanel levelPanelFour;						// level 4 panel
 	private LevelPanel levelPanelFive;						// level 5 panel
-	private ImageQuestion imageQuestion;					// image question panel
-	private TextQuestion textQuestion;						// text question panel
+	public TextQuestion textQuestion;						// text question panel
 	private int level;										// current level passed
 	
 	/**
@@ -203,9 +202,7 @@ public class Game extends JApplet {
 		cards.add(levelPanelFour, LEVEL_FOUR);				// add to cards
 		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
 		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
-			
-//		imageQuestion = new ImageQuestion();				// initialize imageQuestion
-//		cards.add(imageQuestion, IMAGE_QUESTION);			// add to cards
+		
 		textQuestion = new TextQuestion();					// initialize textQuestion
 		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
 	}
