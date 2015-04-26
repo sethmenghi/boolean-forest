@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import BooleanForest.Game;
+import Levels.LevelFour;
 import Levels.LevelOne;
+import Levels.LevelThree;
+import Levels.LevelTwo;
 import Objects.BobsWindow;
 import Objects.GameButton;
 
@@ -34,6 +37,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private GameButton forwardButton;
 	private GameButton backwardButton;
 
+	LevelOne levelOne;
+	LevelTwo levelTwo;
+	LevelThree levelThree;
+	LevelFour levelFour;
+	
 	public LevelPanel(Game game, int levelToPlay) {
 		initPanel(game, levelToPlay);
 	}
@@ -60,6 +68,16 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		add(levelBobsWindow);
 	}
 
+	public void nextQuestion(){
+		switch(level){
+		case 1:
+			levelOne.nextQuestion();
+			break;
+		case 2:
+			break;
+		}
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);									// call super method
@@ -109,8 +127,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		if (bobsTextArea2 != null) {
 			remove(bobsTextArea2);
 		}
-
-
 
 		// Create a JTextArea to fit inside Bob's Window with wrapped text,
 		// custom font and transparent background. Add JTextArea to the JPanel.
@@ -252,8 +268,16 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			bobsTextArea2.setText(levelText2);							// set the text
 			add(bobsTextArea2);											// add to LevelPanel
 		}
+		else if (currentPage == 7){
+			if (levelOne == null){
+				level = 1;
+				levelOne = new LevelOne(theGame);
+				theGame.textQuestion.switchLevelPanel(this);
+				System.out.println("Instantiated Level One in addText(Graphics)");
+			}
+		}
 	}
-
+	
 	@Override
 	public void addTitleText() {
 		// TODO Auto-generated method stub	
@@ -330,6 +354,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 6:
+				currentPage++;
 				System.out.println("This should go to questions.");
 				break;
 			default:
