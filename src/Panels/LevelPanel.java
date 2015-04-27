@@ -117,7 +117,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
-		addText();													// add text
+		addText(g);													// add text
 		addButtons();												// add buttons
 	}
 
