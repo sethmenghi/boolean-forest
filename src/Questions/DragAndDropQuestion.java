@@ -33,7 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import BooleanForest.Game;
-import Objects.BobsWindow;
+//import Objects.BobsWindow;
 import Objects.GameButton;
 
 // Sources:
@@ -133,7 +133,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	
 	int numberOfAnswersCorrect;
 	
-	BobsWindow dragAndDropBobsWindow; 
+//	BobsWindow dragAndDropBobsWindow; 
 	
 	String instructionText = "Click items to select them. Then drag them over Bob!";
 	
