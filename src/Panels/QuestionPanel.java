@@ -3,10 +3,10 @@
  * 
  * DESCRIPTION:
  * The QuestionPanel class extends JPanel and is the layout that displays the
- * question layout, which is just an background gradient.
+ * question layout, which is just a background gradient.
  *    
- * CODE SOURCES:
- * 
+ * http://stackoverflow.com/questions/16190536/how-to-display-strings-in-
+ * jtextarea-jtextfield
  */
 
 package Panels;
@@ -22,7 +22,7 @@ import BooleanForest.Game;
 
 @SuppressWarnings("serial")
 public class QuestionPanel extends JPanel implements Panel {
-	// Declare private static final members of QuestionPanel class:
+	// Declare static final members of IntroPanel class:
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/EmptyGradientBackground.jpg";
 	
 	// Declare members of QuestionPanel class:

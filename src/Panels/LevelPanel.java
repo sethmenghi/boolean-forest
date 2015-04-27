@@ -16,7 +16,6 @@ import Levels.LevelOne;
 import Levels.LevelThree;
 import Levels.LevelTwo;
 import Objects.GameButton;
-import Objects.Owl;
 
 @SuppressWarnings("serial")
 public class LevelPanel extends JPanel implements Panel, MouseListener {
@@ -24,10 +23,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private static final String BACKWARD = "<<";									// text for backward button
 	private static final String BACK = "BACK TO FOREST";							// text for back to forestPanel
 	
-	public static final int LEVEL_WIDTH = 420;				// width of LevelPanel BobsWindow
-	public static final int LEVEL_HEIGHT = 433;				// height of LevelPanel BobsWindow
-	public static final int LEVEL_XCOORD = 22;				// pre-determined xCoord of LevelPanel BobsWindow
-	public static final int LEVEL_YCOORD = 24;				// pre-determined yCoord of LevelPanel BobsWindow
+	private static final int LEVEL_WIDTH = 420;			// width of LevelPanel BobsWindow
+	private static final int LEVEL_HEIGHT = 433;		// height of LevelPanel BobsWindow
+	private static final int LEVEL_XCOORD = 22;			// pre-determined xCoord of LevelPanel BobsWindow
+	private static final int LEVEL_YCOORD = 24;			// pre-determined yCoord of LevelPanel BobsWindow
 	private static final int BOB_XCOORD = 464;			// pre-determined xCoord of LevelPanel Bob
 	private static final int BOB_YCOORD = 304;			// pre-determined yCoord of LevelPanel Bob
 	
@@ -39,7 +38,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	private Game theGame;								// reference to Game that instantiates LevelPanel object
 	private int theLevel;								// the current level passed in theGame
-private Owl bob;										// Bob
 	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
 	private JTextArea bobsTextArea2;					// JTextArea for Bob's Window (if there are two statements)
 	private String currentShownText;					// current text being shown for explanations
@@ -50,7 +48,7 @@ private Owl bob;										// Bob
 
 	LevelOne levelOne;
 	LevelTwo levelTwo;
-	//LevelThree levelThree;
+	LevelThree levelThree;
 	LevelFour levelFour;
 	
 	public LevelPanel(Game game, int levelToPlay) {
@@ -65,7 +63,6 @@ private Owl bob;										// Bob
 	public void initPanel(Game game, int levelToPlay) {
 		this.theGame = game;
 		this.theLevel = levelToPlay;
-		bob = new Owl(BOB_XCOORD, BOB_YCOORD, Owl.BOB);				// initialize Bob
 
 		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
@@ -97,15 +94,16 @@ private Owl bob;										// Bob
 		
 	}
 
-	public void nextQuestion(){
-		switch(theLevel){
-		case 1:
-			levelOne.nextQuestion();
-			break;
-		case 2:
-			break;
-		}
-	}
+	/////////// THIS CODE IS NOT DOING ANYTHING ////////////
+//	public void nextQuestion(){
+//		switch(theLevel){
+//		case 1:
+//			levelOne.nextQuestion();
+//			break;
+//		case 2:
+//			break;
+//		}
+//	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
@@ -185,14 +183,14 @@ private Owl bob;										// Bob
 				g.drawImage(LevelOne.PINK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
-			else if (currentPage == 7){
-				if (levelOne == null){
+			else if (currentPage == 7) {
+				if (levelOne == null) {
 					levelOne = new LevelOne(theGame);
 					theGame.textQuestion.switchLevelPanel(this);
 					System.out.println("Instantiated Level One in addText(Graphics)");
 				}
 			}
-			else if (currentPage == 8){
+			else if (currentPage == 8) {
 				
 			}
 			bobsTextArea = new JTextArea();								// initialize the JTextArea
