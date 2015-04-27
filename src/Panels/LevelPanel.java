@@ -13,24 +13,33 @@ import javax.swing.JTextArea;
 import BooleanForest.Game;
 import Levels.LevelFour;
 import Levels.LevelOne;
-//import Levels.LevelThree;
+import Levels.LevelThree;
 import Levels.LevelTwo;
-import Objects.BobsWindow;
 import Objects.GameButton;
+import Objects.Owl;
 
 @SuppressWarnings("serial")
 public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private static final String FORWARD = ">>";										// text for forward button
 	private static final String BACKWARD = "<<";									// text for backward button
 	private static final String BACK = "BACK TO FOREST";							// text for back to forestPanel
-	private static final int FORWARD_XCOORD = BobsWindow.LEVEL_XCOORD + BobsWindow.LEVEL_WIDTH - 50;
-	private static final int FORWARD_YCOORD = BobsWindow.LEVEL_YCOORD + BobsWindow.LEVEL_HEIGHT - 40;
-	private static final int BACKWARD_XCOORD = BobsWindow.LEVEL_XCOORD + BobsWindow.LEVEL_WIDTH - 100;
-	private static final int BACKWARD_YCOORD = BobsWindow.LEVEL_YCOORD + BobsWindow.LEVEL_HEIGHT - 40;
+	
+	public static final int LEVEL_WIDTH = 420;				// width of LevelPanel BobsWindow
+	public static final int LEVEL_HEIGHT = 433;				// height of LevelPanel BobsWindow
+	public static final int LEVEL_XCOORD = 22;				// pre-determined xCoord of LevelPanel BobsWindow
+	public static final int LEVEL_YCOORD = 24;				// pre-determined yCoord of LevelPanel BobsWindow
+	private static final int BOB_XCOORD = 464;			// pre-determined xCoord of LevelPanel Bob
+	private static final int BOB_YCOORD = 304;			// pre-determined yCoord of LevelPanel Bob
+	
+	
+	private static final int FORWARD_XCOORD = LEVEL_XCOORD + LEVEL_WIDTH - 50;
+	private static final int FORWARD_YCOORD = LEVEL_YCOORD + LEVEL_HEIGHT - 40;
+	private static final int BACKWARD_XCOORD = LEVEL_XCOORD + LEVEL_WIDTH - 100;
+	private static final int BACKWARD_YCOORD = LEVEL_YCOORD + LEVEL_HEIGHT - 40;
 
 	private Game theGame;								// reference to Game that instantiates LevelPanel object
 	private int theLevel;								// the current level passed in theGame
-	private BobsWindow levelBobsWindow;					// Bob's window for explanation
+private Owl bob;										// Bob
 	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
 	private JTextArea bobsTextArea2;					// JTextArea for Bob's Window (if there are two statements)
 	private String currentShownText;					// current text being shown for explanations
@@ -56,6 +65,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public void initPanel(Game game, int levelToPlay) {
 		this.theGame = game;
 		this.theLevel = levelToPlay;
+		bob = new Owl(BOB_XCOORD, BOB_YCOORD, Owl.BOB);				// initialize Bob
 
 		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
@@ -85,9 +95,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			break;
 		}
 		
-		// Initialize a BobsWindow with introduction text and instructions.
-		levelBobsWindow = new BobsWindow("LEVEL", currentShownText);
-		add(levelBobsWindow);
 	}
 
 	public void nextQuestion(){
@@ -108,23 +115,12 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		Image image = new ImageIcon("Images/Backgrounds/LevelBackground.jpg").getImage();
 		g.drawImage(image, 0, 0, null);
 
-		// Paint various components on the screen.
-		paintBobsWindow(g);											// paint Bob's Window and Bob
-	}
-
-	@Override
-	public void paintBobsWindow(Graphics g) {
-		// Draw the white background for Bob's Window.
-		Image image = new ImageIcon("Images/TextWindows/LevelTextWindow.png").getImage();
-		g.drawImage(image, levelBobsWindow.getXCoord(), levelBobsWindow.getYCoord(), null);
-
-		// Draw Bob.
-		Image bob = new ImageIcon("Images/Owls/Bob.png").getImage();
-		g.drawImage(bob, levelBobsWindow.getBob().getXCoord(), levelBobsWindow.getBob().getYCoord(), null);
+		Image bobImage = new ImageIcon("Images/Owls/Bob.png").getImage();
+		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
-		addText(g);													// add text to Bob's Window
-		addButtons();												// add button to Bob's Window
+		addText();													// add text
+		addButtons();												// add buttons
 	}
 
 	@Override
@@ -163,30 +159,30 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			bobsTextArea.setOpaque(false);								// set background to transparent
 			// Set the size and location of the text to have margin of 10 pixels
 			// from the edge of the white background. 
-			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 150);
-			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 120);
+			bobsTextArea.setSize(LEVEL_WIDTH - 20, 150);
+			bobsTextArea.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 120);
 			bobsTextArea.setText(levelTextOne);							// set the text
 			add(bobsTextArea);											// add to LevelPanel		
 		}
 		else {
 			if (currentPage == 2) {
 				levelTextOne = LevelOne.PAGE_TRUE_A;					// get the second page from LevelOne class
-				g.drawImage(LevelOne.PENGUIN, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+				g.drawImage(LevelOne.PENGUIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.TRUE_STATEMENT;					// get the second line of text
 			}
 			else if (currentPage == 3) {
 				levelTextOne = LevelOne.PAGE_TRUE_B;					// get the third page from LevelOne class
-				g.drawImage(LevelOne.BLUE, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+				g.drawImage(LevelOne.BLUE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.TRUE_STATEMENT;					// get the second line of text
 			}
 			else if (currentPage == 5) {
 				levelTextOne = LevelOne.PAGE_FALSE_A;					// get the fifth page from LevelOne class
-				g.drawImage(LevelOne.TABLE, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+				g.drawImage(LevelOne.TABLE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
 			else if (currentPage == 6){
 				levelTextOne = LevelOne.PAGE_FALSE_B;					// get the sixth page from LevelOne class
-				g.drawImage(LevelOne.PINK, BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 80, null);
+				g.drawImage(LevelOne.PINK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
 			else if (currentPage == 7){
@@ -205,8 +201,8 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			bobsTextArea.setOpaque(false);								// set background to transparent
 			// Set the size and location of the text to have margin of 10 pixels
 			// from the edge of the white background. 
-			bobsTextArea.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-			bobsTextArea.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 30);
+			bobsTextArea.setSize(LEVEL_WIDTH - 20, 50);
+			bobsTextArea.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 30);
 			bobsTextArea.setText(levelTextOne);							// set the text
 			add(bobsTextArea);											// add to LevelPanel
 
@@ -216,8 +212,8 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			bobsTextArea2.setOpaque(false);								// set background to transparent
 			// Set the size and location of the text to have margin of 10 pixels
 			// from the edge of the white background. 
-			bobsTextArea2.setSize(BobsWindow.LEVEL_WIDTH - 20, 50);
-			bobsTextArea2.setLocation(BobsWindow.LEVEL_XCOORD + 50, BobsWindow.LEVEL_YCOORD + 350);
+			bobsTextArea2.setSize(LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 350);
 			bobsTextArea2.setText(levelTextTwo);						// set the text
 			add(bobsTextArea2);											// add to LevelPanel
 		}

@@ -85,11 +85,6 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		addText();													// add text to each owl's window
 		addButtons();												// add button to go back to intro panel
 	}
-	
-	@Override
-	public void paintBobsWindow(Graphics g) {
-		// TODO Auto-generated method stub
-	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method adds text for each owl.
@@ -243,7 +238,7 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// Get the source of the component that was clicked.
-		theGame.changeLayoutCard(Game.INTRO);						// switch to IntroPanel
+		theGame.changeLayoutCard("INTRO");						// switch to IntroPanel
 	}
 
 	@Override

@@ -1,5 +1,17 @@
+/**
+ * QUESTIONPANEL CLASS
+ * 
+ * DESCRIPTION:
+ * The QuestionPanel class extends JPanel and is the layout that displays the
+ * question layout, which is just an background gradient.
+ *    
+ * CODE SOURCES:
+ * 
+ */
+
 package Panels;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -8,21 +20,43 @@ import javax.swing.JPanel;
 
 import BooleanForest.Game;
 
+@SuppressWarnings("serial")
 public class QuestionPanel extends JPanel implements Panel {
-	
+	// Declare private static final members of QuestionPanel class:
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/EmptyGradientBackground.jpg";
 	
-	private Game theGame;
+	// Declare members of QuestionPanel class:
+	@SuppressWarnings("unused")
+	private Game theGame;											// reference to main Game
 	
+	/**
+	 * CONSTRUCTOR: The constructor calls initPanel() method.
+	 * @param game
+	 */
 	public QuestionPanel(Game game){
-		initPanel(game);
+		initPanel(game);											// call initPanel()
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Initializes JPanel dimensions of QuestionPanel
+	 * class. Creates a reference to the Game object passed in.
+	 * @param game
+	 */
 	@Override
 	public void initPanel(Game game) {
-		this.theGame = game;
+		this.theGame = game;										// create reference to game passed in
+		
+		// Set the dimensions and layout of the JPanel.
+		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
+		setDoubleBuffered(true);
+		setLayout(null);
 	}
 	
+	/**
+	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
+	 * background image.
+	 * @param g
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);									// call super method
@@ -31,11 +65,6 @@ public class QuestionPanel extends JPanel implements Panel {
 		Image image = new ImageIcon(BACKGROUND_SRC).getImage();
 		g.drawImage(image, 0, 0, null);
 	}	
-
-	@Override
-	public void paintBobsWindow(Graphics g) {
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public void addText() {
