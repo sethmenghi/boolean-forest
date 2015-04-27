@@ -328,8 +328,8 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		}
 		
 		
-		g.drawRoundRect(240, 130, 160, 170, 0, 0);
-		g.drawRoundRect(280, 170, 80, 40, 0, 0);
+		//g.drawRoundRect(240, 130, 160, 170, 0, 0);
+		//g.drawRoundRect(280, 170, 80, 40, 0, 0);
 
 		
    	}
