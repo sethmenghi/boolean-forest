@@ -227,6 +227,8 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	public void reset(){
 		
 		
+		instructionText="Click items to select them. Then drag them over Bob!";
+		
 		 itemOneAdded = false; 
 		 itemTwoAdded = false; 
 		 itemThreeAdded = false; 
