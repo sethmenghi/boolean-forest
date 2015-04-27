@@ -73,27 +73,36 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 					System.out.println(errorString);
 					String urlError = "Current directory: " + url;
 					System.out.println(urlError);
-					return;
+					break;
 			}
+		}
+		
+		if (questionPanel != null){
+			questionPanel.setVisible(false);
 		}
 		
 		// Create GridLayout that organizes buttons
 		questionPanel = new JPanel();
-		questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
 		answer1 = new JButton(possibleAnswers.get(0));
 		answer2 = new JButton(possibleAnswers.get(1));
-		answer3 = new JButton(possibleAnswers.get(2));
-		answer4 = new JButton(possibleAnswers.get(3));
-		
 		answer1.addActionListener(this);
 		answer2.addActionListener(this);
-		answer3.addActionListener(this);
-		answer4.addActionListener(this);
+		
+		if (possibleAnswers.size() == 4){
+			questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
+			answer3 = new JButton(possibleAnswers.get(2));
+			answer4 = new JButton(possibleAnswers.get(3));
+			answer3.addActionListener(this);
+			answer4.addActionListener(this);
+			questionPanel.add(answer3);
+			questionPanel.add(answer4);
+		}
+		else{
+			questionPanel.setLayout(new GridLayout(1, 2, 1, 1));
+		}
 		
 		questionPanel.add(answer1);
 		questionPanel.add(answer2);
-		questionPanel.add(answer3);
-		questionPanel.add(answer4);
 		
 		questionPanel.setOpaque(false);
 		questionPanel.setBorder(new EmptyBorder(Game.APPLET_HEIGHT-160, 0, 0, 0));
@@ -175,7 +184,9 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	@Override 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+		questionPanel.revalidate();
+		questionPanel.repaint();
+
 		Image background = new ImageIcon("Images/Backgrounds/BackgroundForTextQuestion.png").getImage();
 		g.drawImage(background, 0, 0, null);
 		
@@ -188,7 +199,7 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		g2.setFont(Game.TITLE_FONT);					
 		g2.setColor(Game.DARK_BLUE);			
 		g2.drawString(textQuestion,Game.APPLET_WIDTH/2-measureStringWidth(g,textQuestion)/2,90);
-
+		
 		//setVisible(true);
     }
 }
