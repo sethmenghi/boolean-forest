@@ -77,49 +77,53 @@ import Levels.*;
 @SuppressWarnings("serial")
 public class Game extends JApplet {
 	// Public static final members of Game class:
+	// Declare constants that can be accessed by all classes:
 	public static final int APPLET_WIDTH = 640;										// width of applet
 	public static final int APPLET_HEIGHT = 480;									// height of applet
-	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 14);		// font used for titles
-	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 12);	// font used for paragraph text
+	public static final Font TITLE_FONT = new Font("Verdana", Font.BOLD, 18);		// font used for titles
+	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 14);	// font used for paragraph text
 	public static final Font TOPICS_FONT = new Font("Verdana", Font.BOLD, 100);		// used for lesson topics
 	public static final Font LESSON_STATEMENT = new Font("Verdana", Font.PLAIN, 20);// used for lesson statements
 	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
 	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
-	
-	public static final String INTRO = "INTRO";										// name of introPanel
-	public static final String FOREST = "FOREST";									// name of forestPanel
-	public static final String TEACHER = "TEACHER";									// name of teacherPanel
-	public static final String OWLS = "OWLS";										// name of owlPanel
-	public static final String LEVEL_ONE = "LEVEL_ONE";								// name of levelPanelOne
-	public static final String LEVEL_TWO = "LEVEL_TWO";								// name of levelPanelTwo
-	public static final String LEVEL_THREE = "LEVEL_THREE";							// name of levelPanelThree
-	public static final String LEVEL_FOUR = "LEVEL_FOUR";							// name of levelPanelFour
-	public static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of levelPanelFive
-	public static final String IMAGE_QUESTION = "IMAGE_QUESTION";
-	public static final String TEXT_QUESTION = "TEXT_QUESTION";
-	public static final String DRAG_AND_DROP_QUESTION = "DRAG_AND_DROP_QUESTION";
+
+	// Declare constants used only in this class:
+	private static final String INTRO = "INTRO";									// name of introPanel
+	private static final String FOREST = "FOREST";									// name of forestPanel
+	private static final String TEACHER = "TEACHER";								// name of teacherPanel
+	private static final String OWLS = "OWLS";										// name of owlPanel
+	private static final String QUESTION = "QUESTION";								// name of questionPanel
+	private static final String LEVEL_ONE = "LEVEL_ONE";							// name of levelPanelOne
+	private static final String LEVEL_TWO = "LEVEL_TWO";							// name of levelPanelTwo
+	private static final String LEVEL_THREE = "LEVEL_THREE";						// name of levelPanelThree
+	private static final String LEVEL_FOUR = "LEVEL_FOUR";							// name of levelPanelFour
+	private static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of levelPanelFive
+	private static final String IMAGE_QUESTION = "IMAGE_QUESTION";					
+	private static final String TEXT_QUESTION = "TEXT_QUESTION";
+	private static final String DRAG_AND_DROP_QUESTION = "DRAG_AND_DROP_QUESTION";
 
 	// Declare members of Game class: 
 	private Dimension windowSize;							// dimensions of JPanel
 	private JPanel cards;									// JPanel object to use card layout
-	private IntroPanel introPanel;							// intro panel
-	private ForestPanel forestPanel;						// forest panel
-	private OwlPanel owlPanel;								// owl panel
-	private TeacherPanel teacherPanel;						// teacher panel
-	private LevelPanel levelPanelOne;						// level 1 panel
-	private LevelPanel levelPanelTwo;						// level 2 panel
-	private LevelPanel levelPanelThree;						// level 3 panel
-	private LevelPanel levelPanelFour;						// level 4 panel
-	private LevelPanel levelPanelFive;						// level 5 panel
-
+	private IntroPanel introPanel;							// introPanel
+	private ForestPanel forestPanel;						// forestPanel
+	private OwlPanel owlPanel;								// owlPanel
+	private TeacherPanel teacherPanel;						// teacherPanel
+	private QuestionPanel questionPanel;					// questionPanel
+	private LevelPanel levelPanelOne;						// levelPanelOne
+	private LevelPanel levelPanelTwo;						// levelPanelTwo
+	private LevelPanel levelPanelThree;						// levelPanelThree
+	private LevelPanel levelPanelFour;						// levelPanelFour
+	private LevelPanel levelPanelFive;						// levelPanelFive
+	private int level;										// current level passed
+	
+	
 	public LevelFive levelFive;								// level 5 declaration
 	private ImageQuestion imageQuestion;					// image question panel
 	public DragAndDropQuestion dragAndDropQuestion;			// drag and drop question panel
 
 	public TextQuestion textQuestion;						// text question panel
 
-	private int level;										// current level passed
-	
 	/**
 	 * CONSTRUCTOR: The constructor calls the init() function.
 	 * @param none
@@ -199,6 +203,8 @@ public class Game extends JApplet {
 		cards.add(owlPanel, OWLS);							// add to cards
 		teacherPanel = new TeacherPanel(this);				// initialize teacherPanel
 		cards.add(teacherPanel, TEACHER);					// add to cards
+		questionPanel = new QuestionPanel(this);			// initialize questionPanel
+		cards.add(questionPanel, QUESTION);					// add to cards
 		
 		levelPanelOne = new LevelPanel(this, 1);			// initialize level 1 panel
 		cards.add(levelPanelOne, LEVEL_ONE);				// add to cards
