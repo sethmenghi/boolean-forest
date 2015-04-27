@@ -14,5 +14,5 @@
 	width="640"
 	height="480"
 	</application-desc>
-     <update check="always" policy="always />
+     <update check="always" policy="always" />
 </jnlp>
