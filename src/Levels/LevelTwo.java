@@ -87,12 +87,10 @@ public class LevelTwo {
 	
 	
 	private Game theGame;
-	int currentLevel = 2;
-	int currentQuestion = 0; 
+	private int currentQuestion;
 	
 	public LevelTwo(Game game) {
 		theGame = game;
-		
 	}
 	
 	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2, String option3, String option4){
@@ -108,6 +106,7 @@ public class LevelTwo {
 	}
 
 	public void startLevel() {
+		currentQuestion = 1;
 		doQuestion();
 	}
 	
@@ -124,7 +123,7 @@ public class LevelTwo {
 	
 	public void doQuestion() {
 		
-		System.out.println(currentQuestion);
+		System.out.println(currentQuestion); 
 		
 		switch (currentQuestion) {
 		case 1:
@@ -134,9 +133,6 @@ public class LevelTwo {
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
 				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_2);
 				theGame.textQuestion.initGui();
-				//theGame.repaint();
-				theGame.changeLayoutCard("TEXT_QUESTION");
-
 			}
 			break;
 		case 2:	
@@ -146,41 +142,31 @@ public class LevelTwo {
 				theGame.textQuestion.setQuestionImage(IMAGE_TWO);
 				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_4);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
-				theGame.changeLayoutCard("TEXT_QUESTION");
 			}
 			break;
 		case 3:	
 			if (ANSWERS_THREE.size() == 0){
-			addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1, Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
-			theGame.textQuestion.setQuestion(Q_THREE);
-			theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-			theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_3);
-			theGame.textQuestion.initGui();
-			theGame.repaint();
+				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
+				theGame.textQuestion.setQuestion(Q_THREE);
+				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_3);
+				theGame.textQuestion.initGui();
 			}
-			//theGame.changeLayoutCard("TEXT_QUESTION");
 			break;
 		
-		case 4:
+		case 4:	
 			if (ANSWERS_FOUR.size() == 0){
-				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
+				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1,  Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FOUR);
 				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
 				theGame.textQuestion.setAnswerList(ANSWERS_FOUR,Q_FOUR_OPTION_1);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
-				}
-				//theGame.changeLayoutCard("TEXT_QUESTION");
-				break;
-			
-		
+			}
+			break;
 			
 		case 5:	
-			
 			theGame.incrementLevel();
-			System.out.println("Level Number in Level One: " + theGame.getLevel());
-			theGame.forestPanel.repaintForestPanel();
+			System.out.println("Level Number in Level Two: " + theGame.getLevel());
 			theGame.changeLayoutCard("FOREST");
 			break;
 	

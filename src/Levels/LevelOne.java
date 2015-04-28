@@ -90,11 +90,10 @@ public class LevelOne {
 //	private static final int IMAGE = 1;
 	
 	private Game theGame;
-	int currentLevel = 1;
+	private int currentQuestion = 1;
 	
 	public LevelOne(Game game) {
 		theGame = game;
-		//startLevel();
 	}
 	
 	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2, String option3, String option4){
@@ -115,7 +114,7 @@ public class LevelOne {
 	
 	public void nextQuestion(){
 		if (theGame.textQuestion.questionCompleted == true){
-			currentLevel++;
+			currentQuestion++;
 			doQuestion();
 		}
 		else{
@@ -125,15 +124,14 @@ public class LevelOne {
 	}
 	
 	public void doQuestion() {
-		switch (currentLevel) {
+		switch (currentQuestion) {
 		case 1:
 			if (ANSWERS_ONE.size() == 0){
 				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2);
 				theGame.textQuestion.setQuestion(Q_ONE);
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
-				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_2);
+				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_1);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
 				theGame.changeLayoutCard("TEXT_QUESTION");
 
 			}
@@ -145,28 +143,23 @@ public class LevelOne {
 				theGame.textQuestion.setQuestionImage(IMAGE_TWO);
 				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_1);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
-				theGame.changeLayoutCard("TEXT_QUESTION");
 			}
 			break;
 		case 3:	
 			if (ANSWERS_THREE.size() == 0){
-			addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2);
-			theGame.textQuestion.setQuestion(Q_THREE);
-			theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-			theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_TWO_OPTION_2);
-			theGame.textQuestion.initGui();
-			theGame.repaint();
+				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2);
+				theGame.textQuestion.setQuestion(Q_THREE);
+				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_TWO_OPTION_2);
+				theGame.textQuestion.initGui();
 			}
-			//theGame.changeLayoutCard("TEXT_QUESTION");
 			break;
 		
 		
 			
 		case 4:	
-			System.out.println("END OF LEVEL ONE");
 			theGame.incrementLevel();
-			theGame.forestPanel.repaintForestPanel();
+			System.out.println("Level Number in Level One: " + theGame.getLevel());
 			theGame.changeLayoutCard("FOREST");
 			break;
 	
