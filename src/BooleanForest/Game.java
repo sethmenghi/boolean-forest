@@ -122,6 +122,8 @@ public class Game extends JApplet {
 	
 	public LevelOne levelOne;
 	public LevelTwo levelTwo; 
+	public LevelThree levelThree; 
+	public LevelFour levelFour; 
 	public LevelFive levelFive;								// level 5 declaration
 	private ImageQuestion imageQuestion;					// image question panel
 	public DragAndDropQuestion dragAndDropQuestion;			// drag and drop question panel
@@ -223,6 +225,8 @@ public class Game extends JApplet {
 		
 		levelOne = new LevelOne(this);
 		levelTwo = new LevelTwo(this);
+		levelThree = new LevelThree(this);
+		levelFour = new LevelFour(this);
 //		levelFive = new LevelFive(this);
 //
 		textQuestion = new TextQuestion(this);					// initialize textQuestion
