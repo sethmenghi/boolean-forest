@@ -13,12 +13,23 @@ import BooleanForest.Game;
 
 @SuppressWarnings("serial")
 public class CertificatePanel extends JPanel implements Panel, MouseListener {
+	
+	// Declare private string for the image resource
 	private static final String BACKGROUND_SRC = "/Images/Backgrounds/CertificateBackground.jpg";	// background url
 
+	/**
+	 * CONSTRUCTOR: The constructor calls initPanel() method.
+	 * @param game
+	 */
 	public CertificatePanel(Game game) {
 		initPanel(game);
 	}
 	
+	/**
+	 * OVERRIDDEN METHOD: Initializes JPanel dimensions and members of
+	 * Certificate class.
+	 * @param game
+	 */
 	@Override
 	public void initPanel(Game game) {
 		// Set the dimensions and layout of the JPanel.
@@ -27,6 +38,11 @@ public class CertificatePanel extends JPanel implements Panel, MouseListener {
 		setLayout(null);
 	}
 	
+	/**
+	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
+	 * background image.
+	 * @param graphic
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);									// call super method
