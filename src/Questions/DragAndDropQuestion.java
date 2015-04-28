@@ -23,20 +23,22 @@ import javax.swing.JPanel;
 import BooleanForest.Game;
 import Objects.GameButton;
 
-// Sources:
-// http://stackoverflow.com/questions/29054963/how-to-make-a-jbutton-not-clickable-in-java
-// http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
-// http://bioportal.weizmann.ac.il/course/prog2/tutorial/uiswing/layout/gridbag.html
-// http://www.dreamincode.net/forums/topic/277446-dragging-an-image-with-the-mouse/ <-- Used a lot from this 
-// http://stackoverflow.com/questions/7867834/get-button-name-from-actionlistener
-// http://copypastejavacode.blogspot.com/2012/01/code-of-java-that-set-opacity-of-image.html
-// https://docs.oracle.com/javase/7/docs/api/java/awt/Image.html
-
-// This class implements the drag and drop questions. Only one instance of this class is instantiated (in Game)
-// and then the program changes the necessary content as necessary to move from question to question. It allows
-// the user to drag and drop items unto an owl to fit the boolean logic statement. NOTE: this class is set up
-// to allow the level class to pass along what items can be dragged. These items are therefore called items and 
-// are not referred to by the description (basktball, glasses, hat, etc). 
+/**
+* Sources:
+* http://stackoverflow.com/questions/29054963/how-to-make-a-jbutton-not-clickable-in-java
+* http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
+* http://bioportal.weizmann.ac.il/course/prog2/tutorial/uiswing/layout/gridbag.html
+* http://www.dreamincode.net/forums/topic/277446-dragging-an-image-with-the-mouse/ <-- Used a lot from this 
+* http://stackoverflow.com/questions/7867834/get-button-name-from-actionlistener
+* http://copypastejavacode.blogspot.com/2012/01/code-of-java-that-set-opacity-of-image.html
+* https://docs.oracle.com/javase/7/docs/api/java/awt/Image.html
+*
+* This class implements the drag and drop questions. Only one instance of this class is instantiated (in Game)
+* and then the program changes the necessary content as necessary to move from question to question. It allows
+* the user to drag and drop items unto an owl to fit the boolean logic statement. NOTE: this class is set up
+* to allow the level class to pass along what items can be dragged. These items are therefore called items and 
+* are not referred to by the description (basktball, glasses, hat, etc). 
+*/
 public class DragAndDropQuestion extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
 	
 	// Public static final members of class:
@@ -121,14 +123,19 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	int mouseXPos;					// Tracks the x position of the mouse for the drag
 	int mouseYPos;					// Tracks the y position of the mouse for the drag
 	
-	// Constructor which is called only once 
+	/**
+	 * METHOD: Constructor, which is called only once 
+	 * @param game
+	 */
 	public DragAndDropQuestion(Game game) 
 	{
 		theGame = game; 
 		firstSetUp=true;
 	}
 	
-	// Initialized the GUI. Is different if it is first time or not 
+	/** 
+	 * METHOD: Initialized the GUI. Is different if it is first time or not 
+	 */
 	public void initGUI(){
 				
 		if(firstSetUp==true)
@@ -209,7 +216,9 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 
 	}
 	
-	// Everytime we have a new question we need to reset these variables 
+	/**
+	 * METHOD:This method resets these variables every time we have a new question
+	 */
 	public void reset(){
 		
 		itemOneAdded = false; 					// No items have been added
@@ -235,8 +244,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 	
-	// Method called every new question
-	// Used to set up items used by the drag drop functionality 
+	/**
+	 * METHOD: this method inits the images with every new question
+ 	 * Used to set up items used by the drag drop functionality 
+ 	 */
 	public void initDragDrop(){
 		
 		// Need to set up the listeners 
@@ -254,7 +265,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	   	 
 	}
 
-	// We override the paint component class to display everything in the GUI except the JLabels above
+	/**
+	 * OVERRIDEDN METHOD: This method override the paint component class to display everything 
+	 * in the GUI except the JLabels above 
+	 */
 	@Override
 	public void paintComponent(Graphics graphics) {
 		
@@ -317,12 +331,15 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 				
    	}
 	
-	// Seperate method used to drawthe string in paintComponent 
+	/**
+	 * METHOD: Separate method used to draw the string in paintComponent 
+	 * @param graphics
+	 */
 	public void drawStrings(Graphics graphics)
 	{
 		
 		// The 5th question has different font to fit size
-		if(theGame.levelFive.questionInLevel!=5)
+		if(theGame.levelFive.currentQuestion!=5)
 		{
 			// We draw a string two display the question text
 			Graphics2D graphicsForString = (Graphics2D) graphics;															// Need to create a 2D object to adjust font and color 				
@@ -352,7 +369,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 
 	}
 	
-	// This returns which image to show based on which item is being dragged 
+	/**
+	 * METHOD: This method returns which image to show based on which item is being dragged 
+	 * @return
+	 */
 	public Image getSelectedImage()
 	{
 		
@@ -375,8 +395,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		}
 	}
 	
-	// This method returns which label was last clicked
-	// This is used to update the coloring of the labels after the user makes a drag and drop move 
+	/**
+	 * METHOD: This method returns which label was last clicked
+	 * This is used to update the coloring of the labels after the user makes a drag and drop move 
+	 */
 	public JLabel getSelectedLabel()
 	{
 		switch(itemSelected){
@@ -397,15 +419,21 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		}
 	}
 
-	// Called after drag drop is done and don't want the coordinates from previous operation 
+	/**
+	 * METHOD: This method is called after drag drop is done and don't want 
+	 * the coordinates from previous operation 
+	 */
 	public void resetPositionMarkers()
 	{
 		posX=0;
 		posY=0;
 	}
 	
-	// Returns true if the dragged item is over the owl
-	// This is used to change the opacity of the owl and to drop items 
+	/**
+	 * METHOD: This method returns true if the dragged item is over the owl
+	 * This is used to change the opacity of the owl and to drop items
+	 * @return
+	 */
 	public boolean isOverOwl()
 	{
 		// These are the constants that define where the Owl is 
@@ -420,7 +448,9 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	}
 	
 	
-	// Called by the paintCompoent class to check if item dragged is the correct one 
+	/**
+	 * METHOD: This method is called by the paintCompoent class to check if item dragged is the correct one 
+	 */
 	public void checkIfCorrectAnswer(){
 		
 		// We check it against the correct answer's inputed 
@@ -468,8 +498,11 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 
 	}
 	
-	// The level class tells us which items can be dragged unto Owl
-	// Here we check if they were right and also update the boolean itemAdded for that item 
+	/**
+	 * METHOD: This method uses the level class tells us which items can be dragged onto Owl
+	 * Here we check if they were right and also update the boolean itemAdded for that item 
+	 * @return
+	 */
 	public boolean checkAgainstInputedAnswers()
 	{
 		
@@ -542,7 +575,12 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		}
 	}
 	
-	// We need to be able to measure the width of a string to position string on screen
+	/**
+	 * METHOD: We need to be able to measure the width of a string to position string on screen
+	 * @param g
+	 * @param inputString
+	 * @return
+	 */
 	public int measureStringWidth(Graphics g, String inputString) {
 
 		Font font = g.getFont();
@@ -552,20 +590,34 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
       
 	}
 	
-	// Method that inputs the question text from level class
+	/**
+	 * METHOD: This method inputs the question text from level class
+	 * @param questionTextInput
+	 */
 	public void setQuestionText(String questionTextInput)
 	{
 		questionText = questionTextInput;
 	}
 	
-	// Method that imports the array list with the draggable icons at bottom
+	/**
+	 * METHOD: This method that imports the array list with the draggable icons at bottom
+	 * @param possibleAnswersInput
+	 */
 	public void setListOfPossibleAnswers(ArrayList<String> possibleAnswersInput){
 		
 		possibleAnswersList=possibleAnswersInput;
 		
 	}
 		
-	// Method that implements the correct answers passed by the level class	
+	/**
+	 * METHOD: Method that implements the correct answers passed by the level class	
+	 * @param itemOneAnswerInput
+	 * @param itemTwoAnswerInput
+	 * @param itemThreeAnswerInput
+	 * @param itemFourAnswerInput
+	 * @param itemFiveAnswerInput
+	 * @param itemSixAnswerInput
+	 */
 	public void setAnswersForEachItem(boolean itemOneAnswerInput,boolean itemTwoAnswerInput,
 			boolean itemThreeAnswerInput, boolean itemFourAnswerInput,
 			boolean itemFiveAnswerInput, boolean itemSixAnswerInput){
@@ -580,6 +632,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	}
 	
 
+	/**
+	 * OVERRIDDEN METHOD: Overrides the mouse event
+	 * @param event
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		
@@ -614,7 +670,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 
-	// Overides to determined when an item is selected 
+	/**
+	 * METHOD: Overrides to determined when an item is selected 
+	 * @param event
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 				
@@ -671,6 +730,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Overrides mouse released method
+	 * @param event
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
@@ -685,6 +748,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Overrides mouse exited method
+	 * @param event
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		isMouseDrag = false;				// No longer a mouse drag
@@ -693,7 +760,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 
-	// Overide action lister to check if next quesrtion button is clicked 
+	/**
+	 * METHOD: Overrides action lister to check if next question button is clicked 
+	 * @param event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 
@@ -706,8 +776,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 	}
 
-	// When a JLabel is clicked, I immediately draw an image in its location to drag
-	// These are the locations of those images 
+	/**
+	 *  METHOD: When a JLabel is clicked, I immediately draw an image in its location to drag
+	 *  These are the locations of those images 
+	 */
 	public void setPositionOfDraggableIcon()
 	{
 		// Return based on which item was selected
@@ -744,7 +816,10 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		}
 	}
 	
-	// Based on which combinations have been dragged over bob, I return a different image 
+	/**
+	 * METHOD: Based on which combinations have been dragged over bob, I return a different image 
+	 * @return image string
+	 */
 	public String getBobImage(){
 			
 		if(itemOneAdded && itemFourAdded)
