@@ -37,12 +37,12 @@ public class LevelFive {
 	private static final String Q_ONE= "Bob is wearing glasses AND has a soccer ball.";
 	private static final String Q_TWO= "Bob is NOT wearing a hat AND a tie.";
 	private static final String Q_THREE= "Bob is wearing a tie AND has a ball.";
-	private static final String Q_FOUR= "Bob is wearing two items of clothing AND has no balls.";
+	private static final String Q_FOUR= "Bob is wearing 2 items of clothing AND has no balls.";
 	private static final String Q_FIVE= "Bob is wearing a hat AND has a basketball OR soccerball";
 
 	// Declare private members of the LevelFive class:  
 	private Game theGame;											// to create reference to main game 
-	private int currentQuestion;									// current question being asked 
+	public int currentQuestion;									// current question being asked 
 	private ArrayList <String> listOfOptions;						// list of possible draggable icons 
 
 	/**

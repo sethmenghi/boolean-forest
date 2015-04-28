@@ -322,7 +322,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	{
 		
 		// The 5th question has different font to fit size
-		if(theGame.levelFive.questionInLevel!=5)
+		if(theGame.levelFive.currentQuestion!=5)
 		{
 			// We draw a string two display the question text
 			Graphics2D graphicsForString = (Graphics2D) graphics;															// Need to create a 2D object to adjust font and color 				
