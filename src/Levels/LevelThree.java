@@ -31,19 +31,13 @@ public class LevelThree {
 	public static final String TRUE_STATEMENT = "This is RIGHT!\nOnly one statement needs to be true.";
 	public static final String FALSE_STATEMENT = "This is WRONG!\nBoth statements are false.";
 	
-	// Declare static final Images for explanations:
-	public static final Image DONUT = new ImageIcon("Images/Levels/LevelThree/Explanation/Donut.png").getImage();
-	public static final Image FLOWER = new ImageIcon("Images/Levels/LevelThree/Explanation/Sunflower.png").getImage();
-	public static final Image PENCIL = new ImageIcon("Images/Levels/LevelThree/Explanation/Pencil.png").getImage();
-	public static final Image COOKIE = new ImageIcon("Images/Levels/LevelThree/Explanation/Cookie.png").getImage();
-	
 	//OR LEVEL 
 	
 	
 	// Question One -- text question
 	//http://cliparts.co/cliparts/kcM/nAL/kcMnALeki.jpg
 	private static final String Q_ONE = "Choose the CORRECT anwer.";
-	private static final String IMAGE_ONE = "Images/Levels/LevelThree/Questions/giraffe.png";
+	private static final String IMAGE_ONE = "/Images/Levels/LevelThree/Questions/giraffe.png";
 	private static final String Q_ONE_OPTION_1 = "The giraffe is lying down or he is sleeping.";
 	private static final String Q_ONE_OPTION_2 = "The giraffe has blue spots or green spots.";
 	private static final String Q_ONE_OPTION_3 = "The giraffe is yellow or pink.";
@@ -55,7 +49,7 @@ public class LevelThree {
 	
 	//http://cliparts.co/cliparts/kc8/oKy/kc8oKydji.png
 	private static final String Q_TWO = "Choose the INCORRECT answer.";
-	private static final String IMAGE_TWO = "Images/Levels/LevelThree/Questions/elephant.png";
+	private static final String IMAGE_TWO = "/Images/Levels/LevelThree/Questions/elephant.png";
 	private static final String Q_TWO_OPTION_1 = "The elephant is sitting or standing.";
 	private static final String Q_TWO_OPTION_2 = "The elephant is gray or brown.";
 	private static final String Q_TWO_OPTION_3 = "The elephant has white tusks or brown tusks.";
@@ -64,7 +58,7 @@ public class LevelThree {
 	
 	//http://www.clipartbest.com/cliparts/Bdc/r6k/Bdcr6koT9.jpeg
 	private static final String Q_THREE = "Choose the correct answer.";
-	private static final String IMAGE_THREE = "Images/Levels/LevelThree/Questions/lion.png";
+	private static final String IMAGE_THREE = "/Images/Levels/LevelThree/Questions/lion.png";
 	private static final String Q_THREE_OPTION_1 = "The lion is white or spotted.";
 	private static final String Q_THREE_OPTION_2 = "The lion is yellow or orange.";
 	private static final String Q_THREE_OPTION_3 = "The lion has a purple mane or a pink mane.";
@@ -74,13 +68,13 @@ public class LevelThree {
 	
 	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-hippo-8.gif
 	private static final String Q_FOUR = "Choose the correct answer.";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelThree/Questions/hippo.png";
+	private static final String IMAGE_FOUR = "/Images/Levels/LevelThree/Questions/hippo.png";
 	private static final String Q_FOUR_OPTION_1 = "The hippo has two teeth or four teeth.";
 	private static final String Q_FOUR_OPTION_2 = "The hippo is swimming or he is sleeping.";
 	private static final String Q_FOUR_OPTION_3 = "The hippo is eating cupakes or donuts.";
 	private static final String Q_FOUR_OPTION_4 = "The hippo does not have red nail polish or blue nail polish on.";
 	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
-	public static final Image HIPPO = new ImageIcon(IMAGE_FOUR).getImage();
+	public final Image HIPPO = new ImageIcon(getClass().getResource(IMAGE_FOUR)).getImage();
 	
 	
 	
@@ -114,7 +108,7 @@ public class LevelThree {
 			doQuestion();
 		}
 		else{
-			JLabel warningImage = new JLabel(new ImageIcon("Images/Owls/Bob.png"));
+			JLabel warningImage = new JLabel(new ImageIcon(getClass().getResource("/Images/Owls/Bob.png")));
 			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
 		}
 	}
