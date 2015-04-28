@@ -1,3 +1,15 @@
+/**
+ * TEXTQUESTION CLASS
+ * 
+ * DESCRIPTION:
+ * A text question about an image with either true/false or 
+ * four length multiple-choice questions. 
+ * 
+ * SOURCES: 
+ * ClassLoader - https://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html
+ * 
+ */
+
 package Questions;
 
 import java.awt.Font;
@@ -14,64 +26,73 @@ import java.lang.String;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BooleanForest.Game;
 import Panels.LevelPanel;
 
-
-// Drag one baby owl next to answer, if wrong get second change to drag another
-// Grid Layout
 @SuppressWarnings("serial")
 public class TextQuestion extends JPanel implements Question, ActionListener {
 	
-	String imageResource; // Image that the question references
-	String textQuestion; // Question being asked
-	String correctAnswer; // String of correct answer
+	// Visual Elements 
+	String imageResource; 							// Image that the question references
+	String textQuestion; 							// Question being asked
+	String correctAnswer; 							// String of correct answer
+	ImageIcon img; 
+	List<String> possibleAnswers;					// All possible answers to textQuestion
+
+	JPanel questionPanel; 							// Contains GridLayout for all buttons
+													// See initQuestions()
 	
-	// Buttons that for selection of answers
-	JButton answer1;
+	// Buttons that contain string answers
+	JButton answer1;								
 	JButton answer2;
 	JButton answer3;
 	JButton answer4;
 	
-	int questionCount = 0;
+	public Boolean questionCompleted = false;		// Completeness of question
 	
-	// Panels that group the layouts
-	JPanel questionPanel; // Overall question panel
-	JPanel imagePanel; // Contains the image
+	// Controllers
+	LevelPanel panel;								// LevelPanel to communicate with (Dynamic)
+	Game theGame;									// Game Controller to communicate with
 	
-	// Visual elements of the question
-	JLabel imgLabel;
-	ImageIcon img;
-	
-	List<String> possibleAnswers;
-	public Boolean questionCompleted = false;
-
-	LevelPanel panel;
-	Game theGame;
-	
-	public TextQuestion(Game game)
-	{
+	/**
+	 * CONSTRUCTOR: attaches the question to the
+	 * game controller.  
+	 * @param game
+	 */
+	public TextQuestion(Game game){
 		theGame = game;
 	}
 	
+	/**
+	 * SETTER: Changes the level panel that
+	 * the textQuestion is attached to. 
+	 * @param panel
+	 */
 	public void switchLevelPanel(LevelPanel panel){
 		this.panel = panel;
 	}
 	
-	// Sets up the GUI for the question 
+	/**
+	 * METHOD: Initializes the GUI by calling initGui().
+	 * @param none
+	 */
 	public void initGui(){
 		initQuestion();
 	}
 	
+	/**
+	 * METHOD: Initializes the layout that
+	 * the buttons are in and loads the images.
+	 * @param none
+	 */
 	public void initQuestion(){
 		questionCompleted = false;
 		
 		img = new ImageIcon(imageResource);
-		// If image doens't load correctly just stop the question
+		// Checking if Image loaded correctly.
 		while(img.getImageLoadStatus() != MediaTracker.COMPLETE){
 			if (img.getImageLoadStatus() == MediaTracker.ERRORED || 
 				img.getImageLoadStatus() == MediaTracker.ABORTED){
@@ -97,6 +118,7 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		answer2.addActionListener(this);
 		
 		if (possibleAnswers.size() == 4){
+			// 4-Length multiple choice
 			questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
 			answer3 = new JButton(possibleAnswers.get(2));
 			answer4 = new JButton(possibleAnswers.get(3));
@@ -106,6 +128,7 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			questionPanel.add(answer4);
 		}
 		else{
+			// True or False questions
 			questionPanel.setLayout(new GridLayout(1, 2, 1, 1));
 		}
 		
@@ -120,15 +143,17 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 
 	}
 	
-	// Sets the question text
+	/**
+	 * SETTER: Sets the text question
+	 * @param questionStringInput
+	 */
 	public void setQuestion(String questionStringInput){
 		textQuestion = questionStringInput;
 		questionCompleted = false;
 	}
 	
 	/**
-	 * Sets image that question references
-	 * 
+	 * SETTER: Sets image that question references
 	 * @param questionImage
 	 */
 	public void setQuestionImage(String questionImage){
@@ -136,8 +161,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	}
 	
 	/**
-	 * Sets the list of possible answers, and a string
-	 * 
+	 * SETTER: Sets the list of possible answers, 
+	 * and the correct answer
 	 * @param allPossibleAnswers
 	 * @param correctAnswerInput
 	 */
@@ -148,19 +173,12 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	}
 
 	/**
-	 * Checks the 
-	 * @param submittedAnswer against the correctAnswer
+	 * METHOD: Checks the against the correctAnswer
+	 * @param submittedAnswer 
 	 */
-	
-	 
-	
 	public Boolean checkAnswer(String submittedAnswer){
-		
-		
-		
 		if (submittedAnswer == correctAnswer){
 			questionCompleted = true;
-			
 			
 			if (theGame.getLevel() == 0){
 				theGame.levelOne.nextQuestion();
@@ -175,10 +193,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			}
 			
 			if (theGame.getLevel() == 3){
-				
 				theGame.levelFour.nextQuestion();
 			}
-			
 			return true;
 		}
 		else {
@@ -207,6 +223,13 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		System.out.println(questionCompleted);
 	}
 	
+	/**
+	 * METHOD: Checks the length of a string, used for
+	 * painting the coordinates of the string
+	 * @param g
+	 * @param inputString
+	 * @return stringWidth
+	 */
 	public int measureStringWidth(Graphics g, String inputString) {
 
 		Font font = g.getFont();
