@@ -45,8 +45,8 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 			+ "children need to get through the Boolean Logic Forest and need your help! "
 			+ "Let's go on an adventure!";
 
-	private static final String BACKGROUND_SRC = "Images/Backgrounds/IntroBackground.jpg";	// background url
-	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
+	private static final String BACKGROUND_SRC = "/Images/Backgrounds/IntroBackground.jpg";	// background url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";							// Bob url
 
 	private static final int TEXT_WINDOW_WIDTH = 404;				// width of white text window
 	private static final int TEXT_WINDOW_HEIGHT = 199;				// height of white text window
@@ -97,11 +97,11 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image background = new ImageIcon(BACKGROUND_SRC).getImage();
+		Image background = new ImageIcon(getClass().getResource(BACKGROUND_SRC)).getImage();
 		g.drawImage(background, 0, 0, null);
 
 		// Draw Bob.
-		Image bobImage = new ImageIcon(BOB_SRC).getImage();
+		Image bobImage = new ImageIcon(getClass().getResource(BOB_SRC)).getImage();
 		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
