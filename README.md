@@ -66,3 +66,7 @@
  
  The sources of any images used or URLs for code sources are listed at the
  top of each class file they are used in.
+
+
+####Internet usage: 
+Included is a html and jnlp file that run in firefox on Julie's computer. 
