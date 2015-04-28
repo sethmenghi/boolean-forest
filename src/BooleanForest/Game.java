@@ -195,8 +195,7 @@ public class Game extends JApplet {
 		add(cards);											// add JPanel to applet
 		cards.setVisible(true);								// make cards visible
 		
-//		level = 0;											// set the level to 0 (no levels passed yet)
-		level = 4;
+		level = 0;											// set the level to 0 (no levels passed yet)
 		
 		// Create each layout panel and add to cards.
 		introPanel = new IntroPanel(this);					// initialize introPanel
