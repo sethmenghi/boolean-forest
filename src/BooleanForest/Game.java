@@ -108,7 +108,7 @@ public class Game extends JApplet {
 	private Dimension windowSize;							// dimensions of JPanel
 	private JPanel cards;									// JPanel object to use card layout
 	private IntroPanel introPanel;							// introPanel
-	public ForestPanel forestPanel;						// forestPanel
+	public ForestPanel forestPanel;							// forestPanel
 	private OwlPanel owlPanel;								// owlPanel
 	private TeacherPanel teacherPanel;						// teacherPanel
 	private QuestionPanel questionPanel;					// questionPanel
@@ -230,7 +230,7 @@ public class Game extends JApplet {
 //		levelFive = new LevelFive(this);
 //
 		textQuestion = new TextQuestion(this);					// initialize textQuestion
-		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
+		cards.add(textQuestion, TEXT_QUESTION);					// add to cards
 //		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
 //		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
 		

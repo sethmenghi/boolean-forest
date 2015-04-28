@@ -118,14 +118,14 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addText() {
 		// If titleTextArea is not null, remove it from the JPanel.
-//		if (titleTextArea != null) {
-//			remove(titleTextArea);									// remove from IntroPanel
-//		}
-//
-//		// If introTextArea is not null, remove it from the JPanel.
-//		if (introTextArea != null) {
-//			remove(introTextArea);									// remove from IntroPanel
-//		}
+		if (titleTextArea != null) {
+			remove(titleTextArea);									// remove from IntroPanel
+		}
+
+		// If introTextArea is not null, remove it from the JPanel.
+		if (introTextArea != null) {
+			remove(introTextArea);									// remove from IntroPanel
+		}
 
 		addTitleText();												// add title
 		addParagraphText();											// add paragraph
@@ -139,19 +139,17 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addTitleText() {
-		if (titleTextArea == null) {
-			// Create a JTextArea for title of page and add to JPanel.
-			titleTextArea = new JTextArea();							// initialize the JTextArea
-			titleTextArea.setFont(Game.TITLE_FONT);						// set the font
-			titleTextArea.setForeground(Game.DARK_BLUE);				// set font color
-			titleTextArea.setOpaque(false);								// set background to transparent
-			// Set the size and location of the text to have margin of 10 pixels
-			// from the edge of the white background. 
-			titleTextArea.setSize(TEXT_WINDOW_WIDTH - 20, 30);
-			titleTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 10);
-			titleTextArea.setText(TITLE);								// set the text
-			add(titleTextArea);											// add to IntroPanel
-		}
+		// Create a JTextArea for title of page and add to JPanel.
+		titleTextArea = new JTextArea();							// initialize the JTextArea
+		titleTextArea.setFont(Game.TITLE_FONT);						// set the font
+		titleTextArea.setForeground(Game.DARK_BLUE);				// set font color
+		titleTextArea.setOpaque(false);								// set background to transparent
+		// Set the size and location of the text to have margin of 10 pixels
+		// from the edge of the white background. 
+		titleTextArea.setSize(TEXT_WINDOW_WIDTH - 20, 30);
+		titleTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 10);
+		titleTextArea.setText(TITLE);								// set the text
+		add(titleTextArea);											// add to IntroPanel
 	}
 
 	/**
@@ -164,22 +162,20 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addParagraphText() {
-		if (introTextArea == null) {
-			// Create a JTextArea to fit inside white text window with wrapped
-			// text, custom font and transparent background and add to JPanel.
-			introTextArea = new JTextArea();							// initialize the JTextArea
-			introTextArea.setFont(Game.PARAGRAPH_FONT);					// set the font
-			introTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
-			introTextArea.setLineWrap(true);							// set line wrap to true
-			introTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
-			introTextArea.setOpaque(false);								// set background to transparent
-			// Set the size and location of the text to have margin of 10 pixels
-			// from the edge of the white background. 
-			introTextArea.setSize(TEXT_WINDOW_WIDTH - 20, TEXT_WINDOW_HEIGHT - 20);
-			introTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 40);
-			introTextArea.setText(INTRODUCTION);						// set the text
-			add(introTextArea);											// add to IntroPanel
-		}
+		// Create a JTextArea to fit inside white text window with wrapped
+		// text, custom font and transparent background and add to JPanel.
+		introTextArea = new JTextArea();							// initialize the JTextArea
+		introTextArea.setFont(Game.PARAGRAPH_FONT);					// set the font
+		introTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+		introTextArea.setLineWrap(true);							// set line wrap to true
+		introTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
+		introTextArea.setOpaque(false);								// set background to transparent
+		// Set the size and location of the text to have margin of 10 pixels
+		// from the edge of the white background. 
+		introTextArea.setSize(TEXT_WINDOW_WIDTH - 20, TEXT_WINDOW_HEIGHT - 20);
+		introTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 40);
+		introTextArea.setText(INTRODUCTION);						// set the text
+		add(introTextArea);											// add to IntroPanel
 	}
 
 	/**
@@ -199,20 +195,18 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 * @param none
 	 */
 	private void addPlayButton() {
-		if (playButton == null) {
-			// Initialize the playButton to go to the ForestPanel.
-			playButton = new GameButton(PLAY, "WHITE");
+		// Initialize the playButton to go to the ForestPanel.
+		playButton = new GameButton(PLAY, "WHITE");
 
-			// Set the x- and y-coordinates and the button width and height.
-			int boundsWidth = playButton.getPreferredSize().width;
-			int boundsHeight = playButton.getPreferredSize().height;
-			int boundsXCoord = TEXT_WINDOW_XCOORD + TEXT_WINDOW_WIDTH / 2 - boundsWidth / 2;
-			int boundsYCoord = TEXT_WINDOW_YCOORD + TEXT_WINDOW_HEIGHT - boundsHeight - 20;
-			playButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsWidth = playButton.getPreferredSize().width;
+		int boundsHeight = playButton.getPreferredSize().height;
+		int boundsXCoord = TEXT_WINDOW_XCOORD + TEXT_WINDOW_WIDTH / 2 - boundsWidth / 2;
+		int boundsYCoord = TEXT_WINDOW_YCOORD + TEXT_WINDOW_HEIGHT - boundsHeight - 20;
+		playButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
-			add(playButton);											// add to IntroPanel
-			playButton.addMouseListener(this);							// add MouseListener
-		}
+		add(playButton);											// add to IntroPanel
+		playButton.addMouseListener(this);							// add MouseListener
 	}
 
 	/**
@@ -220,20 +214,18 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 * @param none
 	 */
 	private void addTeacherButton() {
-		if (teacherButton == null) {
-			// Initialize a GameButton to go on to the TeacherPanel.
-			teacherButton = new GameButton(TEACHER, "WHITE");
+		// Initialize a GameButton to go on to the TeacherPanel.
+		teacherButton = new GameButton(TEACHER, "WHITE");
 
-			// Set the x- and y-coordinates and the button width and height.
-			int boundsXCoord = 468;
-			int boundsYCoord = 426;
-			int boundsWidth = teacherButton.getPreferredSize().width;
-			int boundsHeight = teacherButton.getPreferredSize().height;
-			teacherButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsXCoord = 468;
+		int boundsYCoord = 426;
+		int boundsWidth = teacherButton.getPreferredSize().width;
+		int boundsHeight = teacherButton.getPreferredSize().height;
+		teacherButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
-			add(teacherButton);											// add to IntroPanel
-			teacherButton.addMouseListener(this);						// add MouseListener
-		}
+		add(teacherButton);											// add to IntroPanel
+		teacherButton.addMouseListener(this);						// add MouseListener
 	}
 
 	/**
@@ -241,21 +233,19 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 * @param none
 	 */
 	private void addOwlButton() {
-		if (owlButton == null) {
-			// Initialize a GameButton to go to the Owl Panel.
-			owlButton = new GameButton(OWLS, "WHITE");
+		// Initialize a GameButton to go to the Owl Panel.
+		owlButton = new GameButton(OWLS, "WHITE");
 
-			// Set the x- and y-coordinates and the button width and height.
-			int boundsWidth = owlButton.getPreferredSize().width;
-			int boundsHeight = owlButton.getPreferredSize().height;
-			int boundsXCoord = (teacherButton.getPreferredSize().width - boundsWidth) / 2 + TEXT_WINDOW_XCOORD
-					+ TEXT_WINDOW_WIDTH + 10;
-			int boundsYCoord = 391;
-			owlButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsWidth = owlButton.getPreferredSize().width;
+		int boundsHeight = owlButton.getPreferredSize().height;
+		int boundsXCoord = (teacherButton.getPreferredSize().width - boundsWidth) / 2 + TEXT_WINDOW_XCOORD
+				+ TEXT_WINDOW_WIDTH + 10;
+		int boundsYCoord = 391;
+		owlButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
-			add(owlButton);												// add to IntroPanel
-			owlButton.addMouseListener(this);							// add MouseListener
-		}
+		add(owlButton);												// add to IntroPanel
+		owlButton.addMouseListener(this);							// add MouseListener
 	}
 
 	@Override

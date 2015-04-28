@@ -44,7 +44,6 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
 	private static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
 	private static final String COMPLETED = "Get your certificate!";		// text for completion GameButton
-	private static final String BACK = "Back to Intro";						// text for button to go back
 
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/ForestBackground.jpg";	// background url
 	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
@@ -59,8 +58,6 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final int FOREST_YCOORD = 107;			// pre-determined yCoord of ForestPanel BobsWindow
 	private static final int BOB_XCOORD = 418;				// pre-determined xCoord of ForestPanel Bob
 	private static final int BOB_YCOORD = 268;				// pre-determined yCoord of ForestPanel Bob
-	private static final int BACK_BUTTON_XCOORD = 25;		// pre-determined xCoord of back button
-	private static final int BACK_BUTTON_YCOORD = 25;		// pre-determined yCoord of back button
 
 	private static final int MARKER_1_XCOORD = 24;			// x-coordinate for marker 1
 	private static final int MARKER_2_XCOORD = 157;			// x-coordinate for marker 2
@@ -77,7 +74,12 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private Game theGame;									// reference to main Game
 	private String bobsMessage;								// Bob's message
 	private JTextArea bobsTextArea;							// text area for Bob's message
-	private GameButton forestGameButton;					// button to continue to levels
+	private GameButton forestGameButton1;					// button to continue to level 1
+	private GameButton forestGameButton2;					// button to continue to level 2
+	private GameButton forestGameButton3;					// button to continue to level 3
+	private GameButton forestGameButton4;					// button to continue to level 4
+	private GameButton forestGameButton5;					// button to continue to level 5
+	private GameButton forestGameButton;					// button to continue to get certificate
 	private GameButton backToIntro;							// button to go back to introPanel
 	private Owl chloe;										// child Owl Chloe
 	private Owl david;										// child Owl David
@@ -253,6 +255,25 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addParagraphText() {
+		int currentLevelPassed = theGame.getLevel();
+		
+		switch (currentLevelPassed) {
+		case 1:
+			bobsMessage = "Great! Now that you've learned TRUE and FALSE, let's learn about AND.";
+			break;
+		case 2:
+			bobsMessage = "Amazing! You are smart AND awesome. Let's keep learning. Now we'll learn about OR.";
+			break;
+		case 3:
+			bobsMessage = "Good job! The children are learning so much! Let's go on to NOT.";
+			break;
+		case 4:
+			bobsMessage = "Almost there! Let's put it all together!";
+			break;
+		default:
+			break;
+		}
+		
 		// Create a JTextArea to fit inside white text window with wrapped
 		// text, custom font and transparent background and add to JPanel.
 		bobsTextArea = new JTextArea();						// initialize the JTextArea
@@ -277,7 +298,6 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addButtons() {
 		addForestButton();									// add forestButton
-		addBackToIntroButton();								// add backToIntroButton
 	}
 
 	/**
@@ -287,23 +307,32 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */
 	private void addForestButton() {
 		// Initialize forestGameButton with the correct text.	
+		forestGameButton1 = new GameButton(LEVEL_1, "WHITE");	// set text to go to Level 1
+		forestGameButton2 = new GameButton(LEVEL_2, "WHITE");	// set text to go to Level 2
+		forestGameButton3 = new GameButton(LEVEL_3, "WHITE");	// set text to go to Level 3
+		forestGameButton4 = new GameButton(LEVEL_4, "WHITE");	// set text to go to Level 4
+		forestGameButton5 = new GameButton(LEVEL_5, "WHITE");	// set text to go to Level 5
+		forestGameButton = new GameButton(COMPLETED, "WHITE");	// set text to get certificate
+		
+		GameButton buttonToShow = new GameButton();
+		
 		if (theGame.getLevel() == 0) {
-			forestGameButton = new GameButton(LEVEL_1, "WHITE");	// set text to go to Level 1
+			buttonToShow = forestGameButton1;
 		}
 		else if (theGame.getLevel() == 1) {
-			forestGameButton = new GameButton(LEVEL_2, "WHITE");	// set text to go to Level 2			
+			buttonToShow = forestGameButton2;
 		}
 		else if (theGame.getLevel() == 2) {
-			forestGameButton = new GameButton(LEVEL_3, "WHITE");	// set text to go to Level 3
+			buttonToShow = forestGameButton3;
 		}
 		else if (theGame.getLevel() == 3) {
-			forestGameButton = new GameButton(LEVEL_4, "WHITE");	// set text to go to Level 4
+			buttonToShow = forestGameButton4;
 		}
 		else if (theGame.getLevel() == 4) {
-			forestGameButton = new GameButton(LEVEL_5, "WHITE");	// set text to go to Level 5
+			buttonToShow = forestGameButton5;
 		}
 		else if (theGame.getLevel() == 5) {
-			forestGameButton = new GameButton(COMPLETED, "WHITE");	// set text to get certificate
+			buttonToShow = forestGameButton;
 		}
 
 		// Set the x- and y-coordinates and the button width and height.
@@ -315,27 +344,9 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		int boundsHeight = forestGameButton.getPreferredSize().height;
 		forestGameButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
-		add(forestGameButton);
+		add(buttonToShow);
 		forestGameButton.setVisible(true);							// add to ForestPanel
 		forestGameButton.addMouseListener(this);					// add MouseListener
-	}
-
-	/**
-	 * METHOD: This method adds the backToIntro button and adds
-	 * a MouseListener.
-	 * @param none
-	 */
-	private void addBackToIntroButton() {
-		// Initialize a GameButton to go to the Intro Panel.
-		backToIntro = new GameButton(BACK, "WHITE");
-
-		// Set the x- and y-coordinates and the button width and height.
-		int boundsWidth = backToIntro.getPreferredSize().width;
-		int boundsHeight = backToIntro.getPreferredSize().height;
-		backToIntro.setBounds(BACK_BUTTON_XCOORD, BACK_BUTTON_YCOORD, boundsWidth, boundsHeight);
-
-		add(backToIntro);												// add to IntroPanel
-		backToIntro.addMouseListener(this);							// add MouseListener
 	}
 
 	/**
@@ -359,7 +370,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 			g.drawImage(yellowButton, MARKER_4_XCOORD, MARKER_4_YCOORD, null);
 		case 3:
 			// Draw marker 3.
-			g.drawImage(yellowButton, MARKER_3_XCOORD, MARKER_3_YCOORD, null);
+//			g.drawImage(yellowButton, MARKER_3_XCOORD, MARKER_3_YCOORD, null);
 		case 2:
 			// Draw marker 2.
 			g.drawImage(yellowButton, MARKER_2_XCOORD, MARKER_2_YCOORD, null);
@@ -401,12 +412,8 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
-		// If the button goes to Intro, change to IntroPanel.
-		if (source.getButtonMessage() == BACK) {
-			theGame.changeLayoutCard("INTRO");						// switch to IntroPanel
-		}
 		// If button goes to Certificate, change to CertificatePanel.
-		else if (source.getButtonMessage() == COMPLETED) {
+		if (source.getButtonMessage() == COMPLETED) {
 			theGame.changeLayoutCard("CERTIFICATE");				// switch to CertificatePanel
 		}
 		// Otherwise, get the level of the game and change to that level.
@@ -416,12 +423,12 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 				theGame.changeLayoutCard("LEVEL_ONE");				// switch to Level 1
 			}
 			// If button goes to Level 2, change to Level 2 layout.
-			else if (theGame.getLevel()==1) {
+			else if (theGame.getLevel() == 1) {
 				theGame.changeLayoutCard("LEVEL_TWO");				// switch to Level 2
 			}
 			// If button goes to Level 3, change to Level 3 layout.
 			else if (theGame.getLevel() == 2) {
-				theGame.changeLayoutCard("LEVEL_THREE");		
+				theGame.changeLayoutCard("LEVEL_THREE");			// switch to Level 3
 				// switch to Level 3
 			}
 			// If button goes to Level 4, change to Level 4 layout.
@@ -434,8 +441,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 			}
 		}
 	}
-
-
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
