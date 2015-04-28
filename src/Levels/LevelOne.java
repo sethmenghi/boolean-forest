@@ -19,7 +19,6 @@
 
 package Levels;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +58,10 @@ public class LevelOne {
 	
 	// Declare private members of the LevelOne class:
 	private Game theGame;											// to create reference to main game
-	private int currentQuestion = 1;								// current question being asked is 1
+	private int currentQuestion;									// current question being asked
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	// holds list of answers for question 1
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	// holds list of answers for question 2
-	private List<String> ANSWERS_THREE = new ArrayList<String>();	// holds list of answers for question e
+	private List<String> ANSWERS_THREE = new ArrayList<String>();	// holds list of answers for question 3
 	
 	/**
 	 * CONSTRUCTOR: This creates an instance of the LevelOne class
@@ -80,6 +79,7 @@ public class LevelOne {
 	 * @param none
 	 */
 	public void startLevel() {
+		currentQuestion = 1;										// set currentQuestion to 1
 		doQuestion();												// call doQuestion
 	}
 	
@@ -122,6 +122,7 @@ public class LevelOne {
 				theGame.textQuestion.initGui();									// call initGui form textQuestion class
 			}
 			break;
+		// After completing the questions:
 		case 4:	
 			theGame.incrementLevel();											// increment the level of the game
 			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
