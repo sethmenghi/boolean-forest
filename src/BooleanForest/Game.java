@@ -176,6 +176,7 @@ public class Game extends JApplet {
 		catch (Exception error) {
 			// Print error message if createGUI() does not complete successfully.
 			System.err.println("ERROR: createGUI() did not complete successfully.");
+			error.printStackTrace();
 		}
 	}
 
