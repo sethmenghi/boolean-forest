@@ -118,7 +118,6 @@ public class LevelThree {
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);				// set image used for first question
 				theGame.textQuestion.setAnswerList(ANSWERS_ONE, Q_ONE_OPTION_1);// set the answer
 				theGame.textQuestion.initGui();									// call initGui form textQuestion class
-				theGame.changeLayoutCard("TEXT_QUESTION");						// change card layout to TextQuestion
 			}
 			break;
 		// For the second question:

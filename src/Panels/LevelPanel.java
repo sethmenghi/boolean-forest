@@ -528,6 +528,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				case 2:
 					theGame.levelThree.startLevel(); 
 					theGame.changeLayoutCard("TEXT_QUESTION");
+
 					break;
 				case 3:
 					theGame.levelFour.startLevel(); 
