@@ -48,15 +48,11 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 	private static final String PAGE_TWO_TEXT = "This is Bob to the left. He "		// page two of teacher text
 			+ "wants your student to help his children owls Chloe and David "
 			+ "through the Boolean Logic Forest. To do so, Bob will explain a "
-			+ "Boolean Logic concept to your student. He will then ask your "
+			+ "Boolean Logic concept to your student. The four conepts are:\n"
+			+ "1) True and False\n2) And\n3) Or\n4) Not\n\nHe will then ask your "
 			+ "student a series of questions based on what was just explained.\n\n"
-			+ "There are five questions in each level. Your student has two chances "
-			+ "to answer each question. Your student will drag and drop one of the "
-			+ "children owls onto the correct answer. If the answer is incorrect, "
-			+ "your student has another chance to drop the second owl onto the "
-			+ "correct answer.\n\nOverall, an 80% is needed to pass the level. If "
-			+ "the level is passed, the children owls will move on to the next "
-			+ "level and your student will continue on to the next level.\n\n";
+			+ "There are three to five questions in each level. Your student "
+			+ "will be able to answer until the chosen answer is selected.";
 	private static final String PAGE_THREE_TEXT = "There are five levels, the "		// page three of teacher text
 			+ "last one being cumulative. When your student gets the children owls "
 			+ "through the forest, they will receive a special helper certificate.";
