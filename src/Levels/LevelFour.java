@@ -35,12 +35,12 @@ public class LevelFour {
 	public static final String FALSE_STATEMENT = "This is WRONG!";
 
 	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-camel-12.gif
-	private static final String Q_ONE = "Choose the correct answer.";
+	private static final String Q_ONE = "The camel ____.";
 	private static final String IMAGE_ONE = "/Images/Levels/LevelFour/Questions/Camel.png";
-	private static final String Q_ONE_OPTION_1 = "The camel is not standing.";
-	private static final String Q_ONE_OPTION_2 = "The camel does not have three humps.";
-	private static final String Q_ONE_OPTION_3 = "This is not a camel.";
-	private static final String Q_ONE_OPTION_4 = "The camel is not brown.";
+	private static final String Q_ONE_OPTION_1 = "is not standing";
+	private static final String Q_ONE_OPTION_2 = "does not have three humps";
+	private static final String Q_ONE_OPTION_3 = "does not have hair";
+	private static final String Q_ONE_OPTION_4 = "is not brown";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
 	public final Image CAMEL = new ImageIcon(getClass().getResource(IMAGE_ONE)).getImage();
 
@@ -49,39 +49,39 @@ public class LevelFour {
 	private static final String Q_TWO = "Choose the CORRECT answer.";
 	private static final String IMAGE_TWO = "/Images/Levels/LevelFOUR/Questions/vulture.png";
 	private static final String Q_TWO_OPTION_1 = "This is not a bird."; 
-	private static final String Q_TWO_OPTION_2 = "The animal is not flying." ;
+	private static final String Q_TWO_OPTION_2 = "The animal is not sitting." ;
 	private static final String Q_TWO_OPTION_3 = "The animal is not brown.";
 	private static final String Q_TWO_OPTION_4 = "The animal is not eating.";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
 	public final Image VULTURE = new ImageIcon(getClass().getResource(IMAGE_TWO)).getImage();
 
 	//http://www.clipartbest.com/cliparts/eiM/n89/eiMn89Lin.jpeg
-	private static final String Q_THREE = "Choose the INCORRECT answer.";
+	private static final String Q_THREE = "The cactus is ____.";
 	private static final String IMAGE_THREE = "/Images/Levels/LevelFour/Questions/Cactus.png";
-	private static final String Q_THREE_OPTION_1 = "This is not a christmas tree."; 
-	private static final String Q_THREE_OPTION_2 = "This plant does not have prickly needles." ;
-	private static final String Q_THREE_OPTION_3 = "This plant does not grow in the desert.";
-	private static final String Q_THREE_OPTION_4 = "This plant is not green.";
+	private static final String Q_THREE_OPTION_1 = "not a tree or animal"; 
+	private static final String Q_THREE_OPTION_2 = "not a plant or green";
+	private static final String Q_THREE_OPTION_3 = "not prickly or painful";
+	private static final String Q_THREE_OPTION_4 = "not found in a desert";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
 	public final Image CACTUS = new ImageIcon(getClass().getResource(IMAGE_THREE)).getImage();
 
 	//http://cliparts.co/cliparts/8T6/86E/8T686EEyc.png
-	private static final String Q_FOUR = "Choose the correct answer.";
+	private static final String Q_FOUR = "The animal is not a ____ and ____.";
 	private static final String IMAGE_FOUR = "/Images/Levels/LevelFour/Questions/Snake.png";
-	private static final String Q_FOUR_OPTION_1 = "This is a lizard and he is not green. ";
-	private static final String Q_FOUR_OPTION_2 = "This is not a snake and he is green. ";
-	private static final String Q_FOUR_OPTION_3 = "This is not a squirrel and he is blue.";
-	private static final String Q_FOUR_OPTION_4 = "This is a snake and he is not brown.";
+	private static final String Q_FOUR_OPTION_1 = "snake, green";
+	private static final String Q_FOUR_OPTION_2 = "snake, blue";
+	private static final String Q_FOUR_OPTION_3 = "squirrel, green";
+	private static final String Q_FOUR_OPTION_4 = "squirrel, blue";
 	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
 	public final Image SNAKE = new ImageIcon(getClass().getResource(IMAGE_FOUR)).getImage();
 
 	//http://www.clker.com/cliparts/6/e/a/5/1318356706177123419Coyote%20Cartoon.svg.hi.png
-	private static final String Q_FIVE = "Choose the correct answer.";
+	private static final String Q_FIVE = "The coyote is ____ and not ____";
 	private static final String IMAGE_FIVE = "/Images/Levels/LevelFour/Questions/Coyote.png";
-	private static final String Q_FIVE_OPTION_1 = "This is not a coyote and the animal is brown.";
-	private static final String Q_FIVE_OPTION_2 = "This animal does not live in the ocean and he is a coyote.";
-	private static final String Q_FIVE_OPTION_3 = "This is a bird and it is not brown.";
-	private static final String Q_FIVE_OPTION_4 = "This is a coyote and he is not brown.";
+	private static final String Q_FIVE_OPTION_1 = "brown, sitting";
+	private static final String Q_FIVE_OPTION_2 = "black, sitting";
+	private static final String Q_FIVE_OPTION_3 = "brown, standing";
+	private static final String Q_FIVE_OPTION_4 = "black, standing";
 	private List<String> ANSWERS_FIVE = new ArrayList<String>(); 	
 	public final Image COYOTE = new ImageIcon(getClass().getResource(IMAGE_FIVE)).getImage();
 
@@ -149,7 +149,7 @@ public class LevelFour {
 				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_THREE);
 				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_4);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
@@ -169,7 +169,7 @@ public class LevelFour {
 				addPossibleAnswers(ANSWERS_FIVE,  Q_FIVE_OPTION_1,  Q_FIVE_OPTION_2, Q_FIVE_OPTION_3, Q_FIVE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FIVE);
 				theGame.textQuestion.setQuestionImage(IMAGE_FIVE);
-				theGame.textQuestion.setAnswerList(ANSWERS_FIVE,Q_FIVE_OPTION_2);
+				theGame.textQuestion.setAnswerList(ANSWERS_FIVE,Q_FIVE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
