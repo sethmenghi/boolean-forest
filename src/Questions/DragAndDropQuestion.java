@@ -63,7 +63,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	private static final int OWL_BOTTOM_BOUND=310;							// Bottom bound of owl (used to measure drop area)	
 
 	
-	private static String BACKGROUND_IMAGE="Images/Backgrounds/BackgroundForDragDropQuestion.png";
+	private static String BACKGROUND_IMAGE="/Images/Backgrounds/BackgroundForDragDropQuestion.png";
 		
 	// The Level class calls setAnswersForEachItem to set each of these values
 	// This allows us to have multiple right answers at the same time 
@@ -124,20 +124,16 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	// Constructor which is called only once 
 	public DragAndDropQuestion(Game game) 
 	{
-		System.out.println("Drag drop initialized");
 		theGame = game; 
 		firstSetUp=true;
 	}
 	
 	// Initialized the GUI. Is different if it is first time or not 
 	public void initGUI(){
-		
-		System.out.println("Drag init gui");
-		
+				
 		if(firstSetUp==true)
 		{
 			
-			System.out.println("First set up");
 			// Set the preferences of the JPANEL 
 			setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 			setDoubleBuffered(true);
@@ -146,7 +142,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		    
 		    // Need to add all the dragabble items at the bottom
 		    // They are JLabels with image 
-			ImageIcon imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(0));		// Get the image from the list passed by level class
+			ImageIcon imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(0)));		// Get the image from the list passed by level class
 			itemOneLabel = new JLabel();													// Create new JLabel
 			itemOneLabel.setIcon(imageToAddToJLabel);										// Set image
 			itemOneLabel.addMouseListener(this);											// Add mouse listener to listen for clicks 
@@ -155,35 +151,35 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		    
 		    // We repeat for the next 5 icons as well... 
 		    
-			imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(1));
+			imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(1)));
 			itemTwoLabel = new JLabel();
 			itemTwoLabel.setIcon(imageToAddToJLabel);
 			itemTwoLabel.addMouseListener(this);
 			itemTwoLabel.setBounds(ITEM_TWO_X_COORD,ITEM_Y_COORD,ITEM_WIDTH,ITEM_HEIGHT);
 		    add(itemTwoLabel);
 		    
-			imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(2));
+			imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(2)));
 			itemThreeLabel = new JLabel();
 			itemThreeLabel.setIcon(imageToAddToJLabel);
 			itemThreeLabel.addMouseListener(this);
 			itemThreeLabel.setBounds(ITEM_THREE_X_COORD,ITEM_Y_COORD,ITEM_WIDTH,ITEM_HEIGHT);
 		    add(itemThreeLabel);
 
-			imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(3));
+			imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(3)));
 			itemFourLabel = new JLabel();
 			itemFourLabel.setIcon(imageToAddToJLabel);
 			itemFourLabel.addMouseListener(this);
 			itemFourLabel.setBounds(ITEM_FOUR_X_COORD,ITEM_Y_COORD,ITEM_WIDTH,ITEM_HEIGHT);
 		    add(itemFourLabel);
 		    
-			imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(4));
+			imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(4)));
 			itemFiveLabel = new JLabel();
 			itemFiveLabel.setIcon(imageToAddToJLabel);
 			itemFiveLabel.addMouseListener(this);
 			itemFiveLabel.setBounds(ITEM_FIVE_X_COORD,ITEM_Y_COORD,ITEM_WIDTH,ITEM_HEIGHT);
 		    add(itemFiveLabel);
 
-			imageToAddToJLabel = new ImageIcon(possibleAnswersList.get(5));
+			imageToAddToJLabel = new ImageIcon(getClass().getResource(possibleAnswersList.get(5)));
 			itemSixLabel = new JLabel();
 			itemSixLabel.setIcon(imageToAddToJLabel);
 			itemSixLabel.addMouseListener(this);
@@ -235,6 +231,8 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		
 		nextQuestionButton.setVisible(false); 	// Don't set visible until have the answer 
 		
+		instructionText = "Click items to select them. Then drag them over Bob!"; 
+		
 	}
 	
 	// Method called every new question
@@ -247,12 +245,12 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 	   	
 	   	// We set the icons to the images passed by the class
 	   	// Note: they can be changed even within a level 
-	   	itemOne = new ImageIcon(possibleAnswersList.get(0)).getImage();
-	   	itemTwo = new ImageIcon(possibleAnswersList.get(1)).getImage();
-	   	itemThree = new ImageIcon(possibleAnswersList.get(2)).getImage();
-	   	itemFour = new ImageIcon(possibleAnswersList.get(3)).getImage();
-	   	itemFive = new ImageIcon(possibleAnswersList.get(4)).getImage();
-	   	itemSix = new ImageIcon(possibleAnswersList.get(5)).getImage();
+	   	itemOne = new ImageIcon(getClass().getResource(possibleAnswersList.get(0))).getImage();
+	   	itemTwo = new ImageIcon(getClass().getResource(possibleAnswersList.get(1))).getImage();
+	   	itemThree = new ImageIcon(getClass().getResource(possibleAnswersList.get(2))).getImage();
+	   	itemFour = new ImageIcon(getClass().getResource(possibleAnswersList.get(3))).getImage();
+	   	itemFive = new ImageIcon(getClass().getResource(possibleAnswersList.get(4))).getImage();
+	   	itemSix = new ImageIcon(getClass().getResource(possibleAnswersList.get(5))).getImage();
 	   	 
 	}
 
@@ -263,7 +261,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		super.paintComponent(graphics);						
 		
 		// Set the backfround of the panel 
-		Image background = new ImageIcon(BACKGROUND_IMAGE).getImage();
+		Image background = new ImageIcon(getClass().getResource(BACKGROUND_IMAGE)).getImage();
 		graphics.drawImage(background, 0, 0, null);
 		
 		// Seperate method is used to draw strings
@@ -283,7 +281,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 			itemSixLabel.setVisible(true);
 			
 			// We redraw thw owl image 
-			Image owlImage = new ImageIcon(getBobImage()).getImage(); 									// Call different method to get which image
+			Image owlImage = new ImageIcon(getClass().getResource(getBobImage())).getImage(); 									// Call different method to get which image
 			ImageObserver observer = null;																// Use observer to get the width of the owl image 
 			graphics.drawImage(owlImage,Game.APPLET_WIDTH/2-owlImage.getWidth(observer)/2,OWL_Y_COORD, null);	
 			
@@ -293,7 +291,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		// Do the same as above but do not reset labels and have low opacity owl
 		else if(isOverOwl())
 		{
-			Image owlImage = new ImageIcon(getBobImage()).getImage();
+			Image owlImage = new ImageIcon(getClass().getResource(getBobImage())).getImage();
 			ImageObserver observer = null;
 
 		    Graphics2D graphicsToSetOpacity = (Graphics2D) graphics;														// We need 2D graphics to change image opacity 
@@ -306,7 +304,7 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		// Called if no dragged item over owl
 		// Simply draw the nowmal owl 
 		else{
-			Image originalOwl = new ImageIcon(getBobImage()).getImage();
+			Image originalOwl = new ImageIcon(getClass().getResource(getBobImage())).getImage();
 			ImageObserver observer = null;
 			graphics.drawImage(originalOwl,Game.APPLET_WIDTH/2-originalOwl.getWidth(observer)/2,OWL_Y_COORD,null);
 		}
@@ -316,27 +314,41 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 		{
 			graphics.drawImage(getSelectedImage(), posX, posY, null);		// We get the x and y coordinates from the listeners below 
 		}
-		
-		//graphics.drawRoundRect(240, 130, 160, 170, 0, 0);
-		//graphics.drawRoundRect(280, 170, 80, 40, 0, 0);
-		
+				
    	}
 	
 	// Seperate method used to drawthe string in paintComponent 
 	public void drawStrings(Graphics graphics)
 	{
-		// We draw a string two display the question text
-		Graphics2D graphicsForString = (Graphics2D) graphics;															// Need to create a 2D object to adjust font and color 				
-		graphicsForString.setFont(Game.TITLE_FONT);																		// Set the font 
-		graphicsForString.setColor(Game.DARK_BLUE);																		// Set the color
-		graphicsForString.drawString(questionText,																		// Draw the string 
-				Game.APPLET_WIDTH/2-measureStringWidth(graphics,questionText)/2,QUESTION_STRING_Y_COORD);	
+		
+		// The 5th question has different font to fit size
+		if(theGame.levelFive.questionInLevel!=5)
+		{
+			// We draw a string two display the question text
+			Graphics2D graphicsForString = (Graphics2D) graphics;															// Need to create a 2D object to adjust font and color 				
+			graphicsForString.setFont(Game.LESSON_STATEMENT);																// Set the font 
+			graphicsForString.setColor(Game.DARK_BLUE);																		// Set the color
+			graphicsForString.drawString(questionText,																		// Draw the string 
+					Game.APPLET_WIDTH/2-measureStringWidth(graphics,questionText)/2,QUESTION_STRING_Y_COORD);	
+			
+		}
+		
+		else{
+			
+			// We draw a string two display the question text
+			Graphics2D graphicsForString = (Graphics2D) graphics;															// Need to create a 2D object to adjust font and color 				
+			graphicsForString.setFont(Game.SMALL_STATEMENT);																// Set the font 
+			graphicsForString.setColor(Game.DARK_BLUE);																		// Set the color
+			graphicsForString.drawString(questionText,																		// Draw the string 
+					Game.APPLET_WIDTH/2-measureStringWidth(graphics,questionText)/2,QUESTION_STRING_Y_COORD);			
+		}
 		
 		// We follow the same process as above to draw the instruction text 
 		Graphics2D graphicsForStringTwo = (Graphics2D) graphics;
 		graphicsForStringTwo.setFont(Game.PARAGRAPH_FONT);					
 		graphicsForStringTwo.setColor(Game.DARK_BLUE);			
 		graphicsForStringTwo.drawString(instructionText, Game.APPLET_WIDTH/2-measureStringWidth(graphics,instructionText)/2, Game.APPLET_HEIGHT-70);
+
 
 	}
 	
@@ -737,110 +749,115 @@ public class DragAndDropQuestion extends JPanel implements MouseListener, MouseM
 			
 		if(itemOneAdded && itemFourAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobBasketballScarf.png";
+			return "/Images/Levels/LevelFive/Questions/BobBasketballScarf.png";
+		}
+		
+		else if(itemOneAdded && itemFiveAdded)
+		{
+			return "/Images/Levels/LevelFive/Questions/BobSoccerBallBasketball.png";
 		}
 		
 		else if (itemOneAdded && itemSixAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobBasketballTie.png";
+			return "/Images/Levels/LevelFive/Questions/BobBasketballTie.png";
 		}
 		
 		else if (itemOneAdded && itemTwoAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobGlassesBasketball.png";
+			return "/Images/Levels/LevelFive/Questions/BobGlassesBasketball.png";
 		}
 		
 		else if (itemTwoAdded && itemFiveAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobGlassesSoccerBall.png";
+			return "/Images/Levels/LevelFive/Questions/BobGlassesSoccerBall.png";
 		}
 		
 		else if(itemTwoAdded && itemSixAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobGlassesTie.png";
+			return "/Images/Levels/LevelFive/Questions/BobGlassesTie.png";
 		}
 		
 		else if(itemThreeAdded && itemOneAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHatBasketball.png";
+			return "/Images/Levels/LevelFive/Questions/BobHatBasketball.png";
 		}
 		
 		else if(itemThreeAdded && itemTwoAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHatGlasses.png";
+			return "/Images/Levels/LevelFive/Questions/BobHatGlasses.png";
 		}
 
 		else if(itemThreeAdded && itemFourAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHatScarf.png";
+			return "/Images/Levels/LevelFive/Questions/BobHatScarf.png";
 		}
 		
 		else if(itemThreeAdded && itemFiveAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHatSoccerBall.png";
+			return "/Images/Levels/LevelFive/Questions/BobHatSoccerBall.png";
 		}
 		
 		else if(itemThreeAdded && itemSixAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHatTie.png";
+			return "/Images/Levels/LevelFive/Questions/BobHatTie.png";
 		}
 		
 		else if(itemFourAdded && itemFiveAdded){
-			return "Images/Levels/LevelFive/Questions/BobSoccerballScarf.png";
+			return "/Images/Levels/LevelFive/Questions/BobSoccerballScarf.png";
 		}
 		
 		else if(itemFourAdded && itemTwoAdded){
-			return "Images/Levels/LevelFive/Questions/BobGlassesScarf.png";
+			return "/Images/Levels/LevelFive/Questions/BobGlassesScarf.png";
 		}
 		
 		else if(itemFiveAdded && itemSixAdded){
-			return "Images/Levels/LevelFive/Questions/BobSoccerballTie.png";
+			return "/Images/Levels/LevelFive/Questions/BobSoccerballTie.png";
 		}
 		
 		else if(itemOneAdded && itemSixAdded){
-			return "Images/Levels/LevelFive/Questions/BobTieBasketball.png";
+			return "/Images/Levels/LevelFive/Questions/BobTieBasketball.png";
 		}
 
 		else if(itemTwoAdded && itemSixAdded){
-			return "Images/Levels/LevelFive/Questions/BobTieGlasses.png";
+			return "/Images/Levels/LevelFive/Questions/BobTieGlasses.png";
 		}
 			
 		else if(itemFiveAdded && itemSixAdded){
-			return "Images/Levels/LevelFive/Questions/BobTieSoccerBall.png";
+			return "/Images/Levels/LevelFive/Questions/BobTieSoccerBall.png";
 		}
 		
 		else if(itemOneAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobBasketball.png";
+			return "/Images/Levels/LevelFive/Questions/BobBasketball.png";
 		}
 		
 		else if(itemTwoAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobGlasses.png";
+			return "/Images/Levels/LevelFive/Questions/BobGlasses.png";
 		}
 		
 		else if(itemThreeAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobHat.png";
+			return "/Images/Levels/LevelFive/Questions/BobHat.png";
 		}
 		
 		else if(itemFourAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobScarf.png";
+			return "/Images/Levels/LevelFive/Questions/BobScarf.png";
 		}
 
 		else if(itemFiveAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobSoccerBall.png";
+			return "/Images/Levels/LevelFive/Questions/BobSoccerBall.png";
 		}
 
 		else if(itemSixAdded)
 		{
-			return "Images/Levels/LevelFive/Questions/BobTie.png";
+			return "/Images/Levels/LevelFive/Questions/BobTie.png";
 		}
 		
 		else{
-			return "Images/Levels/LevelFive/Questions/Bob.png";
+			return "/Images/Levels/LevelFive/Questions/Bob.png";
 		}
 		
 	}

@@ -11,40 +11,36 @@ import Questions.DragAndDropQuestion;
 public class LevelFive {
 	
 	// The different image options that the user can select
-	private static final String IMAGE_OPTION_ONE="Images/DragDrop/BasketBallImage.png";
-	private static final String IMAGE_OPTION_TWO="Images/DragDrop/GlassesImage.png";
-	private static final String IMAGE_OPTION_THREE="Images/DragDrop/HatImage.png";
-	private static final String IMAGE_OPTION_FOUR="Images/DragDrop/ScarfImage.png";
-	private static final String IMAGE_OPTION_FIVE="Images/DragDrop/SoccerBallImage.png";
-	private static final String IMAGE_OPTION_SIX="Images/DragDrop/TieImage.png";
+	private static final String IMAGE_OPTION_ONE="/Images/DragDrop/BasketBallImage.png";
+	private static final String IMAGE_OPTION_TWO="/Images/DragDrop/GlassesImage.png";
+	private static final String IMAGE_OPTION_THREE="/Images/DragDrop/HatImage.png";
+	private static final String IMAGE_OPTION_FOUR="/Images/DragDrop/ScarfImage.png";
+	private static final String IMAGE_OPTION_FIVE="/Images/DragDrop/SoccerBallImage.png";
+	private static final String IMAGE_OPTION_SIX="/Images/DragDrop/TieImage.png";
 	
 	// The different question texts 
-	private static final String QUESTION_ONE_TEXT= "The Owl is wearing glasses AND has a soccer ball";
-	private static final String QUESTION_TWO_TEXT= "The Owl is NOT wearing a hat and a tie";
-	private static final String QUESTION_THREE_TEXT= "The Owl is wearing a tie AND has a ball";
-	private static final String QUESTION_FOUR_TEXT= "The Owl is wearing two items of clothing AND has no balls";
-	private static final String QUESTION_FIVE_TEXT= "The Owl is weating a hat AND has a basketball OR soccerball";
+	private static final String QUESTION_ONE_TEXT= "The Owl is wearing glasses AND has a soccer ball.";
+	private static final String QUESTION_TWO_TEXT= "The Owl is NOT wearing a hat and a tie.";
+	private static final String QUESTION_THREE_TEXT= "The Owl is wearing a tie AND has a ball.";
+	private static final String QUESTION_FOUR_TEXT= "The Owl is wearing 2 items AND has no balls.";
+	private static final String QUESTION_FIVE_TEXT= "The Owl is wearing a hat AND has a basketball OR soccerball.";
 	
 	public static final String LEVEL_5_INTRO="Let's put it all together!";
 
 	// Variables for the class  
 	Game theGame;								// The game itself 
-	private int questionInLevel; 				// Counter that checks which question we are on 
+	public int questionInLevel; 				// Counter that checks which question we are on 
 	private ArrayList <String> listOfOptions;	// A list of possible draggable items 
 	
 	// Constructor just passes the game. Is called in the game class
 	public LevelFive(Game game)
 	{
-		System.out.println("Level 5 initialized");
-
 		theGame = game;
 	}
 
 	// We initialize the level when we want it displayed
 	public void initLevel(){
 		
-		System.out.println("Level 5 init level ");
-
 		questionInLevel=1; 					// Set counter to first question
 		populateListWithOptions(); 			// We create the array list of options
 		setContent();						// Set the level content
@@ -55,12 +51,10 @@ public class LevelFive {
 	// It switched from questiont to question and updates the content 
 	public void setContent(){
 		
-		System.out.println("Level 5 set content ");
 		
 		switch(questionInLevel){
 			case 1:
 				
-				System.out.println("Level 5 case 1");
 				theGame.dragAndDropQuestion.setQuestionText(QUESTION_ONE_TEXT);								// Set question text
 				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);						// Pass list of possible answers
 				theGame.dragAndDropQuestion.setAnswersForEachItem(false,true,false,false,true,false);		// Pass list of answers that are right and wrong 
@@ -101,9 +95,7 @@ public class LevelFive {
 				break;
 				
 			case 6:
-				System.out.println("This takes you to end of game");
 				theGame.incrementLevel();
-				System.out.println("Level Number in Level One: " + theGame.getLevel());
 				theGame.changeLayoutCard("FOREST");
 				break;
 				
