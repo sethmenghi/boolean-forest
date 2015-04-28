@@ -44,21 +44,24 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
 	private static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
 	private static final String COMPLETED = "Get your certificate!";		// text for completion GameButton
-	
+	private static final String BACK = "Back to Intro";						// text for button to go back
+
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/ForestBackground.jpg";	// background url
 	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
 	private static final String CHLOE_SRC = "Images/Owls/ChloeSmall.png";					// Chloe url
 	private static final String DAVID_SRC = "Images/Owls/DavidSmall.png";					// David url
 	private static final String YELLOW_BUTTON_SRC = "Images/ButtonYellow.png";				// yellow button url
 	private static final String STAR_SRC = "Images/Star.png";								// star url
-	
+
 	private static final int FOREST_WIDTH = 350;			// width of ForestPanel BobsWindow
 	private static final int FOREST_HEIGHT = 177;			// height of ForestPanel BobsWindow
 	private static final int FOREST_XCOORD = 70;			// pre-determined xCoord of ForestPanel BobsWindow
 	private static final int FOREST_YCOORD = 107;			// pre-determined yCoord of ForestPanel BobsWindow
 	private static final int BOB_XCOORD = 418;				// pre-determined xCoord of ForestPanel Bob
 	private static final int BOB_YCOORD = 268;				// pre-determined yCoord of ForestPanel Bob
-	
+	private static final int BACK_BUTTON_XCOORD = 25;		// pre-determined xCoord of back button
+	private static final int BACK_BUTTON_YCOORD = 25;		// pre-determined yCoord of back button
+
 	private static final int MARKER_1_XCOORD = 24;			// x-coordinate for marker 1
 	private static final int MARKER_2_XCOORD = 157;			// x-coordinate for marker 2
 	private static final int MARKER_3_XCOORD = 307;			// x-coordinate for marker 3
@@ -69,12 +72,13 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final int MARKER_3_YCOORD = 254;			// y-coordinate for marker 3
 	private static final int MARKER_4_YCOORD = 176;			// y-coordinate for marker 4
 	private static final int MARKER_5_YCOORD = 144;			// y-coordinate for marker 5
-	
+
 	// Declare members of ForestPanel class:
 	private Game theGame;									// reference to main Game
 	private String bobsMessage;								// Bob's message
 	private JTextArea bobsTextArea;							// text area for Bob's message
 	private GameButton forestGameButton;					// button to continue to levels
+	private GameButton backToIntro;							// button to go back to introPanel
 	private Owl chloe;										// child Owl Chloe
 	private Owl david;										// child Owl David
 	private List<Star> stars;								// list of Stars
@@ -118,9 +122,8 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		stars.add(new Star("THREE"));						// add Star for passing Level 3
 		stars.add(new Star("FOUR"));						// add Star for passing Level 4
 		stars.add(new Star("FIVE"));						// add Star for passing Level 5
-	
-		repaint();
-	
+
+		repaint();											// repaint
 	}
 
 	/**
@@ -131,29 +134,72 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		
-		System.out.println("AT BEGINNING!!!!");
 		super.paintComponent(g);							// call super method
 
 		// Create new image icon and draw the background image.
 		Image background = new ImageIcon(BACKGROUND_SRC).getImage();
 		g.drawImage(background, 0, 0, null);
-		
+
 		// Draw Bob.
 		Image bob = new ImageIcon(BOB_SRC).getImage();
 		g.drawImage(bob, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Paint various components on the screen.
+		updateOwlCoords();									// update children owl coordinates
 		paintOwl(g, david);									// paint David
 		paintOwl(g, chloe);									// paint Chloe
-		paintLevelMarkers(g, theGame.getLevel());						// paint yellow level markers for passed levels
+		paintLevelMarkers(g, theGame.getLevel());			// paint yellow level markers for passed levels
 		paintStars(g);										// paint a star for each level passed
-		
+
 		// Add text and button.
 		addText();											// add text
 		addButtons();										// add button
+	}
+	
+	/**
+	 * METHOD: Update the coordinates of the children owls
+	 * to be at the next level to play.
+	 * @param none
+	 */
+	private void updateOwlCoords() {
+		int currentLevelPassed = theGame.getLevel();		// get the current level that has been passed
 		
-		System.out.println("Painting forest panel with level "+theGame.getLevel());
+		switch (currentLevelPassed) {
+		case 1:
+			// Set Chloe and David's coordinates to be at level 2 marker.
+			// All coordinates are pre-determined.
+			chloe.setXCoord(220);
+			chloe.setYCoord(325);
+			david.setXCoord(199);
+			david.setYCoord(308);
+			break;
+		case 2:
+			// Set Chloe and David's coordinates to be at level 3 marker.
+			// All coordinates are pre-determined.
+			chloe.setXCoord(358);
+			chloe.setYCoord(305);
+			david.setXCoord(337);
+			david.setYCoord(289);
+			break;
+		case 3:
+			// Set Chloe and David's coordinates to be at level 4 marker.
+			// All coordinates are pre-determined.
+			chloe.setXCoord(489);
+			chloe.setYCoord(222);
+			david.setXCoord(468);
+			david.setYCoord(206);
+			break;
+		case 4:
+			// Set Chloe and David's coordinates to be at level 5 marker.
+			// All coordinates are pre-determined.
+			chloe.setXCoord(602);
+			chloe.setYCoord(198);
+			david.setXCoord(588);
+			david.setYCoord(183);
+			break;
+		default:
+			break;
+		}
 	}
 
 	/**
@@ -163,7 +209,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 * @param owl
 	 */
 	private void paintOwl(Graphics g, Owl owl) {
-		Image owlImage;
+		Image owlImage;										// declare local Image to use to print owls
 
 		// Check to see if Owl is Chloe or David and draw the Owl.
 		if (owl.getOwlName() == "CHLOE") {
@@ -231,6 +277,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addButtons() {
 		addForestButton();									// add forestButton
+		addBackToIntroButton();								// add backToIntroButton
 	}
 
 	/**
@@ -239,14 +286,12 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 * @param none
 	 */
 	private void addForestButton() {
-		// Initialize forestGameButton with the correct text.
-		
+		// Initialize forestGameButton with the correct text.	
 		if (theGame.getLevel() == 0) {
 			forestGameButton = new GameButton(LEVEL_1, "WHITE");	// set text to go to Level 1
 		}
 		else if (theGame.getLevel() == 1) {
 			forestGameButton = new GameButton(LEVEL_2, "WHITE");	// set text to go to Level 2			
-			System.out.println("here??????????");
 		}
 		else if (theGame.getLevel() == 2) {
 			forestGameButton = new GameButton(LEVEL_3, "WHITE");	// set text to go to Level 3
@@ -260,7 +305,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		else if (theGame.getLevel() == 5) {
 			forestGameButton = new GameButton(COMPLETED, "WHITE");	// set text to get certificate
 		}
-		
+
 		// Set the x- and y-coordinates and the button width and height.
 		int boundsXCoord = FOREST_XCOORD + FOREST_WIDTH / 2 -
 				forestGameButton.getPreferredSize().width / 2;
@@ -271,9 +316,26 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		forestGameButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
 		add(forestGameButton);
-		forestGameButton.setVisible(true);
-		System.out.println("button:" + forestGameButton.getButtonMessage());// add to ForestPanel
+		forestGameButton.setVisible(true);							// add to ForestPanel
 		forestGameButton.addMouseListener(this);					// add MouseListener
+	}
+
+	/**
+	 * METHOD: This method adds the backToIntro button and adds
+	 * a MouseListener.
+	 * @param none
+	 */
+	private void addBackToIntroButton() {
+		// Initialize a GameButton to go to the Intro Panel.
+		backToIntro = new GameButton(BACK, "WHITE");
+
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsWidth = backToIntro.getPreferredSize().width;
+		int boundsHeight = backToIntro.getPreferredSize().height;
+		backToIntro.setBounds(BACK_BUTTON_XCOORD, BACK_BUTTON_YCOORD, boundsWidth, boundsHeight);
+
+		add(backToIntro);												// add to IntroPanel
+		backToIntro.addMouseListener(this);							// add MouseListener
 	}
 
 	/**
@@ -337,36 +399,39 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */  
 	@Override
 	public void mousePressed(MouseEvent e) {
-		GameButton source = (GameButton) e.getSource();			// get source of component that was clicked
+		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
-		System.out.println(source.getButtonMessage());
-		
-		// If button goes to Level 1, change to Level 1 layout.
-		if (theGame.getLevel() == 0) {
-			theGame.changeLayoutCard("LEVEL_ONE");				// switch to Level 1
-		}
-		// If button goes to Level 2, change to Level 2 layout.
-		else if (theGame.getLevel()==1) {
-			theGame.changeLayoutCard("LEVEL_TWO");				// switch to Level 2
-		}
-		// If button goes to Level 3, change to Level 3 layout.
-		else if (theGame.getLevel() == 2) {
-			theGame.changeLayoutCard("LEVEL_THREE");		
-			// switch to Level 3
-		}
-		// If button goes to Level 4, change to Level 4 layout.
-		else if (theGame.getLevel() == 3) {
-			theGame.changeLayoutCard("LEVEL_FOUR");				// switch to Level 4
-		}
-		// If button goes to Level 5, change to Level 5 layout.
-		else if (theGame.getLevel() == 4) {
-			theGame.changeLayoutCard("LEVEL_FIVE");				// switch to Level 5	
-			/////// THIS SHOULD BE CALLED FROM LEVELPANEL FOR LEVEL 5
-			/////// theGame.levelFive.initLevel(); 
+		// If the button goes to Intro, change to IntroPanel.
+		if (source.getButtonMessage() == BACK) {
+			theGame.changeLayoutCard("INTRO");						// switch to IntroPanel
 		}
 		// If button goes to Certificate, change to CertificatePanel.
 		else if (source.getButtonMessage() == COMPLETED) {
-			theGame.changeLayoutCard("CERTIFICATE");			// switch to CertificatePanel
+			theGame.changeLayoutCard("CERTIFICATE");				// switch to CertificatePanel
+		}
+		// Otherwise, get the level of the game and change to that level.
+		else {
+			// If button goes to Level 1, change to Level 1 layout.
+			if (theGame.getLevel() == 0) {
+				theGame.changeLayoutCard("LEVEL_ONE");				// switch to Level 1
+			}
+			// If button goes to Level 2, change to Level 2 layout.
+			else if (theGame.getLevel()==1) {
+				theGame.changeLayoutCard("LEVEL_TWO");				// switch to Level 2
+			}
+			// If button goes to Level 3, change to Level 3 layout.
+			else if (theGame.getLevel() == 2) {
+				theGame.changeLayoutCard("LEVEL_THREE");		
+				// switch to Level 3
+			}
+			// If button goes to Level 4, change to Level 4 layout.
+			else if (theGame.getLevel() == 3) {
+				theGame.changeLayoutCard("LEVEL_FOUR");				// switch to Level 4
+			}
+			// If button goes to Level 5, change to Level 5 layout.
+			else if (theGame.getLevel() == 4) {
+				theGame.changeLayoutCard("LEVEL_FIVE");				// switch to Level 5	
+			}
 		}
 	}
 
