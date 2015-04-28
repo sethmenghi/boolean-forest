@@ -265,6 +265,9 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		case 4:
 			bobsMessage = "Almost there! Let's put it all together!";
 			break;
+		case 5:
+			bobsMessage = "Click the button for a surprise!";
+			break;
 		default:
 			break;
 		}
