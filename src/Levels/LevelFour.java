@@ -31,9 +31,6 @@ import javax.swing.JOptionPane;
 import BooleanForest.*;
 
 public class LevelFour {
-	// Declare private String for Bob resource:
-	private static final String BOB_SRC = "/Images/Owls/Bob.png";			// Bob url
-		
 	// Declare static final Strings for explanations:
 	public static final String PAGE_NOT = "NOT";							// page 1	
 	public static final String PAGE_TRUE_A = "This is NOT an apple.";		// page 2
