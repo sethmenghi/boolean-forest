@@ -96,7 +96,7 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	public void initQuestion(){
 		questionCompleted = false;
 		
-		img = new ImageIcon(imageResource);
+		img = new ImageIcon(getClass().getResource(imageResource));
 		// Checking if Image loaded correctly.
 		while(img.getImageLoadStatus() != MediaTracker.COMPLETE){
 			if (img.getImageLoadStatus() == MediaTracker.ERRORED || 
