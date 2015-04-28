@@ -51,17 +51,17 @@ public class LevelFour {
 	private static final String IMAGE_FIVE = "/Images/Levels/LevelFour/Questions/Coyote.png";
 	
 	// Declare static final String for questions:
-	private static final String Q_ONE = "Choose the CORRECT answer.";
+	private static final String Q_ONE = "The camel ____.";
 	private static final String Q_TWO = "Choose the CORRECT answer.";
-	private static final String Q_THREE = "Choose the INCORRECT answer.";
-	private static final String Q_FOUR = "Choose the CORRECT answer.";
-	private static final String Q_FIVE = "Choose the CORRECT answer.";
+	private static final String Q_THREE = "The cactus is ____.";
+	private static final String Q_FOUR = "The animal is not a ____ and ____.";
+	private static final String Q_FIVE = "The coyote is ____ and not ____.";
 	
 	// Declare static final String for question answer choices for Question 1:
-	private static final String Q_ONE_OPTION_1 = "The camel is NOT standing.";
-	private static final String Q_ONE_OPTION_2 = "The camel does NOT have three humps.";
-	private static final String Q_ONE_OPTION_3 = "This is NOT a camel.";
-	private static final String Q_ONE_OPTION_4 = "The camel is NOT brown.";
+	private static final String Q_ONE_OPTION_1 = "is not standing";
+	private static final String Q_ONE_OPTION_2 = "does not have three humps";
+	private static final String Q_ONE_OPTION_3 = "does not have hair";
+	private static final String Q_ONE_OPTION_4 = "is not brown";
 	
 	// Declare static final String for question answer choices for Question 2:
 	private static final String Q_TWO_OPTION_1 = "This is NOT a bird."; 
@@ -70,22 +70,22 @@ public class LevelFour {
 	private static final String Q_TWO_OPTION_4 = "The animal is NOT eating.";
 	
 	// Declare static final String for question answer choices for Question 3:
-	private static final String Q_THREE_OPTION_1 = "This is NOT a christmas tree."; 
-	private static final String Q_THREE_OPTION_2 = "This plant does NOT have prickly needles." ;
-	private static final String Q_THREE_OPTION_3 = "This plant does NOT grow in the desert.";
-	private static final String Q_THREE_OPTION_4 = "This plant is NOT green.";
+	private static final String Q_THREE_OPTION_1 = "not a tree or animal"; 
+	private static final String Q_THREE_OPTION_2 = "not a plant or green";
+	private static final String Q_THREE_OPTION_3 = "not prickly or painful";
+	private static final String Q_THREE_OPTION_4 = "not found in a desert";
 	
 	// Declare static final String for question answer choices for Question 4:
-	private static final String Q_FOUR_OPTION_1 = "This is a lizard and he is NOT green. ";
-	private static final String Q_FOUR_OPTION_2 = "This is NOT a snake and he is green. ";
-	private static final String Q_FOUR_OPTION_3 = "This is NOT a squirrel and he is blue.";
-	private static final String Q_FOUR_OPTION_4 = "This is a snake and he is NOT brown.";
+	private static final String Q_FOUR_OPTION_1 = "snake, green";
+	private static final String Q_FOUR_OPTION_2 = "snake, blue";
+	private static final String Q_FOUR_OPTION_3 = "squirrel, green";
+	private static final String Q_FOUR_OPTION_4 = "squirrel, blue";
 	
 	// Declare static final String for question answer choices for Question 5:
-	private static final String Q_FIVE_OPTION_1 = "This is NOT a coyote and the animal is brown.";
-	private static final String Q_FIVE_OPTION_2 = "This animal does NOT live in the ocean and he is a coyote.";
-	private static final String Q_FIVE_OPTION_3 = "This is a bird and it is NOT brown.";
-	private static final String Q_FIVE_OPTION_4 = "This is a coyote and he is NOT brown.";
+	private static final String Q_FIVE_OPTION_1 = "brown, sitting";
+	private static final String Q_FIVE_OPTION_2 = "black, sitting";
+	private static final String Q_FIVE_OPTION_3 = "brown, standing";
+	private static final String Q_FIVE_OPTION_4 = "black, standing";
 	
 	// Declare private members of the LevelOne class:
 	private Game theGame;											// to create reference to main game
@@ -156,7 +156,7 @@ public class LevelFour {
 				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_THREE);
 				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_4);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
@@ -176,7 +176,7 @@ public class LevelFour {
 				addPossibleAnswers(ANSWERS_FIVE,  Q_FIVE_OPTION_1,  Q_FIVE_OPTION_2, Q_FIVE_OPTION_3, Q_FIVE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FIVE);
 				theGame.textQuestion.setQuestionImage(IMAGE_FIVE);
-				theGame.textQuestion.setAnswerList(ANSWERS_FIVE,Q_FIVE_OPTION_2);
+				theGame.textQuestion.setAnswerList(ANSWERS_FIVE,Q_FIVE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
