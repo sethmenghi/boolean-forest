@@ -118,7 +118,10 @@ public class Game extends JApplet {
 	private LevelPanel levelPanelFive;						// levelPanelFive
 	private CertificatePanel certificatePanel;				// certificatePanel
 	private int level;										// current level passed
-	private boolean firstTime = true;
+	
+	// makes sure createGUI runs properly
+	private boolean firstTime = true;						// true on first init loop
+	private boolean secondTime;								// true on second loop -> run createGUI
 	
 	public LevelOne levelOne;
 	public LevelTwo levelTwo; 
@@ -173,8 +176,11 @@ public class Game extends JApplet {
 				SwingUtilities.invokeAndWait(new Runnable() {	// create new thread
 					public void run() {
 						if (firstTime == true){
-							createGUI();							// call createGUI()
 							firstTime = false;
+							secondTime = true;
+						}
+						else if (secondTime == true){
+							createGUI();							// call createGUI()
 						}
 					}
 				});
