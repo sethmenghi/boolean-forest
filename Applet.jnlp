@@ -10,7 +10,7 @@
 	</resources>
      <application-desc
 	name="Boolean Forest"
-	main-class="BooleanForest.Game"
+    main-class="BooleanForest.Game"
 	width="640"
 	height="480"
 	</application-desc>

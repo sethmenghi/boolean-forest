@@ -1,0 +1,5 @@
+Permissions: sandbox
+Codebase: .
+Application-Name: BooleanForest
+
+
