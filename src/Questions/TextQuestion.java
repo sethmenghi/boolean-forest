@@ -115,6 +115,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		questionPanel.setOpaque(false);
 		questionPanel.setBorder(new EmptyBorder(Game.APPLET_HEIGHT-160, 0, 0, 0));
 		add(questionPanel);
+		
+		repaint(); 
 
 	}
 	
@@ -166,6 +168,15 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			
 			if (theGame.getLevel() == 1){
 				theGame.levelTwo.nextQuestion();
+			}
+			
+			if (theGame.getLevel() == 2){
+				theGame.levelThree.nextQuestion();
+			}
+			
+			if (theGame.getLevel() == 3){
+				
+				theGame.levelFour.nextQuestion();
 			}
 			
 			return true;

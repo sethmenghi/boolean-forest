@@ -42,8 +42,8 @@ public class LevelTwo {
 	public static final Image CUPCAKE = new ImageIcon("Images/Levels/LevelTwo/Explanation/Cupcake.png").getImage();
 	
 	
-	private static final String INSTRUCTIONS = "Level One Instructions";
-	// Question One -- text question
+	
+	// https://www.wordans.com/wvc-1374530565/wordansfiles/images/2013/7/22/200382/200382_340.jpg
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";
 	private static final String IMAGE_ONE = "Images/Levels/LevelTwo/Questions/DolphinSaxaphone.png";
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
@@ -51,10 +51,10 @@ public class LevelTwo {
 	private static final String Q_ONE_OPTION_3 = "shark, piano";
 	private static final String Q_ONE_OPTION_4 = "shark, saxophone";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
-	private static List<String> CORRECT_ONE = new ArrayList<String>();
+	
 	
 
-	//Question Two -- text question
+	//http://www.wikihow.com/images/d/d4/Draw-an-Octopus-Step-16-Version-2.jpg
 	private static final String Q_TWO = "This is an _____ and she is _____ ";
 	private static final String IMAGE_TWO = "Images/Levels/LevelTwo/Questions/Octopus.png";
 	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
@@ -62,10 +62,10 @@ public class LevelTwo {
 	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
 	private static final String Q_TWO_OPTION_4 = "octopus, pink";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
-	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
 	public static final Image OCTOPUS = new ImageIcon(IMAGE_TWO).getImage();
 	
 	//Question Three -- text question 
+	//http://images.clipartpanda.com/seal-clip-art-seal-clipart-4.jpg
 	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
 
 	private static final String IMAGE_THREE = "Images/Levels/LevelTwo/Questions/Seal.png";
@@ -75,7 +75,7 @@ public class LevelTwo {
 	private static final String Q_THREE_OPTION_4 = "fish, ball";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
 	
-	
+	//http://www.clipartbest.com/cliparts/ace/M8e/aceM8egc4.png
 	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
 	private static final String IMAGE_FOUR = "Images/Levels/LevelTwo/Questions/Orca.png";
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";

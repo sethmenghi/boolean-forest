@@ -6,6 +6,7 @@
  *    clipart/nature/flowers/detailedsunflower.png
  * 3) http://www.clipartbest.com/cliparts/dcr/Kek/dcrKekgc9.png
  * 4) https://derpicdn.net/img/2013/4/30/311987/full.png
+ * 
  */
 package Levels;
 
@@ -38,61 +39,56 @@ public class LevelThree {
 	
 	//OR LEVEL 
 	
-	private static final String INSTRUCTIONS = "Level One Instructions";
+	
 	// Question One -- text question
+	//http://cliparts.co/cliparts/kcM/nAL/kcMnALeki.jpg
 	private static final String Q_ONE = "Choose the CORRECT anwer.";
-	private static final String IMAGE_ONE = "Images/Levels/LevelThree/Questions/Giraffe.png";
-	private static final String Q_ONE_OPTION_1 = "The giraffe is lying down or sleeping.";
-	private static final String Q_ONE_OPTION_2 = "The giraffe has blue or green spots.";
+	private static final String IMAGE_ONE = "Images/Levels/LevelThree/Questions/giraffe.png";
+	private static final String Q_ONE_OPTION_1 = "The giraffe is lying down or he is sleeping.";
+	private static final String Q_ONE_OPTION_2 = "The giraffe has blue spots or green spots.";
 	private static final String Q_ONE_OPTION_3 = "The giraffe is yellow or pink.";
 	private static final String Q_ONE_OPTION_4 = "The giraffe has a short neck or long legs.";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
-	private static List<String> CORRECT_ONE = new ArrayList<String>();
 	public static final Image GIRAFFE = new ImageIcon(IMAGE_ONE).getImage();
 	
 	
 	
 	//http://cliparts.co/cliparts/kc8/oKy/kc8oKydji.png
 	private static final String Q_TWO = "Choose the INCORRECT answer.";
-	private static final String IMAGE_TWO = "Images/Levels/LevelThree/Questions/Elephant.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelThree/Questions/elephant.png";
 	private static final String Q_TWO_OPTION_1 = "The elephant is sitting or standing.";
-	private static final String Q_TWO_OPTION_2 = "The elephant is grey or brown.";
+	private static final String Q_TWO_OPTION_2 = "The elephant is gray or brown.";
 	private static final String Q_TWO_OPTION_3 = "The elephant has white tusks or brown tusks.";
 	private static final String Q_TWO_OPTION_4 = "The elephant has blue eyes or green eyes.";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
-	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
-	public static final Image ELEPHANT = new ImageIcon(IMAGE_TWO).getImage();
 	
+	//http://www.clipartbest.com/cliparts/Bdc/r6k/Bdcr6koT9.jpeg
 	private static final String Q_THREE = "Choose the correct answer.";
-	private static final String IMAGE_THREE = "Images/Levels/LevelThree/Questions/Lion.png";
-	private static final String Q_THREE_OPTION_1 = "The lion is not white or spotted.";
-	private static final String Q_THREE_OPTION_2 = "The lion is not yellow or orange.";
-	private static final String Q_THREE_OPTION_3 = "The lion does not have a long mane or a brown mane.";
-	private static final String Q_THREE_OPTION_4 = "The lion does not have brown or black whiskers.";
+	private static final String IMAGE_THREE = "Images/Levels/LevelThree/Questions/lion.png";
+	private static final String Q_THREE_OPTION_1 = "The lion is white or spotted.";
+	private static final String Q_THREE_OPTION_2 = "The lion is yellow or orange.";
+	private static final String Q_THREE_OPTION_3 = "The lion has a purple mane or a pink mane.";
+	private static final String Q_THREE_OPTION_4 = "The lion has blue whiskers or green whiskers.";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
-	private static List<String> CORRECT_THREE = new ArrayList<String>(); 
-	public static final Image LION = new ImageIcon(IMAGE_THREE).getImage();
 	
+	
+	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-hippo-8.gif
 	private static final String Q_FOUR = "Choose the correct answer.";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelThree/Questions/Hippo.png";
-	private static final String Q_FOUR_OPTION_1 = "The hippo is not grey or purple.";
-	private static final String Q_FOUR_OPTION_2 = "The hippo is swimming and sleeping.";
-	private static final String Q_FOUR_OPTION_3 = "The hippo is not purple, but he has stripes and polkadots.";
-	private static final String Q_FOUR_OPTION_4 = "The hippo is purple and he has two teeth, but he is not swimming.";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelThree/Questions/hippo.png";
+	private static final String Q_FOUR_OPTION_1 = "The hippo has two teeth or four teeth.";
+	private static final String Q_FOUR_OPTION_2 = "The hippo is swimming or he is sleeping.";
+	private static final String Q_FOUR_OPTION_3 = "The hippo is eating cupakes or donuts.";
+	private static final String Q_FOUR_OPTION_4 = "The hippo does not have red nail polish or blue nail polish on.";
 	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
-	private static List<String> CORRECT_FOUR = new ArrayList<String>(); 
 	public static final Image HIPPO = new ImageIcon(IMAGE_FOUR).getImage();
 	
 	
 	
-	//private static final String Q_THREE = "?";
-	
 	private Game theGame;
-	int currentLevel = 1;
+	private int currentQuestion;
 	
 	public LevelThree(Game game) {
 		theGame = game;
-		//startLevel();
 	}
 	
 	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2, String option3, String option4){
@@ -108,12 +104,13 @@ public class LevelThree {
 	}
 
 	public void startLevel() {
+		currentQuestion = 1;
 		doQuestion();
 	}
 	
 	public void nextQuestion(){
 		if (theGame.textQuestion.questionCompleted == true){
-			currentLevel++;
+			currentQuestion++;
 			doQuestion();
 		}
 		else{
@@ -123,7 +120,10 @@ public class LevelThree {
 	}
 	
 	public void doQuestion() {
-		switch (currentLevel) {
+		
+		System.out.println(currentQuestion); 
+		
+		switch (currentQuestion) {
 		case 1:
 			if (ANSWERS_ONE.size() == 0){
 				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2, Q_ONE_OPTION_3, Q_ONE_OPTION_4);
@@ -131,9 +131,6 @@ public class LevelThree {
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
 				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_3);
 				theGame.textQuestion.initGui();
-				//theGame.repaint();
-				theGame.changeLayoutCard("TEXT_QUESTION");
-
 			}
 			break;
 		case 2:	
@@ -141,41 +138,33 @@ public class LevelThree {
 				addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2, Q_TWO_OPTION_3, Q_TWO_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_TWO);
 				theGame.textQuestion.setQuestionImage(IMAGE_TWO);
-				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_3);
+				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_4);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
-				theGame.changeLayoutCard("TEXT_QUESTION");
 			}
 			break;
 		case 3:	
 			if (ANSWERS_THREE.size() == 0){
-				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1, Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
+				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_THREE);
 				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_1);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_2);
 				theGame.textQuestion.initGui();
-				theGame.repaint();
 			}
-		
-		case 4: 
-			if (ANSWERS_FOUR.size() == 0){
-				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
-				theGame.textQuestion.setQuestion(Q_FOUR);
-				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
-				theGame.textQuestion.setAnswerList(ANSWERS_FOUR,Q_FOUR_OPTION_4);
-				theGame.textQuestion.initGui();
-				theGame.repaint();
-				
-			}
-			//theGame.changeLayoutCard("TEXT_QUESTION");
 			break;
 		
-		
+		case 4:	
+			if (ANSWERS_FOUR.size() == 0){
+				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1,  Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
+				theGame.textQuestion.setQuestion(Q_FOUR);
+				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
+				theGame.textQuestion.setAnswerList(ANSWERS_FOUR,Q_FOUR_OPTION_1);
+				theGame.textQuestion.initGui();
+			}
+			break;
 			
 		case 5:	
-			System.out.println("END OF LEVEL ONE");
 			theGame.incrementLevel();
-			theGame.forestPanel.repaintForestPanel();
+			System.out.println("Level Number in Level Two: " + theGame.getLevel());
 			theGame.changeLayoutCard("FOREST");
 			break;
 	

@@ -37,58 +37,28 @@ public class LevelOne {
 	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Explanation/Table.png").getImage();
 	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Explanation/Pink.png").getImage();
 	
-	private static final String Q_FOUR = "This is a monkey.";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelOne/Questions/lion.png";
-	private static final String Q_FOUR_OPTION_1 = "True.";
-	private static final String Q_FOUR_OPTION_2 = "False.";
-	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
-	private static final String CORRECT_FOUR = Q_FOUR_OPTION_2;
-	//public static final Image MONKEY = new ImageIcon(IMAGE_ONE).getImage();
-	
-	
-	//public static final Image ZEBRA = new ImageIcon(IMAGE_TWO).getImage();
-
-	//These are the four string options for the answer to question 2, level 
-	
-//	
-	
-	// Question One -- text question
+	// https://s-media-cache-ak0.pinimg.com/236x/6b/c5/37/6bc537a241ffc746acb7d2180d2253d8.jpg
 	private static final String Q_ONE = "This is a monkey.";
 	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Questions/Monkey.png";
 	private static final String Q_ONE_OPTION_1 = "True";
 	private static final String Q_ONE_OPTION_2 = "False";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
-	private static final String CORRECT_ONE = Q_ONE_OPTION_1;
 	
-	private static final String Q_TWO = "This animal has stripes.";
+	//http://www.wpclipart.com/cartoon/animals/horse/horse_cartoon_zebra.png
+	private static final String Q_TWO = "The zebra has stripes.";
 	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Questions/Zebra.png";
 	private static final String Q_TWO_OPTION_1 = "True.";
 	private static final String Q_TWO_OPTION_2 = "False.";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
-	private static final String CORRECT_TWO = Q_TWO_OPTION_1;
 	
-	private static final String  Q_THREE = "This animal is purple.";
+	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-flamingo-8.gif
+	private static final String  Q_THREE = "The flamingo is blue.";
 	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Questions/Flamingo.png";
 	private static final String Q_THREE_OPTION_1 = "True.";
 	private static final String Q_THREE_OPTION_2 = "False.";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
-	private static final String CORRECT_THREE = Q_TWO_OPTION_2;
 	
-//	
-//	//Question Two -- text question
-//	private static final String Q_TWO = "This is an _____ and she is _____ ";
-//	private static final String IMAGE_TWO = "Images/pinkOctopus.png";
-//	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
-//	private static final String Q_TWO_OPTION_2 = "octopus, blue";
-//	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
-//	private static final String Q_TWO_OPTION_4 = "octopus, pink";
-//	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
-//	private static List<String> CORRECT_TWO = new ArrayList<String>(); 
-//	
-//	private static final String Q_FIVE = "?";
-//	private static final int TEXT = 0;
-//	private static final int IMAGE = 1;
-	
+
 	private Game theGame;
 	private int currentQuestion = 1;
 	
