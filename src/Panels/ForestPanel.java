@@ -98,7 +98,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	public void initPanel(Game game) {
 		this.theGame = game;								// create reference to game passed in
 		this.theLevel = theGame.getLevel();					// get current level passed of theGame
-		
+
 		// Set the dimensions and layout of the JPanel.
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);

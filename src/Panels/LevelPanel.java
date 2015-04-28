@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import BooleanForest.Game;
+import Levels.LevelFive;
 import Levels.LevelFour;
 import Levels.LevelOne;
 import Levels.LevelThree;
@@ -19,18 +20,18 @@ import Objects.GameButton;
 
 @SuppressWarnings("serial")
 public class LevelPanel extends JPanel implements Panel, MouseListener {
-	private static final String FORWARD = ">>";										// text for forward button
-	private static final String BACKWARD = "<<";									// text for backward button
-	private static final String BACK = "BACK TO FOREST";							// text for back to forestPanel
-	
+	private static final String FORWARD = ">>";			// text for forward button
+	private static final String BACKWARD = "<<";		// text for backward button
+	private static final String BACK = "Back to forest";// text for back to forestPanel
+
 	private static final int LEVEL_WIDTH = 420;			// width of LevelPanel BobsWindow
 	private static final int LEVEL_HEIGHT = 433;		// height of LevelPanel BobsWindow
 	private static final int LEVEL_XCOORD = 22;			// pre-determined xCoord of LevelPanel BobsWindow
 	private static final int LEVEL_YCOORD = 24;			// pre-determined yCoord of LevelPanel BobsWindow
 	private static final int BOB_XCOORD = 464;			// pre-determined xCoord of LevelPanel Bob
 	private static final int BOB_YCOORD = 304;			// pre-determined yCoord of LevelPanel Bob
-	
-	
+
+
 	private static final int FORWARD_XCOORD = LEVEL_XCOORD + LEVEL_WIDTH - 50;
 	private static final int FORWARD_YCOORD = LEVEL_YCOORD + LEVEL_HEIGHT - 40;
 	private static final int BACKWARD_XCOORD = LEVEL_XCOORD + LEVEL_WIDTH - 100;
@@ -38,19 +39,13 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	private Game theGame;								// reference to Game that instantiates LevelPanel object
 	private int theLevel;								// the current level passed in theGame
-	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
+	private JTextArea bobsTextArea1;					// JTextArea for Bob's Window
 	private JTextArea bobsTextArea2;					// JTextArea for Bob's Window (if there are two statements)
-	private String currentShownText;					// current text being shown for explanations
 	private int currentPage;							// current page being shown for explanations
 	private GameButton backButton;						// back to forestPanel button
 	private GameButton forwardButton;					// forward button
 	private GameButton backwardButton;					// backward button
 
-	LevelOne levelOne;
-	LevelTwo levelTwo;
-	LevelThree levelThree;
-	LevelFour levelFour;
-	
 	public LevelPanel(Game game, int levelToPlay) {
 		initPanel(game, levelToPlay);
 	}
@@ -70,44 +65,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		setLayout(null);
 
 		currentPage = 1;
-		
-		// Initialize currentShownText to first page String for level being played.
-		switch (theLevel) {
-		case 1:
-			currentShownText = LevelOne.PAGE_TRUE;					// set currentShownText to Level 1 page 1
-			break;
-		case 2:
-//			currentShownText = LevelTwo.PAGE;						// set currentShownText to Level 2 page 1
-			break;
-		case 3:
-//			currentShownText = LevelThree.PAGE;						// set currentShownText to Level 3 page 1
-			break;
-		case 4:
-//			currentShownText = LevelFour.PAGE;						// set currentShownText to Level 4 page 1
-			break;
-		case 5:
-//			currentShownText = LevelFive.PAGE;						// set currentShownText to Level 5 page 1
-			break;	
-		default:
-			break;
-		}
-		
 	}
 
-	/////////// THIS CODE IS NOT DOING ANYTHING ////////////
-//	public void nextQuestion(){
-//		switch(theLevel){
-//		case 1:
-//			levelOne.nextQuestion();
-//			break;
-//		case 2:
-//			break;
-//		}
-//	}
-	
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);									// call super method
+		super.paintComponent(g);										// call super method
 
 		// Create new image icon and draw the background image.
 		Image image = new ImageIcon("Images/Backgrounds/LevelBackground.jpg").getImage();
@@ -117,8 +79,8 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
-		addText(g);													// add text
-		addButtons();												// add buttons
+		addText(g);														// add text
+		addButtons();													// add buttons
 	}
 
 	@Override
@@ -131,19 +93,33 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	 * @param g
 	 */
 	private void addText(Graphics g) {
+		switch(theLevel) {
+		case 1:
+			showLevelOneContent(g);
+			break;
+		case 5:
+			showLevelFiveContent(g);
+			break;
+		default:
+			showLevelContent(g, theLevel);
+			break;
+		}
+	}
+
+	private void showLevelOneContent(Graphics g) {
 		String levelTextOne = "";										// String for first line of text
 		String levelTextTwo = "";										// String for second line of text
 
 		// If the JTextArea is not null, remove it from the JPanel.
-		if (bobsTextArea != null ) {
-			remove(bobsTextArea);
+		if (bobsTextArea1 != null ) {
+			remove(bobsTextArea1);
 		}
 		if (bobsTextArea2 != null) {
 			remove(bobsTextArea2);
 		}
 
-		// Create a JTextArea to fit inside Bob's Window with wrapped text,
-		// custom font and transparent background. Add JTextArea to the JPanel.
+		// If page 1 or 4 of explanation, it is a topic String so paint with
+		// topic font style.
 		if (currentPage == 1 || currentPage == 4) {
 			if (currentPage == 1) {
 				levelTextOne = LevelOne.PAGE_TRUE;						// get the first page from LevelOne class
@@ -151,17 +127,21 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			else {
 				levelTextOne = LevelOne.PAGE_FALSE;						// get the fourth page from LevelOne class
 			}		
-			bobsTextArea = new JTextArea();								// initialize the JTextArea
-			bobsTextArea.setFont(Game.TOPICS_FONT);						// set the font
-			bobsTextArea.setForeground(Game.DARK_BLUE);					// set font color
-			bobsTextArea.setOpaque(false);								// set background to transparent
+
+			// Create a JTextArea to fit inside white text window with custom font
+			// and transparent background. Add JTextArea to the JPanel.
+			bobsTextArea1 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea1.setFont(Game.TOPICS_FONT);					// set the font
+			bobsTextArea1.setForeground(Game.DARK_BLUE);				// set font color
+			bobsTextArea1.setOpaque(false);								// set background to transparent
 			// Set the size and location of the text to have margin of 10 pixels
 			// from the edge of the white background. 
-			bobsTextArea.setSize(LEVEL_WIDTH - 20, 150);
-			bobsTextArea.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 120);
-			bobsTextArea.setText(levelTextOne);							// set the text
-			add(bobsTextArea);											// add to LevelPanel		
+			bobsTextArea1.setSize(LEVEL_WIDTH - 20, 150);
+			bobsTextArea1.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 120);
+			bobsTextArea1.setText(levelTextOne);						// set the text
+			add(bobsTextArea1);											// add to LevelPanel		
 		}
+		// All other pages of explanation are statements with images.
 		else {
 			if (currentPage == 2) {
 				levelTextOne = LevelOne.PAGE_TRUE_A;					// get the second page from LevelOne class
@@ -178,31 +158,24 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				g.drawImage(LevelOne.TABLE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
-			else if (currentPage == 6){
+			else if (currentPage == 6) {
 				levelTextOne = LevelOne.PAGE_FALSE_B;					// get the sixth page from LevelOne class
 				g.drawImage(LevelOne.PINK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
-			else if (currentPage == 7) {
-				if (levelOne == null) {
-					levelOne = new LevelOne(theGame);
-					theGame.textQuestion.switchLevelPanel(this);
-					System.out.println("Instantiated Level One in addText(Graphics)");
-				}
-			}
-			else if (currentPage == 8) {
-				
-			}
-			bobsTextArea = new JTextArea();								// initialize the JTextArea
-			bobsTextArea.setFont(Game.LESSON_STATEMENT);				// set the font
-			bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
-			bobsTextArea.setOpaque(false);								// set background to transparent
+
+			// Create JTextAreas to fit inside white text window with custom font
+			// and transparent background. Add JTextAreas to the JPanel.
+			bobsTextArea1 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea1.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea1.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea1.setOpaque(false);								// set background to transparent
 			// Set the size and location of the text to have margin of 10 pixels
 			// from the edge of the white background. 
-			bobsTextArea.setSize(LEVEL_WIDTH - 20, 50);
-			bobsTextArea.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 30);
-			bobsTextArea.setText(levelTextOne);							// set the text
-			add(bobsTextArea);											// add to LevelPanel
+			bobsTextArea1.setSize(LEVEL_WIDTH - 20, 50);
+			bobsTextArea1.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 30);
+			bobsTextArea1.setText(levelTextOne);							// set the text
+			add(bobsTextArea1);											// add to LevelPanel
 
 			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
 			bobsTextArea2.setFont(Game.LESSON_STATEMENT);				// set the font
@@ -216,7 +189,183 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			add(bobsTextArea2);											// add to LevelPanel
 		}
 	}
-	
+
+	private void showLevelContent(Graphics g, int level) {
+		String levelTextOne = "";										// String for first line of text
+		String levelTextTwo = "";										// String for second line of text
+
+		// If the JTextArea is not null, remove it from the JPanel.
+		if (bobsTextArea1 != null ) {
+			remove(bobsTextArea1);
+		}
+		if (bobsTextArea2 != null) {
+			remove(bobsTextArea2);
+		}
+
+		// If page 1 of explanation, it is a topic String so paint with topic
+		// font style.
+		if (currentPage == 1) {
+			if (level == 2) {
+				levelTextOne = LevelTwo.PAGE_AND;						// get the first page from LevelTwo class
+			}
+			else if (level == 3) {
+				levelTextOne = LevelThree.PAGE_OR;						// get the first page from LevelThree class
+			}
+			else {
+				levelTextOne = LevelFour.PAGE_NOT;						// get the first page from LevelFour class
+			}
+
+			// Create JTextAreas to fit inside white text window with custom font
+			// and transparent background. Add JTextAreas to the JPanel.
+			bobsTextArea1 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea1.setFont(Game.TOPICS_FONT);					// set the font
+			bobsTextArea1.setForeground(Game.DARK_BLUE);				// set font color
+			bobsTextArea1.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea1.setSize(LEVEL_WIDTH - 20, 150);
+			bobsTextArea1.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 120);
+			bobsTextArea1.setText(levelTextOne);						// set the text
+			add(bobsTextArea1);											// add to LevelPanel		
+		}
+		// All other pages of explanation are statements with images.
+		else {
+			if (currentPage == 2) {
+				// Get resources for Level 2.
+				if (level == 2) {
+					levelTextOne = LevelTwo.PAGE_TRUE_A;
+					g.drawImage(LevelTwo.DOG, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelTwo.TRUE_STATEMENT;
+				}
+				// Get resources for Level 3.
+				else if (level == 3) {
+					levelTextOne = LevelThree.PAGE_TRUE_A;
+					g.drawImage(LevelThree.DONUT, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelThree.TRUE_STATEMENT;
+				}
+				// Get resources for Level 4.
+				else if (level == 4) {
+					levelTextOne = LevelFour.PAGE_TRUE_A;
+					g.drawImage(LevelFour.PUMPKIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelFour.TRUE_STATEMENT;
+				}
+			}
+			else if (currentPage == 3) {
+				// Get resources for Level 2.
+				if (level == 2) {
+					levelTextOne = LevelTwo.PAGE_TRUE_B;
+					g.drawImage(LevelTwo.TEDDY_BEAR, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelTwo.TRUE_STATEMENT;
+				}
+				// Get resources for Level 3.
+				else if (level == 3) {
+					levelTextOne = LevelThree.PAGE_TRUE_B;
+					g.drawImage(LevelThree.FLOWER, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelThree.TRUE_STATEMENT;
+				}
+				// Get resources for Level 4.
+				else if (level == 4) {
+					levelTextOne = LevelFour.PAGE_TRUE_B;
+					g.drawImage(LevelFour.ALIEN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelFour.TRUE_STATEMENT;
+				}
+			}
+			else if (currentPage == 4) {
+				// Get resources for Level 2.
+				if (level == 2) {
+					levelTextOne = LevelTwo.PAGE_FALSE_A;
+					g.drawImage(LevelTwo.DUCK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelTwo.FALSE_STATEMENT;
+				}
+				// Get resources for Level 3.
+				else if (level == 3) {
+					levelTextOne = LevelThree.PAGE_FALSE_A;
+					g.drawImage(LevelThree.PENCIL, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelThree.FALSE_STATEMENT;
+				}
+				// Get resources for Level 4.
+				else if (level == 4) {
+					levelTextOne = LevelFour.PAGE_FALSE_A;
+					g.drawImage(LevelFour.HEART, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelFour.FALSE_STATEMENT;
+				}
+			}
+			else if (currentPage == 5) {
+				// Get resources for Level 2.
+				if (level == 2) {
+					levelTextOne = LevelTwo.PAGE_FALSE_B;
+					g.drawImage(LevelTwo.CUPCAKE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelTwo.FALSE_STATEMENT;
+				}
+				// Get resources for Level 3.
+				else if (level == 3) {
+					levelTextOne = LevelThree.PAGE_FALSE_B;
+					g.drawImage(LevelThree.COOKIE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelThree.FALSE_STATEMENT;
+				}
+				// Get resources for Level 4.
+				else if (level == 4) {
+					levelTextOne = LevelFour.PAGE_FALSE_B;
+					g.drawImage(LevelFour.RAIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					levelTextTwo = LevelFour.FALSE_STATEMENT;
+				}
+			}
+
+			// Create JTextAreas to fit inside white text window with custom font
+			// and transparent background. Add JTextAreas to the JPanel.
+			bobsTextArea1 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea1.setFont(Game.LESSON_STATEMENT);				// set the font
+			bobsTextArea1.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea1.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea1.setSize(LEVEL_WIDTH - 20, 50);
+			bobsTextArea1.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 30);
+			bobsTextArea1.setText(levelTextOne);						// set the text
+			add(bobsTextArea1);											// add to LevelPanel
+
+			bobsTextArea2 = new JTextArea();							// initialize the JTextArea
+			bobsTextArea2.setFont(Game.SMALL_STATEMENT);				// set the font
+			bobsTextArea2.setForeground(Game.LIGHT_BLUE);				// set font color
+			bobsTextArea2.setOpaque(false);								// set background to transparent
+			// Set the size and location of the text to have margin of 10 pixels
+			// from the edge of the white background. 
+			bobsTextArea2.setSize(LEVEL_WIDTH - 20, 50);
+			bobsTextArea2.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 350);
+			bobsTextArea2.setText(levelTextTwo);						// set the text
+			add(bobsTextArea2);											// add to LevelPanel
+		}
+	}
+
+	private void showLevelFiveContent(Graphics g) {
+		String levelTextOne = "";										// String for first line of text
+		String levelTextTwo = "";										// String for second line of text
+
+		// If the JTextArea is not null, remove it from the JPanel.
+		if (bobsTextArea1 != null ) {
+			remove(bobsTextArea1);
+		}
+		if (bobsTextArea2 != null) {
+			remove(bobsTextArea2);
+		}
+
+		// Show only page of content for explanation.
+		levelTextOne = LevelFive.LEVEL_5_INTRO;	
+
+		// Create a JTextArea to fit inside white text window with custom font
+		// and transparent background. Add JTextArea to the JPanel.
+		bobsTextArea1 = new JTextArea();							// initialize the JTextArea
+		bobsTextArea1.setFont(Game.LESSON_STATEMENT);				// set the font
+		bobsTextArea1.setForeground(Game.DARK_BLUE);				// set font color
+		bobsTextArea1.setOpaque(false);								// set background to transparent
+		// Set the size and location of the text to have margin of 10 pixels
+		// from the edge of the white background. 
+		bobsTextArea1.setSize(LEVEL_WIDTH - 20, 150);
+		bobsTextArea1.setLocation(LEVEL_XCOORD + 50, LEVEL_YCOORD + 120);
+		bobsTextArea1.setText(levelTextOne);						// set the text
+		add(bobsTextArea1);											// add to LevelPanel		
+	}
+
 	@Override
 	public void addTitleText() {
 		// TODO Auto-generated method stub	
@@ -237,7 +386,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		addBackButton();											// add button to go back to forestPanel
 		addForwardAndBackwardButtons();								// add forward and backward buttons	
 	}
-	
+
 	/**
 	 * METHOD: This method adds the button to go back to the
 	 * forestPanel card.
@@ -302,6 +451,20 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
+		switch(theLevel) {
+		case 1:
+			setMousePressedLevelOne(source);
+			break;
+		case 5:
+			setMousePressedLevelFive(source);
+			break;
+		default:
+			setMousePressed(source, theLevel);
+			break;
+		}
+	}
+
+	private void setMousePressedLevelOne(GameButton source) {
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == FORWARD) {
 			switch (currentPage) {
@@ -326,11 +489,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 6:
-				currentPage++;
 				System.out.println("This should go to questions.");
-				break;
-			case 7:
-				currentPage++;
 				break;
 			default:
 				break;
@@ -364,6 +523,77 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			default:
 				break;
 			}
+		}	
+		else {
+			theGame.changeLayoutCard("FOREST");
+		}
+	}
+
+	private void setMousePressed(GameButton source, int level) {
+		// If back button is clicked, go back to IntroPanel.
+		if (source.getButtonMessage() == FORWARD) {
+			switch (currentPage) {
+			case 1:
+				currentPage++;
+				repaint();
+				break;
+			case 2:
+				currentPage++;
+				repaint();
+				break;
+			case 3:
+				currentPage++;
+				repaint();
+				break;
+			case 4:
+				currentPage++;
+				repaint();
+				break;
+			case 5:
+				System.out.println("This should go to questions.");
+				break;
+			default:
+				break;
+			}
+		}	
+		// If backward button is clicked in instructions, change text.
+		else if (source.getButtonMessage() == BACKWARD) {
+			switch (currentPage) {
+			case 1:
+				break;
+			case 2:
+				currentPage--;
+				repaint();
+				break;
+			case 3:
+				currentPage--;
+				repaint();
+				break;
+			case 4:
+				currentPage--;
+				repaint();
+				break;
+			case 5:
+				currentPage--;
+				repaint();
+				break;
+			default:
+				break;
+			}
+		}	
+		else {
+			theGame.changeLayoutCard("FOREST");
+		}
+	}
+
+	private void setMousePressedLevelFive(GameButton source) {
+		// If back button is clicked, go back to IntroPanel.
+		if (source.getButtonMessage() == FORWARD) {
+			System.out.println("This should go to questions.");
+		}	
+		// If backward button is clicked in instructions, change text.
+		else if (source.getButtonMessage() == BACKWARD) {
+			// Does nothing.
 		}	
 		else {
 			theGame.changeLayoutCard("FOREST");

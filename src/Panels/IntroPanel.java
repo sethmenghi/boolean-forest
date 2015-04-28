@@ -11,7 +11,7 @@
  * jtextarea-jtextfield
  * 
  * IMAGE SOURCES:
- * http://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
+ * 1) tablethttp://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
  * 
  * NOTE: Owl and background images were drawn by Leslie Kim. No source
  * required.

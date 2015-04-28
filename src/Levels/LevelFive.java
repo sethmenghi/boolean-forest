@@ -1,3 +1,17 @@
+/**
+ * IMAGE SOURCES:
+ * 1) http://images.all-free-download.com/images/graphiclarge/
+ *    gioppino_basketball_clip_art_18990.jpg
+ * 2) http://www.clker.com/cliparts/S/3/L/6/C/v/black-glasses-
+ *    hi.png
+ * 3) http://cliparts.co/cliparts/rTj/K5B/rTjK5BKkc.svg
+ * 4) http://cliparts.co/cliparts/8iz/KnX/8izKnX94T.png
+ * 5) http://www.how-to-draw-funny-cartoons.com/image-files/
+ *    cartoon-soccer-6.jpg
+ * 6) https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjMjlbF
+ *    -N8pl1mq_z2uafR9d0s8F6J5k0wjvQo-CFsyzgKj4nt4kG8u7Q
+ */
+
 package Levels;
 
 import java.awt.List;
@@ -7,6 +21,8 @@ import BooleanForest.Game;
 import Questions.DragAndDropQuestion;
 
 public class LevelFive {
+	// Declare static final Strings for explanations:
+	public static final String LEVEL_5_INTRO = "Let's put it all together!";					// page 1
 	
 	// The different image options that the user can select
 	private static final String IMAGE_OPTION_ONE="Images/DragDrop/BasketBallImage.png";
