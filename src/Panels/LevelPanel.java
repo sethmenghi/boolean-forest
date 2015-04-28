@@ -454,8 +454,12 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
-		if (theGame.getLevel() == 5)
+		System.out.println("Mouse pressed");
+		
+		if (theGame.getLevel() == 4){
+			System.out.println("Mouse pressed for level 5");
 			setMousePressedLevelFive(source);
+		}
 		else
 			setMousePressedLevel(source);
 	}
@@ -611,9 +615,16 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	}
 
 	private void setMousePressedLevelFive(GameButton source) {
+		
+		System.out.println("Inside setMousePressedLevelFive");
+
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == FORWARD) {
-			System.out.println("This should go to questions.");
+			
+			System.out.println("Inside setMousePressedLevelFive, forward");
+			
+			theGame.levelFive.initLevel();
+		
 		}	
 		// If backward button is clicked in instructions, change text.
 		else if (source.getButtonMessage() == BACKWARD) {

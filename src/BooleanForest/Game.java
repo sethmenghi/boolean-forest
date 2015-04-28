@@ -227,12 +227,12 @@ public class Game extends JApplet {
 		levelTwo = new LevelTwo(this);
 		levelThree = new LevelThree(this);
 		levelFour = new LevelFour(this);
-//		levelFive = new LevelFive(this);
-//
+		levelFive = new LevelFive(this);
+
 		textQuestion = new TextQuestion(this);					// initialize textQuestion
 		cards.add(textQuestion, TEXT_QUESTION);					// add to cards
-//		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
-//		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
+		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
+		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
 		
 		certificatePanel = new CertificatePanel(this);		// initialize certificatePanel
 		cards.add(certificatePanel, CERTIFICATE);			// add to cards
