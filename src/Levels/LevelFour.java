@@ -1,4 +1,9 @@
 /**
+ * LEVELONE CLASS
+ * 
+ * DESCRIPTION: This class contains content for level one explanation
+ * and handles the content for the questions for level one.
+ * 
  * IMAGE SOURCES:
  * 1) https://encrypted-tbn2.gstatic.com/
  *    images?q=tbn:ANd9GcThb_mOe9Ue3yC7v6slqhqdlr8s97hZ8MhfQqfXPbG_8MDN4aV3
@@ -6,12 +11,16 @@
  * 3) http://www.clker.com/cliparts/1/9/c/7/
  *    12344057871071110537kablam_Heart_-_Glossy_Two.svg.hi.png
  * 4) http://cliparts.co/cliparts/pi7/K46/pi7K46AxT.png
- * 
+ * 5) http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-
+ *    camel-12.gif
+ * 6) http://cliparts.co/cliparts/6cy/Xxo/6cyXxopdi.jpg
+ * 7) http://www.clipartbest.com/cliparts/eiM/n89/eiMn89Lin.jpeg
+ * 8) http://www.clker.com/cliparts/6/e/a/5/1318356706177123419Coyote%
+ *    20Cartoon.svg.hi.png
  */
+
 package Levels;
 
-import java.awt.CardLayout;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +28,23 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import BooleanForest.*;
-import Objects.*;
 
 public class LevelFour {
+	// Declare private String for Bob resource:
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";			// Bob url
+		
 	// Declare static final Strings for explanations:
 	public static final String PAGE_NOT = "NOT";							// page 1	
 	public static final String PAGE_TRUE_A = "This is NOT an apple.";		// page 2
 	public static final String PAGE_TRUE_B = "This is NOT a person.";		// page 3		
-	public static final String PAGE_FALSE_A = "These are NOT hearts.";		// page 5
-	public static final String PAGE_FALSE_B = "It is NOT raining.";		// page 6	
+	public static final String PAGE_FALSE_A = "These are NOT hearts.";		// page 4
+	public static final String PAGE_FALSE_B = "It is NOT raining.";			// page 5	
 	public static final String TRUE_STATEMENT = "This is RIGHT! ";
 	public static final String FALSE_STATEMENT = "This is WRONG!";
 
+<<<<<<< HEAD
 	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-camel-12.gif
 	private static final String Q_ONE = "The camel ____.";
 	private static final String IMAGE_ONE = "/Images/Levels/LevelFour/Questions/Camel.png";
@@ -88,6 +99,60 @@ public class LevelFour {
 
 	private Game theGame;
 	private int currentQuestion;
+=======
+	// Declare static final Strings for question images:
+	private static final String IMAGE_ONE = "/Images/Levels/LevelFour/Questions/Camel.png";
+	private static final String IMAGE_TWO = "/Images/Levels/LevelFour/Questions/Vulture.png";
+	private static final String IMAGE_THREE = "/Images/Levels/LevelFour/Questions/Cactus.png";
+	private static final String IMAGE_FOUR = "/Images/Levels/LevelFour/Questions/Snake.png";
+	private static final String IMAGE_FIVE = "/Images/Levels/LevelFour/Questions/Coyote.png";
+	
+	// Declare static final String for questions:
+	private static final String Q_ONE = "Choose the CORRECT answer.";
+	private static final String Q_TWO = "Choose the CORRECT answer.";
+	private static final String Q_THREE = "Choose the INCORRECT answer.";
+	private static final String Q_FOUR = "Choose the CORRECT answer.";
+	private static final String Q_FIVE = "Choose the CORRECT answer.";
+	
+	// Declare static final String for question answer choices for Question 1:
+	private static final String Q_ONE_OPTION_1 = "The camel is NOT standing.";
+	private static final String Q_ONE_OPTION_2 = "The camel does NOT have three humps.";
+	private static final String Q_ONE_OPTION_3 = "This is NOT a camel.";
+	private static final String Q_ONE_OPTION_4 = "The camel is NOT brown.";
+	
+	// Declare static final String for question answer choices for Question 2:
+	private static final String Q_TWO_OPTION_1 = "This is NOT a bird."; 
+	private static final String Q_TWO_OPTION_2 = "The animal is NOT flying." ;
+	private static final String Q_TWO_OPTION_3 = "The animal is NOT brown.";
+	private static final String Q_TWO_OPTION_4 = "The animal is NOT eating.";
+	
+	// Declare static final String for question answer choices for Question 3:
+	private static final String Q_THREE_OPTION_1 = "This is NOT a christmas tree."; 
+	private static final String Q_THREE_OPTION_2 = "This plant does NOT have prickly needles." ;
+	private static final String Q_THREE_OPTION_3 = "This plant does NOT grow in the desert.";
+	private static final String Q_THREE_OPTION_4 = "This plant is NOT green.";
+	
+	// Declare static final String for question answer choices for Question 4:
+	private static final String Q_FOUR_OPTION_1 = "This is a lizard and he is NOT green. ";
+	private static final String Q_FOUR_OPTION_2 = "This is NOT a snake and he is green. ";
+	private static final String Q_FOUR_OPTION_3 = "This is NOT a squirrel and he is blue.";
+	private static final String Q_FOUR_OPTION_4 = "This is a snake and he is NOT brown.";
+	
+	// Declare static final String for question answer choices for Question 5:
+	private static final String Q_FIVE_OPTION_1 = "This is NOT a coyote and the animal is brown.";
+	private static final String Q_FIVE_OPTION_2 = "This animal does NOT live in the ocean and he is a coyote.";
+	private static final String Q_FIVE_OPTION_3 = "This is a bird and it is NOT brown.";
+	private static final String Q_FIVE_OPTION_4 = "This is a coyote and he is NOT brown.";
+	
+	// Declare private members of the LevelOne class:
+	private Game theGame;											// to create reference to main game
+	private int currentQuestion;									// current question being asked
+	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	// holds list of answers for question 1
+	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	// holds list of answers for question 2
+	private List<String> ANSWERS_THREE = new ArrayList<String>();	// holds list of answers for question 3
+	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	// holds list of answers for question 4
+	private List<String> ANSWERS_FIVE = new ArrayList<String>(); 	// holds list of answers for question 5
+>>>>>>> a01817995318015eb8e1e42a78846c09348274b3
 	
 	public LevelFour(Game game) {
 		theGame = game;
