@@ -84,6 +84,7 @@ public class Game extends JApplet {
 	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 14);	// font used for paragraph text
 	public static final Font TOPICS_FONT = new Font("Verdana", Font.BOLD, 100);		// used for lesson topics
 	public static final Font LESSON_STATEMENT = new Font("Verdana", Font.PLAIN, 20);// used for lesson statements
+	public static final Font SMALL_STATEMENT = new Font("Verdana", Font.PLAIN, 16);	// used for lesson statements
 	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
 	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
 
@@ -101,6 +102,7 @@ public class Game extends JApplet {
 	private static final String IMAGE_QUESTION = "IMAGE_QUESTION";					
 	private static final String TEXT_QUESTION = "TEXT_QUESTION";
 	private static final String DRAG_AND_DROP_QUESTION = "DRAG_AND_DROP_QUESTION";
+	private static final String CERTIFICATE = "CERTIFICATE";						// name of certificatePanel
 
 	// Declare members of Game class: 
 	private Dimension windowSize;							// dimensions of JPanel
@@ -115,9 +117,10 @@ public class Game extends JApplet {
 	private LevelPanel levelPanelThree;						// levelPanelThree
 	private LevelPanel levelPanelFour;						// levelPanelFour
 	private LevelPanel levelPanelFive;						// levelPanelFive
+	private CertificatePanel certificatePanel;				// certificatePanel
 	private int level;										// current level passed
 	
-	
+	public LevelOne levelOne;
 	public LevelFive levelFive;								// level 5 declaration
 	private ImageQuestion imageQuestion;					// image question panel
 	public DragAndDropQuestion dragAndDropQuestion;			// drag and drop question panel
@@ -217,12 +220,16 @@ public class Game extends JApplet {
 		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
 		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
 		
-		levelFive = new LevelFive(this);
-
-		textQuestion = new TextQuestion();					// initialize textQuestion
-		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
-		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
-		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
+//		levelOne = new LevelOne(this);
+//		levelFive = new LevelFive(this);
+//
+//		textQuestion = new TextQuestion();					// initialize textQuestion
+//		cards.add(textQuestion, TEXT_QUESTION);				// add to cards
+//		dragAndDropQuestion = new DragAndDropQuestion(this);	// initialize DRAG_AND_DROP_QUESTION
+//		cards.add(dragAndDropQuestion, DRAG_AND_DROP_QUESTION);	// add to cards
+		
+		certificatePanel = new CertificatePanel(this);		// initialize certificatePanel
+		cards.add(certificatePanel, CERTIFICATE);			// add to cards
 	}
 	
 	/**

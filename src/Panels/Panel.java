@@ -8,8 +8,6 @@ public interface Panel {
 	
 	public void initPanel(Game game);
 	
-	public void paintBobsWindow(Graphics g);
-	
 	public void addText();
 	
 	public void addTitleText();

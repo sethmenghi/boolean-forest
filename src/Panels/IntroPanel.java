@@ -1,5 +1,5 @@
 /**
- * INTRO PANEL CLASS
+ * INTROPANEL CLASS
  * 
  * DESCRIPTION:
  * The IntroPanel class extends JPanel and is the layout that displays the
@@ -11,9 +11,10 @@
  * jtextarea-jtextfield
  * 
  * IMAGE SOURCES:
- * http://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
+ * 1) tablethttp://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
  * 
- * NOTE: Owl images were drawn by Leslie Kim. No source required.
+ * NOTE: Owl and background images were drawn by Leslie Kim. No source
+ * required.
  */
 
 package Panels;
@@ -29,7 +30,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import BooleanForest.Game;
-import Objects.BobsWindow;
 import Objects.GameButton;
 
 @SuppressWarnings("serial")
@@ -38,23 +38,30 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	private static final String PLAY = "Let's go learn some boolean logic!";				// text for playButton
 	private static final String OWLS = "Meet the owls";										// text for owlButton
 	private static final String TEACHER = "Teachers & Parents";								// text for teacherButton
-	private static final String INSTRUCTION_TEXT = "Welcome to the Boolean "				// introduction text
-			+ "Logic Forest! This is my family: Alice, my wife, and our two "
-			+ "children, David and Chloe. Our children need to get through "
-			+ "the Boolean Logic Forest and need your help! Let's go on an "
-			+ "adventure!";
+	
+	private static final String TITLE = "Boolean Logic Forest";								// title text
+	private static final String INTRODUCTION = "Welcome to the Boolean Logic Forest! This "	// introduction text
+			+ "is my family: Alice, my wife, and our two children, David and Chloe. Our "
+			+ "children need to get through the Boolean Logic Forest and need your help! "
+			+ "Let's go on an adventure!";
+	
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/IntroBackground.jpg";	// background url
-	private static final String TEXT_WINDOW_SRC = "Images/TextWindows/IntroTextWindow.png";	// text window url
-	private static final String BOB_SRC = "Images/Owls/Bob.png";							// bob url
+	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
+	
+	private static final int TEXT_WINDOW_WIDTH = 404;				// width of white text window
+	private static final int TEXT_WINDOW_HEIGHT = 199;				// height of white text window
+	private static final int TEXT_WINDOW_XCOORD = 53;				// pre-determined xCoord of white text window
+	private static final int TEXT_WINDOW_YCOORD = 67;				// pre-determined yCoord of white text window
+	private static final int BOB_XCOORD = 462;						// pre-determined xCoord of Bob
+	private static final int BOB_YCOORD = 218;						// pre-determined yCoord of Bob
 
 	// Declare members of IntroPanel class:
-	private Game theGame;								// reference to Game that instantiates IntroPanel object
-	private BobsWindow introBobsWindow;					// Bob's Window for introduction instructions
-	private JTextArea bobsTextAreaTitle;				// JTextArea for title of page				
-	private JTextArea bobsTextArea;						// JTextArea for Bob's Window
-	private GameButton playButton;						// play button
-	private GameButton owlButton;						// button to meet the owls
-	private GameButton teacherButton;					// button for teachers and parents page
+	private Game theGame;											// reference to main Game
+	private JTextArea titleTextArea;								// JTextArea for title				
+	private JTextArea introTextArea;								// JTextArea for intro
+	private GameButton playButton;									// play button
+	private GameButton owlButton;									// button to meet the owls
+	private GameButton teacherButton;								// button for teachers and parents page
 
 	/**
 	 * CONSTRUCTOR: The constructor calls initPanel() method.
@@ -65,9 +72,8 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	}
 
 	/**
-	 * OVERRIDDEN METHOD: Initializes JPanel dimensions and members of
-	 * IntroPanel class. Creates a reference to the Game object passed in
-	 * and initializes Bob's Window.
+	 * OVERRIDDEN METHOD: Initializes JPanel dimensions of IntroPanel
+	 * class. Creates a reference to the Game object passed in.
 	 * @param game
 	 */
 	@Override
@@ -78,48 +84,30 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		setPreferredSize(new Dimension(Game.APPLET_WIDTH, Game.APPLET_HEIGHT));
 		setDoubleBuffered(true);
 		setLayout(null);
-
-		// Initialize a BobsWindow with introduction text and instructions.
-		introBobsWindow = new BobsWindow("INTRO", INSTRUCTION_TEXT);
-		add(introBobsWindow);
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
-	 * background image and Bob's Window and buttons.
-	 * @param graphic
+	 * background image, Bob and calls methods to add the text and
+	 * buttons.
+	 * @param g
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon(BACKGROUND_SRC).getImage();
-		g.drawImage(image, 0, 0, null);
-
-		// Paint various components on the screen.
-		paintBobsWindow(g);											// paint Bob's Window and Bob
-	}	
-
-	/**
-	 * OVERRIDDEN METHOD: This  method paints Bob's Window white and Bob,
-	 * as well as calls method to add the text and button.
-	 * @param g
-	 */
-	@Override
-	public void paintBobsWindow(Graphics g) {
-		// Draw the white background for Bob's Window.
-		Image image = new ImageIcon(TEXT_WINDOW_SRC).getImage();
-		g.drawImage(image, introBobsWindow.getXCoord(), introBobsWindow.getYCoord(), null);
+		Image background = new ImageIcon(BACKGROUND_SRC).getImage();
+		g.drawImage(background, 0, 0, null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon(BOB_SRC).getImage();
-		g.drawImage(bob, introBobsWindow.getBob().getXCoord(), introBobsWindow.getBob().getYCoord(), null);
+		Image bobImage = new ImageIcon(BOB_SRC).getImage();
+		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
-		addText();													// add text to Bob's Window
-		addButtons();												// add button to Bob's Window
-	}
+		addText();													// add text
+		addButtons();												// add buttons
+	}	
 
 	/**
 	 * OVERRIDDEN METHOD: This method adds the title text and paragraph
@@ -129,9 +117,14 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	 */
 	@Override
 	public void addText() {
-		// If bobsTextArea is not null, remove it from the JPanel.
-		if (bobsTextArea != null) {
-			remove(bobsTextArea);									// remove from IntroPanel
+		// If titleTextArea is not null, remove it from the JPanel.
+		if (titleTextArea != null) {
+			remove(titleTextArea);									// remove from IntroPanel
+		}
+		
+		// If introTextArea is not null, remove it from the JPanel.
+		if (introTextArea != null) {
+			remove(introTextArea);									// remove from IntroPanel
 		}
 
 		addTitleText();												// add title
@@ -140,48 +133,49 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 
 	/**
 	 * OVERRIDDEN METHOD: This method creates a JTextArea for the title
-	 * that fits inside the white box of Bob's Window. A custom font and
-	 * color are used for the text and the background is transparent.
+	 * that fits inside the white text box. A custom font and color are
+	 * used for the text and the background is transparent.
+	 * @param none
 	 */
 	@Override
 	public void addTitleText() {
-		// Create a JTextArea for title of page. Add JTextArea to JPanel.
-		String pageTitle = "Boolean Logic Forest";					// initialize the title
-		bobsTextAreaTitle = new JTextArea();						// initialize the JTextArea
-		bobsTextAreaTitle.setFont(Game.TITLE_FONT);					// set the font
-		bobsTextAreaTitle.setForeground(Game.DARK_BLUE);			// set font color
-		bobsTextAreaTitle.setOpaque(false);							// set background to transparent
+		// Create a JTextArea for title of page and add to JPanel.
+		titleTextArea = new JTextArea();						// initialize the JTextArea
+		titleTextArea.setFont(Game.TITLE_FONT);					// set the font
+		titleTextArea.setForeground(Game.DARK_BLUE);			// set font color
+		titleTextArea.setOpaque(false);							// set background to transparent
 		// Set the size and location of the text to have margin of 10 pixels
 		// from the edge of the white background. 
-		bobsTextAreaTitle.setSize(BobsWindow.INTRO_WIDTH - 20, 40);
-		bobsTextAreaTitle.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 10);
-		bobsTextAreaTitle.setText(pageTitle);						// set the text
-		add(bobsTextAreaTitle);										// add to IntroPanel
+		titleTextArea.setSize(TEXT_WINDOW_WIDTH - 20, 30);
+		titleTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 10);
+		titleTextArea.setText(TITLE);							// set the text
+		add(titleTextArea);										// add to IntroPanel
 	}
 
 	/**
 	 * OVERRIDDEN METHOD: This method creates a JTextArea for the text
-	 * that fits inside the white box of Bob's Window. A custom font and
-	 * color are used for the text and the background is transparent. The
-	 * text is wrapped and words will always appear in full on a line.
+	 * that fits inside the white text box. A custom font and color are
+	 * used for the text and the background is transparent. The text is
+	 * wrapped and words will always appear in full on a line (no
+	 * hyphenated words).
+	 * @param none
 	 */
 	@Override
 	public void addParagraphText() {
-		// Create a JTextArea to fit inside Bob's Window with wrapped text,
-		// custom font and transparent background. Add JTextArea to the JPanel.
-		String introText = introBobsWindow.getBobsMessage();		// get the message from forestBobsWindow
-		bobsTextArea = new JTextArea();								// initialize the JTextArea
-		bobsTextArea.setFont(Game.PARAGRAPH_FONT);					// set the font
-		bobsTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
-		bobsTextArea.setLineWrap(true);								// set line wrap to true
-		bobsTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
-		bobsTextArea.setOpaque(false);								// set background to transparent
+		// Create a JTextArea to fit inside white text window with wrapped
+		// text, custom font and transparent background and add to JPanel.
+		introTextArea = new JTextArea();							// initialize the JTextArea
+		introTextArea.setFont(Game.PARAGRAPH_FONT);					// set the font
+		introTextArea.setForeground(Game.LIGHT_BLUE);				// set font color
+		introTextArea.setLineWrap(true);							// set line wrap to true
+		introTextArea.setWrapStyleWord(true);						// set words to appear in full on a line
+		introTextArea.setOpaque(false);								// set background to transparent
 		// Set the size and location of the text to have margin of 10 pixels
 		// from the edge of the white background. 
-		bobsTextArea.setSize(BobsWindow.INTRO_WIDTH - 20, BobsWindow.INTRO_HEIGHT - 20);
-		bobsTextArea.setLocation(BobsWindow.INTRO_XCOORD + 10, BobsWindow.INTRO_YCOORD + 40);
-		bobsTextArea.setText(introText);							// set the text
-		add(bobsTextArea);											// add to IntroPanel
+		introTextArea.setSize(TEXT_WINDOW_WIDTH - 20, TEXT_WINDOW_HEIGHT - 20);
+		introTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 40);
+		introTextArea.setText(INTRODUCTION);						// set the text
+		add(introTextArea);											// add to IntroPanel
 	}
 
 	/**
@@ -197,8 +191,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	}
 
 	/**
-	 * METHOD: This method adds the playButton and add MouseListeners to 
-	 * each button.
+	 * METHOD: This method adds the playButton and adds a MouseListener.
 	 * @param none
 	 */
 	private void addPlayButton() {
@@ -206,41 +199,18 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		playButton = new GameButton(PLAY, "WHITE");
 
 		// Set the x- and y-coordinates and the button width and height.
-		int boundsXCoord = BobsWindow.INTRO_XCOORD + BobsWindow.INTRO_WIDTH / 2 -
-				playButton.getPreferredSize().width / 2;
-		int boundsYCoord = BobsWindow.INTRO_YCOORD + BobsWindow.INTRO_HEIGHT - 
-				playButton.getPreferredSize().height - 20;
 		int boundsWidth = playButton.getPreferredSize().width;
 		int boundsHeight = playButton.getPreferredSize().height;
+		int boundsXCoord = TEXT_WINDOW_XCOORD + TEXT_WINDOW_WIDTH / 2 - boundsWidth / 2;
+		int boundsYCoord = TEXT_WINDOW_YCOORD + TEXT_WINDOW_HEIGHT - boundsHeight - 20;
 		playButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
 		add(playButton);											// add to IntroPanel
 		playButton.addMouseListener(this);							// add MouseListener
 	}
-
+	
 	/**
-	 * METHOD: This method adds the owlButton and add MouseListeners to 
-	 * each button.
-	 * @param none
-	 */
-	private void addOwlButton() {
-		// Initialize a GameButton to go to the Owl Panel.
-		owlButton = new GameButton(OWLS, "WHITE");
-
-		// Set the x- and y-coordinates and the button width and height.
-		int boundsXCoord = (teacherButton.getPreferredSize().width - owlButton.getPreferredSize().width) / 2 + 468;
-		int boundsYCoord = 391;
-		int boundsWidth = owlButton.getPreferredSize().width;
-		int boundsHeight = owlButton.getPreferredSize().height;
-		owlButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
-
-		add(owlButton);												// add to IntroPanel
-		owlButton.addMouseListener(this);							// add MouseListener
-	}
-
-	/**
-	 * METHOD: This method adds the teacherButton and add MouseListeners to 
-	 * each button.
+	 * METHOD: This method adds the teacherButton and adds a MouseListener.
 	 * @param none
 	 */
 	private void addTeacherButton() {
@@ -256,6 +226,26 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 
 		add(teacherButton);											// add to IntroPanel
 		teacherButton.addMouseListener(this);						// add MouseListener
+	}
+
+	/**
+	 * METHOD: This method adds the owlButton and adds a MouseListener.
+	 * @param none
+	 */
+	private void addOwlButton() {
+		// Initialize a GameButton to go to the Owl Panel.
+		owlButton = new GameButton(OWLS, "WHITE");
+
+		// Set the x- and y-coordinates and the button width and height.
+		int boundsWidth = owlButton.getPreferredSize().width;
+		int boundsHeight = owlButton.getPreferredSize().height;
+		int boundsXCoord = (teacherButton.getPreferredSize().width - boundsWidth) / 2 + TEXT_WINDOW_XCOORD
+				+ TEXT_WINDOW_WIDTH + 10;
+		int boundsYCoord = 391;
+		owlButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
+
+		add(owlButton);												// add to IntroPanel
+		owlButton.addMouseListener(this);							// add MouseListener
 	}
 
 	@Override

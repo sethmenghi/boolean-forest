@@ -1,23 +1,26 @@
+/**
+ * LEVELONE CLASS
+ * 
+ * DESCRIPTION:
+ * 
+ * IMAGE SOURCES:
+ * http://yunus.hacettepe.edu.tr/~osert/Hotpot_2014_02/02_erdemli_batibay/coffee%20table.jpg
+ * http://sweetclipart.com/multisite/sweetclipart/files/penguin_cute.png
+ */
+
 package Levels;
 
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import BooleanForest.Game;
-import Questions.TextQuestion;
-
 
 public class LevelOne {
-	
-	int currentLevel = 1;
 	// Declare static final Strings for explanations:
 	public static final String PAGE_TRUE = "TRUE";						// page 1	
 	public static final String PAGE_TRUE_A = "This is a penguin.";		// page 2
@@ -89,6 +92,7 @@ public class LevelOne {
 //	private static final int IMAGE = 1;
 	
 	private Game theGame;
+	int currentLevel = 1;
 	
 	public LevelOne(Game game) {
 		theGame = game;
