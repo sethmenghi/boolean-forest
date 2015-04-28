@@ -48,8 +48,8 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public final Image RAIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Rain.png")).getImage();
 	public final Image DONUT = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Donut.png")).getImage();
 	public final Image FLOWER = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Sunflower.png")).getImage();
-	public final Image PENCIL = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Pencil.png")).getImage();
-	public final Image COOKIE = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Cookie.png")).getImage();
+	public final Image PENCIL = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Pencil.png")).getImage();
+	public final Image COOKIE = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Cookie.png")).getImage();
 
 	private Game theGame;								// reference to Game that instantiates LevelPanel object
 	private int theLevel;								// the current level passed in theGame
