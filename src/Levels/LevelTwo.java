@@ -1,8 +1,8 @@
 /**
- * LEVELONE CLASS
+ * LEVELTWO CLASS
  * 
- * DESCRIPTION: This class contains content for level one explanation
- * and handles the content for the questions for level one.
+ * DESCRIPTION: This class contains content for level two explanation
+ * and handles the content for the questions for level two.
  * 
  * IMAGE SOURCES:
  * 1) http://images.clipartpanda.com/dogs-clipart-cute_little_
@@ -54,10 +54,10 @@ public class LevelTwo {
 	private static final String IMAGE_FOUR = "/Images/Levels/LevelTwo/Questions/Orca.png";
 	
 	// Declare static final String for questions:
-	private static final String Q_ONE = "This is a _____ AND it is playing the _____";
-	private static final String Q_TWO = "This is an _____ AND she is _____ ";
-	private static final String Q_THREE = "This is a _____ AND she is playing with a ______";
-	private static final String Q_FOUR = "This is a _______ AND his eyes are _______";
+	private static final String Q_ONE = "This is a _____ AND it is playing the _____.";
+	private static final String Q_TWO = "This is an _____ AND she is _____.";
+	private static final String Q_THREE = "This is a _____ AND she is playing with a ______.";
+	private static final String Q_FOUR = "This is a _______ AND his eyes are _______.";
 	
 	// Declare static final String for question answer choices for Question 1:	
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
@@ -73,13 +73,13 @@ public class LevelTwo {
 	
 	// Declare static final String for question answer choices for Question 3:	
 	private static final String Q_THREE_OPTION_1 = "dolphin, ball";
-	private static final String Q_THREE_OPTION_2 = "seal,yo-yo ";
+	private static final String Q_THREE_OPTION_2 = "seal, yo-yo";
 	private static final String Q_THREE_OPTION_3 = "seal, ball";
 	private static final String Q_THREE_OPTION_4 = "fish, ball";
 	
 	// Declare static final String for question answer choices for Question 4:	
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";
-	private static final String Q_FOUR_OPTION_2 = "dolphin,bue ";
+	private static final String Q_FOUR_OPTION_2 = "dolphin, bue";
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";
 	private static final String Q_FOUR_OPTION_4 = "shark, blue";
 	
