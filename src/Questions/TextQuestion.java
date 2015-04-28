@@ -97,19 +97,6 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		questionCompleted = false;
 		
 		img = new ImageIcon(getClass().getResource(imageResource));
-		// Checking if Image loaded correctly.
-		while(img.getImageLoadStatus() != MediaTracker.COMPLETE){
-			if (img.getImageLoadStatus() == MediaTracker.ERRORED || 
-				img.getImageLoadStatus() == MediaTracker.ABORTED){
-					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-					String url = classLoader.getResource(".").getPath();
-					String errorString = "ERROR: Couldn't load " + imageResource;
-					System.out.println(errorString);
-					String urlError = "Current directory: " + url;
-					System.out.println(urlError);
-					break;
-			}
-		}
 		
 		if (questionPanel != null){
 			questionPanel.setVisible(false);
@@ -256,7 +243,7 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		questionPanel.revalidate();
 		questionPanel.repaint();
 
-		Image background = new ImageIcon("Images/Backgrounds/BackgroundForTextQuestion.png").getImage();
+		Image background = new ImageIcon(getClass().getResource("/Images/Backgrounds/BackgroundForTextQuestion.png")).getImage();
 		g.drawImage(background, 0, 0, null);
 		
 		//Adds the question text to the middle 

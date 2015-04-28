@@ -155,7 +155,7 @@ public class LevelOne {
 		}
 		// Otherwise, it throws an error.
 		else {
-			JLabel warningImage = new JLabel(new ImageIcon(BOB_SRC));
+			JLabel warningImage = new JLabel(new ImageIcon(getClass().getResource(BOB_SRC)));
 			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
 		}
 	}
