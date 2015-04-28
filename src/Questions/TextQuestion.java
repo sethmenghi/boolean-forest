@@ -165,7 +165,6 @@ public class TextQuestion extends JPanel implements ActionListener {
 	public void setAnswerList(List<String> allPossibleAnswers, String correctAnswerInput){
 		possibleAnswers = allPossibleAnswers;
 		correctAnswer = correctAnswerInput;
-		System.out.println(possibleAnswers);
 	}
 
 	/**
@@ -196,7 +195,6 @@ public class TextQuestion extends JPanel implements ActionListener {
 			return true;
 		}
 		else {
-			System.out.println("so wrong");
 			answer.setBackground(Color.RED);
 			answer.setOpaque(true);
 			questionCompleted = false;
@@ -204,6 +202,10 @@ public class TextQuestion extends JPanel implements ActionListener {
 		}
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Action listener for buttons, checks answer selected
+	 * @param event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -220,7 +222,6 @@ public class TextQuestion extends JPanel implements ActionListener {
 		else if (src == answer4){
 			checkAnswer(answer4.getText(), answer4);
 		}
-		System.out.println(questionCompleted);
 	}
 	
 	/**
@@ -237,6 +238,11 @@ public class TextQuestion extends JPanel implements ActionListener {
         return stringWidth;
 	}
 	
+	/**
+	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
+	 * background image, the question image, and the question.
+	 * @param graphic
+	 */
 	@Override 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -256,6 +262,5 @@ public class TextQuestion extends JPanel implements ActionListener {
 		g2.setColor(Game.DARK_BLUE);			
 		g2.drawString(textQuestion,Game.APPLET_WIDTH/2-measureStringWidth(g,textQuestion)/2,90);
 		
-		//setVisible(true);
     }
 }
