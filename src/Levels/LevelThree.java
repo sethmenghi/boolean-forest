@@ -41,7 +41,7 @@ public class LevelThree {
 	private static final String INSTRUCTIONS = "Level One Instructions";
 	// Question One -- text question
 	private static final String Q_ONE = "Choose the CORRECT anwer.";
-	private static final String IMAGE_ONE = "Images/Levels/LevelThree/Questions/giraffe.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelThree/Questions/Giraffe.png";
 	private static final String Q_ONE_OPTION_1 = "The giraffe is lying down or sleeping.";
 	private static final String Q_ONE_OPTION_2 = "The giraffe has blue or green spots.";
 	private static final String Q_ONE_OPTION_3 = "The giraffe is yellow or pink.";
@@ -54,7 +54,7 @@ public class LevelThree {
 	
 	//http://cliparts.co/cliparts/kc8/oKy/kc8oKydji.png
 	private static final String Q_TWO = "Choose the INCORRECT answer.";
-	private static final String IMAGE_TWO = "Images/Levels/LevelThree/Questions/elephant.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelThree/Questions/Elephant.png";
 	private static final String Q_TWO_OPTION_1 = "The elephant is sitting or standing.";
 	private static final String Q_TWO_OPTION_2 = "The elephant is grey or brown.";
 	private static final String Q_TWO_OPTION_3 = "The elephant has white tusks or brown tusks.";
@@ -64,7 +64,7 @@ public class LevelThree {
 	public static final Image ELEPHANT = new ImageIcon(IMAGE_TWO).getImage();
 	
 	private static final String Q_THREE = "Choose the correct answer.";
-	private static final String IMAGE_THREE = "Images/Levels/LevelThree/Questions/lion.png";
+	private static final String IMAGE_THREE = "Images/Levels/LevelThree/Questions/Lion.png";
 	private static final String Q_THREE_OPTION_1 = "The lion is not white or spotted.";
 	private static final String Q_THREE_OPTION_2 = "The lion is not yellow or orange.";
 	private static final String Q_THREE_OPTION_3 = "The lion does not have a long mane or a brown mane.";
@@ -74,7 +74,7 @@ public class LevelThree {
 	public static final Image LION = new ImageIcon(IMAGE_THREE).getImage();
 	
 	private static final String Q_FOUR = "Choose the correct answer.";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelThree/Questions/hippo.png";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelThree/Questions/Hippo.png";
 	private static final String Q_FOUR_OPTION_1 = "The hippo is not grey or purple.";
 	private static final String Q_FOUR_OPTION_2 = "The hippo is swimming and sleeping.";
 	private static final String Q_FOUR_OPTION_3 = "The hippo is not purple, but he has stripes and polkadots.";
