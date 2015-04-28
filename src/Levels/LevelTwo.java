@@ -36,16 +36,16 @@ public class LevelTwo {
 			+ "true. Unless BOTH are true, it is wrong.";
 	
 	// Declare static final Images for explanations:
-	public static final Image DOG = new ImageIcon("Images/Levels/LevelTwo/Explanation/DogBone.png").getImage();
-	public static final Image TEDDY_BEAR = new ImageIcon("Images/Levels/LevelTwo/Explanation/TeddyBear.png").getImage();
-	public static final Image DUCK = new ImageIcon("Images/Levels/LevelTwo/Explanation/DuckWithHat.png").getImage();
-	public static final Image CUPCAKE = new ImageIcon("Images/Levels/LevelTwo/Explanation/Cupcake.png").getImage();
+	public final Image DOG = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DogBone.png")).getImage();
+	public final Image TEDDY_BEAR = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/TeddyBear.png")).getImage();
+	public final Image DUCK = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DuckWithHat.png")).getImage();
+	public final Image CUPCAKE = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/Cupcake.png")).getImage();
 	
 	
 	
 	// https://www.wordans.com/wvc-1374530565/wordansfiles/images/2013/7/22/200382/200382_340.jpg
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String IMAGE_ONE = "Images/Levels/LevelTwo/Questions/DolphinSaxaphone.png";
+	private static final String IMAGE_ONE = "/Images/Levels/LevelTwo/Questions/DolphinSaxaphone.png";
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
 	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
 	private static final String Q_ONE_OPTION_3 = "shark, piano";
@@ -56,19 +56,19 @@ public class LevelTwo {
 
 	//http://www.wikihow.com/images/d/d4/Draw-an-Octopus-Step-16-Version-2.jpg
 	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String IMAGE_TWO = "Images/Levels/LevelTwo/Questions/Octopus.png";
+	private static final String IMAGE_TWO = "/Images/Levels/LevelTwo/Questions/Octopus.png";
 	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
 	private static final String Q_TWO_OPTION_2 = "octopus, blue";
 	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
 	private static final String Q_TWO_OPTION_4 = "octopus, pink";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
-	public static final Image OCTOPUS = new ImageIcon(IMAGE_TWO).getImage();
+	public final Image OCTOPUS = new ImageIcon(getClass().getResource(IMAGE_TWO)).getImage();
 	
 	//Question Three -- text question 
 	//http://images.clipartpanda.com/seal-clip-art-seal-clipart-4.jpg
 	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
 
-	private static final String IMAGE_THREE = "Images/Levels/LevelTwo/Questions/Seal.png";
+	private static final String IMAGE_THREE = "/Images/Levels/LevelTwo/Questions/Seal.png";
 	private static final String Q_THREE_OPTION_1 = "dolphin, ball";
 	private static final String Q_THREE_OPTION_2 = "seal,yo-yo ";
 	private static final String Q_THREE_OPTION_3 = "seal, ball";
@@ -77,7 +77,7 @@ public class LevelTwo {
 	
 	//http://www.clipartbest.com/cliparts/ace/M8e/aceM8egc4.png
 	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelTwo/Questions/Orca.png";
+	private static final String IMAGE_FOUR = "/Images/Levels/LevelTwo/Questions/Orca.png";
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";
 	private static final String Q_FOUR_OPTION_2 = "dolphin,bue ";
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";
@@ -116,7 +116,7 @@ public class LevelTwo {
 			doQuestion();
 		}
 		else{
-			JLabel warningImage = new JLabel(new ImageIcon("Images/Owls/Bob.png"));
+			JLabel warningImage = new JLabel(new ImageIcon(getClass().getResource("/Images/Owls/Bob.png")));
 			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
 		}
 	}
