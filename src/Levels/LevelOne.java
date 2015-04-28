@@ -54,21 +54,21 @@ public class LevelOne {
 	
 	// Question One -- text question
 	private static final String Q_ONE = "This is a monkey.";
-	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Questions/monkey.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Questions/Monkey.png";
 	private static final String Q_ONE_OPTION_1 = "True";
 	private static final String Q_ONE_OPTION_2 = "False";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
 	private static final String CORRECT_ONE = Q_ONE_OPTION_1;
 	
 	private static final String Q_TWO = "This animal has stripes.";
-	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Questions/zebra.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Questions/Zebra.png";
 	private static final String Q_TWO_OPTION_1 = "True.";
 	private static final String Q_TWO_OPTION_2 = "False.";
 	private List<String> ANSWERS_TWO = new ArrayList<String>(); 	
 	private static final String CORRECT_TWO = Q_TWO_OPTION_1;
 	
 	private static final String  Q_THREE = "This animal is purple.";
-	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Questions/flamingo.png";
+	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Questions/Flamingo.png";
 	private static final String Q_THREE_OPTION_1 = "True.";
 	private static final String Q_THREE_OPTION_2 = "False.";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	

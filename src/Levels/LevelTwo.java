@@ -45,7 +45,7 @@ public class LevelTwo {
 	private static final String INSTRUCTIONS = "Level One Instructions";
 	// Question One -- text question
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String IMAGE_ONE = "Images/Levels/LevelTwo/Questions/purpleDolphinSaxophone.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelTwo/Questions/DolphinSaxaphone.png";
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
 	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
 	private static final String Q_ONE_OPTION_3 = "shark, piano";
@@ -56,7 +56,7 @@ public class LevelTwo {
 
 	//Question Two -- text question
 	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String IMAGE_TWO = "Images/Levels/LevelTwo/Questions/pinkOctopus.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelTwo/Questions/Octopus.png";
 	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
 	private static final String Q_TWO_OPTION_2 = "octopus, blue";
 	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
@@ -68,7 +68,7 @@ public class LevelTwo {
 	//Question Three -- text question 
 	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
 
-	private static final String IMAGE_THREE = "Images/Levels/LevelTwo/Questions/seal.png";
+	private static final String IMAGE_THREE = "Images/Levels/LevelTwo/Questions/Seal.png";
 	private static final String Q_THREE_OPTION_1 = "dolphin, ball";
 	private static final String Q_THREE_OPTION_2 = "seal,yo-yo ";
 	private static final String Q_THREE_OPTION_3 = "seal, ball";
@@ -77,7 +77,7 @@ public class LevelTwo {
 	
 	
 	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelTwo/Questions/orca.png";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelTwo/Questions/Orca.png";
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";
 	private static final String Q_FOUR_OPTION_2 = "dolphin,bue ";
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";

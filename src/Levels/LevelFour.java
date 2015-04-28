@@ -41,7 +41,7 @@ public class LevelFour {
 	public static final Image RAIN = new ImageIcon("Images/Levels/LevelFour/Explanation/Rain.png").getImage();
 
 	private static final String Q_ONE = "Choose the correct answer.";
-	private static final String IMAGE_ONE = "Images/Levels/LevelFour/Questions/giraffe.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelFour/Questions/Camel.png";
 	private static final String Q_ONE_OPTION_1 = "The camel is not standing.";
 	private static final String Q_ONE_OPTION_2 = "This is not a horse.";
 	private static final String Q_ONE_OPTION_3 = "This is not a camel.";
@@ -53,7 +53,7 @@ public class LevelFour {
 
 	//Question Two -- text question
 	private static final String Q_TWO = "Choose the CORRECT answer.";
-	private static final String IMAGE_TWO = "Images/Levels/LevelFOUR/Question/vulture.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelFOUR/Question/Vulture.png";
 	private static final String Q_TWO_OPTION_1 = "This is not a bird."; 
 	private static final String Q_TWO_OPTION_2 = "The animal is not flying." ;
 	private static final String Q_TWO_OPTION_3 = "This animal is not brown";
@@ -64,7 +64,7 @@ public class LevelFour {
 
 	//Question Two -- text question
 	private static final String Q_THREE = "Choose the INCORRECT answer.";
-	private static final String IMAGE_THREE = "Images/Levels/LevelFour/Question/cactusNew.png";
+	private static final String IMAGE_THREE = "Images/Levels/LevelFour/Question/Cactus.png";
 	private static final String Q_THREE_OPTION_1 = "This is not a christmas tree."; 
 	private static final String Q_THREE_OPTION_2 = "This plant doesn't have prickly needles." ;
 	private static final String Q_THREE_OPTION_3 = "This is not a cactus";
@@ -75,7 +75,7 @@ public class LevelFour {
 
 	//Question Three -- text question 
 	private static final String Q_FOUR = "Choose the correct answer.";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelFour/Questions/snake.png";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelFour/Questions/Snake.png";
 	private static final String Q_FOUR_OPTION_1 = "This is lizard and he is not green. ";
 	private static final String Q_FOUR_OPTION_2 = "This is not a snake and he is green. ";
 	private static final String Q_FOUR_OPTION_3 = "This is not a squirrel and he is blue.";
@@ -85,7 +85,7 @@ public class LevelFour {
 	public static final Image SNAKE = new ImageIcon(IMAGE_FOUR).getImage();
 
 	private static final String Q_FIVE = "Choose the correct answer.";
-	private static final String IMAGE_FIVE = "Images/Levels/LevelFour/Questions/coyote .png";
+	private static final String IMAGE_FIVE = "Images/Levels/LevelFour/Questions/Coyote.png";
 	private static final String Q_FIVE_OPTION_1 = "This is not a coyote and the animal is brown.";
 	private static final String Q_FIVE_OPTION_2 = "This animal does not live in the ocean and he is a coyote.";
 	private static final String Q_FIVE_OPTION_3 = "This is a bird and it not brown.";
