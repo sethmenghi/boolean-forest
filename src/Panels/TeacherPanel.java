@@ -57,8 +57,8 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 			+ "last one being cumulative. When your student gets the children owls "
 			+ "through the forest, they will receive a special helper certificate.";
 	
-	private static final String BACKGROUND_SRC = "Images/Backgrounds/TeacherBackground.jpg";	// background url
-	private static final String BOB_SRC = "Images/Owls/Bob.png";								// Bob url
+	private static final String BACKGROUND_SRC = "/Images/Backgrounds/TeacherBackground.jpg";	// background url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";								// Bob url
 	
 	private static final int TEXT_WINDOW_WIDTH = 404;		// width of TeacherPanel BobsWindow
 	private static final int TEXT_WINDOW_HEIGHT = 425;		// height of TeacherPanel BobsWindow
@@ -115,11 +115,11 @@ public class TeacherPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon(BACKGROUND_SRC).getImage();
+		Image image = new ImageIcon(getClass().getResource(BACKGROUND_SRC)).getImage();
 		g.drawImage(image, 0, 0, null);
 
 		// Draw Bob.
-		Image bobImage = new ImageIcon(BOB_SRC).getImage();
+		Image bobImage = new ImageIcon(getClass().getResource(BOB_SRC)).getImage();
 		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
