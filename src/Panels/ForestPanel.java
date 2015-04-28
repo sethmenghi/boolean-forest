@@ -40,12 +40,12 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	// Declare static final members of ForestPanel class:
 	private static final String BUTTON_TEXT = "Let's keep going!";	// text for Level 1 GameButton
 
-	private static final String BACKGROUND_SRC = "Images/Backgrounds/ForestBackground.jpg";	// background url
-	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
-	private static final String CHLOE_SRC = "Images/Owls/ChloeSmall.png";					// Chloe url
-	private static final String DAVID_SRC = "Images/Owls/DavidSmall.png";					// David url
-	private static final String YELLOW_BUTTON_SRC = "Images/ButtonYellow.png";				// yellow button url
-	private static final String STAR_SRC = "Images/Star.png";								// star url
+	private static final String BACKGROUND_SRC = "/Images/Backgrounds/ForestBackground.jpg";	// background url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";							// Bob url
+	private static final String CHLOE_SRC = "/Images/Owls/ChloeSmall.png";					// Chloe url
+	private static final String DAVID_SRC = "/Images/Owls/DavidSmall.png";					// David url
+	private static final String YELLOW_BUTTON_SRC = "/Images/ButtonYellow.png";				// yellow button url
+	private static final String STAR_SRC = "/Images/Star.png";								// star url
 
 	private static final int FOREST_WIDTH = 350;			// width of ForestPanel BobsWindow
 	private static final int FOREST_HEIGHT = 177;			// height of ForestPanel BobsWindow
@@ -134,11 +134,11 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);							// call super method
 
 		// Create new image icon and draw the background image.
-		Image background = new ImageIcon(BACKGROUND_SRC).getImage();
+		Image background = new ImageIcon(getClass().getResource(BACKGROUND_SRC)).getImage();
 		g.drawImage(background, 0, 0, null);
 
 		// Draw Bob.
-		Image bob = new ImageIcon(BOB_SRC).getImage();
+		Image bob = new ImageIcon(getClass().getResource(BOB_SRC)).getImage();
 		g.drawImage(bob, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Paint various components on the screen.
@@ -210,11 +210,11 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 
 		// Check to see if Owl is Chloe or David and draw the Owl.
 		if (owl.getOwlName() == "CHLOE") {
-			owlImage = new ImageIcon(CHLOE_SRC).getImage();
+			owlImage = new ImageIcon(getClass().getResource(CHLOE_SRC)).getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 		else if (owl.getOwlName() == "DAVID") {
-			owlImage = new ImageIcon(DAVID_SRC).getImage();
+			owlImage = new ImageIcon(getClass().getResource(DAVID_SRC)).getImage();
 			g.drawImage(owlImage, owl.getXCoord(), owl.getYCoord(), null);
 		}
 	}
@@ -329,7 +329,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		// Only case 1 will break. This way, for each level, it will
 		// continue to draw the level markers for all previous passed
 		// levels.
-		Image yellowButton = new ImageIcon(YELLOW_BUTTON_SRC).getImage();
+		Image yellowButton = new ImageIcon(getClass().getResource(YELLOW_BUTTON_SRC)).getImage();
 		switch (theGame.getLevel()) {
 		case 5:
 			// Draw marker 5.
@@ -361,7 +361,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		// Go through the stars ArrayList and paint each star at their
 		// x- and y- coordinates for each level passed.
 		for (int index = 0; index < theGame.getLevel(); index++) {
-			Image starImage = new ImageIcon(STAR_SRC).getImage();
+			Image starImage = new ImageIcon(getClass().getResource(STAR_SRC)).getImage();
 			g.drawImage(starImage, stars.get(index).getXCoord(), stars.get(index).getYCoord(), null);
 		}
 	}
