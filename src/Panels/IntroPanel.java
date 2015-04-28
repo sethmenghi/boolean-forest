@@ -121,7 +121,11 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		if (titleTextArea != null) {
 			remove(titleTextArea);									// remove from IntroPanel
 		}
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 		// If introTextArea is not null, remove it from the JPanel.
 		if (introTextArea != null) {
 			remove(introTextArea);									// remove from IntroPanel
@@ -140,16 +144,28 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addTitleText() {
 		// Create a JTextArea for title of page and add to JPanel.
+<<<<<<< HEAD
+		titleTextArea = new JTextArea();							// initialize the JTextArea
+		titleTextArea.setFont(Game.TITLE_FONT);						// set the font
+		titleTextArea.setForeground(Game.DARK_BLUE);				// set font color
+		titleTextArea.setOpaque(false);								// set background to transparent
+=======
 		titleTextArea = new JTextArea();						// initialize the JTextArea
 		titleTextArea.setFont(Game.TITLE_FONT);					// set the font
 		titleTextArea.setForeground(Game.DARK_BLUE);			// set font color
 		titleTextArea.setOpaque(false);							// set background to transparent
+>>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 		// Set the size and location of the text to have margin of 10 pixels
 		// from the edge of the white background. 
 		titleTextArea.setSize(TEXT_WINDOW_WIDTH - 20, 30);
 		titleTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 10);
+<<<<<<< HEAD
+		titleTextArea.setText(TITLE);								// set the text
+		add(titleTextArea);											// add to IntroPanel
+=======
 		titleTextArea.setText(TITLE);							// set the text
 		add(titleTextArea);										// add to IntroPanel
+>>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 	}
 
 	/**
