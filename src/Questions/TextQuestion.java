@@ -37,6 +37,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	JButton answer3;
 	JButton answer4;
 	
+	int questionCount = 0;
+	
 	// Panels that group the layouts
 	JPanel questionPanel; // Overall question panel
 	JPanel imagePanel; // Contains the image
@@ -49,6 +51,12 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	public Boolean questionCompleted = false;
 
 	LevelPanel panel;
+	Game theGame;
+	
+	public TextQuestion(Game game)
+	{
+		theGame = game;
+	}
 	
 	public void switchLevelPanel(LevelPanel panel){
 		this.panel = panel;
@@ -141,10 +149,30 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	 * Checks the 
 	 * @param submittedAnswer against the correctAnswer
 	 */
+	
+	 
+	
 	public Boolean checkAnswer(String submittedAnswer){
+		
+		
+		
 		if (submittedAnswer == correctAnswer){
 			questionCompleted = true;
-			panel.nextQuestion();
+			
+			
+			if (theGame.getLevel() == 0){
+				theGame.levelOne.nextQuestion();
+
+				
+			}
+			
+			
+			if (theGame.getLevel() == 1){
+				
+				theGame.levelTwo.nextQuestion();
+			}
+			
+			
 			return true;
 		}
 		else {

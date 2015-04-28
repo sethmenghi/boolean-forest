@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import BooleanForest.*;
 
@@ -43,19 +45,18 @@ public class LevelTwo {
 	private static final String INSTRUCTIONS = "Level One Instructions";
 	// Question One -- text question
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Question/purpleDolphinSaxophone.png";
+	private static final String IMAGE_ONE = "Images/Levels/LevelTwo/Questions/purpleDolphinSaxophone.png";
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
 	private static final String Q_ONE_OPTION_2 = "dolphin, saxophone";
 	private static final String Q_ONE_OPTION_3 = "shark, piano";
 	private static final String Q_ONE_OPTION_4 = "shark, saxophone";
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	
 	private static List<String> CORRECT_ONE = new ArrayList<String>();
-	public static final Image DOLPHIN = new ImageIcon(IMAGE_ONE).getImage();
 	
-	
+
 	//Question Two -- text question
 	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Question/pinkOctopus.png";
+	private static final String IMAGE_TWO = "Images/Levels/LevelTwo/Questions/pinkOctopus.png";
 	private static final String Q_TWO_OPTION_1 = "anglefish, pink";
 	private static final String Q_TWO_OPTION_2 = "octopus, blue";
 	private static final String Q_TWO_OPTION_3 = "anglefish, purple";
@@ -67,46 +68,31 @@ public class LevelTwo {
 	//Question Three -- text question 
 	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
 
-	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Question/seal.png";
+	private static final String IMAGE_THREE = "Images/Levels/LevelTwo/Questions/seal.png";
 	private static final String Q_THREE_OPTION_1 = "dolphin, ball";
 	private static final String Q_THREE_OPTION_2 = "seal,yo-yo ";
 	private static final String Q_THREE_OPTION_3 = "seal, ball";
 	private static final String Q_THREE_OPTION_4 = "fish, ball";
 	private List<String> ANSWERS_THREE = new ArrayList<String>(); 	
-	private static List<String> CORRECT_THREE = new ArrayList<String>();
-	public static final Image SEAL = new ImageIcon(IMAGE_THREE).getImage();
+	
 	
 	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
-	private static final String IMAGE_FOUR = "Images/Levels/LevelOne/Question/orca.png";
+	private static final String IMAGE_FOUR = "Images/Levels/LevelTwo/Questions/orca.png";
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";
 	private static final String Q_FOUR_OPTION_2 = "dolphin,bue ";
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";
 	private static final String Q_FOUR_OPTION_4 = "shark, blue";
 	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	
-	private static List<String> CORRECT_FOUR = new ArrayList<String>();
-	public static final Image SHARK = new ImageIcon(IMAGE_FOUR).getImage();
 	
 	
-	
-	private static final String Q_FIVE = "?";
-	
-	
-	
-	
-	private static final int TEXT = 0;
-	private static final int IMAGE = 1;
 	
 	private Game theGame;
-
-	
+	int currentLevel = 2;
+	int currentQuestion = 0; 
 	
 	public LevelTwo(Game game) {
-		
 		theGame = game;
 		
-		//bobsWindow = new BobsWindow(theGame, INSTRUCTIONS);
-		
-		startLevel();
 	}
 	
 	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2, String option3, String option4){
@@ -116,39 +102,88 @@ public class LevelTwo {
 		holdsPossibleAnswers.add(option4);
 	}
 	
-	public static void addCorrectAnswers(List<String> correctAnswer, String correctOption){
+	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2){
+		holdsPossibleAnswers.add(option1);
+		holdsPossibleAnswers.add(option2);
+	}
+
+	public void startLevel() {
+		doQuestion();
+	}
+	
+	public void nextQuestion(){
+		if (theGame.textQuestion.questionCompleted == true){
+			currentQuestion++;
+			doQuestion();
+		}
+		else{
+			JLabel warningImage = new JLabel(new ImageIcon("Images/Owls/Bob.png"));
+			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
+		}
+	}
+	
+	public void doQuestion() {
 		
-		correctAnswer.add(correctOption);
-	}
-	
-	
-	private void startLevel() {
-		doQuestion(Q_ONE);
-		doQuestion(Q_TWO);
-		doQuestion(Q_ONE);
-		doQuestion(Q_ONE);
-		doQuestion(Q_ONE);
-	}
-	
-	public void doQuestion(String question) {
-		switch (question) {
-		case Q_ONE:
-			
-			addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2,  Q_ONE_OPTION_3,  Q_ONE_OPTION_4);
-			addCorrectAnswers(CORRECT_ONE, Q_ONE_OPTION_2);
-			//theGame.imageQuestion.setQuestion(Q_ONE);
-			//theGame.imageQuestion.setAnswerList(); sets correct answer too
-		case Q_TWO:	
-			addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2,  Q_TWO_OPTION_3,  Q_TWO_OPTION_4);
-			addCorrectAnswers(CORRECT_TWO, Q_TWO_OPTION_4);
-			
-			//theGame.changeLayoutCard("Image Question");
-	
-			theGame.changeLayoutCard("Image Question");
+		System.out.println(currentQuestion);
+		
+		switch (currentQuestion) {
+		case 1:
+			if (ANSWERS_ONE.size() == 0){
+				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2, Q_ONE_OPTION_3, Q_ONE_OPTION_4);
+				theGame.textQuestion.setQuestion(Q_ONE);
+				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
+				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_2);
+				theGame.textQuestion.initGui();
+				//theGame.repaint();
+				theGame.changeLayoutCard("TEXT_QUESTION");
+
+			}
+			break;
+		case 2:	
+			if (ANSWERS_TWO.size() == 0){
+				addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2, Q_TWO_OPTION_3, Q_TWO_OPTION_4);
+				theGame.textQuestion.setQuestion(Q_TWO);
+				theGame.textQuestion.setQuestionImage(IMAGE_TWO);
+				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_4);
+				theGame.textQuestion.initGui();
+				theGame.repaint();
+				theGame.changeLayoutCard("TEXT_QUESTION");
+			}
+			break;
+		case 3:	
+			if (ANSWERS_THREE.size() == 0){
+			addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1, Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
+			theGame.textQuestion.setQuestion(Q_THREE);
+			theGame.textQuestion.setQuestionImage(IMAGE_THREE);
+			theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_3);
+			theGame.textQuestion.initGui();
+			theGame.repaint();
+			}
+			//theGame.changeLayoutCard("TEXT_QUESTION");
 			break;
 		
-		}
+		case 4:
+			if (ANSWERS_FOUR.size() == 0){
+				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
+				theGame.textQuestion.setQuestion(Q_FOUR);
+				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
+				theGame.textQuestion.setAnswerList(ANSWERS_FOUR,Q_FOUR_OPTION_1);
+				theGame.textQuestion.initGui();
+				theGame.repaint();
+				}
+				//theGame.changeLayoutCard("TEXT_QUESTION");
+				break;
+			
 		
-		//updateScore();
+			
+		case 5:	
+			
+			theGame.incrementLevel();
+			System.out.println("Level Number in Level One: " + theGame.getLevel());
+			theGame.forestPanel.repaintForestPanel();
+			theGame.changeLayoutCard("FOREST");
+			break;
+	
+		}
 	}
 }

@@ -455,6 +455,9 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		case 1:
 			setMousePressedLevelOne(source);
 			break;
+		case 2:
+			setMousePressedLevelTwo(source);
+			break; 
 		case 5:
 			setMousePressedLevelFive(source);
 			break;
@@ -489,6 +492,75 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 6:
+				theGame.levelOne.startLevel(); 
+				theGame.changeLayoutCard("TEXT_QUESTION");
+				System.out.println("This should go to questions.");
+				break;
+			default:
+				break;
+			}
+		}	
+		// If backward button is clicked in instructions, change text.
+		else if (source.getButtonMessage() == BACKWARD) {
+			switch (currentPage) {
+			case 1:
+				break;
+			case 2:
+				currentPage--;
+				repaint();
+				break;
+			case 3:
+				currentPage--;
+				repaint();
+				break;
+			case 4:
+				currentPage--;
+				repaint();
+				break;
+			case 5:
+				currentPage--;
+				repaint();
+				break;
+			case 6:
+				currentPage--;
+				repaint();
+				break;
+			default:
+				break;
+			}
+		}	
+		else {
+			theGame.changeLayoutCard("FOREST");
+		}
+	}
+	
+	private void setMousePressedLevelTwo(GameButton source) {
+		// If back button is clicked, go back to IntroPanel.
+		if (source.getButtonMessage() == FORWARD) {
+			switch (currentPage) {
+			case 1:
+				currentPage++;
+				repaint();
+				break;
+			case 2:
+				currentPage++;
+				repaint();
+				break;
+			case 3:
+				currentPage++;
+				repaint();
+				break;
+			case 4:
+				currentPage++;
+				repaint();
+				break;
+			case 5:
+				currentPage++;
+				repaint();
+				break;
+			case 6:
+				theGame.levelTwo.startLevel(); 
+				theGame.changeLayoutCard("TEXT_QUESTION");
 				System.out.println("This should go to questions.");
 				break;
 			default:
@@ -531,6 +603,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	private void setMousePressed(GameButton source, int level) {
 		// If back button is clicked, go back to IntroPanel.
+		
+		System.out.println("this is source" + source);
+		System.out.println("this is level" + level);
+		
 		if (source.getButtonMessage() == FORWARD) {
 			switch (currentPage) {
 			case 1:
@@ -550,7 +626,12 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 5:
+				//theGame.levelTwo.startLevel(); 
+				//theGame.changeLayoutCard("TEXT_QUESTION");
+				
 				System.out.println("This should go to questions.");
+				System.out.println("This should go to questions.");
+				System.out.println("HERE???");
 				break;
 			default:
 				break;

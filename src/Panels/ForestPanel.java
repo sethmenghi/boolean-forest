@@ -120,6 +120,9 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		stars.add(new Star("THREE"));						// add Star for passing Level 3
 		stars.add(new Star("FOUR"));						// add Star for passing Level 4
 		stars.add(new Star("FIVE"));						// add Star for passing Level 5
+	
+		repaint();
+	
 	}
 
 	/**
@@ -235,11 +238,13 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	 */
 	private void addForestButton() {
 		// Initialize forestGameButton with the correct text.
+		
 		if (theLevel == 0) {
 			forestGameButton = new GameButton(LEVEL_1, "WHITE");	// set text to go to Level 1
 		}
 		else if (theLevel == 1) {
-			forestGameButton = new GameButton(LEVEL_2, "WHITE");	// set text to go to Level 2
+			forestGameButton = new GameButton(LEVEL_2, "WHITE");	// set text to go to Level 2			
+			System.out.println("here??????????");
 		}
 		else if (theLevel == 2) {
 			forestGameButton = new GameButton(LEVEL_3, "WHITE");	// set text to go to Level 3
@@ -263,7 +268,9 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		int boundsHeight = forestGameButton.getPreferredSize().height;
 		forestGameButton.setBounds(boundsXCoord, boundsYCoord, boundsWidth, boundsHeight);
 
-		add(forestGameButton);										// add to ForestPanel
+		add(forestGameButton);
+		forestGameButton.setVisible(true);
+		System.out.println("button:" + forestGameButton.getButtonMessage());// add to ForestPanel
 		forestGameButton.addMouseListener(this);					// add MouseListener
 	}
 
@@ -330,24 +337,28 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();			// get source of component that was clicked
 
+		System.out.println(source.getButtonMessage());
+		
 		// If button goes to Level 1, change to Level 1 layout.
-		if (source.getButtonMessage() == LEVEL_1) {
+		if (theLevel == 0) {
 			theGame.changeLayoutCard("LEVEL_ONE");				// switch to Level 1
 		}
 		// If button goes to Level 2, change to Level 2 layout.
-		else if (source.getButtonMessage() == LEVEL_2) {
+		else if (theLevel==1) {
 			theGame.changeLayoutCard("LEVEL_TWO");				// switch to Level 2
 		}
 		// If button goes to Level 3, change to Level 3 layout.
-		else if (source.getButtonMessage() == LEVEL_3) {
-			theGame.changeLayoutCard("LEVEL_THREE");			// switch to Level 3
+		else if (theLevel == 2) {
+			theGame.changeLayoutCard("LEVEL_THREE");		
+			System.out.println("herehrehrehrhere");	
+			// switch to Level 3
 		}
 		// If button goes to Level 4, change to Level 4 layout.
-		else if (source.getButtonMessage() == LEVEL_4) {
+		else if (theLevel == 3) {
 			theGame.changeLayoutCard("LEVEL_FOUR");				// switch to Level 4
 		}
 		// If button goes to Level 5, change to Level 5 layout.
-		else if (source.getButtonMessage() == LEVEL_5) {
+		else if (theLevel == 4) {
 			theGame.changeLayoutCard("LEVEL_FIVE");				// switch to Level 5	
 			/////// THIS SHOULD BE CALLED FROM LEVELPANEL FOR LEVEL 5
 			/////// theGame.levelFive.initLevel(); 
@@ -356,6 +367,13 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 		else if (source.getButtonMessage() == COMPLETED) {
 			theGame.changeLayoutCard("CERTIFICATE");			// switch to CertificatePanel
 		}
+	}
+	
+	public void repaintForestPanel(){
+		System.out.println("Repaint forest panel");
+		theLevel = theGame.getLevel();
+		System.out.println("Level in Forest Panel: " + theLevel);
+		repaint(); 
 	}
 
 	@Override
