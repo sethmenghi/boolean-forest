@@ -11,7 +11,7 @@
  * jtextarea-jtextfield
  * 
  * IMAGE SOURCES:
- * 1) tablethttp://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
+ * 1) http://images.clipartpanda.com/rainforest-trees-clipart-dT6MdxpT9.png
  * 
  * NOTE: Owl and background images were drawn by Leslie Kim. No source
  * required.
@@ -38,16 +38,16 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	private static final String PLAY = "Let's go learn some boolean logic!";				// text for playButton
 	private static final String OWLS = "Meet the owls";										// text for owlButton
 	private static final String TEACHER = "Teachers & Parents";								// text for teacherButton
-	
+
 	private static final String TITLE = "Boolean Logic Forest";								// title text
 	private static final String INTRODUCTION = "Welcome to the Boolean Logic Forest! This "	// introduction text
 			+ "is my family: Alice, my wife, and our two children, David and Chloe. Our "
 			+ "children need to get through the Boolean Logic Forest and need your help! "
 			+ "Let's go on an adventure!";
-	
+
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/IntroBackground.jpg";	// background url
 	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
-	
+
 	private static final int TEXT_WINDOW_WIDTH = 404;				// width of white text window
 	private static final int TEXT_WINDOW_HEIGHT = 199;				// height of white text window
 	private static final int TEXT_WINDOW_XCOORD = 53;				// pre-determined xCoord of white text window
@@ -121,11 +121,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		if (titleTextArea != null) {
 			remove(titleTextArea);									// remove from IntroPanel
 		}
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 		// If introTextArea is not null, remove it from the JPanel.
 		if (introTextArea != null) {
 			remove(introTextArea);									// remove from IntroPanel
@@ -144,28 +140,16 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void addTitleText() {
 		// Create a JTextArea for title of page and add to JPanel.
-<<<<<<< HEAD
 		titleTextArea = new JTextArea();							// initialize the JTextArea
 		titleTextArea.setFont(Game.TITLE_FONT);						// set the font
 		titleTextArea.setForeground(Game.DARK_BLUE);				// set font color
 		titleTextArea.setOpaque(false);								// set background to transparent
-=======
-		titleTextArea = new JTextArea();						// initialize the JTextArea
-		titleTextArea.setFont(Game.TITLE_FONT);					// set the font
-		titleTextArea.setForeground(Game.DARK_BLUE);			// set font color
-		titleTextArea.setOpaque(false);							// set background to transparent
->>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 		// Set the size and location of the text to have margin of 10 pixels
 		// from the edge of the white background. 
 		titleTextArea.setSize(TEXT_WINDOW_WIDTH - 20, 30);
 		titleTextArea.setLocation(TEXT_WINDOW_XCOORD + 10, TEXT_WINDOW_YCOORD + 10);
-<<<<<<< HEAD
 		titleTextArea.setText(TITLE);								// set the text
 		add(titleTextArea);											// add to IntroPanel
-=======
-		titleTextArea.setText(TITLE);							// set the text
-		add(titleTextArea);										// add to IntroPanel
->>>>>>> 65fe91e4bff8db8cc62c45cf5837b6499af7dd62
 	}
 
 	/**
@@ -224,7 +208,7 @@ public class IntroPanel extends JPanel implements Panel, MouseListener {
 		add(playButton);											// add to IntroPanel
 		playButton.addMouseListener(this);							// add MouseListener
 	}
-	
+
 	/**
 	 * METHOD: This method adds the teacherButton and adds a MouseListener.
 	 * @param none
