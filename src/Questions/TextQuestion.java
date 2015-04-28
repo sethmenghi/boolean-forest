@@ -34,7 +34,7 @@ import BooleanForest.Game;
 import Panels.LevelPanel;
 
 @SuppressWarnings("serial")
-public class TextQuestion extends JPanel implements Question, ActionListener {
+public class TextQuestion extends JPanel implements ActionListener {
 	
 	// Constants
 	private final static int MAX_BUTTON_WIDTH = 100;
