@@ -1,7 +1,11 @@
 #Project 4:
 
 ##The Boolean Forest
+
+####Github: https://github.com/sethmenghi/project4/
+
 ####Instructor: Lisa Singh (COSC 150)
+
 
 ####Collaborators - (netid) :      
 * Julia Hockett - jlh279
@@ -38,6 +42,9 @@
  questions for each level (QuestionPanel). The final layout is for the
  teacher/parent's page which explains the applet to the teacher/parent
  (TeachersPanel).
+ 
+ The Drag and Drop methodolgy works by first clicking on the item, then
+ click it again and drag on top of the owl. 
  
  Once the student helps the children owls pass Level 5, a certificate of
  completion will be displayed.
