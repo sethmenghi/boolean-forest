@@ -12,6 +12,7 @@
 
 package Questions;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,6 +35,10 @@ import Panels.LevelPanel;
 
 @SuppressWarnings("serial")
 public class TextQuestion extends JPanel implements Question, ActionListener {
+	
+	// Constants
+	private final static int MAX_BUTTON_WIDTH = 100;
+	private final static int MAX_BUTTON_HEIGHT = 40;
 	
 	// Visual Elements 
 	String imageResource; 							// Image that the question references
@@ -114,6 +119,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		questionPanel = new JPanel();
 		answer1 = new JButton(possibleAnswers.get(0));
 		answer2 = new JButton(possibleAnswers.get(1));
+		answer1.setSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
+		answer2.setSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		answer1.addActionListener(this);
 		answer2.addActionListener(this);
 		
@@ -122,6 +129,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			questionPanel.setLayout(new GridLayout(2, 2, 1, 1));
 			answer3 = new JButton(possibleAnswers.get(2));
 			answer4 = new JButton(possibleAnswers.get(3));
+			answer3.setSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
+			answer4.setSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 			answer3.addActionListener(this);
 			answer4.addActionListener(this);
 			questionPanel.add(answer3);
@@ -173,10 +182,12 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	}
 
 	/**
-	 * METHOD: Checks the against the correctAnswer
+	 * METHOD: Checks the against the correctAnswer,
+	 * if wrong sets button color to red
 	 * @param submittedAnswer 
+	 * @param answer
 	 */
-	public Boolean checkAnswer(String submittedAnswer){
+	public Boolean checkAnswer(String submittedAnswer, JButton answer){
 		if (submittedAnswer == correctAnswer){
 			questionCompleted = true;
 			
@@ -199,6 +210,8 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		}
 		else {
 			System.out.println("so wrong");
+			answer.setBackground(Color.RED);
+			answer.setOpaque(true);
 			questionCompleted = false;
 			return false;
 		}
@@ -209,16 +222,16 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		Object src = e.getSource();
 		
 		if (src == answer1){
-			checkAnswer(answer1.getText());
+			checkAnswer(answer1.getText(), answer1);
 		}
 		else if (src == answer2){
-			checkAnswer(answer2.getText());
+			checkAnswer(answer2.getText(), answer2);
 		}
 		else if (src == answer3){
-			checkAnswer(answer3.getText());
+			checkAnswer(answer3.getText(), answer3);
 		}
 		else if (src == answer4){
-			checkAnswer(answer4.getText());
+			checkAnswer(answer4.getText(), answer4);
 		}
 		System.out.println(questionCompleted);
 	}
@@ -231,12 +244,10 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	 * @return stringWidth
 	 */
 	public int measureStringWidth(Graphics g, String inputString) {
-
 		Font font = g.getFont();
         FontRenderContext context = ((Graphics2D) g).getFontRenderContext();
         int stringWidth = (int)(font.getStringBounds(inputString, context).getWidth());
         return stringWidth;
-      
 	}
 	
 	@Override 
