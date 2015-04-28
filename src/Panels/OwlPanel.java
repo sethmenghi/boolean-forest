@@ -41,7 +41,7 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 			+ "old and learning to fly with Chloe. My favorite food to eat are "
 			+ "grasshoppers!";
 	
-	private static final String BACKGROUND_SRC = "Images/Backgrounds/OwlBackground.jpg";	// background url
+	private static final String BACKGROUND_SRC = "/Images/Backgrounds/OwlBackground.jpg";	// background url
 	
 	private static final int TEXT_WINDOW_WIDTH = 441;				// width of text window
 	private static final int TEXT_WINDOW_HEIGHT = 59;				// height of text window
@@ -93,7 +93,7 @@ public class OwlPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 		
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon(BACKGROUND_SRC).getImage();
+		Image image = new ImageIcon(getClass().getResource(BACKGROUND_SRC)).getImage();
 		g.drawImage(image, 0, 0, null);
 		
 		// Paint various components on the screen.
