@@ -162,20 +162,16 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			
 			if (theGame.getLevel() == 0){
 				theGame.levelOne.nextQuestion();
-
-				
 			}
-			
 			
 			if (theGame.getLevel() == 1){
-				
 				theGame.levelTwo.nextQuestion();
 			}
-			
 			
 			return true;
 		}
 		else {
+			System.out.println("so wrong");
 			questionCompleted = false;
 			return false;
 		}

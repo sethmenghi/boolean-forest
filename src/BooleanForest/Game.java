@@ -259,5 +259,6 @@ public class Game extends JApplet {
 		// Get the card layout and flip the desired card to the front.
 		CardLayout layout = (CardLayout) (cards.getLayout());
 		layout.show(cards, layoutToChangeTo);
+		cards.revalidate();
 	}
 }

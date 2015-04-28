@@ -93,15 +93,15 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	 * @param g
 	 */
 	private void addText(Graphics g) {
-		switch(theLevel) {
-		case 1:
+		switch(theGame.getLevel()) {
+		case 0:
 			showLevelOneContent(g);
 			break;
-		case 5:
+		case 4:
 			showLevelFiveContent(g);
 			break;
 		default:
-			showLevelContent(g, theLevel);
+			showLevelContent(g, theGame.getLevel());
 			break;
 		}
 	}
@@ -191,6 +191,9 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	}
 
 	private void showLevelContent(Graphics g, int level) {
+		System.out.println("Level: "+level);	
+
+		
 		String levelTextOne = "";										// String for first line of text
 		String levelTextTwo = "";										// String for second line of text
 
@@ -205,10 +208,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		// If page 1 of explanation, it is a topic String so paint with topic
 		// font style.
 		if (currentPage == 1) {
-			if (level == 2) {
+			if (level == 1) {
 				levelTextOne = LevelTwo.PAGE_AND;						// get the first page from LevelTwo class
 			}
-			else if (level == 3) {
+			else if (level == 2) {
 				levelTextOne = LevelThree.PAGE_OR;						// get the first page from LevelThree class
 			}
 			else {
@@ -232,19 +235,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		else {
 			if (currentPage == 2) {
 				// Get resources for Level 2.
-				if (level == 2) {
+				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_TRUE_A;
 					g.drawImage(LevelTwo.DOG, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.TRUE_STATEMENT;
 				}
 				// Get resources for Level 3.
-				else if (level == 3) {
+				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_TRUE_A;
 					g.drawImage(LevelThree.DONUT, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.TRUE_STATEMENT;
 				}
 				// Get resources for Level 4.
-				else if (level == 4) {
+				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_TRUE_A;
 					g.drawImage(LevelFour.PUMPKIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.TRUE_STATEMENT;
@@ -252,13 +255,13 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			}
 			else if (currentPage == 3) {
 				// Get resources for Level 2.
-				if (level == 2) {
+				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_TRUE_B;
 					g.drawImage(LevelTwo.TEDDY_BEAR, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.TRUE_STATEMENT;
 				}
 				// Get resources for Level 3.
-				else if (level == 3) {
+				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_TRUE_B;
 					g.drawImage(LevelThree.FLOWER, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.TRUE_STATEMENT;
@@ -272,19 +275,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			}
 			else if (currentPage == 4) {
 				// Get resources for Level 2.
-				if (level == 2) {
+				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_FALSE_A;
 					g.drawImage(LevelTwo.DUCK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.FALSE_STATEMENT;
 				}
 				// Get resources for Level 3.
-				else if (level == 3) {
+				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_FALSE_A;
 					g.drawImage(LevelThree.PENCIL, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.FALSE_STATEMENT;
 				}
 				// Get resources for Level 4.
-				else if (level == 4) {
+				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_FALSE_A;
 					g.drawImage(LevelFour.HEART, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.FALSE_STATEMENT;
@@ -292,19 +295,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			}
 			else if (currentPage == 5) {
 				// Get resources for Level 2.
-				if (level == 2) {
+				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_FALSE_B;
 					g.drawImage(LevelTwo.CUPCAKE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.FALSE_STATEMENT;
 				}
 				// Get resources for Level 3.
-				else if (level == 3) {
+				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_FALSE_B;
 					g.drawImage(LevelThree.COOKIE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.FALSE_STATEMENT;
 				}
 				// Get resources for Level 4.
-				else if (level == 4) {
+				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_FALSE_B;
 					g.drawImage(LevelFour.RAIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.FALSE_STATEMENT;
@@ -451,23 +454,13 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
 
-		switch(theLevel) {
-		case 1:
-			setMousePressedLevelOne(source);
-			break;
-		case 2:
-			setMousePressedLevelTwo(source);
-			break; 
-		case 5:
+		if (theGame.getLevel() == 5)
 			setMousePressedLevelFive(source);
-			break;
-		default:
-			setMousePressed(source, theLevel);
-			break;
-		}
+		else
+			setMousePressedLevel(source);
 	}
 
-	private void setMousePressedLevelOne(GameButton source) {
+	private void setMousePressedLevel(GameButton source) {
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == FORWARD) {
 			switch (currentPage) {
@@ -488,6 +481,25 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				repaint();
 				break;
 			case 5:
+				switch (theGame.getLevel()) {
+				case 1:
+					theGame.levelTwo.startLevel();
+					theGame.changeLayoutCard("TEXT_QUESTION");
+					System.out.println("This should go to questions.");
+					break;
+				case 2:
+					//theGame.levelThree.startLevel(); 
+					theGame.changeLayoutCard("TEXT_QUESTION");
+					System.out.println("This should go to questions.");
+					break;
+				case 3:
+					//theGame.levelFour.startLevel(); 
+					theGame.changeLayoutCard("TEXT_QUESTION");
+					System.out.println("This should go to questions.");
+					break;
+				default:
+					break;
+				}
 				currentPage++;
 				repaint();
 				break;
@@ -495,75 +507,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				theGame.levelOne.startLevel(); 
 				theGame.changeLayoutCard("TEXT_QUESTION");
 				System.out.println("This should go to questions.");
-				break;
-			default:
-				break;
-			}
-		}	
-		// If backward button is clicked in instructions, change text.
-		else if (source.getButtonMessage() == BACKWARD) {
-			switch (currentPage) {
-			case 1:
-				break;
-			case 2:
-				currentPage--;
-				repaint();
-				break;
-			case 3:
-				currentPage--;
-				repaint();
-				break;
-			case 4:
-				currentPage--;
-				repaint();
-				break;
-			case 5:
-				currentPage--;
-				repaint();
-				break;
-			case 6:
-				currentPage--;
-				repaint();
-				break;
-			default:
-				break;
-			}
-		}	
-		else {
-			theGame.changeLayoutCard("FOREST");
-		}
-	}
-	
-	private void setMousePressedLevelTwo(GameButton source) {
-		// If back button is clicked, go back to IntroPanel.
-		if (source.getButtonMessage() == FORWARD) {
-			switch (currentPage) {
-			case 1:
-				currentPage++;
-				repaint();
-				break;
-			case 2:
-				currentPage++;
-				repaint();
-				break;
-			case 3:
-				currentPage++;
-				repaint();
-				break;
-			case 4:
-				currentPage++;
-				repaint();
-				break;
-			case 5:
-				currentPage++;
-				repaint();
-				break;
-			case 6:
-				theGame.levelTwo.startLevel(); 
-				theGame.changeLayoutCard("TEXT_QUESTION");
-				System.out.println("This should go to questions.");
-				break;
-			default:
 				break;
 			}
 		}	
