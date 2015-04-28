@@ -39,11 +39,6 @@ import Objects.Star;
 public class ForestPanel extends JPanel implements Panel, MouseListener {
 	// Declare static final members of ForestPanel class:
 	private static final String BUTTON_TEXT = "Let's keep going!";	// text for Level 1 GameButton
-	//	private static final String LEVEL_2 = "Go to Level 2";	// text for Level 2 GameButton
-	//	private static final String LEVEL_3 = "Go to Level 3";	// text for Level 3 GameButton
-	//	private static final String LEVEL_4 = "Go to Level 4";	// text for Level 4 GameButton
-	//	private static final String LEVEL_5 = "Go to Level 5";	// text for Level 5 GameButton
-	//	private static final String COMPLETED = "Get your certificate!";		// text for completion GameButton
 
 	private static final String BACKGROUND_SRC = "Images/Backgrounds/ForestBackground.jpg";	// background url
 	private static final String BOB_SRC = "Images/Owls/Bob.png";							// Bob url
@@ -67,7 +62,7 @@ public class ForestPanel extends JPanel implements Panel, MouseListener {
 	private static final int MARKER_1_YCOORD = 366;			// y-coordinate for marker 1
 	private static final int MARKER_2_YCOORD = 290;			// y-coordinate for marker 2
 	private static final int MARKER_3_YCOORD = 254;			// y-coordinate for marker 3
-	private static final int MARKER_4_YCOORD = 176;			// y-coordinate for marker 4
+	private static final int MARKER_4_YCOORD = 178;			// y-coordinate for marker 4
 	private static final int MARKER_5_YCOORD = 144;			// y-coordinate for marker 5
 
 	// Declare members of ForestPanel class:
