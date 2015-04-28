@@ -1,4 +1,4 @@
-Permissions: sandbox
+Permissions: all-permissions
 Codebase: .
 Application-Name: BooleanForest
 
