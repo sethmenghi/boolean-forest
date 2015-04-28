@@ -37,6 +37,20 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private static final int BACKWARD_XCOORD = LEVEL_XCOORD + LEVEL_WIDTH - 100;
 	private static final int BACKWARD_YCOORD = LEVEL_YCOORD + LEVEL_HEIGHT - 40;
 
+	// Declare static final Images for explanations:
+	public final Image DOG = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DogBone.png")).getImage();
+	public final Image TEDDY_BEAR = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/TeddyBear.png")).getImage();
+	public final Image DUCK = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DuckWithHat.png")).getImage();
+	public final Image CUPCAKE = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/Cupcake.png")).getImage();
+	public final Image PUMPKIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Pumpkin.png")).getImage();
+	public final Image ALIEN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Alien.png")).getImage();
+	public final Image HEART = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Hearts.png")).getImage();
+	public final Image RAIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Rain.png")).getImage();
+	public final Image DONUT = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Donut.png")).getImage();
+	public final Image FLOWER = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Sunflower.png")).getImage();
+	public final Image PENCIL = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Pencil.png")).getImage();
+	public final Image COOKIE = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Cookie.png")).getImage();
+
 	private Game theGame;								// reference to Game that instantiates LevelPanel object
 	private int theLevel;								// the current level passed in theGame
 	private JTextArea bobsTextArea1;					// JTextArea for Bob's Window
@@ -72,10 +86,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);										// call super method
 
 		// Create new image icon and draw the background image.
-		Image image = new ImageIcon("Images/Backgrounds/LevelBackground.jpg").getImage();
+		Image image = new ImageIcon(getClass().getResource("/Images/Backgrounds/LevelBackground.jpg")).getImage();
 		g.drawImage(image, 0, 0, null);
 
-		Image bobImage = new ImageIcon("Images/Owls/Bob.png").getImage();
+		Image bobImage = new ImageIcon(getClass().getResource("/Images/Owls/Bob.png")).getImage();
 		g.drawImage(bobImage, BOB_XCOORD, BOB_YCOORD, null);
 
 		// Add text and button.
@@ -237,19 +251,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				// Get resources for Level 2.
 				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_TRUE_A;
-					g.drawImage(LevelTwo.DOG, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(DOG, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.TRUE_STATEMENT;
 				}
 				// Get resources for Level 3.
 				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_TRUE_A;
-					g.drawImage(LevelThree.DONUT, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(DONUT, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.TRUE_STATEMENT;
 				}
 				// Get resources for Level 4.
 				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_TRUE_A;
-					g.drawImage(LevelFour.PUMPKIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(PUMPKIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.TRUE_STATEMENT;
 				}
 			}
@@ -257,19 +271,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				// Get resources for Level 2.
 				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_TRUE_B;
-					g.drawImage(LevelTwo.TEDDY_BEAR, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(TEDDY_BEAR, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.TRUE_STATEMENT;
 				}
 				// Get resources for Level 3.
 				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_TRUE_B;
-					g.drawImage(LevelThree.FLOWER, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(FLOWER, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.TRUE_STATEMENT;
 				}
 				// Get resources for Level 4.
 				else if (level == 4) {
 					levelTextOne = LevelFour.PAGE_TRUE_B;
-					g.drawImage(LevelFour.ALIEN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(ALIEN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.TRUE_STATEMENT;
 				}
 			}
@@ -277,19 +291,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				// Get resources for Level 2.
 				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_FALSE_A;
-					g.drawImage(LevelTwo.DUCK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(DUCK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.FALSE_STATEMENT;
 				}
 				// Get resources for Level 3.
 				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_FALSE_A;
-					g.drawImage(LevelThree.PENCIL, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(PENCIL, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.FALSE_STATEMENT;
 				}
 				// Get resources for Level 4.
 				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_FALSE_A;
-					g.drawImage(LevelFour.HEART, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(HEART, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.FALSE_STATEMENT;
 				}
 			}
@@ -297,19 +311,19 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				// Get resources for Level 2.
 				if (level == 1) {
 					levelTextOne = LevelTwo.PAGE_FALSE_B;
-					g.drawImage(LevelTwo.CUPCAKE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(CUPCAKE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelTwo.FALSE_STATEMENT;
 				}
 				// Get resources for Level 3.
 				else if (level == 2) {
 					levelTextOne = LevelThree.PAGE_FALSE_B;
-					g.drawImage(LevelThree.COOKIE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(COOKIE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelThree.FALSE_STATEMENT;
 				}
 				// Get resources for Level 4.
 				else if (level == 3) {
 					levelTextOne = LevelFour.PAGE_FALSE_B;
-					g.drawImage(LevelFour.RAIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+					g.drawImage(RAIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 					levelTextTwo = LevelFour.FALSE_STATEMENT;
 				}
 			}

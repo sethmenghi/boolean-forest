@@ -33,15 +33,7 @@ public class LevelTwo {
 	public static final String PAGE_FALSE_B = "This is a pie AND it has a candle.";			// page 5	
 	public static final String TRUE_STATEMENT = "This is RIGHT!\nBoth statements are true.";
 	public static final String FALSE_STATEMENT = "This is WRONG! Both statements are not\n"
-			+ "true. Unless BOTH are true, it is wrong.";
-	
-	// Declare static final Images for explanations:
-	public final Image DOG = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DogBone.png")).getImage();
-	public final Image TEDDY_BEAR = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/TeddyBear.png")).getImage();
-	public final Image DUCK = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DuckWithHat.png")).getImage();
-	public final Image CUPCAKE = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/Cupcake.png")).getImage();
-	
-	
+			+ "true. Unless BOTH are true, it is wrong.";	
 	
 	// https://www.wordans.com/wvc-1374530565/wordansfiles/images/2013/7/22/200382/200382_340.jpg
 	private static final String Q_ONE = "This is a _____ and it is playing the _____";

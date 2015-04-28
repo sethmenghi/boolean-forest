@@ -34,12 +34,6 @@ public class LevelFour {
 	public static final String TRUE_STATEMENT = "This is RIGHT! ";
 	public static final String FALSE_STATEMENT = "This is WRONG!";
 
-	// Declare static final Images for explanations:
-	public final Image PUMPKIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Pumpkin.png")).getImage();
-	public final Image ALIEN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Alien.png")).getImage();
-	public final Image HEART = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Hearts.png")).getImage();
-	public final Image RAIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelFour/Explanation/Rain.png")).getImage();
-
 	//http://www.how-to-draw-funny-cartoons.com/image-files/cartoon-camel-12.gif
 	private static final String Q_ONE = "Choose the correct answer.";
 	private static final String IMAGE_ONE = "/Images/Levels/LevelFour/Questions/Camel.png";

@@ -31,12 +31,6 @@ public class LevelThree {
 	public static final String TRUE_STATEMENT = "This is RIGHT!\nOnly one statement needs to be true.";
 	public static final String FALSE_STATEMENT = "This is WRONG!\nBoth statements are false.";
 	
-	// Declare static final Images for explanations:
-	public final Image DONUT = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Donut.png")).getImage();
-	public final Image FLOWER = new ImageIcon(getClass().getResource("/Images/Levels/LevelThree/Explanation/Sunflower.png")).getImage();
-	public final Image PENCIL = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Pencil.png")).getImage();
-	public final Image COOKIE = new ImageIcon(getClass().getResource("Images/Levels/LevelThree/Explanation/Cookie.png")).getImage();
-	
 	//OR LEVEL 
 	
 	
