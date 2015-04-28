@@ -77,7 +77,7 @@ public class LevelFour {
 
 	//http://www.clker.com/cliparts/6/e/a/5/1318356706177123419Coyote%20Cartoon.svg.hi.png
 	private static final String Q_FIVE = "Choose the correct answer.";
-	private static final String IMAGE_FIVE = "Images/Levels/LevelFour/Questions/Coyote.png";
+	private static final String IMAGE_FIVE = "/Images/Levels/LevelFour/Questions/Coyote.png";
 	private static final String Q_FIVE_OPTION_1 = "This is not a coyote and the animal is brown.";
 	private static final String Q_FIVE_OPTION_2 = "This animal does not live in the ocean and he is a coyote.";
 	private static final String Q_FIVE_OPTION_3 = "This is a bird and it is not brown.";
