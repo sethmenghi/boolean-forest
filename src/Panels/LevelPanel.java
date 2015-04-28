@@ -209,8 +209,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	}
 
 	private void showLevelContent(Graphics g, int level) {
-		System.out.println("Level: "+level);	
-
 		
 		String levelTextOne = "";										// String for first line of text
 		String levelTextTwo = "";										// String for second line of text
@@ -471,11 +469,8 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
-
-		System.out.println("Mouse pressed");
 		
 		if (theGame.getLevel() == 4){
-			System.out.println("Mouse pressed for level 5");
 			setMousePressedLevelFive(source);
 		}
 		else
@@ -507,17 +502,14 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				case 1:
 					theGame.levelTwo.startLevel();
 					theGame.changeLayoutCard("TEXT_QUESTION");
-					System.out.println("This should go to questions.");
 					break;
 				case 2:
 					theGame.levelThree.startLevel(); 
 					theGame.changeLayoutCard("TEXT_QUESTION");
-					System.out.println("This should go to questions.");
 					break;
 				case 3:
 					theGame.levelFour.startLevel(); 
 					theGame.changeLayoutCard("TEXT_QUESTION");
-					System.out.println("This should go to questions.");
 					break;
 				default:
 					break;
@@ -528,7 +520,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			case 6:
 				theGame.levelOne.startLevel(); 
 				theGame.changeLayoutCard("TEXT_QUESTION");
-				System.out.println("This should go to questions.");
 				break;
 			}
 		}	
@@ -568,10 +559,7 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	private void setMousePressed(GameButton source, int level) {
 		// If back button is clicked, go back to IntroPanel.
-		
-		System.out.println("this is source" + source);
-		System.out.println("this is level" + level);
-		
+				
 		if (source.getButtonMessage() == FORWARD) {
 			switch (currentPage) {
 			case 1:
@@ -594,9 +582,6 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 				//theGame.levelTwo.startLevel(); 
 				//theGame.changeLayoutCard("TEXT_QUESTION");
 				
-				System.out.println("This should go to questions.");
-				System.out.println("This should go to questions.");
-				System.out.println("HERE???");
 				break;
 			default:
 				break;
@@ -634,13 +619,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 
 	private void setMousePressedLevelFive(GameButton source) {
 		
-		System.out.println("Inside setMousePressedLevelFive");
 
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == FORWARD) {
-			
-			System.out.println("Inside setMousePressedLevelFive, forward");
-			
+						
 			theGame.levelFive.initLevel();
 		
 		}	
