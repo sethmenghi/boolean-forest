@@ -155,7 +155,7 @@ public class LevelTwo {
 				addPossibleAnswers(ANSWERS_FOUR, Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FOUR);
 				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
-				theGame.textQuestion.setAnswerList(ANSWERS_FOUR, Q_FOUR_OPTION_3);
+				theGame.textQuestion.setAnswerList(ANSWERS_FOUR, Q_FOUR_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
