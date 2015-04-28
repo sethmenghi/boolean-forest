@@ -85,6 +85,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		currentPage = 1;
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
+	 * background image, Bob. Calls methods to add text and buttons.
+	 * @param graphic
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);										// call super method
@@ -208,6 +213,11 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		}
 	}
 
+	/**
+	 * METHOD: This method shows the level content specific to the level called.
+	 * @param g
+	 * @param level
+	 */
 	private void showLevelContent(Graphics g, int level) {
 		
 		String levelTextOne = "";										// String for first line of text
@@ -356,6 +366,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		}
 	}
 
+	/**
+	 * METHOD: This method shows the level content specific to level 5.
+	 * @param g
+	 */
 	private void showLevelFiveContent(Graphics g) {
 		String levelTextOne = "";										// String for first line of text
 		String levelTextTwo = "";										// String for second line of text
@@ -466,6 +480,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Overrides the mouse pressed method, directs to the appropriate content shower
+	 * @param event
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GameButton source = (GameButton) e.getSource();				// get source of component that was clicked
@@ -477,6 +495,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 			setMousePressedLevel(source);
 	}
 
+	/**
+	 * METHOD: This method changes the page for the instructions
+	 * @param source
+	 */
 	private void setMousePressedLevel(GameButton source) {
 		// If back button is clicked, go back to IntroPanel.
 		if (source.getButtonMessage() == FORWARD) {
@@ -557,66 +579,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		}
 	}
 
-	private void setMousePressed(GameButton source, int level) {
-		// If back button is clicked, go back to IntroPanel.
-				
-		if (source.getButtonMessage() == FORWARD) {
-			switch (currentPage) {
-			case 1:
-				currentPage++;
-				repaint();
-				break;
-			case 2:
-				currentPage++;
-				repaint();
-				break;
-			case 3:
-				currentPage++;
-				repaint();
-				break;
-			case 4:
-				currentPage++;
-				repaint();
-				break;
-			case 5:
-				//theGame.levelTwo.startLevel(); 
-				//theGame.changeLayoutCard("TEXT_QUESTION");
-				
-				break;
-			default:
-				break;
-			}
-		}	
-		// If backward button is clicked in instructions, change text.
-		else if (source.getButtonMessage() == BACKWARD) {
-			switch (currentPage) {
-			case 1:
-				break;
-			case 2:
-				currentPage--;
-				repaint();
-				break;
-			case 3:
-				currentPage--;
-				repaint();
-				break;
-			case 4:
-				currentPage--;
-				repaint();
-				break;
-			case 5:
-				currentPage--;
-				repaint();
-				break;
-			default:
-				break;
-			}
-		}	
-		else {
-			theGame.changeLayoutCard("FOREST");
-		}
-	}
-
+	/**
+	 * METHOD: This method changes the page for the instructions for level 5
+	 * @param source
+	 */
 	private void setMousePressedLevelFive(GameButton source) {
 		
 
