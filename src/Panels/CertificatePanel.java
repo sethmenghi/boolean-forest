@@ -13,7 +13,7 @@ import BooleanForest.Game;
 
 @SuppressWarnings("serial")
 public class CertificatePanel extends JPanel implements Panel, MouseListener {
-	private static final String BACKGROUND_SRC = "Images/Backgrounds/CertificateBackground.jpg";	// background url
+	private static final String BACKGROUND_SRC = "/Images/Backgrounds/CertificateBackground.jpg";	// background url
 
 	public CertificatePanel(Game game) {
 		initPanel(game);
@@ -32,7 +32,7 @@ public class CertificatePanel extends JPanel implements Panel, MouseListener {
 		super.paintComponent(g);									// call super method
 
 		// Create new image icon and draw the background image.
-		Image background = new ImageIcon(BACKGROUND_SRC).getImage();
+		Image background = new ImageIcon(getClass().getResource(BACKGROUND_SRC)).getImage();
 		g.drawImage(background, 0, 0, null);
 	}
 
