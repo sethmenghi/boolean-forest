@@ -1,18 +1,44 @@
+/**
+ * 
+ * IMAGE SOURCES:
+ * 1) http://images.clipartpanda.com/dogs-clipart-cute_little_
+ *    cartoon_puppy_dog_with_a_dog_bone_in_its_mouth_0515-1101-
+ *    2819-1202_SMU.jpg
+ * 2) http://cliparts.co/cliparts/8TA/6zo/8TA6zoKGc.png
+ * 3) http://content.mycutegraphics.com/graphics/duck/birthday-
+ *    party-duck.png
+ * 4) https://s-media-cache-ak0.pinimg.com/736x/42/78/4a/
+ *    42784aaee85ecd3bedd1bd9f436bbb86.jpg
+ */
+
 package Levels;
 
-import java.awt.CardLayout;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 import BooleanForest.*;
-import Objects.*;
 
-public class LevelTwo extends JPanel {
+
+public class LevelTwo {
+	// Declare static final Strings for explanations:
+	public static final String PAGE_AND = "AND";											// page 1
+	public static final String PAGE_TRUE_A = "This is a dog AND it has a bone.";			// page 2
+	public static final String PAGE_TRUE_B = "The is a teddy bear AND it is brown.";		// page 3 	
+	public static final String PAGE_FALSE_A = "This is a cat AND its hat is orange.";		// page 4
+	public static final String PAGE_FALSE_B = "This is a pie AND it has a candle.";			// page 5	
+	public static final String TRUE_STATEMENT = "This is RIGHT!\nBoth statements are true.";
+	public static final String FALSE_STATEMENT = "This is WRONG! Both statements are not\n"
+			+ "true. Unless BOTH are true, it is wrong.";
+	
+	// Declare static final Images for explanations:
+	public static final Image DOG = new ImageIcon("Images/Levels/LevelTwo/Explanation/DogBone.png").getImage();
+	public static final Image TEDDY_BEAR = new ImageIcon("Images/Levels/LevelTwo/Explanation/TeddyBear.png").getImage();
+	public static final Image DUCK = new ImageIcon("Images/Levels/LevelTwo/Explanation/DuckWithHat.png").getImage();
+	public static final Image CUPCAKE = new ImageIcon("Images/Levels/LevelTwo/Explanation/Cupcake.png").getImage();
+	
 	
 	private static final String INSTRUCTIONS = "Level One Instructions";
 	// Question One -- text question
@@ -71,7 +97,7 @@ public class LevelTwo extends JPanel {
 	private static final int IMAGE = 1;
 	
 	private Game theGame;
-	private BobsWindow bobsWindow;
+
 	
 	
 	public LevelTwo(Game game) {
@@ -124,24 +150,5 @@ public class LevelTwo extends JPanel {
 		}
 		
 		//updateScore();
-	}
-	
-	/**
-	 * paintComponenent()
-	 * 
-	 * Overrides paintComponenent(); draws background image
-	 * 
-	 * @param graphic
-	 */
-	@Override
-	public void paintComponent(Graphics g) {
-		// Call super
-		super.paintComponent(g);
-		
-		// Create new image icon, draw the image
-		Image image = new ImageIcon("Images/LevelMapWithPath.jpg").getImage();
-		g.drawImage(image, 0, 0, null);
-		
-		bobsWindow.paintComponents(g);
 	}
 }

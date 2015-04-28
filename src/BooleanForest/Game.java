@@ -84,6 +84,7 @@ public class Game extends JApplet {
 	public static final Font PARAGRAPH_FONT = new Font("Verdana", Font.PLAIN, 14);	// font used for paragraph text
 	public static final Font TOPICS_FONT = new Font("Verdana", Font.BOLD, 100);		// used for lesson topics
 	public static final Font LESSON_STATEMENT = new Font("Verdana", Font.PLAIN, 20);// used for lesson statements
+	public static final Font SMALL_STATEMENT = new Font("Verdana", Font.PLAIN, 16);	// used for lesson statements
 	public static final Color DARK_BLUE = new Color(12, 68, 159);					// color used for titles
 	public static final Color LIGHT_BLUE = new Color(57, 119, 222);					// color used for paragraph text
 
@@ -207,18 +208,18 @@ public class Game extends JApplet {
 		cards.add(teacherPanel, TEACHER);					// add to cards
 		questionPanel = new QuestionPanel(this);			// initialize questionPanel
 		cards.add(questionPanel, QUESTION);					// add to cards
-//		
-//		levelPanelOne = new LevelPanel(this, 1);			// initialize level 1 panel
-//		cards.add(levelPanelOne, LEVEL_ONE);				// add to cards
-//		levelPanelTwo = new LevelPanel(this, 2);			// initialize level 2 panel
-//		cards.add(levelPanelTwo, LEVEL_TWO);				// add to cards
-//		levelPanelThree = new LevelPanel(this, 3);			// initialize level 3 panel
-//		cards.add(levelPanelThree, LEVEL_THREE);			// add to cards
-//		levelPanelFour = new LevelPanel(this, 4);			// initialize level 4 panel
-//		cards.add(levelPanelFour, LEVEL_FOUR);				// add to cards
-//		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
-//		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
-//		
+		
+		levelPanelOne = new LevelPanel(this, 1);			// initialize level 1 panel
+		cards.add(levelPanelOne, LEVEL_ONE);				// add to cards
+		levelPanelTwo = new LevelPanel(this, 2);			// initialize level 2 panel
+		cards.add(levelPanelTwo, LEVEL_TWO);				// add to cards
+		levelPanelThree = new LevelPanel(this, 3);			// initialize level 3 panel
+		cards.add(levelPanelThree, LEVEL_THREE);			// add to cards
+		levelPanelFour = new LevelPanel(this, 4);			// initialize level 4 panel
+		cards.add(levelPanelFour, LEVEL_FOUR);				// add to cards
+		levelPanelFive = new LevelPanel(this, 5);			// initialize level 5 panel
+		cards.add(levelPanelFive, LEVEL_FIVE);				// add to cards
+		
 //		levelOne = new LevelOne(this);
 //		levelFive = new LevelFive(this);
 //
