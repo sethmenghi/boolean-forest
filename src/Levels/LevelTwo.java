@@ -79,7 +79,7 @@ public class LevelTwo {
 	
 	// Declare static final String for question answer choices for Question 4:	
 	private static final String Q_FOUR_OPTION_1 = "whale, blue";
-	private static final String Q_FOUR_OPTION_2 = "dolphin, bue";
+	private static final String Q_FOUR_OPTION_2 = "dolphin, blue";
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";
 	private static final String Q_FOUR_OPTION_4 = "shark, blue";
 	
