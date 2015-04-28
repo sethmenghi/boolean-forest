@@ -20,7 +20,6 @@
 
 package Levels;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ import BooleanForest.Game;
 
 public class LevelThree {
 	// Declare private String for Bob resource:
-	private static final String BOB_SRC = "/Images/Owls/Bob.png";							// Bob url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";						// Bob url
 		
 	// Declare static final Strings for explanations:
 	public static final String PAGE_OR = "OR";											// page 1	
@@ -75,7 +74,7 @@ public class LevelThree {
 	private static final String Q_FOUR_OPTION_3 = "1 OR 4 teeth AND is purple";
 	private static final String Q_FOUR_OPTION_4 = "1 OR 2 teeth AND is blue";
 	
-	// Declare private members of the LevelOne class:
+	// Declare private members of the LevelThree class:
 	private Game theGame;											// to create reference to main game
 	private int currentQuestion;									// current question being asked
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	// holds list of answers for question 1
@@ -156,6 +155,8 @@ public class LevelThree {
 		case 5:	
 			theGame.incrementLevel();											// increment the level of the game
 			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
+			break;
+		default:
 			break;
 		}
 	}

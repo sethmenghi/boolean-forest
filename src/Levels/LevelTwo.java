@@ -83,7 +83,7 @@ public class LevelTwo {
 	private static final String Q_FOUR_OPTION_3 = "whale, brown";
 	private static final String Q_FOUR_OPTION_4 = "shark, blue";
 	
-	// Declare private members of the LevelOne class:
+	// Declare private members of the LevelTwo class:
 	private Game theGame;											// to create reference to main game
 	private int currentQuestion;									// current question being asked
 	private List<String> ANSWERS_ONE = new ArrayList<String>(); 	// holds list of answers for question 1
@@ -152,10 +152,10 @@ public class LevelTwo {
 		// For the fourth question:
 		case 4:	
 			if (ANSWERS_FOUR.size() == 0) {
-				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
+				addPossibleAnswers(ANSWERS_FOUR, Q_FOUR_OPTION_1, Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FOUR);
 				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
-				theGame.textQuestion.setAnswerList(ANSWERS_FOUR, Q_FOUR_OPTION_1);
+				theGame.textQuestion.setAnswerList(ANSWERS_FOUR, Q_FOUR_OPTION_3);
 				theGame.textQuestion.initGui();
 			}
 			break;
@@ -163,6 +163,8 @@ public class LevelTwo {
 		case 5:	
 			theGame.incrementLevel();											// increment the level of the game
 			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
+			break;
+		default:
 			break;
 		}
 	}

@@ -1,8 +1,8 @@
 /**
- * LEVELONE CLASS
+ * LEVELFOUR CLASS
  * 
- * DESCRIPTION: This class contains content for level one explanation
- * and handles the content for the questions for level one.
+ * DESCRIPTION: This class contains content for level four explanation
+ * and handles the content for the questions for level four.
  * 
  * IMAGE SOURCES:
  * 1) https://encrypted-tbn2.gstatic.com/
@@ -31,6 +31,9 @@ import javax.swing.JOptionPane;
 import BooleanForest.*;
 
 public class LevelFour {
+	// Declare private String for Bob resource:
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";			// Bob url
+	
 	// Declare static final Strings for explanations:
 	public static final String PAGE_NOT = "NOT";							// page 1	
 	public static final String PAGE_TRUE_A = "This is NOT an apple.";		// page 2
@@ -51,14 +54,14 @@ public class LevelFour {
 	private static final String Q_ONE = "The camel ____.";
 	private static final String Q_TWO = "Choose the CORRECT answer.";
 	private static final String Q_THREE = "The cactus is ____.";
-	private static final String Q_FOUR = "The animal is not a ____ and ____.";
-	private static final String Q_FIVE = "The coyote is ____ and not ____.";
+	private static final String Q_FOUR = "The animal is NOT a ____ AND ____.";
+	private static final String Q_FIVE = "The coyote is ____ and NOT ____.";
 	
 	// Declare static final String for question answer choices for Question 1:
-	private static final String Q_ONE_OPTION_1 = "is not standing";
-	private static final String Q_ONE_OPTION_2 = "does not have three humps";
-	private static final String Q_ONE_OPTION_3 = "does not have hair";
-	private static final String Q_ONE_OPTION_4 = "is not brown";
+	private static final String Q_ONE_OPTION_1 = "is NOT standing";
+	private static final String Q_ONE_OPTION_2 = "does NOT have three humps";
+	private static final String Q_ONE_OPTION_3 = "does NOT have hair";
+	private static final String Q_ONE_OPTION_4 = "is NOT brown";
 	
 	// Declare static final String for question answer choices for Question 2:
 	private static final String Q_TWO_OPTION_1 = "This is NOT a bird."; 
@@ -67,10 +70,10 @@ public class LevelFour {
 	private static final String Q_TWO_OPTION_4 = "The animal is NOT eating.";
 	
 	// Declare static final String for question answer choices for Question 3:
-	private static final String Q_THREE_OPTION_1 = "not a tree or animal"; 
-	private static final String Q_THREE_OPTION_2 = "not a plant or green";
-	private static final String Q_THREE_OPTION_3 = "not prickly or painful";
-	private static final String Q_THREE_OPTION_4 = "not found in a desert";
+	private static final String Q_THREE_OPTION_1 = "NOT a tree OR animal"; 
+	private static final String Q_THREE_OPTION_2 = "NOT a plant OR green";
+	private static final String Q_THREE_OPTION_3 = "NOT prickly OR painful";
+	private static final String Q_THREE_OPTION_4 = "NOT found in a desert";
 	
 	// Declare static final String for question answer choices for Question 4:
 	private static final String Q_FOUR_OPTION_1 = "snake, green";
@@ -93,73 +96,67 @@ public class LevelFour {
 	private List<String> ANSWERS_FOUR = new ArrayList<String>(); 	// holds list of answers for question 4
 	private List<String> ANSWERS_FIVE = new ArrayList<String>(); 	// holds list of answers for question 5
 	
+	/**
+	 * CONSTRUCTOR: This creates an instance of the LevelThree class
+	 * and creates a reference to the main game.
+	 * @param game
+	 */
 	public LevelFour(Game game) {
-		theGame = game;
+		this.theGame = game;										// creates a reference to the main game
 	}
 	
-	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2, String option3, String option4){
-		holdsPossibleAnswers.add(option1);
-		holdsPossibleAnswers.add(option2);
-		holdsPossibleAnswers.add(option3);
-		holdsPossibleAnswers.add(option4);
-	}
-	
-	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2){
-		holdsPossibleAnswers.add(option1);
-		holdsPossibleAnswers.add(option2);
-	}
-
+	/**
+	 * METHOD: This method is called from the LevelPanel for Level
+	 * 4 and calls the doQuestion method to go through the questions
+	 * for LevelFour class.
+	 * @param none
+	 */
 	public void startLevel() {
-		currentQuestion = 1;
-		doQuestion();
+		currentQuestion = 1;										// set currentQuestion to 1
+		doQuestion();												// call doQuestion
 	}
 	
-	public void nextQuestion(){
-		if (theGame.textQuestion.questionCompleted == true){
-			currentQuestion++;
-			doQuestion();
-		}
-		else{
-			JLabel warningImage = new JLabel(new ImageIcon(getClass().getResource("/Images/Owls/Bob.png")));
-			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
-		}
-	}
-	
+	/**
+	 * METHOD: This goes through and fills the Lists for each question
+	 * with the correct answer choices and sets the text question with
+	 * the proper content.
+	 * @param none
+	 */
 	public void doQuestion() {
-		
-		System.out.println(currentQuestion); 
-		
 		switch (currentQuestion) {
+		// For the first question:
 		case 1:
-			if (ANSWERS_ONE.size() == 0){
-				addPossibleAnswers(ANSWERS_ONE,  Q_ONE_OPTION_1,  Q_ONE_OPTION_2, Q_ONE_OPTION_3, Q_ONE_OPTION_4);
+			if (ANSWERS_ONE.size() == 0) {
+				addPossibleAnswers(ANSWERS_ONE, Q_ONE_OPTION_1, Q_ONE_OPTION_2, Q_ONE_OPTION_3, Q_ONE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_ONE);
 				theGame.textQuestion.setQuestionImage(IMAGE_ONE);
-				theGame.textQuestion.setAnswerList(ANSWERS_ONE,Q_ONE_OPTION_2);
+				theGame.textQuestion.setAnswerList(ANSWERS_ONE, Q_ONE_OPTION_2);
 				theGame.textQuestion.initGui();
 			}
 			break;
+		// For the second question:
 		case 2:	
 			if (ANSWERS_TWO.size() == 0){
-				addPossibleAnswers(ANSWERS_TWO,  Q_TWO_OPTION_1,  Q_TWO_OPTION_2, Q_TWO_OPTION_3, Q_TWO_OPTION_4);
+				addPossibleAnswers(ANSWERS_TWO, Q_TWO_OPTION_1, Q_TWO_OPTION_2, Q_TWO_OPTION_3, Q_TWO_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_TWO);
 				theGame.textQuestion.setQuestionImage(IMAGE_TWO);
-				theGame.textQuestion.setAnswerList(ANSWERS_TWO,Q_TWO_OPTION_4);
+				theGame.textQuestion.setAnswerList(ANSWERS_TWO, Q_TWO_OPTION_4);
 				theGame.textQuestion.initGui();
 			}
 			break;
+		// For the third question:
 		case 3:	
-			if (ANSWERS_THREE.size() == 0){
-				addPossibleAnswers(ANSWERS_THREE,  Q_THREE_OPTION_1,  Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
+			if (ANSWERS_THREE.size() == 0) {
+				addPossibleAnswers(ANSWERS_THREE, Q_THREE_OPTION_1, Q_THREE_OPTION_2, Q_THREE_OPTION_3, Q_THREE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_THREE);
 				theGame.textQuestion.setQuestionImage(IMAGE_THREE);
-				theGame.textQuestion.setAnswerList(ANSWERS_THREE,Q_THREE_OPTION_1);
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE, Q_THREE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
-		
+		// For the fourth question:
 		case 4:	
-			if (ANSWERS_FOUR.size() == 0){
+			if (ANSWERS_FOUR.size() == 0) {
 				addPossibleAnswers(ANSWERS_FOUR,  Q_FOUR_OPTION_1,  Q_FOUR_OPTION_2, Q_FOUR_OPTION_3, Q_FOUR_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FOUR);
 				theGame.textQuestion.setQuestionImage(IMAGE_FOUR);
@@ -167,22 +164,69 @@ public class LevelFour {
 				theGame.textQuestion.initGui();
 			}
 			break;
-			
+		// For the fifth question:	
 		case 5:	
-			if (ANSWERS_FIVE.size() == 0){
-				addPossibleAnswers(ANSWERS_FIVE,  Q_FIVE_OPTION_1,  Q_FIVE_OPTION_2, Q_FIVE_OPTION_3, Q_FIVE_OPTION_4);
+			if (ANSWERS_FIVE.size() == 0) {
+				addPossibleAnswers(ANSWERS_FIVE, Q_FIVE_OPTION_1, Q_FIVE_OPTION_2, Q_FIVE_OPTION_3, Q_FIVE_OPTION_4);
 				theGame.textQuestion.setQuestion(Q_FIVE);
 				theGame.textQuestion.setQuestionImage(IMAGE_FIVE);
-				theGame.textQuestion.setAnswerList(ANSWERS_FIVE,Q_FIVE_OPTION_1);
+				theGame.textQuestion.setAnswerList(ANSWERS_FIVE, Q_FIVE_OPTION_1);
 				theGame.textQuestion.initGui();
 			}
 			break;
-			
+			// After completing the questions:
 		case 6:	
-			theGame.incrementLevel();
-			theGame.changeLayoutCard("FOREST");
+			theGame.incrementLevel();											// increment the level of the game
+			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
 			break;
+		}
+	}
 	
+	/**
+	 * METHOD: Add the possible answer choices to each question's
+	 * List that holds it's possible answer choices.
+	 * @param holdsPossibleAnswers
+	 * @param option1
+	 * @param option2
+	 */
+	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2){
+		holdsPossibleAnswers.add(option1);										// add first string parameter 
+		holdsPossibleAnswers.add(option2);										// add second string parameter
+	}
+	
+	/**
+	 *METHOD: Add the possible answer choices to each question's
+	 * List that holds it's possible answer choices.
+	 * @param holdsPossibleAnswers
+	 * @param option1
+	 * @param option2
+	 * @param option3
+	 * @param option4
+	 */
+	public void addPossibleAnswers(List<String> holdsPossibleAnswers, String option1, String option2,
+			                       String option3, String option4) {
+		holdsPossibleAnswers.add(option1);										// add first string parameter 
+		holdsPossibleAnswers.add(option2);										// add second string parameter
+		holdsPossibleAnswers.add(option3);										// add first third parameter 
+		holdsPossibleAnswers.add(option4);										// add second fourth parameter
+	}
+	
+	/**
+	 * METHOD: This method calls the next question once the correct
+	 * answer is selected from the previous question.
+	 * @param none
+	 */
+	public void nextQuestion() {
+		// Once the correct answer is selected, increment currentQuestion
+		// and call doQuestion again.
+		if (theGame.textQuestion.questionCompleted == true) {
+			currentQuestion++;													// increment currentQuestion
+			doQuestion();														// call doQuestion
+		}
+		// Otherwise, it throws an error.
+		else {
+			JLabel warningImage = new JLabel(new ImageIcon(getClass().getResource(BOB_SRC)));
+			JOptionPane.showMessageDialog(null, warningImage, "Question", JOptionPane.PLAIN_MESSAGE, null);
 		}
 	}
 }
