@@ -38,6 +38,10 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 	private static final int BACKWARD_YCOORD = LEVEL_YCOORD + LEVEL_HEIGHT - 40;
 
 	// Declare static final Images for explanations:
+	public final Image PENGUIN = new ImageIcon(getClass().getResource("/Images/Levels/LevelOne/Explanation/Penguin.png")).getImage();
+	public final Image BLUE = new ImageIcon(getClass().getResource("/Images/Levels/LevelOne/Explanation/Blue.png")).getImage();
+	public final Image TABLE = new ImageIcon(getClass().getResource("/Images/Levels/LevelOne/Explanation/Table.png")).getImage();
+	public final Image PINK = new ImageIcon(getClass().getResource("/Images/Levels/LevelOne/Explanation/Pink.png")).getImage();
 	public final Image DOG = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DogBone.png")).getImage();
 	public final Image TEDDY_BEAR = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/TeddyBear.png")).getImage();
 	public final Image DUCK = new ImageIcon(getClass().getResource("/Images/Levels/LevelTwo/Explanation/DuckWithHat.png")).getImage();
@@ -159,22 +163,22 @@ public class LevelPanel extends JPanel implements Panel, MouseListener {
 		else {
 			if (currentPage == 2) {
 				levelTextOne = LevelOne.PAGE_TRUE_A;					// get the second page from LevelOne class
-				g.drawImage(LevelOne.PENGUIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+				g.drawImage(PENGUIN, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.TRUE_STATEMENT;					// get the second line of text
 			}
 			else if (currentPage == 3) {
 				levelTextOne = LevelOne.PAGE_TRUE_B;					// get the third page from LevelOne class
-				g.drawImage(LevelOne.BLUE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+				g.drawImage(BLUE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.TRUE_STATEMENT;					// get the second line of text
 			}
 			else if (currentPage == 5) {
 				levelTextOne = LevelOne.PAGE_FALSE_A;					// get the fifth page from LevelOne class
-				g.drawImage(LevelOne.TABLE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+				g.drawImage(TABLE, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
 			else if (currentPage == 6) {
 				levelTextOne = LevelOne.PAGE_FALSE_B;					// get the sixth page from LevelOne class
-				g.drawImage(LevelOne.PINK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
+				g.drawImage(PINK, LEVEL_XCOORD + 50, LEVEL_YCOORD + 80, null);
 				levelTextTwo = LevelOne.FALSE_STATEMENT;				// get the second line of text
 			}
 
