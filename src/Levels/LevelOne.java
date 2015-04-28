@@ -31,7 +31,7 @@ import BooleanForest.Game;
 
 public class LevelOne {
 	// Declare private String for Bob resource:
-	private static final String BOB_SRC = "Images/Owls/Bob.png";		// Bob url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";		// Bob url
 	
 	// Declare static final Strings for explanations:
 	public static final String PAGE_TRUE = "TRUE";						// page 1	
@@ -43,16 +43,10 @@ public class LevelOne {
 	public static final String TRUE_STATEMENT = "This is a TRUE statement.";
 	public static final String FALSE_STATEMENT = "This is a FALSE statement.";
 	
-	// Declare static final Images for explanations:
-	public static final Image PENGUIN = new ImageIcon("Images/Levels/LevelOne/Explanation/Penguin.png").getImage();
-	public static final Image BLUE = new ImageIcon("Images/Levels/LevelOne/Explanation/Blue.png").getImage();
-	public static final Image TABLE = new ImageIcon("Images/Levels/LevelOne/Explanation/Table.png").getImage();
-	public static final Image PINK = new ImageIcon("Images/Levels/LevelOne/Explanation/Pink.png").getImage();
-	
 	// Declare static final Strings for question images:
-	private static final String IMAGE_ONE = "Images/Levels/LevelOne/Questions/Monkey.png";
-	private static final String IMAGE_TWO = "Images/Levels/LevelOne/Questions/Zebra.png";
-	private static final String IMAGE_THREE = "Images/Levels/LevelOne/Questions/Flamingo.png";
+	private static final String IMAGE_ONE = "/Images/Levels/LevelOne/Questions/Monkey.png";
+	private static final String IMAGE_TWO = "/Images/Levels/LevelOne/Questions/Zebra.png";
+	private static final String IMAGE_THREE = "/Images/Levels/LevelOne/Questions/Flamingo.png";
 	
 	// Declare static final String for questions:
 	private static final String Q_ONE = "This is a monkey.";

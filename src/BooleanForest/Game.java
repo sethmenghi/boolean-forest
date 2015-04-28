@@ -167,11 +167,15 @@ public class Game extends JApplet {
 	 */
 	public void init() {
 		try {
-			SwingUtilities.invokeAndWait(new Runnable() {	// create new thread
-				public void run() {
-					createGUI();							// call createGUI()
-				}
-			});
+			if (SwingUtilities.isEventDispatchThread())
+				createGUI();
+			else {
+				SwingUtilities.invokeAndWait(new Runnable() {	// create new thread
+					public void run() {
+						createGUI();							// call createGUI()
+					}
+				});
+			}
 		}	
 		catch (Exception error) {
 			// Print error message if createGUI() does not complete successfully.
