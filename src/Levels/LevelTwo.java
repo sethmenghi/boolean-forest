@@ -22,10 +22,8 @@
  * 8) http://www.clipartbest.com/cliparts/ace/M8e/aceM8egc4.png
  */
 
-
 package Levels;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +33,9 @@ import javax.swing.JOptionPane;
 
 import BooleanForest.*;
 
-
 public class LevelTwo {
 	// Declare private String for Bob resource:
-	private static final String BOB_SRC = "/Images/Owls/Bob.png";		// Bob url
+	private static final String BOB_SRC = "/Images/Owls/Bob.png";							// Bob url
 	
 	// Declare static final Strings for explanations:
 	public static final String PAGE_AND = "AND";											// page 1
@@ -57,10 +54,10 @@ public class LevelTwo {
 	private static final String IMAGE_FOUR = "/Images/Levels/LevelTwo/Questions/Orca.png";
 	
 	// Declare static final String for questions:
-	private static final String Q_ONE = "This is a _____ and it is playing the _____";
-	private static final String Q_TWO = "This is an _____ and she is _____ ";
-	private static final String Q_THREE = "This is a _____ and she is playing with a ______";
-	private static final String Q_FOUR = "This is a _______ and his eyes are _______";
+	private static final String Q_ONE = "This is a _____ AND it is playing the _____";
+	private static final String Q_TWO = "This is an _____ AND she is _____ ";
+	private static final String Q_THREE = "This is a _____ AND she is playing with a ______";
+	private static final String Q_FOUR = "This is a _______ AND his eyes are _______";
 	
 	// Declare static final String for question answer choices for Question 1:	
 	private static final String Q_ONE_OPTION_1 = "dolphin, piano";
