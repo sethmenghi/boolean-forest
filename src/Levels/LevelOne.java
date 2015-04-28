@@ -108,7 +108,7 @@ public class LevelOne {
 				addPossibleAnswers(ANSWERS_TWO, ANSWER_TRUE, ANSWER_FALSE);		// fill answer choice list with choices
 				theGame.textQuestion.setQuestion(Q_TWO);						// set to second question
 				theGame.textQuestion.setQuestionImage(IMAGE_TWO);				// set image used for second question
-				theGame.textQuestion.setAnswerList(ANSWERS_TWO,ANSWER_TRUE);	// set the answer
+				theGame.textQuestion.setAnswerList(ANSWERS_TWO, ANSWER_TRUE);	// set the answer
 				theGame.textQuestion.initGui();									// call initGui form textQuestion class
 			}
 			break;
@@ -118,7 +118,7 @@ public class LevelOne {
 				addPossibleAnswers(ANSWERS_THREE, ANSWER_TRUE, ANSWER_FALSE);	// fill answer choice list with choices
 				theGame.textQuestion.setQuestion(Q_THREE);						// set to third question
 				theGame.textQuestion.setQuestionImage(IMAGE_THREE);				// set image used for third question
-				theGame.textQuestion.setAnswerList(ANSWERS_THREE,ANSWER_FALSE);	// set the answer
+				theGame.textQuestion.setAnswerList(ANSWERS_THREE, ANSWER_FALSE);	// set the answer
 				theGame.textQuestion.initGui();									// call initGui form textQuestion class
 			}
 			break;
@@ -126,6 +126,8 @@ public class LevelOne {
 		case 4:	
 			theGame.incrementLevel();											// increment the level of the game
 			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
+			break;
+		default:
 			break;
 		}
 	}
