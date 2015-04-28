@@ -1,13 +1,19 @@
+/**
+ * LEVELFIVE CLASS
+ * 
+ * DESCRIPTION: This class contains content for level five explanation
+ * and handles the content for the questions for level five.
+ * 
+ * IMAGE SOURCES:
+ * All images drawn by Leslie Kim.
+ */
+
 package Levels;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import BooleanForest.Game;
-import Questions.DragAndDropQuestion;
 
-// This level controls the content of the level five quesions and calls 
-// drag and drop question to update teh content 
 public class LevelFive {
 	
 	// The different image options that the user can select
@@ -27,104 +33,117 @@ public class LevelFive {
 	
 	public static final String LEVEL_5_INTRO="Let's put it all together!";
 
-	// Variables for the class  
-	Game theGame;								// The game itself 
-	public int questionInLevel; 				// Counter that checks which question we are on 
-	private ArrayList <String> listOfOptions;	// A list of possible draggable items 
-	
-	// Constructor just passes the game. Is called in the game class
-	public LevelFive(Game game)
-	{
-		theGame = game;
+	// Declare static final Strings for questions:
+	private static final String Q_ONE= "Bob is wearing glasses AND has a soccer ball.";
+	private static final String Q_TWO= "Bob is NOT wearing a hat AND a tie.";
+	private static final String Q_THREE= "Bob is wearing a tie AND has a ball.";
+	private static final String Q_FOUR= "Bob is wearing two items of clothing AND has no balls.";
+	private static final String Q_FIVE= "Bob is wearing a hat AND has a basketball OR soccerball";
+
+	// Declare private members of the LevelFive class:  
+	private Game theGame;											// to create reference to main game 
+	private int currentQuestion;									// current question being asked 
+	private ArrayList <String> listOfOptions;						// list of possible draggable icons 
+
+	/**
+	 * CONSTRUCTOR: This creates an instance of the LevelThree class
+	 * and creates a reference to the main game.
+	 * @param game
+	 */
+	public LevelFive(Game game) {
+		this.theGame = game;										// creates a reference to the main game
 	}
 
-	// We initialize the level when we want it displayed
-	public void initLevel(){
-		
-		questionInLevel=1; 					// Set counter to first question
-		populateListWithOptions(); 			// We create the array list of options
-		setContent();						// Set the level content
+	/**
+	 * METHOD: Initialize the level by setting the currentQuestion
+	 * to 1 and populating listOfOptions with the icons. Also sets
+	 * the level content.
+	 * @param none
+	 */
+	public void initLevel() {
+		currentQuestion = 1;										// set currentQuestion to 1
+		populateListWithOptions(); 									// create the array list of options
+		setContent();												// set the level content
 	}
-	
-	
-	// This is the main method of the level that controls everything
-	// It switched from questiont to question and updates the content 
-	public void setContent(){
-		
-		
-		switch(questionInLevel){
-			case 1:
-				
-				theGame.dragAndDropQuestion.setQuestionText(QUESTION_ONE_TEXT);								// Set question text
-				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);						// Pass list of possible answers
-				theGame.dragAndDropQuestion.setAnswersForEachItem(false,true,false,false,true,false);		// Pass list of answers that are right and wrong 
-				theGame.dragAndDropQuestion.initGUI();														// Initialize the GUI
-				theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");											// Switch to the card
-                break;
-                
-			case 2: 																						// Repeat for each question
-				theGame.dragAndDropQuestion.setQuestionText(QUESTION_TWO_TEXT);
-				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
-				theGame.dragAndDropQuestion.setAnswersForEachItem(true,true,false,true,true,false);
-				theGame.dragAndDropQuestion.initGUI();
-				theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
-                break;
-                
-			case 3:
-				theGame.dragAndDropQuestion.setQuestionText(QUESTION_THREE_TEXT);
-				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
-				theGame.dragAndDropQuestion.setAnswersForEachItem(true,false,false,false,true,true);
-				theGame.dragAndDropQuestion.initGUI();
-				theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
-				break;
-				
-			case 4:
-				theGame.dragAndDropQuestion.setQuestionText(QUESTION_FOUR_TEXT);
-				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
-				theGame.dragAndDropQuestion.setAnswersForEachItem(false,true,true,true,false,true);
-				theGame.dragAndDropQuestion.initGUI();
-				theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
-				break;
-				
-			case 5:
-				theGame.dragAndDropQuestion.setQuestionText(QUESTION_FIVE_TEXT);
-				theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
-				theGame.dragAndDropQuestion.setAnswersForEachItem(true,false,true,false,true,false);
-				theGame.dragAndDropQuestion.initGUI();
-				theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
-				break;
-				
-			case 6:
-				theGame.incrementLevel();
-				theGame.changeLayoutCard("FOREST");
-				break;
-				
-            default:
-            	break; 
 
+	/**
+	 * METHOD: Populates the arraylist with the icon images.
+	 * @param none
+	 */
+	public void populateListWithOptions() {
+		listOfOptions= new ArrayList<String>();						// initialize the ArrayList
+		listOfOptions.add(IMAGE_OPTION_ONE);						// add basketball
+		listOfOptions.add(IMAGE_OPTION_TWO);						// add glasses
+		listOfOptions.add(IMAGE_OPTION_THREE);						// add hat
+		listOfOptions.add(IMAGE_OPTION_FOUR);						// add scarf
+		listOfOptions.add(IMAGE_OPTION_FIVE);						// add soccer ball
+		listOfOptions.add(IMAGE_OPTION_SIX);						// add tie
+	}
+
+	/**
+	 * METHOD: This method controls the level and switches from
+	 * question to question and updates the content.
+	 * @param none
+	 */
+	public void setContent() {
+		switch(currentQuestion) {
+		// For the first question:
+		case 1:
+			theGame.dragAndDropQuestion.setQuestionText(Q_ONE);
+			theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
+			theGame.dragAndDropQuestion.setAnswersForEachItem(false, true, false, false, true, false); 
+			theGame.dragAndDropQuestion.initGUI();												
+			theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");									
+			break;
+		// For the second question:
+		case 2: 																	
+			theGame.dragAndDropQuestion.setQuestionText(Q_TWO);
+			theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
+			theGame.dragAndDropQuestion.setAnswersForEachItem(true, true ,false, true, true, false);
+			theGame.dragAndDropQuestion.initGUI();
+			theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
+			break;
+		// For the third question:
+		case 3:
+			theGame.dragAndDropQuestion.setQuestionText(Q_THREE);
+			theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
+			theGame.dragAndDropQuestion.setAnswersForEachItem(true,false,false,false,true,true);
+			theGame.dragAndDropQuestion.initGUI();
+			theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
+			break;
+		// For the fourth question:
+		case 4:
+			theGame.dragAndDropQuestion.setQuestionText(Q_FOUR);
+			theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
+			theGame.dragAndDropQuestion.setAnswersForEachItem(false, true, true, true, false, true);
+			theGame.dragAndDropQuestion.initGUI();
+			theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
+			break;
+		// For the fifth question:
+		case 5:
+			theGame.dragAndDropQuestion.setQuestionText(Q_FIVE);
+			theGame.dragAndDropQuestion.setListOfPossibleAnswers(listOfOptions);
+			theGame.dragAndDropQuestion.setAnswersForEachItem(true, false, true, false, true, false);
+			theGame.dragAndDropQuestion.initGUI();
+			theGame.changeLayoutCard("DRAG_AND_DROP_QUESTION");
+			break;
+			// After completing the questions:
+		case 6:
+			theGame.incrementLevel();											// increment the level of the game
+			theGame.changeLayoutCard("FOREST");									// go back to the ForestPanel
+			break;
+		default:
+			break; 
 		}	
-		
 	}
-	
-	// Called by the DragAndDropQuestion class to move to next question
-	public void nextQuestion(){
-		
-		questionInLevel++;			// Increment counter
-		setContent(); 				// Update the content 
-		
-	}
-	
-	// Called once to create the arraylist with all the possible options 
-	public void populateListWithOptions(){
-		
-		listOfOptions= new ArrayList<String>();
-		listOfOptions.add(IMAGE_OPTION_ONE);
-		listOfOptions.add(IMAGE_OPTION_TWO);
-		listOfOptions.add(IMAGE_OPTION_THREE);
-		listOfOptions.add(IMAGE_OPTION_FOUR);
-		listOfOptions.add(IMAGE_OPTION_FIVE);
-		listOfOptions.add(IMAGE_OPTION_SIX);
 
+	/**
+	 * METHOD: This method is called by the DragAndDropQuestion
+	 * class to move to the next question.
+	 * @param none
+	 */
+	public void nextQuestion(){
+		currentQuestion++;														// increment currentQuestion
+		setContent(); 															// update the content 
 	}
-	
 }

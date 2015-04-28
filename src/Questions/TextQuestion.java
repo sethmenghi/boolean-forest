@@ -34,7 +34,7 @@ import BooleanForest.Game;
 import Panels.LevelPanel;
 
 @SuppressWarnings("serial")
-public class TextQuestion extends JPanel implements Question, ActionListener {
+public class TextQuestion extends JPanel implements ActionListener {
 	
 	// Constants
 	private final static int MAX_BUTTON_WIDTH = 100;
@@ -97,19 +97,6 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		questionCompleted = false;
 		
 		img = new ImageIcon(getClass().getResource(imageResource));
-		// Checking if Image loaded correctly.
-		while(img.getImageLoadStatus() != MediaTracker.COMPLETE){
-			if (img.getImageLoadStatus() == MediaTracker.ERRORED || 
-				img.getImageLoadStatus() == MediaTracker.ABORTED){
-					ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-					String url = classLoader.getResource(".").getPath();
-					String errorString = "ERROR: Couldn't load " + imageResource;
-					System.out.println(errorString);
-					String urlError = "Current directory: " + url;
-					System.out.println(urlError);
-					break;
-			}
-		}
 		
 		if (questionPanel != null){
 			questionPanel.setVisible(false);
@@ -178,7 +165,6 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 	public void setAnswerList(List<String> allPossibleAnswers, String correctAnswerInput){
 		possibleAnswers = allPossibleAnswers;
 		correctAnswer = correctAnswerInput;
-		System.out.println(possibleAnswers);
 	}
 
 	/**
@@ -209,7 +195,6 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 			return true;
 		}
 		else {
-			System.out.println("so wrong");
 			answer.setBackground(Color.RED);
 			answer.setOpaque(true);
 			questionCompleted = false;
@@ -217,6 +202,10 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		}
 	}
 
+	/**
+	 * OVERRIDDEN METHOD: Action listener for buttons, checks answer selected
+	 * @param event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -233,7 +222,6 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		else if (src == answer4){
 			checkAnswer(answer4.getText(), answer4);
 		}
-		System.out.println(questionCompleted);
 	}
 	
 	/**
@@ -250,13 +238,18 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
         return stringWidth;
 	}
 	
+	/**
+	 * OVERRIDDEN METHOD: Overrides paintComponent() by drawing the
+	 * background image, the question image, and the question.
+	 * @param graphic
+	 */
 	@Override 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		questionPanel.revalidate();
 		questionPanel.repaint();
 
-		Image background = new ImageIcon("Images/Backgrounds/BackgroundForTextQuestion.png").getImage();
+		Image background = new ImageIcon(getClass().getResource("/Images/Backgrounds/BackgroundForTextQuestion.png")).getImage();
 		g.drawImage(background, 0, 0, null);
 		
 		//Adds the question text to the middle 
@@ -269,6 +262,5 @@ public class TextQuestion extends JPanel implements Question, ActionListener {
 		g2.setColor(Game.DARK_BLUE);			
 		g2.drawString(textQuestion,Game.APPLET_WIDTH/2-measureStringWidth(g,textQuestion)/2,90);
 		
-		//setVisible(true);
     }
 }

@@ -99,7 +99,6 @@ public class Game extends JApplet {
 	private static final String LEVEL_THREE = "LEVEL_THREE";						// name of levelPanelThree
 	private static final String LEVEL_FOUR = "LEVEL_FOUR";							// name of levelPanelFour
 	private static final String LEVEL_FIVE = "LEVEL_FIVE";							// name of levelPanelFive
-	private static final String IMAGE_QUESTION = "IMAGE_QUESTION";					
 	private static final String TEXT_QUESTION = "TEXT_QUESTION";
 	private static final String DRAG_AND_DROP_QUESTION = "DRAG_AND_DROP_QUESTION";
 	private static final String CERTIFICATE = "CERTIFICATE";						// name of certificatePanel
@@ -119,6 +118,10 @@ public class Game extends JApplet {
 	private LevelPanel levelPanelFive;						// levelPanelFive
 	private CertificatePanel certificatePanel;				// certificatePanel
 	private int level;										// current level passed
+	
+	// makes sure createGUI runs properly
+	private boolean firstTime = true;						// true on first init loop
+	private boolean secondTime;								// true on second loop -> run createGUI
 	
 	public LevelOne levelOne;
 	public LevelTwo levelTwo; 
@@ -172,7 +175,13 @@ public class Game extends JApplet {
 			else {
 				SwingUtilities.invokeAndWait(new Runnable() {	// create new thread
 					public void run() {
-						createGUI();							// call createGUI()
+						if (firstTime == true){
+							firstTime = false;
+							secondTime = true;
+						}
+						else if (secondTime == true){
+							createGUI();							// call createGUI()
+						}
 					}
 				});
 			}
@@ -259,6 +268,7 @@ public class Game extends JApplet {
 		}
 	}
 
+	String currentLayout;
 	/**
 	 * METHOD: Changes the layout that is current being shown to the
 	 * parameter passed in.
@@ -268,6 +278,6 @@ public class Game extends JApplet {
 		// Get the card layout and flip the desired card to the front.
 		CardLayout layout = (CardLayout) (cards.getLayout());
 		layout.show(cards, layoutToChangeTo);
-		cards.revalidate();
+		currentLayout = layoutToChangeTo;
 	}
 }
